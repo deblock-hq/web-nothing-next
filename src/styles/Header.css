@@ -1,0 +1,8 @@
+header {
+    height: 80px;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+  }
+  
