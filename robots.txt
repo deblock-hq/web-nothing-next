@@ -1,0 +1,18 @@
+User-agent: *
+#allow for crawling of all sections of the site by default for all search engines, unless explicitly defined below
+Allow: /
+
+#Block Resume section & clean legacy trashes
+Disallow: /Resume
+Disallow: /WphYZ/
+Disallow: /Jordan
+Disallow: /miggy 
+
+#Sitemaps - as per previously provided recommendations
+Sitemap: https://deblock.com/sitemap.xml
+
+#The above index file contains the following sitemaps
+#https://deblock.com/sitemap-blog-fr.xml
+#https://deblock.com/sitemap-blog-en.xml
+#https://deblock.com/sitemap-static.xml
+

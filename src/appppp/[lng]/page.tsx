@@ -10,6 +10,7 @@ import "../../styles/globals.css";
 import "../../styles/SplashPage.css";
 import "../../styles/Blob.css";
 import "../../styles/Header.css";
+import { useRouter } from "next/navigation";
 
 export default async function Page({ params }: { params: { lng: string } }) {
   if (languages.indexOf(params.lng) < 0) params.lng = fallbackLng;
@@ -25,7 +26,8 @@ export default async function Page({ params }: { params: { lng: string } }) {
 
   //   if (!lng) i18n.changeLanguage("en");
   // }, []);
-
+  const router = useRouter();
+  console.log(router)
   return (
     <Suspense fallback="loading">
       <SplashPage_v2

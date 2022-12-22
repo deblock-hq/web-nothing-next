@@ -2,7 +2,7 @@
 import { Suspense } from "react";
 import { useTranslation } from "react-i18next";
 // import { useParams, useNavigate } from "react-router-dom";
-import { otherLanguagesAvailable } from "../i18n/i18n";
+// import { otherLanguagesAvailable } from "../i18n/i18n";
 import SplashPage_v2 from "../views/SplashPage_v2";
 
 import "../styles/globals.css";
