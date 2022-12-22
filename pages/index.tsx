@@ -3,7 +3,7 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
 import { Suspense } from "react";
 import { GetStaticProps } from "next";
-import SplashPage_v2 from "src/views/SplashPage_v2";
+import SplashPage_v2 from "../src/views/SplashPage_v2";
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
   console.log(locale);
@@ -14,10 +14,8 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
   };
 };
 
-export default function Home(props: any) {
+export default function Home() {
   const { t } = useTranslation("common");
-
-  console.log(props);
 
   return (
     <div>
