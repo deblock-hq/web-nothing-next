@@ -32,7 +32,7 @@
     "pages/index.jsx",
     "next-18next.config.js",
     "next.config.js",
-    "src/**/*.ts",
+    "src/**/*.ts"
   ],
   "exclude": ["node_modules"]
 }

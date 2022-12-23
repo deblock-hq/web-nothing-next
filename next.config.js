@@ -6,6 +6,8 @@ const nextConfig = {
   i18n,
   reactStrictMode: true,
   swcMinify: true,
+  pageExtensions: ["page.tsx", "api.ts"],
+
   async rewrites() {
     return [
       {
