@@ -32,7 +32,8 @@
     "pages/index.jsx",
     "next-18next.config.js",
     "next.config.js",
-    "src/**/*.ts"
+    "src/**/*.ts",
+    "middleware.ts"
   ],
   "exclude": ["node_modules"]
 }
