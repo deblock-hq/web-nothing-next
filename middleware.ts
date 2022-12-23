@@ -3,7 +3,8 @@ import { NextResponse } from "next/server";
 
 export function middleware(req: NextRequest) {
   const country = req.geo?.country;
-  const url = "/fr-FR";
+  const url = req.nextUrl.clone()
+  url.pathname = '/fr-FR'
 
   console.log("country,country", country);
 
