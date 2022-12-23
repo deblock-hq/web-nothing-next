@@ -35,7 +35,7 @@ const CountrySlection = () => {
             <Image src={Trace} alt="Trace" />
           </span>
           <ul>
-            <Link href="/">
+            <Link href="/en-GB">
               <li>
                 <div>
                   <Image
