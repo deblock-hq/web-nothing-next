@@ -8,6 +8,8 @@ export function middleware(req: NextRequest) {
 
   console.log("country,country", country, req.nextUrl.pathname);
 
+  const stringCheck = ["/fr-FR", "/en-FR", "/en-GB"];
+
   if (
     req.nextUrl.href.includes("/fr-FR") ||
     req.nextUrl.href.includes("/en-FR")
@@ -17,9 +19,7 @@ export function middleware(req: NextRequest) {
 
   if (
     country === "FR" &&
-    !req.nextUrl.href.includes("/*") &&
-    (!req.nextUrl.href.includes("/fr-FR") ||
-      !req.nextUrl.href.includes("/en-FR"))
+    !req.nextUrl.href.split("/").some((el) => stringCheck.includes(el))
   ) {
     return NextResponse.redirect(url);
   }
