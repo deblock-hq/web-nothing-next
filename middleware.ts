@@ -5,5 +5,10 @@ export function middleware(req: NextRequest) {
   const country = req.geo?.country;
 
   console.log("country,country", country);
-  // return NextResponse.redirect("/fr-FR");
+  if (country === "FR")
+    return NextResponse.redirect(new URL("/fr-FR", req.url));
 }
+
+export const config = {
+  matcher: "/",
+};
