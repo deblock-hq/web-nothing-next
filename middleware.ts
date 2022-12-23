@@ -5,9 +5,5 @@ export function middleware(req: NextRequest) {
   const country = req.geo?.country;
 
   console.log("country,country", country);
-  return NextResponse.redirect(new URL("/about-2", req.url));
+  return NextResponse.redirect("/fr-FR");
 }
-
-export const config = {
-  matcher: "/about/:path*",
-};
