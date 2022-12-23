@@ -14,9 +14,11 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
   };
 };
 
-export default function Home() {
+export default function Home(props: any) {
   const { t } = useTranslation("common");
-
+  // !languageTranslated.includes(lng)
+  const languageTranslated = ["fr", "en"];
+  console.log(props);
   return (
     <div>
       <Head>
