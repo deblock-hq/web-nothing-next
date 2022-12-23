@@ -8,11 +8,15 @@ export function middleware(req: NextRequest) {
 
   console.log("country,country", country, req.nextUrl.pathname);
 
-  if (req.nextUrl.pathname == "/fr-FR" && country === "FR") {
+  if (req.nextUrl.pathname == "/fr-FR") {
+    console.log("path2", req.nextUrl.pathname);
+
     return NextResponse.next();
   }
 
   if (country === "FR") {
+    console.log("path", req.nextUrl.pathname);
+
     return NextResponse.redirect(url);
   }
 }
