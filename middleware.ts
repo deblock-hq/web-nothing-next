@@ -7,3 +7,7 @@ export function middleware(req: NextRequest) {
   console.log("country,country", country);
   return NextResponse.redirect("/fr-FR");
 }
+
+export const config = {
+  matcher: "/",
+};
