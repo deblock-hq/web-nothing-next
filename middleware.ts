@@ -1,4 +1,4 @@
-import type { NextRequest } from "next/server";
+import { NextRequest, URLPattern } from "next/server";
 import { NextResponse } from "next/server";
 
 export function middleware(req: NextRequest) {
@@ -15,7 +15,7 @@ export function middleware(req: NextRequest) {
   }
 
   if (country === "FR") {
-    console.log("path", req.nextUrl.pathname, req.nextUrl, req.page);
+    console.log("path", req.nextUrl.pathname, req.nextUrl, URLPattern);
 
     return NextResponse.redirect(url);
   }
