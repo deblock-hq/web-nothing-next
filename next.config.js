@@ -22,6 +22,11 @@ const nextConfig = {
         permanent: true,
       },
       {
+        source: "/en-gb",
+        destination: "/",
+        permanent: true,
+      },
+      {
         source: "/:lng-fr",
         destination: "/:lng-FR",
         permanent: true,
