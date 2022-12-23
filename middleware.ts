@@ -6,7 +6,7 @@ export function middleware(req: NextRequest) {
   const url = req.nextUrl.clone();
   url.pathname = "/fr-FR";
 
-  console.log("country,country", country);
+  console.log("country,country", country, req.nextUrl.pathname);
 
   if (req.nextUrl.pathname == "/fr-FR" && country === "FR") {
     return NextResponse.next();
