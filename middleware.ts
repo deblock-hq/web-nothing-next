@@ -9,14 +9,14 @@ export function middleware(req: NextRequest) {
   console.log("country,country", country, req.nextUrl.pathname);
 
   if (req.nextUrl.href.includes("/fr-FR")) {
-    console.log("path2", req.nextUrl.pathname);
-
     return NextResponse.next();
   }
 
-  if (country === "FR") {
-    console.log("path", req.nextUrl.pathname, req.nextUrl, URLPattern);
-
+  if (
+    country === "FR" &&
+    (!req.nextUrl.href.includes("/fr-FR") ||
+      !req.nextUrl.href.includes("/en-FR"))
+  ) {
     return NextResponse.redirect(url);
   }
 }
