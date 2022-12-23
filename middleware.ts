@@ -13,7 +13,9 @@ export function middleware(req: NextRequest) {
   if (
     req.nextUrl.href.includes("/fr-FR") ||
     req.nextUrl.href.includes("/en-FR") ||
-    req.nextUrl.href.includes("/en-GB")
+    req.nextUrl.href.includes("/en-GB") ||
+    req.nextUrl.href.includes("/de-FR") ||
+    req.nextUrl.href.includes("/es-FR")
     // req.nextUrl.href.split("/").some((el) => stringCheck.includes(el))
   ) {
     return NextResponse.next();
