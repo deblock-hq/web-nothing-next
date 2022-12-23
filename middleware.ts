@@ -15,7 +15,7 @@ export function middleware(req: NextRequest) {
   }
 
   if (country === "FR") {
-    console.log("path", req.nextUrl.pathname);
+    console.log("path", req.nextUrl.pathname, req.nextUrl);
 
     return NextResponse.redirect(url);
   }
