@@ -8,7 +8,10 @@ export function middleware(req: NextRequest) {
 
   console.log("country,country", country, req.nextUrl.pathname);
 
-  if (req.nextUrl.href.includes("/fr-FR")) {
+  if (
+    req.nextUrl.href.includes("/fr-FR") ||
+    req.nextUrl.href.includes("/en-FR")
+  ) {
     return NextResponse.next();
   }
 
