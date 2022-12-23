@@ -10,7 +10,7 @@ export function middleware(req: NextRequest) {
     return NextResponse.next();
   }
 
-  if (country === "FR") {
+  if (country === "FR" && !req.nextUrl.pathname) {
     return NextResponse.redirect(new URL("/fr-FR", req.url));
   }
 }
