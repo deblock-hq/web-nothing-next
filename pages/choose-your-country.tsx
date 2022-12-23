@@ -2,11 +2,11 @@
 import React from "react";
 import { useTranslation } from "next-i18next";
 import Header from "../src/components/Header";
-import UkFlag from "../assets/en-flag.svg";
-import FrFlag from "../assets/fr-flag.svg";
-import Arrow from "../assets/arrow.svg";
+import UkFlag from "../src/assets/en-flag.svg";
+import FrFlag from "../src/assets/fr-flag.svg";
+import Arrow from "../src/assets/arrow.svg";
 import Blob from "../src/views/Blob";
-import Trace from "../assets/Trace.svg";
+import Trace from "../src/assets/Trace.svg";
 // import "./index.css";
 import Image from "next/image";
 import Link from "next/link";
