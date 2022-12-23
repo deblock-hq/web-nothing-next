@@ -6,6 +6,8 @@ const nextConfig = {
   i18n,
   reactStrictMode: true,
   swcMinify: false,
+  trailingSlash: true,
+
   async rewrites() {
     return [
       {
