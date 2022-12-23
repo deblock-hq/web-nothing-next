@@ -8,7 +8,7 @@ export function middleware(req: NextRequest) {
 
   console.log("country,country", country, req.nextUrl.pathname);
 
-  if (req.nextUrl.pathname === "/fr-FR") {
+  if (req.nextUrl.href.includes("/fr-FR")) {
     console.log("path2", req.nextUrl.pathname);
 
     return NextResponse.next();
