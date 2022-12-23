@@ -4,5 +4,5 @@ export default function middleware(req: NextRequest) {
   const country = req.geo?.country;
 
   console.log("country,country", country, req);
-  if (country === "FR") return NextResponse.redirect("/fr-FR");
+  // if (country === "FR") return NextResponse.redirect("/fr-FR");
 }
