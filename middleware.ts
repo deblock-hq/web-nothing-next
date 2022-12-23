@@ -17,6 +17,7 @@ export function middleware(req: NextRequest) {
 
   if (
     country === "FR" &&
+    !req.nextUrl.href.includes("/*") &&
     (!req.nextUrl.href.includes("/fr-FR") ||
       !req.nextUrl.href.includes("/en-FR"))
   ) {
