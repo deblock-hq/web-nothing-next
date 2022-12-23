@@ -3,6 +3,7 @@ import { NextResponse } from "next/server";
 
 export function middleware(req: NextRequest) {
   const country = req.geo?.country;
+  const url = "/fr-FR";
 
   console.log("country,country", country);
 
@@ -11,7 +12,7 @@ export function middleware(req: NextRequest) {
   }
 
   if (country === "FR" && req.nextUrl.pathname == "/") {
-    return NextResponse.redirect("/fr-FR");
+    return NextResponse.redirect(url);
   }
 }
 
