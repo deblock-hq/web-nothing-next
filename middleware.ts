@@ -20,7 +20,7 @@ export function middleware(req: NextRequest) {
   ) {
     return NextResponse.next();
   }
-
+  console.log("test", req.nextUrl.href.split("/"));
   if (
     country === "FR" &&
     !req.nextUrl.href.split("/").some((el) => stringCheck.includes(el))
