@@ -3,7 +3,12 @@ import styled from "styled-components";
 
 import test from "../src/assets/lottie/test.json";
 import safe from "../src/assets/lottie/safe.json";
+import Vc from "../src/assets/backed/20vc.svg";
+import Headline from "../src/assets/backed/headline.svg";
+import Hoxton from "../src/assets/backed/hoxton.svg";
+import Kraken from "../src/assets/backed/kraken.svg";
 import Blob from "../src/views/Blob";
+import Image from "next/image";
 
 const FirstContainer = styled.div``;
 const BackedByContainer = styled.div`
@@ -31,9 +36,9 @@ const Home = () => {
         <FirstContainer>
           <div>
             <img src="" alt="" />
-            <Blob color="#E5E0EA" />
-            <Blob color="#F9D6BE" />
-            <Blob color="#F5EAD2" />
+            {/* <Blob color="#E5E0EA" /> */}
+            {/* <Blob color="#F9D6BE" /> */}
+            {/* <Blob color="#F5EAD2" /> */}
           </div>
           <div>A current account merged with a non-custodial wallet*</div>
           <div>
@@ -53,17 +58,17 @@ const Home = () => {
         <BackedByContainer>
           <div>Backed by the best</div>
           <div>
-            <img src="" alt="" />
-            <img src="" alt="" />
-            <img src="" alt="" />
-            <img src="" alt="" />
+            <Image src={Vc} alt="20vc logo" />
+            <Image src={Kraken} alt="Kraken logo" />
+            <Image src={Hoxton} alt="Hoxton logo" />
+            <Image src={Headline} alt="Headline logo" />
           </div>
         </BackedByContainer>
         <BestAccount>
           <div>
-            <img src="" alt="" />
-            <Blob color="#D4E8DA" />
-            <Blob color="#CAD2E3" />
+            <Image src="" alt="" />
+            {/* <Blob color="#D4E8DA" /> */}
+            {/* <Blob color="#CAD2E3" /> */}
           </div>
           <div>
             <div>One of the best sterling accounts</div>
@@ -76,15 +81,15 @@ const Home = () => {
         </BestAccount>
         <Nft>
           <div>
-            <img src="" alt="" />
+            <Image src="" alt="" />
           </div>
           <div>Brand your card with your own NFT</div>
         </Nft>
         <Deposit>
           <div>
-            <img src="" alt="" />
-            <Blob color="#EEE89F" />
-            <Blob color="#F7DFC5" />
+            <Image src="" alt="" />
+            {/* <Blob color="#EEE89F" /> */}
+            {/* <Blob color="#F7DFC5" /> */}
           </div>
           <div>
             <div>Where you can also deposit all your crypto and NFT</div>
@@ -108,28 +113,28 @@ const Home = () => {
           </div>
           <div>
             <div>
-              <img src="" alt="" />
+              <Image src="" alt="" />
               <div>
                 <span>Get your salary </span>
                 in Crypto or GBP
               </div>
             </div>
             <div>
-              <img src="" alt="" />
+              <Image src="" alt="" />
               <div>
                 <span>Buy a car</span>
                 in Crypto or GBP
               </div>
             </div>
             <div>
-              <img src="" alt="" />
+              <Image src="" alt="" />
               <div>
                 <span>Pay your rent</span>
                 in Crypto or GBP
               </div>
             </div>
             <div>
-              <img src="" alt="" />
+              <Image src="" alt="" />
               <div>
                 <span>Buy your coffee</span>
                 in Crypto or GBP
@@ -140,8 +145,8 @@ const Home = () => {
         <SafestAccount>
           <div>
             <img src="" alt="" />
-            <Blob color="#F2C5A8" />
-            <Blob color="#F5D299" />
+            {/* <Blob color="#F2C5A8" /> */}
+            {/* <Blob color="#F5D299" /> */}
           </div>
           <div>
             <div>The safest account in the world</div>
