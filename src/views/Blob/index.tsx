@@ -4,7 +4,7 @@ import React, { useRef, useEffect } from "react";
 import { spline } from "../../utils/spline";
 import { createNoise2D } from "simplex-noise";
 
-const Blob = ({ className, color }: { className: string; color: string }) => {
+const Blob = ({ className, color }: { className?: string; color: string }) => {
   const ref = useRef(null);
   const noise2D = createNoise2D();
   let path: any;
