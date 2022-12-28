@@ -7,6 +7,8 @@ import Vc from "../src/assets/backed/20vc.svg";
 import Headline from "../src/assets/backed/headline.svg";
 import Hoxton from "../src/assets/backed/hoxton.svg";
 import Kraken from "../src/assets/backed/kraken.svg";
+import Iphone from "../src/assets/backed/iphone.svg";
+
 import Blob from "../src/views/Blob";
 import Image from "next/image";
 
@@ -34,8 +36,8 @@ const Home = () => {
       <header>Header</header>
       <div>
         <FirstContainer>
-          <div>
-            <img src="" alt="" />
+          <div className="image-container">
+            <Image src={Iphone} alt="Double iphone" />
             {/* <Blob color="#E5E0EA" /> */}
             {/* <Blob color="#F9D6BE" /> */}
             {/* <Blob color="#F5EAD2" /> */}
