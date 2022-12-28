@@ -1,0 +1,21 @@
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+	<!--Lanping page urls ie. HP, product page, FAQ, legals...-->
+	<url>
+		<loc>https://deblock.com/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://deblock.com/" />
+		<xhtml:link rel="alternate" hreflang="fr-fr" href="https://deblock.com/fr-FR" />
+		<xhtml:link rel="alternate" hreflang="en-fr" href="https://deblock.com/en-FR" />
+	</url>
+	<url>
+		<loc>https://deblock.com/fr-FR</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://deblock.com/" />
+		<xhtml:link rel="alternate" hreflang="fr-fr" href="https://deblock.com/fr-FR" />
+		<xhtml:link rel="alternate" hreflang="en-fr" href="https://deblock.com/en-FR" />
+	</url>
+	<url>
+		<loc>https://deblock.com/en-FR</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://deblock.com/" />
+		<xhtml:link rel="alternate" hreflang="fr-fr" href="https://deblock.com/fr-FR" />
+		<xhtml:link rel="alternate" hreflang="en-fr" href="https://deblock.com/en-FR" />
+	</url>
+</urlset>

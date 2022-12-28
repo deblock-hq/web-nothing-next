@@ -12,7 +12,8 @@
   -webkit-text-size-adjust: 100%;
 }
 
-#root {
+#root,
+main {
   height: 100vh;
 }
 
