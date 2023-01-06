@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 
 import AccountAnimation from "../src/assets/lottie/test.json";
@@ -34,13 +34,26 @@ const LandingContainer = styled.div`
 
   @media ${devices.tablet} {
     gap: 24px;
+
+    .Blob {
+      z-index: -1;
+      position: absolute;
+    }
+
+    .blob-bot {
+      left: -400px;
+      top: 200px;
+    }
+
+    .blob-top {
+      left: -400px;
+    }
   }
 
   h2 {
     font-size: 24px;
   }
 `;
-
 const FirstContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -48,12 +61,18 @@ const FirstContainer = styled.div`
 
   @media ${devices.tablet} {
     gap: 0;
-    background: url("/mobile-background/FirstContainerBackground.svg") no-repeat
-      center;
-    background-size: 100%;
     height: 444px;
     position: relative;
     margin-bottom: 20px;
+    overflow: hidden;
+
+    .blob-left,
+    .blob-top,
+    .blob-right {
+      position: absolute;
+      z-index: -1;
+      width: 55%;
+    }
   }
 
   .image-container {
@@ -66,6 +85,14 @@ const FirstContainer = styled.div`
     height: 160px;
     border-radius: 30px;
 
+    @media ${devices.tablet} {
+      background: none;
+      position: absolute;
+      right: -110px;
+      bottom: -20px;
+      height: unset;
+    }
+
     img {
       width: 100%;
       max-width: 255px;
@@ -73,14 +100,6 @@ const FirstContainer = styled.div`
       @media ${devices.tablet} {
         max-width: 496px;
       }
-    }
-
-    @media ${devices.tablet} {
-      background: none;
-      position: absolute;
-      right: -110px;
-      bottom: -20px;
-      height: unset;
     }
   }
   .text-container {
@@ -215,9 +234,6 @@ const BestAccount = styled.div`
 
   @media ${devices.tablet} {
     flex-direction: row-reverse;
-    background: url("/mobile-background/BestAccountBackground.svg") no-repeat
-      center;
-    background-size: 100%;
     background-color: rgba(162, 167, 245, 0.1);
     border-radius: 30px;
     gap: 0;
@@ -226,6 +242,20 @@ const BestAccount = styled.div`
     height: 506px;
     padding: 0;
     margin-bottom: 24px;
+    overflow: hidden;
+
+    .blob-left {
+      top: -300px;
+      left: -690px;
+      max-width: 100%;
+    }
+
+    .blob-bot {
+      max-width: 100%;
+      top: 398px;
+      left: 0px;
+      width: 500px;
+    }
   }
 
   .image-container {
@@ -359,14 +389,18 @@ const Deposit = styled.div`
   @media ${devices.tablet} {
     flex-direction: row;
     justify-content: space-around;
-    background: url("/mobile-background/DepositBackground.svg") no-repeat center;
-    background-size: 100%;
-    background-color: rgba(162, 167, 245, 0.1);
+    background-color: #f8f2f4;
     border-radius: 30px;
     gap: 0;
     align-items: center;
     height: 448px;
     padding: 0;
+    overflow: hidden;
+    position: relative;
+
+    .Blob {
+      z-index: 1;
+    }
   }
 
   h2 {
@@ -389,6 +423,7 @@ const Deposit = styled.div`
 
     @media ${devices.tablet} {
       background: none;
+      z-index: 2;
     }
   }
   .texte-container {
@@ -400,6 +435,7 @@ const Deposit = styled.div`
 
     @media ${devices.tablet} {
       width: 42%;
+      z-index: 2;
     }
   }
 `;
@@ -492,12 +528,17 @@ const SafestAccount = styled.div`
     > div:first-child {
       display: flex;
       flex-direction: row-reverse;
-      background: url("/mobile-background/SafestAccountBackground.svg")
-        no-repeat center;
       border-radius: 30px;
-      background-size: 100%;
       height: 418px;
       align-items: center;
+      background-color: #f5f5f4;
+      position: relative;
+      overflow: hidden;
+
+      .blob-right {
+        z-index: 1;
+        top: -300px;
+      }
     }
   }
 
@@ -517,6 +558,7 @@ const SafestAccount = styled.div`
     @media ${devices.tablet} {
       background: none;
       width: 362px;
+      z-index: 2;
     }
   }
   .first-block {
@@ -559,6 +601,7 @@ const SafestAccount = styled.div`
       @media ${devices.tablet} {
         font-size: 40px;
         line-height: 48px;
+        z-index: 2;
       }
     }
   }
@@ -605,6 +648,54 @@ const LearnMoreButton = styled.span`
 `;
 
 const Home = () => {
+  useEffect(() => {
+    let myPanel = document.getElementById("panel");
+    let subpanel = document.getElementById("panel-container");
+
+    myPanel!.onmousemove = transformPanel;
+    myPanel!.onmouseenter = handleMouseEnter;
+    myPanel!.onmouseleave = handleMouseLeave;
+
+    let mouseX, mouseY;
+
+    let transformAmount = 5;
+
+    function transformPanel(mouseEvent: { pageX: number; pageY: number }) {
+      mouseX = mouseEvent.pageX;
+      mouseY = mouseEvent.pageY;
+
+      const centerX = myPanel!.offsetLeft + myPanel!.clientWidth / 2;
+      const centerY = myPanel!.offsetTop + myPanel!.clientHeight / 2;
+
+      const percentX = (mouseX - centerX) / (myPanel!.clientWidth / 2);
+      const percentY = -((mouseY - centerY) / (myPanel!.clientHeight / 2));
+
+      subpanel!.style.transform =
+        "perspective(400px) rotateY(" +
+        percentX * transformAmount +
+        "deg) rotateX(" +
+        percentY * transformAmount +
+        "deg)";
+    }
+
+    function handleMouseEnter() {
+      setTimeout(() => {
+        subpanel!.style.transition = "";
+      }, 100);
+      subpanel!.style.transition = "transform 0.1s";
+    }
+
+    function handleMouseLeave() {
+      subpanel!.style.transition = "transform 0.1s";
+      setTimeout(() => {
+        subpanel!.style.transition = "";
+      }, 100);
+
+      subpanel!.style.transform =
+        "perspective(400px) rotateY(0deg) rotateX(0deg)";
+    }
+  }, []);
+
   return (
     <div>
       <header>Header</header>
@@ -612,9 +703,6 @@ const Home = () => {
         <FirstContainer>
           <div className="image-container">
             <Image src={Iphone} alt="Double iphone" />
-            {/* <Blob color="#E5E0EA" /> */}
-            {/* <Blob color="#F9D6BE" /> */}
-            {/* <Blob color="#F5EAD2" /> */}
           </div>
           <div className="text-container">
             <h1>A GBP account merged with a non-custodial wallet</h1>
@@ -628,10 +716,13 @@ const Home = () => {
             </form>
           </div>
           <div className="hide-in-mobile">
-            *Un non-custodial wallet est un portefeuille dont vous possedez et
-            contrôlez les fonds. Contrairement à un échange, personne ne peut
-            geler vos actifs ou vos transferts.{" "}
+            Non-custodial crypto wallets give you complete control and ownership
+            of your funds. Nobody can freeze your assets/withdrawals, block them
+            or take them away.{" "}
           </div>
+          <Blob className="blob-left" color="#E5E0EA" />
+          <Blob className="blob-top" color="#F9D6BE" />
+          <Blob className="blob-right" color="#F5EAD2" />
         </FirstContainer>
         <BackedByContainer>
           <h3>Backed by the best</h3>
@@ -650,8 +741,6 @@ const Home = () => {
         <BestAccount>
           <div className="image-container">
             <Lottie animationData={AccountAnimation} loop={false} />
-            {/* <Blob color="#D4E8DA" /> */}
-            {/* <Blob color="#CAD2E3" /> */}
           </div>
           <div className="texte-container">
             <h2>
@@ -666,18 +755,20 @@ const Home = () => {
               Learn more <Image src={Arrow} alt="Arrow right" />{" "}
             </LearnMoreButton>
           </div>
+          <Blob className="blob-bot" color="#D4E8DA" />
+          <Blob className="blob-left" color="#CAD2E3" />
         </BestAccount>
         <NftContainer>
           <div className="image-container">
-            <Image src={Nft} alt="Nft card" />
+            <div id="panel">
+              <Image id="panel-container" src={Nft} alt="Nft card" />
+            </div>
           </div>
           <h2>Brand your card with your own NFT</h2>
         </NftContainer>
         <Deposit>
           <div className="image-container">
             <Image src={Bank} alt="Bank image" />
-            {/* <Blob color="#EEE89F" /> */}
-            {/* <Blob color="#F7DFC5" /> */}
           </div>
           <div className="texte-container">
             <h2>Where you can deposit all your crypto</h2>
@@ -691,6 +782,8 @@ const Home = () => {
               </LearnMoreButton>
             </div>
           </div>
+          <Blob className="blob-bot" color="#EEE89F" />
+          <Blob className="blob-top" color="#F7DFC5" />
         </Deposit>
         <CashOrCrypto>
           <div>
@@ -741,8 +834,6 @@ const Home = () => {
           <div>
             <div className="image-container">
               <Lottie animationData={SafeAnimation} loop={false} />
-              {/* <Blob color="#F2C5A8" /> */}
-              {/* <Blob color="#F5D299" /> */}
             </div>
             <div className="first-block">
               <h2>
@@ -762,6 +853,7 @@ const Home = () => {
                 Learn more <Image src={Arrow} alt="Arrow right" />{" "}
               </LearnMoreButton>
             </div>
+            <Blob className="blob-right" color="#F5D299" />
           </div>
           <div className="last-block">
             <div>
