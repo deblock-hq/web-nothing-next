@@ -32,8 +32,16 @@ const LandingContainer = styled.div`
   max-width: 960px;
   margin: auto;
 
+  .Blob {
+    display: none;
+  }
+
   @media ${devices.tablet} {
     gap: 24px;
+
+    .Blob {
+      display: block;
+    }
 
     .Blob {
       z-index: -1;
@@ -65,6 +73,7 @@ const FirstContainer = styled.div`
     position: relative;
     margin-bottom: 20px;
     overflow: hidden;
+    border-radius: 30px;
 
     .blob-left,
     .blob-top,
