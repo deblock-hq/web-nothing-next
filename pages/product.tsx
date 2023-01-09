@@ -10,6 +10,8 @@ import MaxSecurity from "../src/assets/product/max-security.svg";
 import UniqueCardImage from "../src/assets/product/unique-card.svg";
 import SafeAnimation from "../src/assets/lottie/safe.json";
 
+import Blob from "../src/views/Blob";
+
 interface Props {
   backgroundColor: string;
   height: string;
@@ -27,6 +29,7 @@ const ProductContainer = styled.div`
     list-style: initial;
     font-size: 16px;
     line-height: 28px;
+    padding-left: 16px;
 
     li::marker {
       color: #f69d17;
@@ -46,18 +49,35 @@ const ProductContainer = styled.div`
     letter-spacing: 0.084px;
   }
 
+  .image-container {
+    z-index: 2;
+  }
+
   .texte-container {
     width: 45%;
+    z-index: 2;
+  }
+
+  .bold-text {
+    font-weight: 700;
+  }
+
+  .Blob {
+    position: absolute;
+    z-index: 1;
   }
 `;
 
 const FirstContainer = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
   background-color: #fff9f3;
   border-radius: 30px;
   height: 508px;
+  gap: 20px;
+  position: relative;
+  overflow: hidden;
 
   img {
     max-width: 364px;
@@ -65,6 +85,20 @@ const FirstContainer = styled.div`
 
   .texte-container {
     width: 45%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    z-index: 2;
+  }
+
+  .blob-left {
+    top: 0;
+    left: -400px;
+  }
+
+  .blob-bot {
+    top: 300px;
+    left: -500px;
   }
 `;
 
@@ -75,12 +109,36 @@ const DoubleContainer = styled.div<Props>`
   border-radius: 30px;
   height: ${(props) => props.height};
   justify-content: center;
-  gap: 204px;
+  gap: 148px;
+  padding: 0px 98px 0px 88px;
+  position: relative;
+  overflow: hidden;
+
+  .blob-left {
+    top: 700px;
+  }
+
+  .blob-right {
+    top: -300px;
+  }
+
+  .blob-bot {
+    top: 800px;
+    left: 400px;
+  }
+
+  .texte-container {
+    width: 48%;
+
+    ul {
+      padding-top: 28px;
+    }
+  }
 `;
 const UniqueCard = styled.div`
   display: flex;
   flex-direction: row-reverse;
-  justify-content: space-around;
+  justify-content: center;
 `;
 const MaximumSecurity = styled.div`
   display: flex;
@@ -108,9 +166,11 @@ const LicensedAndRegulated = styled.div`
   display: flex;
   flex-direction: row-reverse;
   justify-content: space-around;
+  align-items: center;
   border-radius: 30px;
   width: 100%;
   background-color: white;
+  height: 426px;
 `;
 
 const Product = () => {
@@ -133,11 +193,13 @@ const Product = () => {
             <li>15+ different currencies</li>
             <li>Free exchange in any currency</li>
             <li>Instant transfer</li>
-            <li>Open Baning</li>
+            <li>Open Banking</li>
           </ul>
         </div>
+        <Blob className="blob-left" color="#D4DAE5" />
+        <Blob className="blob-bot" color="#DEF0DC" />
       </FirstContainer>
-      <DoubleContainer backgroundColor="#f2f2f9" height=" 998px">
+      <DoubleContainer backgroundColor="#f2f2f9" height=" 835px">
         <UniqueCard>
           <div className="image-container">
             <Image src={UniqueCardImage} alt="Uniques cards image" />
@@ -163,6 +225,8 @@ const Product = () => {
             </ul>
           </div>
         </MaximumSecurity>
+        <Blob className="blob-left" color="#CADAF7" />
+        <Blob className="blob-right" color="#D4E8DA" />
       </DoubleContainer>
       <DoubleContainer backgroundColor="#F5F5F4" height="972px">
         <CryptoAssets>
@@ -189,16 +253,21 @@ const Product = () => {
             <h2>...in your self-custody</h2>
             <ul>
               <li>
-                <span>Nobody can freeze</span> your wallet or your withdrawals
+                <span className="bold-text">Nobody can freeze</span> your wallet
+                or your withdrawals
               </li>
               <li>
-                <span>You fundes are 100% safe even if Deblock disappears</span>
+                <span className="bold-text">
+                  You fundes are 100% safe even if Deblock disappears
+                </span>
                 <br />
                 You can export your keys at any time
               </li>
             </ul>
           </div>
         </SelfCustody>
+        <Blob className="blob-top" color="#CCDEDF" />
+        <Blob className="blob-bot" color="#F2CDDE" />
       </DoubleContainer>
       <LicensedAndRegulated>
         <div className="image-container">
@@ -209,10 +278,12 @@ const Product = () => {
           <ul>
             Deblock has applied to:
             <li>
-              Be <span>licensed as an EMI*</span> by the FCA
+              Be <span className="bold-text">licensed as an EMI*</span> by the
+              FCA
             </li>
             <li>
-              Receive a <span>crypto registration</span> from the FCA
+              Receive a <span className="bold-text">crypto registration</span>{" "}
+              from the FCA
             </li>
           </ul>
           <div>*Electronic Money Institution</div>
