@@ -1,21 +1,22 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
 
-import AccountAnimation from "../src/assets/lottie/test.json";
-import SafeAnimation from "../src/assets/lottie/safe.json";
+import DoublePhone from "../src/assets/lottie/landing/DoublePhone.json";
+import Iban from "../src/assets/lottie/landing/Iban.json";
+import BankAnimation from "../src/assets/lottie/landing/Bank.json";
+import SafeAccount from "../src/assets/lottie/landing/SafeAccount.json";
+import Support from "../src/assets/lottie/landing/Support.json";
+
 import Vc from "../src/assets/backed/20vc.svg";
 import Headline from "../src/assets/backed/headline.svg";
 import Hoxton from "../src/assets/backed/hoxton.svg";
 import Kraken from "../src/assets/backed/kraken.svg";
-import Iphone from "../src/assets/backed/iphone.svg";
 import Nft from "../src/assets/backed/nft.svg";
-import Bank from "../src/assets/backed/bank.svg";
 import Salary from "../src/assets/backed/salary.svg";
 import Car from "../src/assets/backed/car.svg";
 import Rent from "../src/assets/backed/rent.svg";
 import Coffee from "../src/assets/backed/coffee.svg";
 import Commission from "../src/assets/backed/commission.svg";
-import Support from "../src/assets/backed/support.svg";
 import Arrow from "../src/assets/arrow.svg";
 import { devices } from "../src/utils/devices";
 
@@ -29,15 +30,46 @@ const LandingContainer = styled.div`
   gap: 32px;
   padding: 12px;
   font-size: 16px;
-  max-width: 960px;
+  /* max-width: 960px; */
   margin: auto;
 
   .Blob {
     display: none;
   }
 
+  .image-container {
+    height: 368px;
+  }
+
+  .double-phone-container {
+    div:first-child {
+      display: none;
+    }
+  }
+
   @media ${devices.tablet} {
     gap: 24px;
+    align-items: center;
+
+    .image-container {
+      height: auto;
+    }
+
+    .double-phone-container {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      max-width: 1160px;
+      position: relative;
+
+      div:first-child {
+        display: block;
+        position: absolute;
+        max-width: 496px;
+        right: 0;
+        top: 58px;
+      }
+    }
 
     .Blob {
       display: block;
@@ -74,6 +106,7 @@ const FirstContainer = styled.div`
     margin-bottom: 20px;
     overflow: hidden;
     border-radius: 30px;
+    max-width: 960px;
 
     .blob-left,
     .blob-top,
@@ -81,6 +114,16 @@ const FirstContainer = styled.div`
       position: absolute;
       z-index: -1;
       width: 55%;
+    }
+
+    .blob-left {
+      top: 0px;
+      left: -372px;
+    }
+
+    .blob-top {
+      top: -410px;
+      left: 300px;
     }
   }
 
@@ -100,6 +143,7 @@ const FirstContainer = styled.div`
       right: -110px;
       bottom: -20px;
       height: unset;
+      max-width: 496px;
     }
 
     img {
@@ -120,6 +164,7 @@ const FirstContainer = styled.div`
     @media ${devices.tablet} {
       padding: 72px 90px;
       width: 70%;
+      gap: 32px;
 
       h1 {
         font-size: 48px;
@@ -161,9 +206,10 @@ const FirstContainer = styled.div`
       height: 44px;
 
       @media ${devices.tablet} {
-        width: 208px;
+        width: 196px;
         box-shadow: 2px 2px 0px 0px rgb(0 0 0);
         height: 40px;
+        padding-left: 12px;
       }
     }
     button {
@@ -172,11 +218,11 @@ const FirstContainer = styled.div`
       border: 0.95393px solid #000000;
       border-radius: 3.81572px;
       font-weight: 700;
-      height: 44px;
+      height: 46px;
 
       @media ${devices.tablet} {
         padding: 12px 14px;
-        font-weight: 400;
+        font-weight: 700;
       }
     }
   }
@@ -197,7 +243,9 @@ const BackedByContainer = styled.div`
   @media ${devices.tablet} {
     height: 134px;
     gap: 26px;
-    padding: 0 74px;
+    /* padding: 0 74px; */
+    max-width: 960px;
+    width: 100%;
   }
 
   h3 {
@@ -252,6 +300,7 @@ const BestAccount = styled.div`
     padding: 0;
     margin-bottom: 24px;
     overflow: hidden;
+    width: 100%;
 
     .blob-left {
       top: -300px;
@@ -275,12 +324,19 @@ const BestAccount = styled.div`
     background-size: 100%;
     background-color: rgba(162, 167, 245, 0.1);
     border-radius: 30px;
-    height: 368px;
+
+    div {
+      max-width: 292px;
+    }
 
     @media ${devices.tablet} {
       background: none;
       position: absolute;
       right: 516px;
+
+      div {
+        max-width: 424px;
+      }
     }
   }
 
@@ -339,9 +395,11 @@ const NftContainer = styled.div`
     background-color: rgba(229, 212, 174, 0.2);
     border-radius: 30px;
     height: 192px;
+    max-width: 960px;
+    width: 100%;
     flex-direction: row-reverse;
     justify-content: space-between;
-    padding: 0 52px 0 90px;
+    /* padding: 0 52px 0 90px; */
     margin-bottom: 18px;
     z-index: 2;
   }
@@ -403,6 +461,7 @@ const Deposit = styled.div`
     gap: 0;
     align-items: center;
     height: 448px;
+    max-width: 960px;
     padding: 0;
     overflow: hidden;
     position: relative;
@@ -426,13 +485,17 @@ const Deposit = styled.div`
     background: url("/mobile-background/DepositBackground.svg") no-repeat center;
     background-size: 100%;
     border-radius: 30px;
-    height: 368px;
     justify-content: center;
     align-items: center;
+
+    div {
+      max-width: 240px;
+    }
 
     @media ${devices.tablet} {
       background: none;
       z-index: 2;
+      max-width: 240px;
     }
   }
   .texte-container {
@@ -456,6 +519,7 @@ const CashOrCrypto = styled.div`
 
   @media ${devices.tablet} {
     padding-top: 90px;
+    max-width: 960px;
   }
 
   h2 {
@@ -495,6 +559,7 @@ const CashOrCrypto = styled.div`
     @media ${devices.tablet} {
       width: 38%;
       align-self: center;
+      max-width: 960px;
     }
   }
   > div:last-child {
@@ -533,6 +598,7 @@ const SafestAccount = styled.div`
     display: flex;
     flex-direction: column;
     gap: 100px;
+    max-width: 960px;
 
     > div:first-child {
       display: flex;
@@ -547,6 +613,8 @@ const SafestAccount = styled.div`
       .blob-right {
         z-index: 1;
         top: -300px;
+        left: -300px;
+        width: 500px;
       }
     }
   }
@@ -559,14 +627,15 @@ const SafestAccount = styled.div`
       center;
     background-size: 100%;
     border-radius: 30px;
-    height: 368px;
-    image {
+    max-width: 362px;
+
+    div {
       max-width: 362px;
     }
 
     @media ${devices.tablet} {
       background: none;
-      width: 362px;
+      max-width: 362px;
       z-index: 2;
     }
   }
@@ -643,6 +712,17 @@ const SafestAccount = styled.div`
     > div {
       text-align: -webkit-center;
     }
+
+    .support-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-around;
+
+      div:first-child {
+        height: 230px;
+      }
+    }
   }
 `;
 const LearnMoreButton = styled.span`
@@ -709,30 +789,33 @@ const Home = () => {
     <div>
       <header>Header</header>
       <LandingContainer>
-        <FirstContainer>
-          <div className="image-container">
-            <Image src={Iphone} alt="Double iphone" />
-          </div>
-          <div className="text-container">
-            <h1>A GBP account merged with a non-custodial wallet</h1>
-            <p>
-              Spend, transfer and exchange your pounds or your crypto
-              indifferently
-            </p>
-            <form action="">
-              <input type="email" placeholder="Your email" />
-              <button type="submit">Request access</button>
-            </form>
-          </div>
-          <div className="hide-in-mobile">
-            Non-custodial crypto wallets give you complete control and ownership
-            of your funds. Nobody can freeze your assets/withdrawals, block them
-            or take them away.{" "}
-          </div>
-          <Blob className="blob-left" color="#E5E0EA" />
-          <Blob className="blob-top" color="#F9D6BE" />
-          <Blob className="blob-right" color="#F5EAD2" />
-        </FirstContainer>
+        <div className="double-phone-container">
+          <Lottie animationData={DoublePhone} loop={false} />
+          <FirstContainer>
+            <div className="image-container">
+              <Lottie animationData={DoublePhone} loop={false} />
+            </div>
+            <div className="text-container">
+              <h1>A GBP account merged with a non-custodial wallet</h1>
+              <p>
+                Spend, transfer and exchange your pounds or your crypto
+                indifferently
+              </p>
+              <form action="">
+                <input type="email" placeholder="Your email" />
+                <button type="submit">Request access</button>
+              </form>
+            </div>
+            <div className="hide-in-mobile">
+              Non-custodial crypto wallets give you complete control and
+              ownership of your funds. Nobody can freeze your
+              assets/withdrawals, block them or take them away.{" "}
+            </div>
+            <Blob className="blob-left" color="#E5E0EA" />
+            <Blob className="blob-top" color="#F9D6BE" />
+            <Blob className="blob-right" color="#F5EAD2" />
+          </FirstContainer>
+        </div>
         <BackedByContainer>
           <h3>Backed by the best</h3>
           <div className="image-container">
@@ -749,7 +832,7 @@ const Home = () => {
         </BackedByContainer>
         <BestAccount>
           <div className="image-container">
-            <Lottie animationData={AccountAnimation} loop={false} />
+            <Lottie animationData={Iban} loop={false} />
           </div>
           <div className="texte-container">
             <h2>
@@ -777,7 +860,7 @@ const Home = () => {
         </NftContainer>
         <Deposit>
           <div className="image-container">
-            <Image src={Bank} alt="Bank image" />
+            <Lottie animationData={BankAnimation} loop={false} />
           </div>
           <div className="texte-container">
             <h2>Where you can deposit all your crypto</h2>
@@ -842,7 +925,7 @@ const Home = () => {
         <SafestAccount>
           <div>
             <div className="image-container">
-              <Lottie animationData={SafeAnimation} loop={false} />
+              <Lottie animationData={SafeAccount} loop={false} />
             </div>
             <div className="first-block">
               <h2>
@@ -879,8 +962,8 @@ const Home = () => {
                 </p>
               </div>
             </div>
-            <div>
-              <Image src={Support} alt="Live support" />
+            <div className="support-section">
+              <Lottie animationData={Support} loop={false} />
               <div>
                 <h3>24/7 Live support</h3>
                 <p>
