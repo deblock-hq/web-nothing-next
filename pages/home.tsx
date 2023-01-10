@@ -402,6 +402,10 @@ const NftContainer = styled.div`
     /* padding: 0 52px 0 90px; */
     margin-bottom: 18px;
     z-index: 2;
+
+    h2 {
+      padding-left: 90px!important;
+    }
   }
 
   .image-container {
