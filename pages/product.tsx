@@ -15,6 +15,7 @@ import Blob from "../src/views/Blob";
 interface Props {
   backgroundColor: string;
   height: string;
+  padding?: string;
 }
 
 const ProductContainer = styled.div`
@@ -31,8 +32,10 @@ const ProductContainer = styled.div`
     line-height: 28px;
     padding-left: 16px;
 
-    li::marker {
-      color: #f69d17;
+    li {
+      ::marker {
+        color: #f69d17;
+      }
     }
   }
 
@@ -110,7 +113,7 @@ const DoubleContainer = styled.div<Props>`
   height: ${(props) => props.height};
   justify-content: center;
   gap: 148px;
-  padding: 0px 98px 0px 88px;
+  padding: ${(props) => props.padding || "0px 98px 0px 88px"};
   position: relative;
   overflow: hidden;
 
@@ -156,7 +159,8 @@ const CryptoAssets = styled.div`
 `;
 const SelfCustody = styled.div`
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
+  gap: 34px;
 
   .image-container {
     max-width: 396px;
@@ -164,13 +168,43 @@ const SelfCustody = styled.div`
 `;
 const LicensedAndRegulated = styled.div`
   display: flex;
-  flex-direction: row-reverse;
-  justify-content: space-around;
-  align-items: center;
+  flex-direction: row;
+  padding-top: 108px;
   border-radius: 30px;
   width: 100%;
   background-color: white;
-  height: 426px;
+  height: 500px;
+  position: relative;
+  overflow: hidden;
+
+  .image-container {
+    position: absolute;
+    left: 570px;
+    top: 128px;
+  }
+
+  .texte-container-licensed {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding-left: 94px;
+    z-index: 2;
+
+    .italic-texte {
+      padding-top: 40px;
+      padding-left: 26px;
+      font-style: italic;
+    }
+  }
+
+  .blob-top {
+    left: 700px;
+  }
+
+  .blob-bot {
+    top: 300px;
+    left: -200px;
+  }
 `;
 
 const Product = () => {
@@ -228,7 +262,11 @@ const Product = () => {
         <Blob className="blob-left" color="#CADAF7" />
         <Blob className="blob-right" color="#D4E8DA" />
       </DoubleContainer>
-      <DoubleContainer backgroundColor="#F5F5F4" height="972px">
+      <DoubleContainer
+        backgroundColor="#F5F5F4"
+        height="972px"
+        padding="0px 0px 0px 64px"
+      >
         <CryptoAssets>
           <div className="image-container">
             <Image src={CryptoWallet} alt="Uniques cards image" />
@@ -273,10 +311,10 @@ const Product = () => {
         <div className="image-container">
           <Image src={Licensed} alt="Uniques cards image" />
         </div>
-        <div>
+        <div className="texte-container-licensed">
           <h2>(Soon) Licensed & Regulated</h2>
+          <p>Deblock has applied to:</p>
           <ul>
-            Deblock has applied to:
             <li>
               Be <span className="bold-text">licensed as an EMI*</span> by the
               FCA
@@ -286,8 +324,10 @@ const Product = () => {
               from the FCA
             </li>
           </ul>
-          <div>*Electronic Money Institution</div>
+          <span className="italic-texte">*Electronic Money Institution</span>
         </div>
+        <Blob className="blob-top" color="#FBF3BF" />
+        <Blob className="blob-bot" color="#FCF5DF" />
       </LicensedAndRegulated>
     </ProductContainer>
   );
