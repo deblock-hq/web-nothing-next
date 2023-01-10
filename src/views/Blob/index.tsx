@@ -14,7 +14,7 @@ const Blob = ({ className, color }: { className?: string; color: string }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     path = ref.current;
     const points: any = createPoints();
-    let noiseStep = 0.0005;
+    let noiseStep = 0.0003;
 
     function animate() {
       path.setAttribute("d", spline(points, 1, true));
