@@ -11,6 +11,7 @@ import UniqueCardImage from "../src/assets/product/unique-card.svg";
 import SafeAnimation from "../src/assets/lottie/safe.json";
 
 import Blob from "../src/views/Blob";
+import { devices } from "../src/utils/devices";
 
 interface Props {
   backgroundColor: string;
@@ -69,6 +70,35 @@ const ProductContainer = styled.div`
     position: absolute;
     z-index: 1;
   }
+
+  @media ${devices.tabletMax} {
+    padding: 12px;
+
+    h1 {
+      font-size: 26px;
+      line-height: 57px;
+    }
+    h2 {
+      font-size: 24px;
+      line-height: 34px;
+    }
+    p {
+      text-align: center;
+      font-size: 18px;
+    }
+    .Blob {
+      display: none;
+    }
+    .image-container {
+      height: 368px;
+      width: 100%;
+      max-width: 100% !important;
+      align-self: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
 `;
 
 const FirstContainer = styled.div`
@@ -102,6 +132,28 @@ const FirstContainer = styled.div`
   .blob-bot {
     top: 300px;
     left: -500px;
+  }
+
+  @media ${devices.tabletMax} {
+    flex-direction: column;
+    height: auto;
+    background-color: transparent;
+
+    .image-container {
+      background: url("/mobile-background/product/FirstcontainerBackground.svg")
+        no-repeat center;
+      background-size: 100%;
+      border-radius: 30px;
+
+      img {
+        max-width: 280px;
+      }
+    }
+
+    .texte-container {
+      width: auto;
+      padding: 30px 18px;
+    }
   }
 `;
 
@@ -137,15 +189,66 @@ const DoubleContainer = styled.div<Props>`
       padding-top: 28px;
     }
   }
+
+  @media ${devices.tabletMax} {
+    background-color: transparent;
+    height: auto;
+    padding: 0;
+    border-radius: 0;
+    width: 100%;
+    gap: 0;
+  }
 `;
 const UniqueCard = styled.div`
   display: flex;
   flex-direction: row-reverse;
   justify-content: center;
+
+  @media ${devices.tabletMax} {
+    align-items: center;
+    flex-direction: column;
+
+    .image-container {
+      background: url("/mobile-background/product/SelfcustodyBackground.svg")
+        no-repeat center;
+      background-size: 100%;
+      border-radius: 30px;
+
+      img {
+        max-width: 280px;
+      }
+    }
+
+    .texte-container {
+      width: auto;
+      padding: 30px 18px;
+    }
+  }
 `;
 const MaximumSecurity = styled.div`
   display: flex;
   justify-content: space-around;
+
+  @media ${devices.tabletMax} {
+    align-items: center;
+    flex-direction: column;
+
+    .image-container {
+      background: url("/mobile-background/product/SelfcustodyBackground.svg")
+        no-repeat center;
+      background-size: 100%;
+      border-radius: 30px;
+
+      img {
+        max-width: 280px;
+      }
+    }
+
+    .texte-container {
+      width: auto;
+      padding: 30px 18px;
+    }
+  }
 `;
 
 const CryptoAssets = styled.div`
@@ -156,6 +259,27 @@ const CryptoAssets = styled.div`
   .image-container {
     max-width: 380px;
   }
+
+  @media ${devices.tabletMax} {
+    align-items: center;
+    flex-direction: column;
+
+    .image-container {
+      background: url("/mobile-background/product/CryptoassetsBackground.svg")
+        no-repeat center;
+      background-size: 100%;
+      border-radius: 30px;
+
+      img {
+        max-width: 326px;
+      }
+    }
+
+    .texte-container {
+      width: auto;
+      padding: 30px 18px;
+    }
+  }
 `;
 const SelfCustody = styled.div`
   display: flex;
@@ -164,6 +288,32 @@ const SelfCustody = styled.div`
 
   .image-container {
     max-width: 396px;
+  }
+
+  @media ${devices.tabletMax} {
+    align-items: center;
+    flex-direction: column;
+
+    .image-container {
+      align-self: center;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: url("/mobile-background/product/SelfcustodyBackground.svg")
+        no-repeat center;
+      background-size: 100%;
+      border-radius: 30px;
+
+      div {
+        max-width: 292px;
+      }
+    }
+
+    .texte-container {
+      width: auto;
+      padding: 30px 18px;
+    }
   }
 `;
 const LicensedAndRegulated = styled.div`
@@ -204,6 +354,42 @@ const LicensedAndRegulated = styled.div`
   .blob-bot {
     top: 300px;
     left: -200px;
+  }
+
+  @media ${devices.tabletMax} {
+    flex-direction: column;
+    height: auto;
+    background-color: transparent;
+    padding: 0;
+    height: auto;
+    width: 100%;
+
+    .image-container {
+      align-self: center;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: unset;
+      align-self: center;
+      background: url("/mobile-background/product/LicensedBackground.svg")
+        no-repeat center;
+      background-size: 100%;
+      border-radius: 30px;
+      height: 368px;
+
+      img {
+        max-width: 236px;
+      }
+    }
+
+    .texte-container-licensed {
+      padding: 30px 18px;
+
+      p {
+        text-align: left;
+      }
+    }
   }
 `;
 
