@@ -12,6 +12,8 @@ import SafeAnimation from "../src/assets/lottie/safe.json";
 
 import Blob from "../src/views/Blob";
 import { devices } from "../src/utils/devices";
+import Header from "../src/components/SiteHeader";
+import Footer from "../src/components/Footer";
 
 interface Props {
   backgroundColor: string;
@@ -26,6 +28,7 @@ const ProductContainer = styled.div`
   align-items: center;
   margin: auto;
   gap: 40px;
+  padding-bottom: 134px;
 
   ul {
     list-style: initial;
@@ -395,127 +398,132 @@ const LicensedAndRegulated = styled.div`
 
 const Product = () => {
   return (
-    <ProductContainer>
-      <div>
-        <h1>What is Deblock exactly?</h1>
-        <p>
-          What if your bank account and your non-custodial wallet had a prodigy?
-        </p>
-      </div>
-      <FirstContainer>
-        <div className="image-container">
-          <Image src={BetterBank} alt="Iban and card image" />
+    <div>
+      <Header />
+      <ProductContainer>
+        <div>
+          <h1>What is Deblock exactly?</h1>
+          <p>
+            What if your bank account and your non-custodial wallet had a
+            prodigy?
+          </p>
         </div>
-        <div className="texte-container">
-          <h2>Better & Faster than your usual bank account</h2>
-          <ul>
-            <li>Your own IBAN & account numbers</li>
-            <li>15+ different currencies</li>
-            <li>Free exchange in any currency</li>
-            <li>Instant transfer</li>
-            <li>Open Banking</li>
-          </ul>
-        </div>
-        <Blob className="blob-left" color="#D4DAE5" />
-        <Blob className="blob-bot" color="#DEF0DC" />
-      </FirstContainer>
-      <DoubleContainer backgroundColor="#f2f2f9" height=" 835px">
-        <UniqueCard>
+        <FirstContainer>
           <div className="image-container">
-            <Image src={UniqueCardImage} alt="Uniques cards image" />
+            <Image src={BetterBank} alt="Iban and card image" />
           </div>
           <div className="texte-container">
-            <h2>Stand out with a unique Debit Card...</h2>
+            <h2>Better & Faster than your usual bank account</h2>
             <ul>
-              <li>Physical or Virtual Cards</li>
-              <li>Personalise your card with your own NFT</li>
-              <li>Apple and Google Pay compatible</li>
+              <li>Your own IBAN & account numbers</li>
+              <li>15+ different currencies</li>
+              <li>Free exchange in any currency</li>
+              <li>Instant transfer</li>
+              <li>Open Banking</li>
             </ul>
           </div>
-        </UniqueCard>
-        <MaximumSecurity>
+          <Blob className="blob-left" color="#D4DAE5" />
+          <Blob className="blob-bot" color="#DEF0DC" />
+        </FirstContainer>
+        <DoubleContainer backgroundColor="#f2f2f9" height=" 835px">
+          <UniqueCard>
+            <div className="image-container">
+              <Image src={UniqueCardImage} alt="Uniques cards image" />
+            </div>
+            <div className="texte-container">
+              <h2>Stand out with a unique Debit Card...</h2>
+              <ul>
+                <li>Physical or Virtual Cards</li>
+                <li>Personalise your card with your own NFT</li>
+                <li>Apple and Google Pay compatible</li>
+              </ul>
+            </div>
+          </UniqueCard>
+          <MaximumSecurity>
+            <div className="image-container">
+              <Image src={MaxSecurity} alt="Uniques cards image" />
+            </div>
+            <div className="texte-container">
+              <h2>One-off cards for a maximum security</h2>
+              <ul>
+                <li>A new number is generated after each use</li>
+                <li>Buy on the internet with peace of mind</li>
+              </ul>
+            </div>
+          </MaximumSecurity>
+          <Blob className="blob-left" color="#CADAF7" />
+          <Blob className="blob-right" color="#D4E8DA" />
+        </DoubleContainer>
+        <DoubleContainer
+          backgroundColor="#F5F5F4"
+          height="972px"
+          padding="0px 0px 0px 64px"
+        >
+          <CryptoAssets>
+            <div className="image-container">
+              <Image src={CryptoWallet} alt="Uniques cards image" />
+            </div>
+            <div className="texte-container">
+              <h2>Deposit your crypto-assets...</h2>
+              <ul>
+                <li>Deposit all of your Cryptos and NFTs</li>
+                <li>Exchange your Cryptos for GBP</li>
+                <li>
+                  Use your Cryptos to buy a house or a car, we&apos;ll off-ramp
+                  them in the background
+                </li>
+              </ul>
+            </div>
+          </CryptoAssets>
+          <SelfCustody>
+            <div className="image-container">
+              <Lottie animationData={SafeAnimation} loop={false} />
+            </div>
+            <div className="texte-container">
+              <h2>...in your self-custody</h2>
+              <ul>
+                <li>
+                  <span className="bold-text">Nobody can freeze</span> your
+                  wallet or your withdrawals
+                </li>
+                <li>
+                  <span className="bold-text">
+                    You fundes are 100% safe even if Deblock disappears
+                  </span>
+                  <br />
+                  You can export your keys at any time
+                </li>
+              </ul>
+            </div>
+          </SelfCustody>
+          <Blob className="blob-top" color="#CCDEDF" />
+          <Blob className="blob-bot" color="#F2CDDE" />
+        </DoubleContainer>
+        <LicensedAndRegulated>
           <div className="image-container">
-            <Image src={MaxSecurity} alt="Uniques cards image" />
+            <Image src={Licensed} alt="Uniques cards image" />
           </div>
-          <div className="texte-container">
-            <h2>One-off cards for a maximum security</h2>
+          <div className="texte-container-licensed">
+            <h2>(Soon) Licensed & Regulated</h2>
+            <p>Deblock has applied to:</p>
             <ul>
-              <li>A new number is generated after each use</li>
-              <li>Buy on the internet with peace of mind</li>
-            </ul>
-          </div>
-        </MaximumSecurity>
-        <Blob className="blob-left" color="#CADAF7" />
-        <Blob className="blob-right" color="#D4E8DA" />
-      </DoubleContainer>
-      <DoubleContainer
-        backgroundColor="#F5F5F4"
-        height="972px"
-        padding="0px 0px 0px 64px"
-      >
-        <CryptoAssets>
-          <div className="image-container">
-            <Image src={CryptoWallet} alt="Uniques cards image" />
-          </div>
-          <div className="texte-container">
-            <h2>Deposit your crypto-assets...</h2>
-            <ul>
-              <li>Deposit all of your Cryptos and NFTs</li>
-              <li>Exchange your Cryptos for GBP</li>
               <li>
-                Use your Cryptos to buy a house or a car, we&apos;ll off-ramp
-                them in the background
+                Be <span className="bold-text">licensed as an EMI*</span> by the
+                FCA
+              </li>
+              <li>
+                Receive a <span className="bold-text">crypto registration</span>{" "}
+                from the FCA
               </li>
             </ul>
+            <span className="italic-texte">*Electronic Money Institution</span>
           </div>
-        </CryptoAssets>
-        <SelfCustody>
-          <div className="image-container">
-            <Lottie animationData={SafeAnimation} loop={false} />
-          </div>
-          <div className="texte-container">
-            <h2>...in your self-custody</h2>
-            <ul>
-              <li>
-                <span className="bold-text">Nobody can freeze</span> your wallet
-                or your withdrawals
-              </li>
-              <li>
-                <span className="bold-text">
-                  You fundes are 100% safe even if Deblock disappears
-                </span>
-                <br />
-                You can export your keys at any time
-              </li>
-            </ul>
-          </div>
-        </SelfCustody>
-        <Blob className="blob-top" color="#CCDEDF" />
-        <Blob className="blob-bot" color="#F2CDDE" />
-      </DoubleContainer>
-      <LicensedAndRegulated>
-        <div className="image-container">
-          <Image src={Licensed} alt="Uniques cards image" />
-        </div>
-        <div className="texte-container-licensed">
-          <h2>(Soon) Licensed & Regulated</h2>
-          <p>Deblock has applied to:</p>
-          <ul>
-            <li>
-              Be <span className="bold-text">licensed as an EMI*</span> by the
-              FCA
-            </li>
-            <li>
-              Receive a <span className="bold-text">crypto registration</span>{" "}
-              from the FCA
-            </li>
-          </ul>
-          <span className="italic-texte">*Electronic Money Institution</span>
-        </div>
-        <Blob className="blob-top" color="#FBF3BF" />
-        <Blob className="blob-bot" color="#FCF5DF" />
-      </LicensedAndRegulated>
-    </ProductContainer>
+          <Blob className="blob-top" color="#FBF3BF" />
+          <Blob className="blob-bot" color="#FCF5DF" />
+        </LicensedAndRegulated>
+      </ProductContainer>
+      <Footer />
+    </div>
   );
 };
 

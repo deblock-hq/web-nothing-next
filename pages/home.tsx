@@ -23,6 +23,8 @@ import { devices } from "../src/utils/devices";
 import Blob from "../src/views/Blob";
 import Image from "next/image";
 import Lottie from "lottie-react";
+import Footer from "../src/components/Footer";
+import Header from "../src/components/SiteHeader";
 
 const LandingContainer = styled.div`
   display: flex;
@@ -50,6 +52,7 @@ const LandingContainer = styled.div`
   @media ${devices.tablet} {
     gap: 24px;
     align-items: center;
+    padding-bottom: 134px;
 
     .image-container {
       height: auto;
@@ -404,7 +407,7 @@ const NftContainer = styled.div`
     z-index: 2;
 
     h2 {
-      padding-left: 90px!important;
+      padding-left: 90px !important;
     }
   }
 
@@ -791,7 +794,7 @@ const Home = () => {
 
   return (
     <div>
-      <header>Header</header>
+      <Header />
       <LandingContainer>
         <div className="double-phone-container">
           <Lottie animationData={DoublePhone} loop={false} />
@@ -978,7 +981,7 @@ const Home = () => {
           </div>
         </SafestAccount>
       </LandingContainer>
-      {/* <footer>Footer</footer> */}
+      <Footer />
     </div>
   );
 };
