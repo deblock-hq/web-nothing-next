@@ -7,10 +7,36 @@ import MultiPartyAnimation from "../src/assets/lottie/ncw/MultiParty.json";
 import WarningIcone from "../public/warning-icone.svg";
 import Image from "next/image";
 import { devices } from "../src/utils/devices";
+import Blob from "../src/views/Blob";
+import Header from "../src/components/SiteHeader";
+import Footer from "../src/components/Footer";
 
 interface Props {
   color: string;
 }
+
+const Container = styled.div`
+  background-color: #fbfaf9;
+  position: relative;
+  overflow: hidden;
+
+  .blob-left {
+    position: absolute;
+    top: -100px;
+  }
+
+  .blob-right {
+    position: absolute;
+    top: 200px;
+    right: -500px;
+  }
+
+  @media ${devices.tabletMax} {
+    .Blob {
+      display: none;
+    }
+  }
+`;
 
 const NCWContainer = styled.div`
   display: flex;
@@ -22,6 +48,10 @@ const NCWContainer = styled.div`
   line-height: 41px;
   font-family: "Georgia";
   padding: 24px;
+
+  * {
+    z-index: 2;
+  }
 
   h2 {
     font-style: normal;
@@ -180,6 +210,7 @@ const MultiParty = styled.div`
 const DeblockDisappears = styled.div`
   max-width: 724px;
   padding-left: 48px;
+  padding-bottom: 300px;
   @media ${devices.tabletMax} {
     padding-left: 0;
   }
@@ -220,7 +251,8 @@ const BoldText = styled.span`
 
 const NonCustodialWallet = () => {
   return (
-    <div>
+    <Container>
+      <Header />
       <NCWContainer>
         <TitleContainer>
           <h1>The best non-custodial wallet in the world</h1>
@@ -402,7 +434,10 @@ const NonCustodialWallet = () => {
           </p>
         </DeblockDisappears>
       </NCWContainer>
-    </div>
+      <Footer />
+      <Blob className="blob-left" color="#D0D8E4" />
+      <Blob className="blob-right" color="#DAEFDA" />
+    </Container>
   );
 };
 
