@@ -2,7 +2,7 @@ import Image from "next/image";
 import React from "react";
 import styled from "styled-components";
 
-import Logo from "../../../public/warning-icone.svg";
+import Logo from "../../../public/logo-header.svg";
 
 const HeaderContainer = styled.header`
   display: flex;
