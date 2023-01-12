@@ -4,6 +4,9 @@ import styled from "styled-components";
 
 import Emergency from "../src/assets/lottie/ncw/Emergency.json";
 import MultiPartyAnimation from "../src/assets/lottie/ncw/MultiParty.json";
+import WarningIcone from "../public/warning-icone.svg";
+import Image from "next/image";
+import { devices } from "../src/utils/devices";
 
 interface Props {
   color: string;
@@ -14,54 +17,206 @@ const NCWContainer = styled.div`
   flex-direction: column;
   gap: 72px;
   margin: auto;
-  max-width: 650px;
+  max-width: 796px;
+  font-size: 21px;
+  line-height: 41px;
+  font-family: "Georgia";
+  padding: 24px;
+
+  h2 {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 34px;
+    line-height: 41px;
+    max-width: 724px;
+  }
+
+  svg {
+    max-width: 728px;
+  }
+
+  .human-error p,
+  .liste-container {
+    max-width: 724px;
+    padding-left: 68px;
+    @media ${devices.tabletMax} {
+      padding-left: 0;
+    }
+  }
 `;
 const TitleContainer = styled.div`
+  font-family: "Inter" !important;
+  max-width: 724px;
+  padding-left: 68px;
+
   h1 {
     font-size: 48px;
     line-height: 57px;
+    padding-bottom: 26px;
+    font-family: "Inter";
   }
   span {
     font-weight: 500;
     font-size: 22px;
     line-height: 28px;
+    font-family: "Inter";
+  }
+
+  @media ${devices.tabletMax} {
+    padding-left: 0;
   }
 `;
 const KeyTakeway = styled.div`
   background-color: #f7f2ea;
   border-radius: 30px;
-  height: 772px;
+  height: fit-content;
   padding: 48px;
+  font-family: "Georgia";
+  font-size: 21px;
+  line-height: 41px;
 
   .header-container {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    padding-bottom: 24px;
 
-    h2 {
-      font-weight: 700;
-      font-size: 34px;
-      line-height: 41px;
-    }
     > div {
       display: flex;
       gap: 34px;
       font-size: 18px;
       line-height: 28px;
 
-      > div:first-child {
-        background: #eee4ce;
-        border-radius: 50px;
+      > div {
+        align-self: center;
+        :first-child {
+          background: #eee4ce;
+          border-radius: 50px;
+          padding: 8px 16px;
+        }
       }
     }
   }
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+
+    li {
+      h3 {
+        font-weight: 700;
+      }
+    }
+  }
+
+  @media ${devices.tabletMax} {
+    padding: 24px;
+    .header-container {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 16px;
+    }
+  }
 `;
-const MultiParty = styled.div``;
-const DeblockDisappears = styled.div``;
+const MultiParty = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+
+  h2 {
+    padding-bottom: 16px;
+    padding-left: 68px;
+    @media ${devices.tabletMax} {
+      padding-left: 0;
+    }
+  }
+
+  .liste-container {
+    div {
+      font-family: "Georgia";
+      font-weight: 700;
+      padding-top: 24px;
+    }
+
+    ul {
+      padding-left: 16px;
+    }
+
+    li {
+      list-style: initial;
+    }
+  }
+
+  .keys-container {
+    > p {
+      padding-bottom: 32px;
+      max-width: 724px;
+      padding-left: 68px;
+      @media ${devices.tabletMax} {
+        padding-left: 0;
+      }
+    }
+    > div:last-child {
+      margin-top: 62px;
+    }
+  }
+
+  > div:last-child {
+    display: flex;
+    flex-direction: column;
+    gap: 96px;
+  }
+
+  .yellow-border {
+    border-left: 3px solid #f59300;
+    margin-left: 48px;
+    padding-left: 20px;
+    @media ${devices.tabletMax} {
+      margin: 0;
+    }
+  }
+`;
+const DeblockDisappears = styled.div`
+  max-width: 724px;
+  padding-left: 48px;
+  @media ${devices.tabletMax} {
+    padding-left: 0;
+  }
+
+  div {
+    padding-top: 90px;
+    padding-bottom: 24px;
+    @media ${devices.tabletMax} {
+      padding-top: 26px;
+    }
+  }
+`;
 
 const TextHighlight = styled.span<Props>`
   background-color: ${(props) => props.color};
 `;
-const WarningContainer = styled.div``;
+const WarningContainer = styled.div`
+  display: flex;
+  gap: 24px;
+
+  img {
+    align-self: center;
+  }
+
+  p {
+    background-color: #fce4e4;
+    border-left: 3px solid #f52323;
+    padding: 8px 20px;
+  }
+
+  @media ${devices.tabletMax} {
+    flex-direction: column;
+  }
+`;
+const BoldText = styled.span`
+  font-weight: 700;
+`;
 
 const NonCustodialWallet = () => {
   return (
@@ -111,25 +266,29 @@ const NonCustodialWallet = () => {
           <h2>Multi-Party Computation</h2>
           <Lottie animationData={MultiPartyAnimation} loop={false} />
           <div className="liste-container">
-            <ul>
+            <div>
               <TextHighlight color="#C7DFFC">Your shard</TextHighlight> of the
               key (2)
+            </div>
+            <ul>
               <li>Generated upon signup on your device.</li>
               <li>Encrypted and backed-up in case you lose your phone.</li>
             </ul>
-            <ul>
+            <div>
               <TextHighlight color="#FED54D">
                 The Deblock&apos;s shard
               </TextHighlight>{" "}
               of the key (1)
+            </div>
+            <ul>
               <li>Generated upon signup on Deblock&apos;s server.</li>
               <li>
                 Encrypted and backed-up in a cold storage in case a meteorite
                 crash on our datacenter.
               </li>
             </ul>
+            <div>The 2 shards are required in order to sign a transaction</div>
             <ul>
-              The 2 shards are required in order to sign a transaction
               <li>
                 Only <TextHighlight color="#C7DFFC">your shard</TextHighlight>{" "}
                 can initiate a transaction.
@@ -143,22 +302,29 @@ const NonCustodialWallet = () => {
             </ul>
           </div>
           <WarningContainer>
-            A hacker would need to hack your device AND our servers to access
-            your wallet. It&apos;s 2x more secure than just storing your keys on
-            your device.
+            <Image src={WarningIcone} alt="Warning icone" />
+            <p>
+              A hacker would need to hack your device AND our servers to access
+              your wallet. It&apos;s 2x more secure than just storing your keys
+              on your device.
+            </p>
           </WarningContainer>
           <div>
-            <h2>Human-error tolerant</h2>
-            <div>
+            <div className="human-error">
+              <h2>Human-error tolerant</h2>
               <p>
                 <TextHighlight color="#D5FCC5">
                   Your encrypted shard🔒
                 </TextHighlight>{" "}
-                is backed-up in multiple locations and yet SAFE because always
-                encrypted.
+                is backed-up in multiple locations and yet SAFE because{" "}
+                <BoldText>always encrypted.</BoldText>
               </p>
               <div>
-                <p> No need to remember a complicated seed phrase </p>
+                <p>
+                  <BoldText>
+                    No need to remember a complicated seed phrase
+                  </BoldText>
+                </p>
                 <p>
                   If you lose your phone, delete Deblock or just change
                   device... You only need to retrieve{" "}
@@ -169,13 +335,18 @@ const NonCustodialWallet = () => {
                 </p>
               </div>
             </div>
-            <div>
+            <div className="keys-container">
               <h2>Always & Still your keys</h2>
-              <span>
-                Request at any point in time your seed phrase (mnemonic of your
-                private key).
-              </span>
-              <div>
+              <p>
+                Request at{" "}
+                <span
+                  style={{ fontStyle: "italic", textDecoration: "underline" }}
+                >
+                  any point in time
+                </span>{" "}
+                your seed phrase (mnemonic of your private key).
+              </p>
+              <div className="yellow-border">
                 <p>
                   The app will request and download the{" "}
                   <TextHighlight color="#F9DBAF">
@@ -189,7 +360,7 @@ const NonCustodialWallet = () => {
                 </p>
                 <p>
                   The app will use{" "}
-                  <TextHighlight color="#C7DFFC">your shard</TextHighlight> and
+                  <TextHighlight color="#C7DFFC">your shard</TextHighlight> and{" "}
                   <TextHighlight color="#FED54D">
                     Deblock&apos;s shard
                   </TextHighlight>{" "}
@@ -198,17 +369,23 @@ const NonCustodialWallet = () => {
                 </p>
               </div>
               <WarningContainer>
-                If you decide to export your wallet private key out of Deblock,
-                we will have to close your FIAT account.
+                <Image src={WarningIcone} alt="Warning icone" />
+                <p>
+                  If you decide to export your wallet private key out of
+                  Deblock, we will have to close your FIAT account.
+                </p>
               </WarningContainer>
             </div>
           </div>
         </MultiParty>
         <DeblockDisappears>
           <h2>What if Deblock disappears?</h2>
-          <span>And you have NO app and NO backup</span>
+          <span>
+            And you have <BoldText>NO app</BoldText> and{" "}
+            <BoldText>NO backup</BoldText>
+          </span>
           <Lottie animationData={Emergency} loop={false} />
-          <p>
+          <p style={{ paddingBottom: "40px" }}>
             Both{" "}
             <TextHighlight color="#D5FCC5">
               your encrypted shard🔒
