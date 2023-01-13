@@ -8,6 +8,7 @@ const HeaderContainer = styled.header`
   display: flex;
   justify-content: space-between;
   padding: 0 174px;
+  z-index: 2;
   > div {
     width: 50%;
     display: flex;

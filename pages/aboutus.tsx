@@ -12,9 +12,50 @@ import Rocket from "../src/assets/aboutus/rocket.svg";
 import Mountain from "../src/assets/aboutus/mountain.svg";
 import Hand from "../src/assets/aboutus/hand.svg";
 import Photos from "../src/assets/aboutus/photos.svg";
+import { devices } from "../src/utils/devices";
 
 const Container = styled.div`
   background-color: #fbfaf9;
+  position: relative;
+  overflow: hidden;
+
+  .Blob {
+    position: absolute;
+    z-index: 1;
+  }
+  .blob-top {
+    top: -480px;
+    left: 350px;
+  }
+
+  .blob-top-left {
+    top: 100px;
+    max-width: 500px;
+    left: -200px;
+  }
+
+  .blob-top-right {
+    top: 200px;
+    max-width: 600px;
+    left: 1500px;
+  }
+
+  .blob-right {
+    top: 1500px;
+    max-width: 530px;
+  }
+
+  .blob-left {
+    top: 2300px;
+    max-width: 800px;
+    left: -500px;
+  }
+
+  @media ${devices.tabletMax} {
+    .Blob {
+      display: none;
+    }
+  }
 `;
 
 const AboutUsContainer = styled.div`
@@ -24,6 +65,10 @@ const AboutUsContainer = styled.div`
   max-width: 952px;
   margin: auto;
   padding: 92px 12px;
+
+  * {
+    z-index: 2;
+  }
 
   h1 {
     font-size: 48px;
@@ -46,6 +91,15 @@ const AboutUsContainer = styled.div`
     align-self: center;
     max-width: 672px;
   }
+
+  @media ${devices.tabletMax} {
+    h1 {
+      font-size: 26px;
+    }
+    h2 {
+      font-size: 24px;
+    }
+  }
 `;
 
 const DeblockContainer = styled.div`
@@ -56,17 +110,14 @@ const DeblockContainer = styled.div`
   .hero {
     display: flex;
     gap: 44px;
-
-    img {
-      max-width: 368px;
-    }
   }
 
   .tiles {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 16px;
+    justify-content: center;
+    column-gap: 70px;
+    row-gap: 16px;
 
     > div {
       display: flex;
@@ -86,16 +137,50 @@ const DeblockContainer = styled.div`
       }
     }
   }
+
+  @media ${devices.tabletMax} {
+    .hero {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
+  @media (max-width: 633px) {
+    .tiles > div {
+      width: 100%;
+    }
+  }
 `;
 
 const TeamContainer = styled.div`
   display: flex;
   flex-direction: column;
 
+  h2 {
+    span {
+      position: relative;
+      :before {
+        content: "";
+        background: url("./mobile-background/aboutus/underline-trace.svg")
+          no-repeat;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 60px;
+        background-size: contain;
+
+        @media ${devices.tabletMax} {
+          top: 34px;
+        }
+      }
+    }
+  }
+
   > div {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: center;
+    column-gap: 58px;
     row-gap: 100px;
 
     > div {
@@ -120,9 +205,31 @@ const ValuesContainer = styled.div`
   flex-direction: column;
   justify-content: space-between;
 
+  h2 {
+    span {
+      position: relative;
+      :before {
+        content: "";
+        background: url("./mobile-background/aboutus/circle.svg") no-repeat;
+        position: absolute;
+        width: 254px;
+        height: 84px;
+        top: -7px;
+        left: -11px;
+
+        @media ${devices.tabletMax} {
+          width: 158px;
+          height: 52px;
+          background-size: contain;
+        }
+      }
+    }
+  }
+
   > div {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    gap: 58px;
     flex-wrap: wrap;
     row-gap: 100px;
 
@@ -177,7 +284,9 @@ const AboutUs = () => {
           </div>
         </DeblockContainer>
         <TeamContainer>
-          <h2>Meet our amazing team</h2>
+          <h2>
+            Meet our <span>amazing team</span>
+          </h2>
           <div>
             <div>
               <Image src={Team} alt="Profil picture" />
@@ -230,7 +339,9 @@ const AboutUs = () => {
           </div>
         </TeamContainer>
         <ValuesContainer>
-          <h2>Our values</h2>
+          <h2>
+            Our <span>values</span>
+          </h2>
           <div>
             <div>
               <Image src={Rocket} alt="Rocket" />
@@ -269,11 +380,11 @@ const AboutUs = () => {
         </div>
       </AboutUsContainer>
       <Footer />
-      {/* <Blob className="" color="" />
-      <Blob className="" color="" />
-      <Blob className="" color="" />
-      <Blob className="" color="" />
-      <Blob className="" color="" /> */}
+      <Blob className="blob-top" color="#F9D4BF" />
+      <Blob className="blob-top-left" color="#E6E1EA" />
+      <Blob className="blob-top-right" color="#F4EFDF" />
+      <Blob className="blob-right" color="#DAEFDA" />
+      <Blob className="blob-left" color="#D0D8E4" />
     </Container>
   );
 };
