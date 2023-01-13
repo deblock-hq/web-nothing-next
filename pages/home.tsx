@@ -839,7 +839,7 @@ const Home = () => {
         </BackedByContainer>
         <BestAccount>
           <div className="image-container">
-            <Lottie animationData={Iban} loop={false} />
+            <Lottie animationData={Iban} />
           </div>
           <div className="texte-container">
             <h2>
@@ -867,7 +867,7 @@ const Home = () => {
         </NftContainer>
         <Deposit>
           <div className="image-container">
-            <Lottie animationData={BankAnimation} loop={false} />
+            <Lottie animationData={BankAnimation} />
           </div>
           <div className="texte-container">
             <h2>Where you can deposit all your crypto</h2>
@@ -970,7 +970,7 @@ const Home = () => {
               </div>
             </div>
             <div className="support-section">
-              <Lottie animationData={Support} loop={false} />
+              <Lottie animationData={Support} />
               <div>
                 <h3>24/7 Live support</h3>
                 <p>

@@ -3,12 +3,19 @@ import Image from "next/image";
 import React from "react";
 import styled from "styled-components";
 
-import BetterBank from "../src/assets/product/better-bank.svg";
-import CryptoWallet from "../src/assets/product/crypto-wallet.svg";
-import Licensed from "../src/assets/product/licensed.svg";
-import MaxSecurity from "../src/assets/product/max-security.svg";
-import UniqueCardImage from "../src/assets/product/unique-card.svg";
-import SafeAnimation from "../src/assets/lottie/safe.json";
+// import BetterBank from "../src/assets/product/better-bank.svg";
+// import CryptoWallet from "../src/assets/product/crypto-wallet.svg";
+// import Licensed from "../src/assets/product/licensed.svg";
+// import MaxSecurity from "../src/assets/product/max-security.svg";
+// import UniqueCardImage from "../src/assets/product/unique-card.svg";
+// import SafeAnimation from "../src/assets/lottie/safe.json";
+
+import BetterBank from "../src/assets/lottie/product/BetterBank.json";
+import CryptoWallet from "../src/assets/lottie/product/CryptoWallet.json";
+import Licensed from "../src/assets/lottie/product/Licensed.json";
+import MaxSecurity from "../src/assets/lottie/product/MaxSecurity.json";
+import UniqueCardImage from "../src/assets/lottie/product/DebitCard.json";
+import SafeAnimation from "../src/assets/lottie/product/SelfCustody.json";
 
 import Blob from "../src/views/Blob";
 import { devices } from "../src/utils/devices";
@@ -111,11 +118,11 @@ const FirstContainer = styled.div`
   background-color: #fff9f3;
   border-radius: 30px;
   height: 508px;
-  gap: 20px;
+  gap: 48px;
   position: relative;
   overflow: hidden;
 
-  img {
+  .image-container {
     max-width: 364px;
   }
 
@@ -147,10 +154,7 @@ const FirstContainer = styled.div`
         no-repeat center;
       background-size: 100%;
       border-radius: 30px;
-
-      img {
-        max-width: 280px;
-      }
+      max-width: 280px;
     }
 
     .texte-container {
@@ -207,6 +211,10 @@ const UniqueCard = styled.div`
   flex-direction: row-reverse;
   justify-content: center;
 
+  .image-container {
+    max-width: 366px;
+  }
+
   @media ${devices.tabletMax} {
     align-items: center;
     flex-direction: column;
@@ -216,10 +224,7 @@ const UniqueCard = styled.div`
         no-repeat center;
       background-size: 100%;
       border-radius: 30px;
-
-      img {
-        max-width: 280px;
-      }
+      max-width: 280px;
     }
 
     .texte-container {
@@ -232,6 +237,10 @@ const MaximumSecurity = styled.div`
   display: flex;
   justify-content: space-around;
 
+  .image-container {
+    max-width: 320px;
+  }
+
   @media ${devices.tabletMax} {
     align-items: center;
     flex-direction: column;
@@ -241,10 +250,7 @@ const MaximumSecurity = styled.div`
         no-repeat center;
       background-size: 100%;
       border-radius: 30px;
-
-      img {
-        max-width: 280px;
-      }
+      max-width: 280px;
     }
 
     .texte-container {
@@ -272,10 +278,7 @@ const CryptoAssets = styled.div`
         no-repeat center;
       background-size: 100%;
       border-radius: 30px;
-
-      img {
-        max-width: 326px;
-      }
+      max-width: 326px;
     }
 
     .texte-container {
@@ -380,10 +383,7 @@ const LicensedAndRegulated = styled.div`
       background-size: 100%;
       border-radius: 30px;
       height: 368px;
-
-      img {
-        max-width: 236px;
-      }
+      max-width: 236px;
     }
 
     .texte-container-licensed {
@@ -410,7 +410,7 @@ const Product = () => {
         </div>
         <FirstContainer>
           <div className="image-container">
-            <Image src={BetterBank} alt="Iban and card image" />
+            <Lottie animationData={BetterBank} alt="Iban and card image" />
           </div>
           <div className="texte-container">
             <h2>Better & Faster than your usual bank account</h2>
@@ -428,7 +428,11 @@ const Product = () => {
         <DoubleContainer backgroundColor="#f2f2f9" height=" 835px">
           <UniqueCard>
             <div className="image-container">
-              <Image src={UniqueCardImage} alt="Uniques cards image" />
+              <Lottie
+                animationData={UniqueCardImage}
+                alt="Uniques cards image"
+                loop={false}
+              />
             </div>
             <div className="texte-container">
               <h2>Stand out with a unique Debit Card...</h2>
@@ -441,7 +445,7 @@ const Product = () => {
           </UniqueCard>
           <MaximumSecurity>
             <div className="image-container">
-              <Image src={MaxSecurity} alt="Uniques cards image" />
+              <Lottie animationData={MaxSecurity} alt="Uniques cards image" />
             </div>
             <div className="texte-container">
               <h2>One-off cards for a maximum security</h2>
@@ -461,7 +465,7 @@ const Product = () => {
         >
           <CryptoAssets>
             <div className="image-container">
-              <Image src={CryptoWallet} alt="Uniques cards image" />
+              <Lottie animationData={CryptoWallet} alt="Uniques cards image" />
             </div>
             <div className="texte-container">
               <h2>Deposit your crypto-assets...</h2>
@@ -501,7 +505,11 @@ const Product = () => {
         </DoubleContainer>
         <LicensedAndRegulated>
           <div className="image-container">
-            <Image src={Licensed} alt="Uniques cards image" />
+            <Lottie
+              animationData={Licensed}
+              alt="Uniques cards image"
+              loop={false}
+            />
           </div>
           <div className="texte-container-licensed">
             <h2>(Soon) Licensed & Regulated</h2>
