@@ -7,12 +7,37 @@ import Header from "../src/components/SiteHeader";
 import Chat from "../src/assets/support/chat.svg";
 import Mail from "../src/assets/support/mail.svg";
 import Image from "next/image";
-import { devices } from "src/utils/devices";
+import { devices } from "../src/utils/devices";
+import Blob from "../src/views/Blob";
 
-const Container = styled.div``;
+const Container = styled.div`
+  position: relative;
+  overflow: hidden;
+
+  .blob-left {
+    max-width: 800px;
+    top: 0;
+  }
+
+  .blob-right {
+    max-width: 800px;
+    top: 300px;
+  }
+
+  @media ${devices.tabletMax} {
+    .Blob {
+      display: none;
+    }
+  }
+`;
+
 const SupportContainer = styled.div`
   height: calc(100vh - 440px);
   padding: 78px 24px;
+
+  * {
+    z-index: 2;
+  }
 
   h1 {
     font-size: 48px;
@@ -59,12 +84,12 @@ const SupportContainer = styled.div`
     h1 {
       font-size: 26px;
     }
-    h2 {
+    /* h2 {
       font-size: 20px;
     }
     p {
       font-size: 16px;
-    }
+    } */
   }
 `;
 
@@ -91,6 +116,8 @@ const Support = () => {
           </div>
         </div>
       </SupportContainer>
+      <Blob className="blob-left" color="#F9E7CA" />
+      <Blob className="blob-right" color="#E3F7F3" />
       <Footer />
     </Container>
   );
