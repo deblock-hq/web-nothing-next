@@ -27,7 +27,7 @@ export default function Home(props: any) {
           name="description"
           content="Take control of your money. Receive your salary or pay your rent from your current account with £ or your crypto assets. Everything in one non custodial wallet.g"
         />
-        <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/x-icon" href="/favicon.png" />
       </Head>
 
       <main>

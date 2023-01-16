@@ -25,6 +25,7 @@ import Image from "next/image";
 import Lottie from "lottie-react";
 import Footer from "../src/components/Footer";
 import Header from "../src/components/SiteHeader";
+import Head from "next/head";
 
 const LandingContainer = styled.div`
   display: flex;
@@ -794,6 +795,14 @@ const Home = () => {
 
   return (
     <div>
+      <Head>
+        <title>Current account x Non-custodial Wallet | Deblock</title>
+        <meta
+          name="description"
+          content="Take control of your money. Receive your salary or pay your rent from your current account with £ or your crypto assets. Everything in one non custodial wallet.g"
+        />
+        <link rel="icon" type="image/x-icon" href="/favicon.png" />
+      </Head>
       <Header />
       <LandingContainer>
         <div className="double-phone-container">
