@@ -38,7 +38,7 @@ const HeaderContainer = styled.header<Props>`
     display: flex;
     justify-content: space-between;
     font-weight: 500;
-    font-size: 16px;
+    font-size: 14px;
     line-height: 15px;
     cursor: pointer;
     font
