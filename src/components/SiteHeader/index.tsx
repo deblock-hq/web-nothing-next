@@ -41,7 +41,6 @@ const HeaderContainer = styled.header<Props>`
     font-size: 14px;
     line-height: 15px;
     cursor: pointer;
-    font
   }
 
   ${(props) =>
