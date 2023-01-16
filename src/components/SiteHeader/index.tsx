@@ -34,13 +34,14 @@ const HeaderContainer = styled.header<Props>`
     width: 140px;
   }
   > div {
-    width: 50%;
+    width: 30%;
     display: flex;
     justify-content: space-between;
-    font-weight: 600;
+    font-weight: 500;
     font-size: 16px;
     line-height: 15px;
     cursor: pointer;
+    font
   }
 
   ${(props) =>
