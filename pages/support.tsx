@@ -14,6 +14,10 @@ const Container = styled.div`
   position: relative;
   overflow: hidden;
 
+  .Blob {
+    position: absolute;
+  }
+
   .blob-left {
     max-width: 800px;
     top: 0;
@@ -32,8 +36,9 @@ const Container = styled.div`
 `;
 
 const SupportContainer = styled.div`
-  height: calc(100vh - 440px);
+  /* height: calc(100vh - 440px); */
   padding: 78px 24px;
+  z-index: 2;
 
   * {
     z-index: 2;
@@ -64,7 +69,7 @@ const SupportContainer = styled.div`
     display: flex;
     justify-content: center;
     gap: 24px;
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
 
     > div {
       display: flex;
@@ -72,24 +77,29 @@ const SupportContainer = styled.div`
       align-items: center;
       justify-content: center;
       gap: 60px;
-      width: 510px;
-      height: 398px;
+      max-width: 510px;
+      max-height: 398px;
       background: #ffffff;
       box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.04);
       border-radius: 30px;
+      padding: 22px;
     }
   }
 
   @media ${devices.tabletMax} {
-    h1 {
-      font-size: 26px;
+    > div {
+      flex-direction: column;
     }
-    /* h2 {
+    h1 {
+      font-size: 30px;
+      padding-bottom: 32px;
+    }
+    h2 {
       font-size: 20px;
     }
     p {
       font-size: 16px;
-    } */
+    }
   }
 `;
 
@@ -116,9 +126,9 @@ const Support = () => {
           </div>
         </div>
       </SupportContainer>
+      <Footer />
       <Blob className="blob-left" color="#F9E7CA" />
       <Blob className="blob-right" color="#E3F7F3" />
-      <Footer />
     </Container>
   );
 };
