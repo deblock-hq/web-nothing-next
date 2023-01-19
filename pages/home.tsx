@@ -26,6 +26,7 @@ import Lottie from "lottie-react";
 import Footer from "../src/components/Footer";
 import Header from "../src/components/SiteHeader";
 import Head from "next/head";
+import Modal from "src/views/Modal";
 
 const LandingContainer = styled.div`
   display: flex;
@@ -804,6 +805,9 @@ const Home = () => {
         <link rel="icon" type="image/x-icon" href="/favicon.png" />
       </Head>
       <Header />
+
+      <Modal />
+
       <LandingContainer>
         <div className="double-phone-container">
           <Lottie animationData={DoublePhone} loop={false} />

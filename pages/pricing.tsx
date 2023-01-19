@@ -28,7 +28,7 @@ const Container = styled.div`
     top: 0;
   }
 
-  @media ${devices.tabletMax} {
+  @media ${devices.pricing} {
     .Blob {
       display: none;
     }
@@ -71,7 +71,7 @@ const PricingContainer = styled.div`
     width: 100%;
   }
 
-  @media ${devices.tabletMax} {
+  @media ${devices.pricing} {
     width: max-content;
 
     table {
@@ -122,7 +122,7 @@ const PlansSection = styled.tr`
     padding-right: 0 !important;
   }
 
-  @media ${devices.tabletMax} {
+  @media ${devices.pricing} {
     display: none;
   }
 `;
@@ -134,7 +134,7 @@ const TableBody = styled.tbody`
     width: 266px;
     text-align: center;
 
-    @media ${devices.tabletMax} {
+    @media ${devices.pricing} {
       width: 124px;
     }
   }
@@ -155,7 +155,7 @@ const TableBody = styled.tbody`
         padding-right: 40px;
       }
 
-      @media ${devices.tabletMax} {
+      @media ${devices.pricing} {
         font-size: 14px;
 
         :first-child {
@@ -200,7 +200,7 @@ const TableBody = styled.tbody`
     }
   }
 
-  @media ${devices.tabletMax} {
+  @media ${devices.pricing} {
     .image-section {
       display: none;
     }
@@ -253,7 +253,7 @@ const Button = styled.button`
 const MobileButtonContainer = styled.div`
   display: none;
 
-  @media ${devices.tabletMax} {
+  @media ${devices.pricing} {
     display: flex;
     justify-content: space-between;
   }
@@ -293,7 +293,7 @@ const PriceContainer = styled.div`
   line-height: 28px;
   color: #ff9900;
 
-  @media ${devices.tabletMax} {
+  @media ${devices.pricing} {
     display: flex;
   }
 `;

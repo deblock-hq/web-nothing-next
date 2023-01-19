@@ -67,8 +67,6 @@ const Header = () => {
     setScrollY(window.pageYOffset);
   };
 
-  console.log(scrollY);
-
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
     return () => {
