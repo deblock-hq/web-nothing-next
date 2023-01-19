@@ -120,7 +120,6 @@ const PlansSection = styled.tr`
     display: initial;
     padding: 0;
     padding-right: 0 !important;
-    min-width: 274px;
   }
 
   @media ${devices.pricing} {
@@ -154,6 +153,7 @@ const TableBody = styled.tbody`
         background-color: #fbfaf9;
         color: black;
         padding-right: 40px;
+        min-width: 274px;
       }
 
       @media ${devices.pricing} {
