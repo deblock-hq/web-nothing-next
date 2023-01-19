@@ -162,6 +162,7 @@ const TableBody = styled.tbody`
         :first-child {
           font-weight: 600;
           padding-right: 16px;
+          min-width: auto;
         }
       }
     }
