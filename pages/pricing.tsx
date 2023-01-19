@@ -120,6 +120,7 @@ const PlansSection = styled.tr`
     display: initial;
     padding: 0;
     padding-right: 0 !important;
+    min-width: 274px;
   }
 
   @media ${devices.pricing} {
