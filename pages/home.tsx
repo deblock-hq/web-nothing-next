@@ -26,7 +26,7 @@ import Lottie from "lottie-react";
 import Footer from "../src/components/Footer";
 import Header from "../src/components/SiteHeader";
 import Head from "next/head";
-import Modal from "src/views/Modal";
+import Modal from "../src/views/Modal";
 
 const LandingContainer = styled.div`
   display: flex;
