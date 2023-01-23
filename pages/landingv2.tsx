@@ -312,15 +312,15 @@ const BestAccount = styled.div`
     max-width: 1152px;
 
     .blob-left {
-      top: -300px;
-      left: -690px;
+      top: -600px;
+      left: -890px;
       max-width: 100%;
     }
 
     .blob-bot {
       max-width: 100%;
-      top: 398px;
-      left: 0px;
+      top: 298px;
+      left: -200px;
       width: 500px;
     }
   }
@@ -344,7 +344,7 @@ const BestAccount = styled.div`
       right: 516px;
 
       div {
-        max-width: 424px;
+        max-width: 502px;
       }
     }
   }

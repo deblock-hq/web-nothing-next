@@ -73,15 +73,15 @@ const Footer = () => {
     <FooterContainer>
       <FooterHeader>
         <div>
-          <Image />
+          {/* <Image /> */}
           <span>France</span>
           <span>Français</span>
         </div>
         <div>
           <span>Join our community</span>
-          <Image />
-          <Image />
-          <Image />
+          {/* <Image /> */}
+          {/* <Image /> */}
+          {/* <Image /> */}
         </div>
       </FooterHeader>
       <LinksContainer>
