@@ -95,7 +95,7 @@ const LandingContainer = styled.div`
   }
 
   h2 {
-    font-size: 24px;
+    font-size: 28px;
   }
 `;
 const FirstContainer = styled.div`
@@ -470,7 +470,7 @@ const NftContainer = styled.div`
   h2 {
     text-align: center;
     padding: 0px 22px;
-    font-size: 24px;
+    font-size: 28px;
     line-height: 34px;
     padding-bottom: 34px;
 
@@ -508,7 +508,7 @@ const Deposit = styled.div`
   }
 
   h2 {
-    font-size: 24px;
+    font-size: 28px;
     line-height: 34px;
     @media ${devices.tablet} {
       font-size: 40px;
@@ -564,7 +564,7 @@ const CashOrCrypto = styled.div`
   }
 
   h2 {
-    font-size: 24px;
+    font-size: 28px;
     line-height: 34px;
     text-align: center;
 
