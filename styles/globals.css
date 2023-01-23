@@ -24,6 +24,10 @@ main {
   flex-direction: column;
 }
 
+#__next > div {
+  padding-top: 40px;
+}
+
 #__next,
 #__next > div {
   overflow-x: hidden;

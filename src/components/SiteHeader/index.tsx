@@ -17,6 +17,9 @@ const HeaderContainer = styled.header<Props>`
   max-width: 1152px;
   padding: 0 40px;
   height: 60px;
+  align-self: center;
+  width: 100%;
+  position: absolute;
 
   img {
     width: 140px;
@@ -36,19 +39,20 @@ const HeaderContainer = styled.header<Props>`
   }
 
   ${(props) =>
-    props.scrollY > 10 &&
+    props.scrollY > 33 &&
     css`
       margin: auto;
-      position: sticky;
+      position: fixed;
       top: 16px;
       background: #ffffff;
       border: 1px solid #000000;
       backdrop-filter: blur(22.7px);
-      border-radius: 4px;
+      border-radius: 7px;
       box-shadow: 2px 2px 0px 0px rgb(0 0 0);
       padding: 0 40px;
       max-width: 1152px;
       animation: fadeIn 1s;
+      width: 100%;
     `};
 `;
 

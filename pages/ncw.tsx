@@ -39,13 +39,13 @@ const Container = styled.div`
 const NCWContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 72px;
+  gap: 80px;
   margin: auto;
   max-width: 796px;
   font-size: 21px;
   line-height: 41px;
   font-family: "Georgia";
-  padding: 24px;
+  padding: 40px 24px 24px 24px;
 
   * {
     z-index: 2;
@@ -71,23 +71,27 @@ const NCWContainer = styled.div`
       padding-left: 0;
     }
   }
+
+  @media ${devices.tabletMax} {
+    gap: 30px;
+  }
 `;
+
 const TitleContainer = styled.div`
-  font-family: "Inter" !important;
   max-width: 724px;
   padding-left: 68px;
 
   h1 {
     font-size: 48px;
     line-height: 57px;
-    padding-bottom: 26px;
+    padding-bottom: 16px;
     font-family: "Inter";
   }
+
   span {
     font-weight: 500;
     font-size: 22px;
     line-height: 28px;
-    font-family: "Inter";
   }
 
   @media ${devices.tabletMax} {
@@ -139,7 +143,7 @@ const KeyTakeway = styled.div`
   }
 
   @media ${devices.tabletMax} {
-    padding: 24px;
+    padding: 24px 24px 32px 24px;
     .header-container {
       flex-direction: column;
       align-items: flex-start;
@@ -155,8 +159,12 @@ const MultiParty = styled.div`
   h2 {
     padding-bottom: 16px;
     padding-left: 68px;
+
     @media ${devices.tabletMax} {
-      padding-left: 0;
+      padding: 0;
+      font-weight: 700;
+      font-size: 22px;
+      line-height: 41px;
     }
   }
 
@@ -173,6 +181,8 @@ const MultiParty = styled.div`
 
     li {
       list-style: initial;
+      line-height: 41px;
+      letter-spacing: 0.084px;
     }
   }
 
@@ -181,6 +191,7 @@ const MultiParty = styled.div`
       padding-bottom: 32px;
       max-width: 724px;
       padding-left: 68px;
+
       @media ${devices.tabletMax} {
         padding-left: 0;
       }
@@ -193,7 +204,7 @@ const MultiParty = styled.div`
   > div:last-child {
     display: flex;
     flex-direction: column;
-    gap: 96px;
+    gap: 80px;
   }
 
   .yellow-border {
@@ -209,6 +220,11 @@ const DeblockDisappears = styled.div`
   max-width: 724px;
   padding-left: 48px;
   padding-bottom: 300px;
+
+  h2 {
+    padding-bottom: 16px;
+  }
+
   @media ${devices.tabletMax} {
     padding-left: 0;
   }
