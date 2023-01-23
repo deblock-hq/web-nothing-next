@@ -249,7 +249,6 @@ const ValuesContainer = styled.div`
 const AboutUs = () => {
   return (
     <Container>
-      <Header />
       <AboutUsContainer>
         <DeblockContainer>
           <h1>We are Deblock!</h1>

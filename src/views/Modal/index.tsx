@@ -20,8 +20,8 @@ const Container = styled.div`
 const ModalContainer = styled.div`
   display: flex;
   justify-content: center;
-  max-width: 964px;
-  max-height: 560px;
+  max-width: 864px;
+  max-height: 460px;
   width: 100%;
   height: 100%;
   background-color: #fbfaf9;
@@ -103,6 +103,34 @@ const ModalContainer = styled.div`
       display: flex;
       flex-direction: column;
       gap: 16px;
+
+      > div {
+        display: flex;
+        justify-content: space-around;
+        width: 462px;
+        margin: auto;
+
+        .phone-dropdown-container {
+          > div {
+            background: #ffffff;
+            border: 1px solid #000000;
+            border-radius: 4px;
+            padding: 8px 16px;
+            position: relative;
+          }
+          .phone-dropdown {
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            width: 316px;
+            background: #ffffff;
+            border: 1px solid #000000;
+            box-shadow: 0px 2.85227px 2.85227px rgba(0, 0, 0, 0.04);
+            border-radius: 4px;
+          }
+        }
+      }
     }
   }
 
@@ -173,8 +201,9 @@ const Modal = ({
   priorityAccess = 3000,
 }: ModalProps) => {
   const [phoneCode, setPhoneCode] = useState("+44");
-  const [phoneNumber, setPhoneNumber] = useState(0);
+  const [phoneNumber, setPhoneNumber] = useState<number>();
 
+  const [openDropdown, setOpenDropdown] = useState(false);
   const [triggerSendNumber, setTriggerSendNumber] = useState(false);
 
   const handleChange = (e: any) => {
@@ -214,21 +243,32 @@ const Modal = ({
         <div className="phone-verification">
           <strong>Verify your phone number </strong>
           <div>
-            <select
-              onChange={(e) => setPhoneCode(e.target.value)}
-              name=""
-              id=""
-            >
-              <option value="+44">
-                {/* <Image /> */}
-                +44 United Kingdom
-              </option>
-              <option value="+33">
-                {/* <Image /> */}
-                +33 France
-              </option>
-            </select>
-            <input type="tel" value={phoneNumber} onChange={handleChange} />
+            <div className="phone-dropdown-container">
+              <div onClick={() => setOpenDropdown(!openDropdown)}>
+                {phoneCode}
+              </div>
+
+              {openDropdown && (
+                <ul className="phone-dropdown">
+                  <li onClick={() => setPhoneCode("+44")}>
+                    {/* <Image /> */}
+                    <span>+44</span>
+                    <span>United Kingdom</span>
+                  </li>
+                  <li onClick={() => setPhoneCode("+33")}>
+                    {/* <Image /> */}
+                    <span>+33</span>
+                    <span>France</span>
+                  </li>
+                </ul>
+              )}
+            </div>
+            <input
+              type="tel"
+              value={phoneNumber}
+              onChange={handleChange}
+              placeholder="your phone number"
+            />
             <button onClick={() => setTriggerSendNumber(!triggerSendNumber)}>
               Send Code
             </button>

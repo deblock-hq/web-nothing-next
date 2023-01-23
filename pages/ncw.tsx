@@ -8,8 +8,6 @@ import WarningIcone from "../public/warning-icone.svg";
 import Image from "next/image";
 import { devices } from "../src/utils/devices";
 import Blob from "../src/views/Blob";
-import Header from "../src/components/SiteHeader";
-import Footer from "../src/components/Footer";
 
 interface Props {
   color: string;
@@ -252,7 +250,6 @@ const BoldText = styled.span`
 const NonCustodialWallet = () => {
   return (
     <Container>
-      <Header />
       <NCWContainer>
         <TitleContainer>
           <h1>The best non-custodial wallet in the world</h1>
@@ -434,7 +431,6 @@ const NonCustodialWallet = () => {
           </p>
         </DeblockDisappears>
       </NCWContainer>
-      <Footer />
       <Blob className="blob-left" color="#D0D8E4" />
       <Blob className="blob-right" color="#DAEFDA" />
     </Container>

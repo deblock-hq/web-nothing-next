@@ -3,13 +3,6 @@ import Image from "next/image";
 import React from "react";
 import styled from "styled-components";
 
-// import BetterBank from "../src/assets/product/better-bank.svg";
-// import CryptoWallet from "../src/assets/product/crypto-wallet.svg";
-// import Licensed from "../src/assets/product/licensed.svg";
-// import MaxSecurity from "../src/assets/product/max-security.svg";
-// import UniqueCardImage from "../src/assets/product/unique-card.svg";
-// import SafeAnimation from "../src/assets/lottie/safe.json";
-
 import BetterBank from "../src/assets/lottie/product/BetterBank.json";
 import CryptoWallet from "../src/assets/lottie/product/CryptoWallet.json";
 import Licensed from "../src/assets/lottie/product/Licensed.json";
@@ -19,8 +12,6 @@ import SafeAnimation from "../src/assets/lottie/product/SelfCustody.json";
 
 import Blob from "../src/views/Blob";
 import { devices } from "../src/utils/devices";
-import Header from "../src/components/SiteHeader";
-import Footer from "../src/components/Footer";
 
 interface Props {
   backgroundColor: string;
@@ -399,7 +390,6 @@ const LicensedAndRegulated = styled.div`
 const Product = () => {
   return (
     <div>
-      <Header />
       <ProductContainer>
         <div>
           <h1>What is Deblock exactly?</h1>
@@ -530,7 +520,6 @@ const Product = () => {
           <Blob className="blob-bot" color="#FCF5DF" />
         </LicensedAndRegulated>
       </ProductContainer>
-      <Footer />
     </div>
   );
 };

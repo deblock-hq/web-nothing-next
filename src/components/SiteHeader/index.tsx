@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import styled, { css } from "styled-components";
 
@@ -9,18 +10,6 @@ interface Props {
 }
 
 const HeaderContainer = styled.header<Props>`
-  /* display: flex;
-  justify-content: space-between;
-  padding: 0 174px;
-  z-index: 2;
-  > div {
-    width: 50%;
-    display: flex;
-    justify-content: space-evenly;
-    font-weight: 600;
-    font-size: 12px;
-    line-height: 15px;
-  } */
   display: flex;
   justify-content: space-between;
   padding: 0 174px;
@@ -32,6 +21,7 @@ const HeaderContainer = styled.header<Props>`
 
   img {
     width: 140px;
+    cursor: pointer;
   }
   > div {
     width: 30%;
@@ -40,7 +30,10 @@ const HeaderContainer = styled.header<Props>`
     font-weight: 500;
     font-size: 14px;
     line-height: 15px;
-    cursor: pointer;
+
+    a {
+      cursor: pointer;
+    }
   }
 
   ${(props) =>
@@ -76,12 +69,14 @@ const Header = () => {
 
   return (
     <HeaderContainer scrollY={scrollY}>
-      <Image src={Logo} alt="Deblock logo" />
+      <Link href="/">
+        <Image src={Logo} alt="Deblock logo" />
+      </Link>
       <div>
-        <span>Blog</span>
-        <span>About</span>
-        <span>Careers</span>
-        <span>Support</span>
+        <Link href="/blob">Blog</Link>
+        <Link href="/aboutus">About</Link>
+        <Link href="careers">Careers</Link>
+        <Link href="support">Support</Link>
       </div>
     </HeaderContainer>
   );

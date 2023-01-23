@@ -23,8 +23,6 @@ import { devices } from "../src/utils/devices";
 import Blob from "../src/views/Blob";
 import Image from "next/image";
 import Lottie from "lottie-react";
-import Footer from "../src/components/Footer";
-import Header from "../src/components/SiteHeader";
 
 const LandingContainer = styled.div`
   display: flex;
@@ -803,7 +801,6 @@ const Home = () => {
 
   return (
     <div>
-      <Header />
       <LandingContainer>
         <div className="double-phone-container">
           <Lottie animationData={DoublePhone} loop={false} />
@@ -990,7 +987,6 @@ const Home = () => {
           </div>
         </SafestAccount>
       </LandingContainer>
-      <Footer />
     </div>
   );
 };

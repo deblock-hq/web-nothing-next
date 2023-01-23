@@ -1,8 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import Lottie from "lottie-react";
-import Footer from "../src/components/Footer";
-import Header from "../src/components/SiteHeader";
 
 import Chat from "../src/assets/support/chat.svg";
 import Mail from "../src/assets/support/mail.svg";
@@ -106,7 +103,6 @@ const SupportContainer = styled.div`
 const Support = () => {
   return (
     <Container>
-      <Header />
       <SupportContainer>
         <h1>Happy to help ;)</h1>
         <div>
@@ -126,7 +122,6 @@ const Support = () => {
           </div>
         </div>
       </SupportContainer>
-      <Footer />
       <Blob className="blob-left" color="#F9E7CA" />
       <Blob className="blob-right" color="#E3F7F3" />
     </Container>

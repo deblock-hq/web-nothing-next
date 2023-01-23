@@ -804,9 +804,8 @@ const Home = () => {
         />
         <link rel="icon" type="image/x-icon" href="/favicon.png" />
       </Head>
-      <Header />
 
-      <Modal />
+      {/* <Modal /> */}
 
       <LandingContainer>
         <div className="double-phone-container">
@@ -994,7 +993,6 @@ const Home = () => {
           </div>
         </SafestAccount>
       </LandingContainer>
-      <Footer />
     </div>
   );
 };
