@@ -18,8 +18,9 @@ main {
   height: 100vh;
 }
 
-#__next {
-  overflow: auto;
+#__next,
+#__next > div {
+  overflow-x: hidden;
 }
 
 html,

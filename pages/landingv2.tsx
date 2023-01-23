@@ -215,11 +215,10 @@ const FirstContainer = styled.div`
       border-radius: 3.81572px;
       box-shadow: 3px 3px 0px 0px rgb(0 0 0);
       height: 58px;
-      padding-left: 20px;
-      /* width: calc(100% - 3px); */
-
+      width: calc(100% - 9px);
       ::placeholder {
         color: rgba(88, 88, 88, 0.5);
+        padding-left: 20px;
       }
 
       @media ${devices.tablet} {
@@ -237,6 +236,7 @@ const FirstContainer = styled.div`
       font-weight: 600;
       height: 58px;
       font-size: 16px;
+      width: 100%;
 
       @media ${devices.tablet} {
         padding: 12px 14px;
@@ -250,7 +250,6 @@ const FirstContainer = styled.div`
   }
 `;
 const BackedByContainer = styled.div`
-  background-color: black;
   color: white;
   border-radius: 30px;
   height: 180px;
@@ -265,12 +264,14 @@ const BackedByContainer = styled.div`
     gap: 26px;
     max-width: 1152px;
     width: 100%;
+    background-color: black;
+
     /* margin-bottom: 100px; */
   }
 
   h3 {
     font-size: 16px;
-    color: rgba(255, 255, 255, 0.5);
+    color: gray;
     padding-top: 24px;
 
     @media ${devices.tablet} {
@@ -281,10 +282,15 @@ const BackedByContainer = styled.div`
   img {
     max-width: 100%;
     width: fit-content;
-    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(5deg)
-      brightness(102%) contrast(102%);
-  
+    height: 20px;
+
+    @media ${devices.tablet} {
+      height: 26px;
+      filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(5deg)
+        brightness(102%) contrast(102%);
+    }
   }
+
   .image-container {
     display: flex;
     justify-content: space-evenly;
@@ -350,7 +356,7 @@ const BestAccount = styled.div`
     justify-content: center;
     background: url("/mobile-background/BestAccountBackground.svg") no-repeat
       center;
-    background-size: 100%;
+    background-size: cover;
     background-color: rgba(162, 167, 245, 0.1);
     border-radius: 30px;
 
