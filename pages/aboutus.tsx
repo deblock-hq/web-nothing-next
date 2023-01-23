@@ -95,72 +95,7 @@ const AboutUsContainer = styled.div`
     padding-bottom: 72px;
   }
 
-  @media ${devices.tabletMax} {
-    h1 {
-      font-size: 26px;
-    }
-    h2 {
-      font-size: 24px;
-    }
-  }
-`;
-
-const DeblockContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 64px;
-
-  .hero {
-    display: flex;
-    gap: 44px;
-  }
-
-  .tiles {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    column-gap: 70px;
-    row-gap: 16px;
-
-    > div {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 8px;
-      background: rgba(230, 212, 174, 0.2);
-      border-radius: 30px;
-      padding: 16px 0 24px 0;
-      width: 29%;
-      flex-wrap: wrap;
-
-      > span:last-child {
-        font-weight: 400;
-        font-size: 58px;
-        line-height: 57px;
-      }
-    }
-  }
-
-  @media ${devices.tabletMax} {
-    .hero {
-      flex-direction: column;
-      align-items: center;
-    }
-  }
-
-  @media (max-width: 633px) {
-    .tiles > div {
-      width: 100%;
-    }
-  }
-`;
-
-const TeamContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  max-width: 1152px;
-
-  h2 {
+  .team-title {
     span {
       position: relative;
       :before {
@@ -180,36 +115,7 @@ const TeamContainer = styled.div`
     }
   }
 
-  > div {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    column-gap: 58px;
-    row-gap: 112px;
-
-    > div {
-      > div {
-        display: flex;
-        justify-content: space-between;
-        font-weight: 500;
-        font-size: 18px;
-        line-height: 28px;
-        padding: 8px 8px 0 8px;
-      }
-      span {
-        font-style: italic;
-        padding: 8px 8px 0 8px;
-      }
-    }
-  }
-`;
-
-const ValuesContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-
-  h2 {
+  .values-title {
     span {
       position: relative;
       :before {
@@ -230,6 +136,138 @@ const ValuesContainer = styled.div`
     }
   }
 
+  @media ${devices.tabletMax} {
+    gap: 32px;
+
+    h1 {
+      font-size: 40px;
+      letter-spacing: 0.16px;
+      padding: 0;
+    }
+    h2 {
+      font-size: 30px;
+    }
+
+    .image-container {
+      padding-bottom: 60px;
+    }
+
+    .team-title {
+      padding: 0;
+    }
+
+    .values-title {
+      padding-bottom: 0;
+    }
+  }
+`;
+
+const DeblockContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+  background-color: white;
+  border-radius: 30px;
+  padding: 40px 48px;
+
+  .hero {
+    display: flex;
+    gap: 44px;
+  }
+
+  .tiles {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    column-gap: 90px;
+    row-gap: 16px;
+
+    > div {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      background: rgba(230, 212, 174, 0.2);
+      border-radius: 30px;
+      padding: 16px 0 24px 0;
+      width: 100%;
+      max-width: 292px;
+      flex-wrap: wrap;
+
+      > span:last-child {
+        font-weight: 400;
+        font-size: 58px;
+        line-height: 57px;
+      }
+    }
+  }
+
+  @media ${devices.tabletMax} {
+    background-color: transparent;
+    padding: 0 24px;
+
+    .hero {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .tiles > div {
+      max-width: 100%;
+    }
+  }
+`;
+
+const TeamContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  max-width: 1152px;
+
+  background-color: white;
+  border-radius: 30px;
+  padding: 40px 48px;
+
+  > div {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    column-gap: 58px;
+    row-gap: 112px;
+
+    > div {
+      > div {
+        display: flex;
+        justify-content: space-between;
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 28px;
+        padding: 8px 8px 0 8px;
+      }
+      span {
+        font-style: italic;
+        padding: 8px 8px 0 8px;
+      }
+    }
+  }
+
+  @media ${devices.tabletMax} {
+    background-color: transparent;
+    padding: 0 12px;
+
+    > div {
+      justify-content: center;
+      row-gap: 44px;
+    }
+  }
+`;
+
+const ValuesContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: white;
+  border-radius: 30px;
+  padding: 40px 0px;
+
   > div {
     display: flex;
     justify-content: center;
@@ -249,14 +287,22 @@ const ValuesContainer = styled.div`
       }
     }
   }
+  @media ${devices.tabletMax} {
+    background-color: transparent;
+    padding: 0px;
+
+    > div {
+      row-gap: 88px;
+    }
+  }
 `;
 
 const AboutUs = () => {
   return (
     <Container>
       <AboutUsContainer>
+        <h1>We are Deblock!</h1>
         <DeblockContainer>
-          <h1>We are Deblock!</h1>
           <div className="hero">
             <Image src={HeroPicture} alt="Groupe photo" />
             <p>
@@ -287,10 +333,10 @@ const AboutUs = () => {
             </div>
           </div>
         </DeblockContainer>
+        <h2 className="team-title">
+          Meet our <span>amazing team</span>
+        </h2>
         <TeamContainer>
-          <h2>
-            Meet our <span>amazing team</span>
-          </h2>
           <div>
             <div>
               <Image src={Team} alt="Profil picture" />
@@ -342,10 +388,10 @@ const AboutUs = () => {
             </div>
           </div>
         </TeamContainer>
+        <h2 className="values-title">
+          Our <span>values</span>
+        </h2>
         <ValuesContainer>
-          <h2>
-            Our <span>values</span>
-          </h2>
           <div>
             <div>
               <Image src={Rocket} alt="Rocket" />
