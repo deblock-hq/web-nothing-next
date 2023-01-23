@@ -239,9 +239,12 @@ const FirstContainer = styled.div`
       width: 100%;
 
       @media ${devices.tablet} {
+        font-size: 13px;
+
         padding: 12px 14px;
         font-weight: 700;
         height: 46px;
+        width: 132px;
       }
     }
   }

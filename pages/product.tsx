@@ -28,6 +28,7 @@ const ProductContainer = styled.div`
   gap: 40px;
   padding-bottom: 134px;
   padding-top: 40px;
+  padding: 40px 12px 134px 12px;
 
   ul {
     list-style: initial;
@@ -75,14 +76,17 @@ const ProductContainer = styled.div`
   }
 
   @media ${devices.tabletMax} {
-    padding: 12px;
+    > div {
+      width: 100%;
+    }
 
     h1 {
-      font-size: 26px;
+      font-size: 30px;
       line-height: 57px;
+      padding: 0;
     }
     h2 {
-      font-size: 24px;
+      font-size: 28px;
       line-height: 34px;
     }
     p {
@@ -111,7 +115,7 @@ const FirstContainer = styled.div`
   background-color: #fff9f3;
   border-radius: 30px;
   height: 508px;
-  gap: 48px;
+  gap: 80px;
   position: relative;
   overflow: hidden;
 
@@ -123,7 +127,7 @@ const FirstContainer = styled.div`
     width: 45%;
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 32px;
     z-index: 2;
   }
 
@@ -141,18 +145,24 @@ const FirstContainer = styled.div`
     flex-direction: column;
     height: auto;
     background-color: transparent;
+    gap: 34px;
+    align-items: flex-start;
 
     .image-container {
       background: url("/mobile-background/product/FirstcontainerBackground.svg")
         no-repeat center;
       background-size: 100%;
       border-radius: 30px;
-      max-width: 280px;
+
+      svg {
+        max-width: 280px;
+      }
     }
 
     .texte-container {
       width: auto;
-      padding: 30px 18px;
+      padding: 8px 18px 32px 18px;
+      gap: 16px;
     }
   }
 `;
@@ -210,15 +220,17 @@ const UniqueCard = styled.div`
   }
 
   @media ${devices.tabletMax} {
-    align-items: center;
     flex-direction: column;
+    align-items: flex-start;
 
     .image-container {
       background: url("/mobile-background/product/SelfcustodyBackground.svg")
         no-repeat center;
       background-size: 100%;
       border-radius: 30px;
-      max-width: 280px;
+      svg {
+        max-width: 280px;
+      }
     }
 
     .texte-container {
@@ -236,7 +248,7 @@ const MaximumSecurity = styled.div`
   }
 
   @media ${devices.tabletMax} {
-    align-items: center;
+    align-items: flex-start;
     flex-direction: column;
 
     .image-container {
@@ -244,7 +256,9 @@ const MaximumSecurity = styled.div`
         no-repeat center;
       background-size: 100%;
       border-radius: 30px;
-      max-width: 280px;
+      svg {
+        max-width: 280px;
+      }
     }
 
     .texte-container {
@@ -253,7 +267,6 @@ const MaximumSecurity = styled.div`
     }
   }
 `;
-
 const CryptoAssets = styled.div`
   display: flex;
   flex-direction: row-reverse;
@@ -264,7 +277,7 @@ const CryptoAssets = styled.div`
   }
 
   @media ${devices.tabletMax} {
-    align-items: center;
+    align-items: flex-start;
     flex-direction: column;
 
     .image-container {
@@ -272,7 +285,9 @@ const CryptoAssets = styled.div`
         no-repeat center;
       background-size: 100%;
       border-radius: 30px;
-      max-width: 326px;
+      svg {
+        max-width: 326px;
+      }
     }
 
     .texte-container {
@@ -291,8 +306,9 @@ const SelfCustody = styled.div`
   }
 
   @media ${devices.tabletMax} {
-    align-items: center;
+    align-items: flex-start;
     flex-direction: column;
+    gap: 0;
 
     .image-container {
       align-self: center;
@@ -319,11 +335,12 @@ const SelfCustody = styled.div`
 const LicensedAndRegulated = styled.div`
   display: flex;
   flex-direction: row;
-  padding-top: 108px;
+  padding-top: 112px;
+  padding-bottom: 150px;
   border-radius: 30px;
   width: 100%;
   background-color: white;
-  height: 500px;
+  max-height: 500px;
   position: relative;
   overflow: hidden;
 
@@ -331,6 +348,9 @@ const LicensedAndRegulated = styled.div`
     position: absolute;
     left: 570px;
     top: 128px;
+    svg {
+      max-width: 350px;
+    }
   }
 
   .texte-container-licensed {
@@ -363,6 +383,7 @@ const LicensedAndRegulated = styled.div`
     padding: 0;
     height: auto;
     width: 100%;
+    align-items: flex-start;
 
     .image-container {
       align-self: center;
@@ -418,7 +439,7 @@ const Product = () => {
           <Blob className="blob-left" color="#D4DAE5" />
           <Blob className="blob-bot" color="#DEF0DC" />
         </FirstContainer>
-        <DoubleContainer backgroundColor="#f2f2f9" height="596px">
+        <DoubleContainer backgroundColor="#f2f2f9" height="692px">
           <UniqueCard>
             <div className="image-container">
               <Lottie
@@ -438,7 +459,11 @@ const Product = () => {
           </UniqueCard>
           <MaximumSecurity>
             <div className="image-container">
-              <Lottie animationData={MaxSecurity} alt="Uniques cards image" />
+              <Lottie
+                animationData={MaxSecurity}
+                alt="Uniques cards image"
+                loop={false}
+              />
             </div>
             <div className="texte-container">
               <h2>One-off cards for a maximum security</h2>
