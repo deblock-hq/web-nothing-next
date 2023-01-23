@@ -57,6 +57,10 @@ const ProductContainer = styled.div`
     letter-spacing: 0.084px;
   }
 
+  p {
+    line-height: 24px;
+  }
+
   .image-container {
     z-index: 2;
   }
@@ -76,6 +80,8 @@ const ProductContainer = styled.div`
   }
 
   @media ${devices.tabletMax} {
+    gap: 54px;
+
     > div {
       width: 100%;
     }
@@ -207,7 +213,11 @@ const DoubleContainer = styled.div<Props>`
     padding: 0;
     border-radius: 0;
     width: 100%;
-    gap: 0;
+    gap: 54px;
+
+    ul {
+      padding-top: 16px !important;
+    }
   }
 `;
 const UniqueCard = styled.div`
