@@ -18,9 +18,16 @@ main {
   height: 100vh;
 }
 
+#__next {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
 #__next,
 #__next > div {
   overflow-x: hidden;
+  flex-grow: 1;
 }
 
 html,

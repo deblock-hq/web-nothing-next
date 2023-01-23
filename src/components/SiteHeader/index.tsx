@@ -16,7 +16,6 @@ const HeaderContainer = styled.header<Props>`
   z-index: 10;
   max-width: 1152px;
   padding: 0 40px;
-  margin: auto;
   height: 60px;
 
   img {

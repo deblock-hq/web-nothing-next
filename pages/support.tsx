@@ -33,7 +33,6 @@ const Container = styled.div`
 `;
 
 const SupportContainer = styled.div`
-  /* height: calc(100vh - 440px); */
   padding: 78px 24px;
   z-index: 2;
 
@@ -65,8 +64,8 @@ const SupportContainer = styled.div`
   > div {
     display: flex;
     justify-content: center;
+    align-items: center;
     gap: 24px;
-    /* flex-wrap: wrap; */
 
     > div {
       display: flex;
@@ -79,13 +78,15 @@ const SupportContainer = styled.div`
       background: #ffffff;
       box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.04);
       border-radius: 30px;
-      padding: 22px;
+      padding: 63px 0px;
+      width: 100%;
     }
   }
 
   @media ${devices.tabletMax} {
     > div {
       flex-direction: column;
+      gap: 16px;
     }
     h1 {
       font-size: 30px;
