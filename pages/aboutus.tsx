@@ -62,9 +62,9 @@ const AboutUsContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 96px;
-  max-width: 952px;
+  max-width: 1152px;
   margin: auto;
-  padding: 92px 12px;
+  padding: 40px 12px;
 
   * {
     z-index: 2;
@@ -74,13 +74,15 @@ const AboutUsContainer = styled.div`
     font-size: 48px;
     line-height: 57px;
     text-align: center;
+    padding-bottom: 8px;
   }
 
   h2 {
     font-size: 48px;
     line-height: 57px;
     text-align: center;
-    padding-bottom: 100px;
+    padding-bottom: 72px;
+    padding-top: 16px;
   }
 
   p {
@@ -89,7 +91,8 @@ const AboutUsContainer = styled.div`
 
   .image-container {
     align-self: center;
-    max-width: 672px;
+    max-width: 1152px;
+    padding-bottom: 72px;
   }
 
   @media ${devices.tabletMax} {
@@ -127,7 +130,7 @@ const DeblockContainer = styled.div`
       background: rgba(230, 212, 174, 0.2);
       border-radius: 30px;
       padding: 16px 0 24px 0;
-      width: 270px;
+      width: 29%;
       flex-wrap: wrap;
 
       > span:last-child {
@@ -155,6 +158,7 @@ const DeblockContainer = styled.div`
 const TeamContainer = styled.div`
   display: flex;
   flex-direction: column;
+  max-width: 1152px;
 
   h2 {
     span {
@@ -181,7 +185,7 @@ const TeamContainer = styled.div`
     flex-wrap: wrap;
     justify-content: center;
     column-gap: 58px;
-    row-gap: 100px;
+    row-gap: 112px;
 
     > div {
       > div {
@@ -232,6 +236,7 @@ const ValuesContainer = styled.div`
     gap: 58px;
     flex-wrap: wrap;
     row-gap: 100px;
+    padding-top: 56px;
 
     > div {
       text-align: center;
@@ -378,7 +383,6 @@ const AboutUs = () => {
           <Image src={Photos} alt="Photos" />
         </div>
       </AboutUsContainer>
-      <Footer />
       <Blob className="blob-top" color="#F9D4BF" />
       <Blob className="blob-top-left" color="#E6E1EA" />
       <Blob className="blob-top-right" color="#F4EFDF" />

@@ -199,7 +199,7 @@ const FirstContainer = styled.div`
   form {
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: 106%;
     align-self: center;
     gap: 16px;
 
@@ -240,7 +240,6 @@ const FirstContainer = styled.div`
 
       @media ${devices.tablet} {
         font-size: 13px;
-
         padding: 12px 14px;
         font-weight: 700;
         height: 46px;
@@ -296,7 +295,7 @@ const BackedByContainer = styled.div`
 
   .image-container {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     flex-wrap: wrap;
     width: 100%;
     text-align: center;
@@ -883,15 +882,10 @@ const Home = () => {
         <BackedByContainer>
           <h3>Backed by the best</h3>
           <div className="image-container">
-            {/* <div> */}
             <Image src={Vc} alt="20vc logo" />
             <Image src={Kraken} alt="Kraken logo" />
-            {/* </div>
-            <br />
-            <div> */}
             <Image src={Hoxton} alt="Hoxton logo" />
             <Image src={Headline} alt="Headline logo" />
-            {/* </div> */}
           </div>
         </BackedByContainer>
         <BestAccount>
