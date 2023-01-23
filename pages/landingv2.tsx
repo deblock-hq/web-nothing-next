@@ -64,7 +64,7 @@ const LandingContainer = styled.div`
       max-width: 1340px;
       position: relative;
 
-      >div:first-child {
+      > div:first-child {
         display: block;
         position: absolute;
         max-width: 571px;
@@ -140,7 +140,8 @@ const FirstContainer = styled.div`
     justify-content: center;
     background: url("/mobile-background/FirstContainerBackground.svg") no-repeat
       center;
-    background-size: 100%;
+    /* background-size: 100%; */
+    background-size: cover;
     height: 224px;
     border-radius: 30px;
     z-index: 3;
@@ -200,7 +201,7 @@ const FirstContainer = styled.div`
     flex-direction: column;
     width: 100%;
     align-self: center;
-    gap: 8px;
+    gap: 16px;
 
     @media ${devices.tablet} {
       flex-direction: row;
@@ -233,8 +234,9 @@ const FirstContainer = styled.div`
       background: #000000;
       border: 0.95393px solid #000000;
       border-radius: 3.81572px;
-      font-weight: 700;
+      font-weight: 600;
       height: 58px;
+      font-size: 16px;
 
       @media ${devices.tablet} {
         padding: 12px 14px;
@@ -268,10 +270,12 @@ const BackedByContainer = styled.div`
 
   h3 {
     font-size: 16px;
-    color: white;
+    color: rgba(255, 255, 255, 0.5);
     padding-top: 24px;
+
     @media ${devices.tablet} {
       padding-top: 0px;
+      color: white;
     }
   }
   img {
@@ -279,6 +283,7 @@ const BackedByContainer = styled.div`
     width: fit-content;
     filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(5deg)
       brightness(102%) contrast(102%);
+  
   }
   .image-container {
     display: flex;
@@ -668,7 +673,8 @@ const SafestAccount = styled.div`
     justify-content: center;
     background: url("/mobile-background/SafestAccountBackground.svg") no-repeat
       center;
-    background-size: 100%;
+    background-size: cover;
+    /* background-size: 100%; */
     border-radius: 30px;
     /* max-width: 362px; */
 

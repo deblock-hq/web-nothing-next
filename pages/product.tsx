@@ -20,13 +20,14 @@ interface Props {
 }
 
 const ProductContainer = styled.div`
-  max-width: 958px;
+  max-width: 1152px;
   display: flex;
   flex-direction: column;
   align-items: center;
   margin: auto;
   gap: 40px;
   padding-bottom: 134px;
+  padding-top: 40px;
 
   ul {
     list-style: initial;
@@ -46,6 +47,7 @@ const ProductContainer = styled.div`
     line-height: 57px;
     text-align: center;
     letter-spacing: 0.16px;
+    padding-bottom: 24px;
   }
 
   h2 {
@@ -161,11 +163,12 @@ const DoubleContainer = styled.div<Props>`
   background-color: ${(props) => props.backgroundColor || "#f2f2f9"};
   border-radius: 30px;
   height: ${(props) => props.height};
-  justify-content: center;
-  gap: 148px;
-  padding: ${(props) => props.padding || "0px 98px 0px 88px"};
+  justify-content: space-between;
+  gap: 112px;
+  padding: ${(props) => props.padding || "72px 98px 72px 88px"};
   position: relative;
   overflow: hidden;
+  max-width: 1152px;
 
   .blob-left {
     top: 700px;
@@ -415,7 +418,7 @@ const Product = () => {
           <Blob className="blob-left" color="#D4DAE5" />
           <Blob className="blob-bot" color="#DEF0DC" />
         </FirstContainer>
-        <DoubleContainer backgroundColor="#f2f2f9" height=" 835px">
+        <DoubleContainer backgroundColor="#f2f2f9" height="596px">
           <UniqueCard>
             <div className="image-container">
               <Lottie
@@ -450,8 +453,8 @@ const Product = () => {
         </DoubleContainer>
         <DoubleContainer
           backgroundColor="#F5F5F4"
-          height="972px"
-          padding="0px 0px 0px 64px"
+          height="722px"
+          // padding="0px 0px 0px 64px"
         >
           <CryptoAssets>
             <div className="image-container">
