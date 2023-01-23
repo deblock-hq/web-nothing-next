@@ -18,6 +18,10 @@ main {
   height: 100vh;
 }
 
+#__next {
+  overflow: auto;
+}
+
 html,
 body,
 div,
