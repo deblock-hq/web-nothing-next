@@ -89,22 +89,28 @@ const Footer = () => {
           <h4>Company</h4>
           <ul>
             <li>
-              <Link href="">Home</Link>
+              <Link href="/">Home</Link>
             </li>
             <li>
-              <Link href="">Blog</Link>
+              <Link href="/blog">Blog</Link>
             </li>
             <li>
-              <Link href="">About</Link>
+              <Link href="/aboutus">About</Link>
             </li>
             <li>
-              <Link href="">Press</Link>
+              <Link href="/press">Press</Link>
             </li>
             <li>
-              <Link href="">Career</Link>
+              <a
+                href="https://apply.workable.com/deblock"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Career
+              </a>
             </li>
             <li>
-              <Link href="">Contact</Link>
+              <Link href="/contact">Contact</Link>
             </li>
           </ul>
         </Company>
@@ -112,7 +118,7 @@ const Footer = () => {
           <h4>Crypto</h4>
           <ul>
             <li>
-              <Link href="">Non-custodial wallet</Link>
+              <Link href="/ncw">Non-custodial wallet</Link>
             </li>
             <li>
               <Link href="">Fees Services</Link>

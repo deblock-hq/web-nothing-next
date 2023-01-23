@@ -311,7 +311,6 @@ const Pricing = () => {
 
   return (
     <Container>
-      <Header />
       <PricingContainer className={selectedPlan}>
         <h1>
           Own <span>your plan</span>

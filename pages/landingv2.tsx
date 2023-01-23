@@ -23,12 +23,13 @@ import { devices } from "../src/utils/devices";
 import Blob from "../src/views/Blob";
 import Image from "next/image";
 import Lottie from "lottie-react";
+import Link from "next/link";
 
 const LandingContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 32px;
-  padding: 12px;
+  padding: 36px 24px;
   font-size: 16px;
   /* max-width: 960px; */
   margin: auto;
@@ -42,7 +43,7 @@ const LandingContainer = styled.div`
   }
 
   .double-phone-container {
-    div:first-child {
+    > div:first-child {
       display: none;
     }
   }
@@ -63,13 +64,14 @@ const LandingContainer = styled.div`
       max-width: 1340px;
       position: relative;
 
-      div:first-child {
+      >div:first-child {
         display: block;
         position: absolute;
         max-width: 571px;
         right: 0;
         top: 80px;
         z-index: 3;
+        width: 40%;
       }
     }
 
@@ -100,7 +102,6 @@ const FirstContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 36px;
-  background-color: #faf5ef;
   z-index: 1;
 
   @media ${devices.tablet} {
@@ -112,6 +113,7 @@ const FirstContainer = styled.div`
     border-radius: 30px;
     max-width: 1152px;
     justify-content: center;
+    background-color: #faf5ef;
 
     .blob-left,
     .blob-top,
@@ -139,9 +141,10 @@ const FirstContainer = styled.div`
     background: url("/mobile-background/FirstContainerBackground.svg") no-repeat
       center;
     background-size: 100%;
-    height: 160px;
+    height: 224px;
     border-radius: 30px;
     z-index: 3;
+    background-color: #faf5ef;
 
     @media ${devices.tablet} {
       background: none;
@@ -150,11 +153,12 @@ const FirstContainer = styled.div`
       bottom: -20px;
       height: unset;
       max-width: 496px;
+      display: none;
     }
 
-    img {
+    svg {
       width: 100%;
-      max-width: 255px;
+      max-width: 360px;
 
       @media ${devices.tablet} {
         max-width: 496px;
@@ -209,7 +213,13 @@ const FirstContainer = styled.div`
       border: 0.95393px solid #000000;
       border-radius: 3.81572px;
       box-shadow: 3px 3px 0px 0px rgb(0 0 0);
-      height: 44px;
+      height: 58px;
+      padding-left: 20px;
+      /* width: calc(100% - 3px); */
+
+      ::placeholder {
+        color: rgba(88, 88, 88, 0.5);
+      }
 
       @media ${devices.tablet} {
         width: 196px;
@@ -224,11 +234,12 @@ const FirstContainer = styled.div`
       border: 0.95393px solid #000000;
       border-radius: 3.81572px;
       font-weight: 700;
-      height: 46px;
+      height: 58px;
 
       @media ${devices.tablet} {
         padding: 12px 14px;
         font-weight: 700;
+        height: 46px;
       }
     }
   }
@@ -252,30 +263,33 @@ const BackedByContainer = styled.div`
     gap: 26px;
     max-width: 1152px;
     width: 100%;
-    margin-bottom: 100px;
+    /* margin-bottom: 100px; */
   }
 
   h3 {
     font-size: 16px;
     color: white;
+    padding-top: 24px;
+    @media ${devices.tablet} {
+      padding-top: 0px;
+    }
   }
   img {
-    height: 16px;
+    max-width: 100%;
     width: fit-content;
     filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(5deg)
       brightness(102%) contrast(102%);
-
-    @media ${devices.tablet} {
-      height: 20px;
-    }
   }
   .image-container {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
     width: 100%;
     text-align: center;
 
     @media ${devices.tablet} {
       display: flex;
-      justify-content: space-between;
+      justify-content: space-evenly;
     }
 
     div {
@@ -298,7 +312,8 @@ const BestAccount = styled.div`
   padding-bottom: 34px;
 
   @media ${devices.tablet} {
-    flex-direction: row-reverse;
+    flex-direction: row;
+    justify-content: space-between;
     background-color: rgba(162, 167, 245, 0.1);
     border-radius: 30px;
     gap: 0;
@@ -340,11 +355,12 @@ const BestAccount = styled.div`
 
     @media ${devices.tablet} {
       background: none;
-      position: absolute;
-      right: 516px;
+      right: 616px;
+      padding-left: 40px;
 
       div {
         max-width: 502px;
+        min-width: 400px;
       }
     }
   }
@@ -356,7 +372,8 @@ const BestAccount = styled.div`
     padding: 0px 14px;
 
     @media ${devices.tablet} {
-      width: 50%;
+      gap: 32px;
+      width: 40%;
     }
 
     h2 {
@@ -409,7 +426,7 @@ const NftContainer = styled.div`
     flex-direction: row-reverse;
     justify-content: space-between;
     /* padding: 0 52px 0 90px; */
-    margin-bottom: 18px;
+    margin-bottom: 14px;
     z-index: 2;
 
     h2 {
@@ -473,7 +490,7 @@ const Deposit = styled.div`
     border-radius: 30px;
     gap: 0;
     align-items: center;
-    height: 448px;
+    height: 506px;
     padding: 0;
     overflow: hidden;
     position: relative;
@@ -509,7 +526,11 @@ const Deposit = styled.div`
     @media ${devices.tablet} {
       background: none;
       z-index: 2;
-      max-width: 240px;
+      max-width: 324px;
+
+      div {
+        max-width: 324px;
+      }
     }
   }
   .texte-container {
@@ -520,6 +541,7 @@ const Deposit = styled.div`
     line-height: 28px;
 
     @media ${devices.tablet} {
+      gap: 32px;
       width: 42%;
       z-index: 2;
     }
@@ -533,7 +555,7 @@ const CashOrCrypto = styled.div`
 
   @media ${devices.tablet} {
     padding-top: 90px;
-    max-width: 1152px;
+    max-width: 880px;
   }
 
   h2 {
@@ -555,9 +577,13 @@ const CashOrCrypto = styled.div`
       position: absolute;
       width: 165px;
       height: 46px;
-      bottom: 39px;
+      bottom: 24px;
       left: 36px;
       background-size: 100%;
+
+      @media ${devices.tablet} {
+        bottom: 39px;
+      }
     }
   }
 
@@ -571,9 +597,8 @@ const CashOrCrypto = styled.div`
     gap: 16px;
 
     @media ${devices.tablet} {
-      width: 38%;
+      width: 46%;
       align-self: center;
-      max-width115260px;
     }
   }
   > div:last-child {
@@ -583,7 +608,6 @@ const CashOrCrypto = styled.div`
 
     @media ${devices.tablet} {
       flex-direction: row;
-      max-width115260px;
     }
 
     span {
@@ -594,6 +618,10 @@ const CashOrCrypto = styled.div`
     font-size: 16px;
     line-height: 24px;
     padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    align-items: center;
   }
 `;
 const SafestAccount = styled.div`
@@ -611,12 +639,13 @@ const SafestAccount = styled.div`
   @media ${devices.tablet} {
     display: flex;
     flex-direction: column;
-    gap: 100px;
+    gap: 88px;
     max-width: 1152px;
 
     > div:first-child {
       display: flex;
       flex-direction: row-reverse;
+      justify-content: center;
       border-radius: 30px;
       height: 418px;
       align-items: center;
@@ -641,7 +670,7 @@ const SafestAccount = styled.div`
       center;
     background-size: 100%;
     border-radius: 30px;
-    max-width: 362px;
+    /* max-width: 362px; */
 
     div {
       max-width: 362px;
@@ -660,6 +689,7 @@ const SafestAccount = styled.div`
     padding: 30px 14px 0 14px;
 
     @media ${devices.tablet} {
+      gap: 30px;
       padding-left: 90px;
       width: 50%;
       justify-content: space-between;
@@ -703,7 +733,8 @@ const SafestAccount = styled.div`
     gap: 72px;
     width: 286px;
     margin: auto;
-    padding-top: 70px;
+    padding-top: 80px;
+    padding-bottom: 22px;
 
     p {
       padding-top: 14px;
@@ -711,8 +742,9 @@ const SafestAccount = styled.div`
 
     @media ${devices.tablet} {
       flex-direction: row;
-      width: 100%;
+      width: 840px;
       justify-content: space-around;
+      padding-top: 0;
 
       h3 {
         font-size: 26px;
@@ -740,14 +772,18 @@ const SafestAccount = styled.div`
   }
 `;
 const LearnMoreButton = styled.span`
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  border: none;
-  background-color: transparent;
   font-weight: 700;
-  font-size: 16px;
-  padding: 0;
+
+  a {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border: none;
+    background-color: transparent;
+    font-weight: 700;
+    font-size: 16px;
+    padding: 0;
+  }
 `;
 
 const Home = () => {
@@ -832,15 +868,15 @@ const Home = () => {
         <BackedByContainer>
           <h3>Backed by the best</h3>
           <div className="image-container">
-            <div>
-              <Image src={Vc} alt="20vc logo" />
-              <Image src={Kraken} alt="Kraken logo" />
-            </div>
+            {/* <div> */}
+            <Image src={Vc} alt="20vc logo" />
+            <Image src={Kraken} alt="Kraken logo" />
+            {/* </div>
             <br />
-            <div>
-              <Image src={Hoxton} alt="Hoxton logo" />
-              <Image src={Headline} alt="Headline logo" />
-            </div>
+            <div> */}
+            <Image src={Hoxton} alt="Hoxton logo" />
+            <Image src={Headline} alt="Headline logo" />
+            {/* </div> */}
           </div>
         </BackedByContainer>
         <BestAccount>
@@ -857,7 +893,9 @@ const Home = () => {
               virtual cards, and 15+ currencies at the best exchange rates.
             </div>
             <LearnMoreButton>
-              Learn more <Image src={Arrow} alt="Arrow right" />{" "}
+              <Link href="/">
+                Learn more <Image src={Arrow} alt="Arrow right" />{" "}
+              </Link>
             </LearnMoreButton>
           </div>
           <Blob className="blob-bot" color="#D4E8DA" />
@@ -883,7 +921,9 @@ const Home = () => {
             </div>
             <div>
               <LearnMoreButton>
-                Learn more <Image src={Arrow} alt="Arrow right" />{" "}
+                <Link href="/">
+                  Learn more <Image src={Arrow} alt="Arrow right" />{" "}
+                </Link>
               </LearnMoreButton>
             </div>
           </div>
@@ -901,9 +941,9 @@ const Home = () => {
             </p>
           </div>
           <div>
-            <div>
+            <div className="text-container">
               <Image src={Salary} alt="Get your salary" />
-              <div className="text-container">
+              <div>
                 <span>Get your salary </span>
                 <br />
                 in Crypto or GBP
@@ -955,7 +995,9 @@ const Home = () => {
                 Your wealth is safe and nobody can freeze it or take it away.
               </div>
               <LearnMoreButton>
-                Learn more <Image src={Arrow} alt="Arrow right" />{" "}
+                <Link href="/ncw">
+                  Learn more <Image src={Arrow} alt="Arrow right" />
+                </Link>
               </LearnMoreButton>
             </div>
             <Blob className="blob-right" color="#F5D299" />
@@ -970,7 +1012,9 @@ const Home = () => {
                   <br />
                   with our{" "}
                   <LearnMoreButton>
-                    native plan <Image src={Arrow} alt="Arrow right" />{" "}
+                    <Link href="/pricing">
+                      native plan <Image src={Arrow} alt="Arrow right" />{" "}
+                    </Link>
                   </LearnMoreButton>
                 </p>
               </div>
