@@ -209,6 +209,7 @@ const DeblockContainer = styled.div`
     .hero {
       flex-direction: column;
       align-items: center;
+      gap: 32px;
     }
 
     .tiles > div {
@@ -281,8 +282,8 @@ const ValuesContainer = styled.div`
       max-width: 268px;
 
       h3 {
-        font-weight: 600;
-        font-size: 27px;
+        font-weight: 500;
+        font-size: 24px;
         line-height: 57px;
       }
     }
