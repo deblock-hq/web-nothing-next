@@ -145,7 +145,7 @@ const AboutUsContainer = styled.div`
       padding: 0;
     }
     h2 {
-      font-size: 30px;
+      font-size: 28px;
     }
 
     .image-container {
@@ -210,6 +210,12 @@ const DeblockContainer = styled.div`
       flex-direction: column;
       align-items: center;
       gap: 32px;
+
+      img {
+        background-color: white;
+        padding: 21px;
+        border-radius: 30px;
+      }
     }
 
     .tiles > div {
@@ -427,7 +433,7 @@ const AboutUs = () => {
           </div>
         </ValuesContainer>
         <div className="image-container">
-          <Image src={Photos} alt="Photos" />
+          {/* <Image src={Photos} alt="Photos" /> */}
         </div>
       </AboutUsContainer>
       <Blob className="blob-top" color="#F9D4BF" />

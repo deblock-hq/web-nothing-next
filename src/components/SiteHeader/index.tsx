@@ -43,9 +43,9 @@ const HeaderContainer = styled.header<Props>`
       width: calc(90% - 50px);
       position: fixed;
       top: 16px;
-      background: #ffffff;
+      /* background: #ffffff; */
       border: 1px solid #000000;
-      backdrop-filter: blur(22.7px);
+      backdrop-filter: blur(52.7px);
       border-radius: 7px;
       box-shadow: 2px 2px 0px 0px rgb(0 0 0);
       padding: 0 40px;
