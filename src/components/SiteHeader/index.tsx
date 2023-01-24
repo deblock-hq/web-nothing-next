@@ -12,13 +12,11 @@ interface Props {
 const HeaderContainer = styled.header<Props>`
   display: flex;
   justify-content: space-between;
-  padding: 0 174px;
+  width: calc(100% - 50px);
   z-index: 10;
   max-width: 1152px;
-  padding: 0 40px;
   height: 60px;
   align-self: center;
-  width: 100%;
   position: absolute;
 
   img {
@@ -42,6 +40,7 @@ const HeaderContainer = styled.header<Props>`
     props.scrollY > 33 &&
     css`
       margin: auto;
+      width: calc(90% - 50px);
       position: fixed;
       top: 16px;
       background: #ffffff;
@@ -52,7 +51,6 @@ const HeaderContainer = styled.header<Props>`
       padding: 0 40px;
       max-width: 1152px;
       animation: fadeIn 1s;
-      width: 100%;
     `};
 `;
 
@@ -76,10 +74,16 @@ const Header = () => {
         <Image src={Logo} alt="Deblock logo" />
       </Link>
       <div>
-        <Link href="/blob">Blog</Link>
+        <Link href="/blog">Blog</Link>
         <Link href="/aboutus">About</Link>
-        <Link href="careers">Careers</Link>
-        <Link href="support">Support</Link>
+        <a
+          href="https://apply.workable.com/deblock"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Careers
+        </a>
+        <Link href="/support">Support</Link>
       </div>
     </HeaderContainer>
   );
