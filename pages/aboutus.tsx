@@ -340,7 +340,7 @@ const AboutUs = () => {
             </div>
           </div>
         </DeblockContainer>
-        <h2 className="team-title">
+        {/* <h2 className="team-title">
           Meet our <span>amazing team</span>
         </h2>
         <TeamContainer>
@@ -394,7 +394,7 @@ const AboutUs = () => {
               <span>CEO & CMO</span>
             </div>
           </div>
-        </TeamContainer>
+        </TeamContainer> */}
         <h2 className="values-title">
           Our <span>values</span>
         </h2>
