@@ -175,11 +175,12 @@ const FirstContainer = styled.div`
     @media ${devices.tablet} {
       padding: 72px 90px;
       width: 55%;
-      gap: 32px;
+      gap: 40px;
 
       h1 {
         font-size: 48px;
         line-height: 56px;
+        padding-bottom: 20px;
       }
       p {
         width: 65%;
@@ -202,12 +203,14 @@ const FirstContainer = styled.div`
     width: 106%;
     align-self: center;
     gap: 16px;
+    padding-top: 16px;
 
     @media ${devices.tablet} {
       flex-direction: row;
       width: 100%;
       gap: 14px;
       height: 40px;
+      padding-top: 0;
     }
 
     input {

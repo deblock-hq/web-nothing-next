@@ -11,6 +11,7 @@ const FooterContainer = styled.footer`
   height: 440px;
   background-color: #30302f;
   line-height: 28px;
+  z-index: 10;
 
   a,
   h4,
