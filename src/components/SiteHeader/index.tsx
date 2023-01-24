@@ -120,7 +120,7 @@ const HeaderContainer = styled.header<Props>`
       width: calc(90% - 50px);
       position: fixed;
       top: 16px;
-      /* background: #ffffff; */
+      background-color: rgba(255, 255, 255, 0.95);
       border: 1px solid #000000;
       backdrop-filter: blur(52.7px);
       border-radius: 7px;
