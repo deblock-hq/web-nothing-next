@@ -1,5 +1,6 @@
+import axios from "axios";
 import Image from "next/image";
-import React, { ReactNode, useState } from "react";
+import React, { ReactNode, useEffect, useState } from "react";
 import styled from "styled-components";
 import Blob from "../Blob";
 
@@ -184,6 +185,7 @@ const VerificationSteps = styled.div`
 `;
 
 interface ModalProps {
+  email?: string;
   step?: string;
   size?: number;
   previousPosition?: number;
@@ -193,7 +195,8 @@ interface ModalProps {
 }
 
 const Modal = ({
-  step = "phone",
+  email,
+  step = "verify_email",
   size = 13456,
   previousPosition,
   currentPosition = 5236,
@@ -210,6 +213,32 @@ const Modal = ({
     const value = e.target.value.replace(/\D/g, "");
     setPhoneNumber(value);
   };
+
+  useEffect(() => {
+    axios
+      .post(
+        "https://waitlist-staging.deblock.com/v1/waitlist/email",
+        {
+          user: {
+            email: { email },
+          },
+        },
+        {
+          headers: {
+            "Accept-Language": "fr",
+            Authorization:
+              "Bearer 64726720888b45b06e7f8f22ac2cbb4ece5cefe6016cf31986b80ad47fece262de9bb18db4225f728816d611eb28487fddf9",
+            "Content-Type": "application/json",
+          },
+        }
+      )
+      .then(async (response) => {
+        console.log("response", response);
+      })
+      .catch((error) => {
+        console.log("error", error);
+      });
+  }, [email]);
 
   const StepsVerification = () => {
     if (step === "verify_email") {

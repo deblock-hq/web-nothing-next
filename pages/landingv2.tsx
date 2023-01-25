@@ -218,10 +218,11 @@ const FirstContainer = styled.div`
       border-radius: 3.81572px;
       box-shadow: 3px 3px 0px 0px rgb(0 0 0);
       height: 58px;
-      width: calc(100% - 9px);
+      width: calc(100% - 28px);
+      padding-left: 20px;
+
       ::placeholder {
         color: rgba(88, 88, 88, 0.5);
-        padding-left: 20px;
       }
 
       @media ${devices.tablet} {
@@ -255,7 +256,7 @@ const FirstContainer = styled.div`
   }
 `;
 const BackedByContainer = styled.div`
-  color: white;
+  color: black;
   border-radius: 30px;
   height: 180px;
   display: flex;
@@ -269,7 +270,7 @@ const BackedByContainer = styled.div`
     gap: 26px;
     max-width: 1152px;
     width: 100%;
-    background-color: black;
+    background-color: white;
 
     /* margin-bottom: 100px; */
   }
@@ -281,7 +282,7 @@ const BackedByContainer = styled.div`
 
     @media ${devices.tablet} {
       padding-top: 0px;
-      color: white;
+      color: black;
     }
   }
   img {
@@ -291,8 +292,8 @@ const BackedByContainer = styled.div`
 
     @media ${devices.tablet} {
       height: 26px;
-      filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(5deg)
-        brightness(102%) contrast(102%);
+      /* filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(5deg)
+        brightness(102%) contrast(102%); */
     }
   }
 
@@ -403,11 +404,11 @@ const BestAccount = styled.div`
         position: absolute;
         width: 61px;
         height: 11px;
-        left: -8px;
+        left: 0;
         bottom: -8px;
         @media ${devices.tablet} {
           left: 8px;
-          bottom: 0px;
+          bottom: -4px;
         }
       }
 

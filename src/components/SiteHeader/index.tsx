@@ -22,13 +22,14 @@ const HeaderContainer = styled.header<Props>`
   height: 60px;
   align-self: center;
   position: absolute;
+  padding-top: 8px;
 
   .burger-menu {
     display: none;
   }
 
   .logo {
-    width: 140px;
+    width: 110px;
     cursor: pointer;
   }
 

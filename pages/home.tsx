@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
 import DoublePhone from "../src/assets/lottie/landing/DoublePhone.json";
@@ -746,6 +746,9 @@ const LearnMoreButton = styled.span`
 `;
 
 const Home = () => {
+  const [whitelistEmail, setWhitelistEmail] = useState("");
+  const [openModal, setOpenModal] = useState(false);
+
   useEffect(() => {
     let myPanel = document.getElementById("panel");
     let subpanel = document.getElementById("panel-container");
@@ -794,18 +797,20 @@ const Home = () => {
     }
   }, []);
 
+  console.log(whitelistEmail, openModal);
+
   return (
     <div>
       <Head>
         <title>Current account x Non-custodial Wallet | Deblock</title>
         <meta
           name="description"
-          content="Take control of your money. Receive your salary or pay your rent from your current account with £ or your crypto assets. Everything in one non custodial wallet.g"
+          content="Take control of your money. Receive your salary or pay your rent from your current account with £ or your crypto assets. Everything in one non custodial wallet."
         />
         <link rel="icon" type="image/x-icon" href="/favicon.png" />
       </Head>
 
-      {/* <Modal /> */}
+      {openModal && <Modal email={whitelistEmail} />}
 
       <LandingContainer>
         <div className="double-phone-container">
@@ -821,8 +826,15 @@ const Home = () => {
                 indifferently
               </p>
               <form action="">
-                <input type="email" placeholder="Your email" />
-                <button type="submit">Request access</button>
+                <input
+                  type="email"
+                  placeholder="Your email"
+                  value={whitelistEmail}
+                  onChange={(e) => setWhitelistEmail(e.target.value)}
+                />
+                <button type="submit" onClick={() => setOpenModal(true)}>
+                  Request access
+                </button>
               </form>
             </div>
             <div className="hide-in-mobile">
