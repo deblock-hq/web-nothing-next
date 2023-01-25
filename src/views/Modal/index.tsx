@@ -220,7 +220,7 @@ const Modal = ({
         "https://waitlist-staging.deblock.com/v1/waitlist/email",
         {
           user: {
-            email: { email },
+            email: "sam.adib@free.fr",
           },
         },
         {
@@ -239,6 +239,21 @@ const Modal = ({
         console.log("error", error);
       });
   }, [email]);
+
+  useEffect(() => {
+    axios
+      .get("https://waitlist-staging.deblock.com/v1/waitlist/status", {
+        headers: {
+          Authorization: "Bearer 64726720888b45b06e7f8f22ac2cbb4ece5cefe6016cf31986b80ad47fece262de9bb18db4225f728816d611eb28487fddf9",
+        },
+      })
+      .then(async (res) => {
+        console.log("res", res);
+      })
+      .catch((err) => {
+        console.log("err", err);
+      });
+  }, []);
 
   const StepsVerification = () => {
     if (step === "verify_email") {

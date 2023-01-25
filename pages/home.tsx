@@ -23,8 +23,6 @@ import { devices } from "../src/utils/devices";
 import Blob from "../src/views/Blob";
 import Image from "next/image";
 import Lottie from "lottie-react";
-import Footer from "../src/components/Footer";
-import Header from "../src/components/SiteHeader";
 import Head from "next/head";
 import Modal from "../src/views/Modal";
 
@@ -797,8 +795,6 @@ const Home = () => {
     }
   }, []);
 
-  console.log(whitelistEmail, openModal);
-
   return (
     <div>
       <Head>
@@ -810,8 +806,8 @@ const Home = () => {
         <link rel="icon" type="image/x-icon" href="/favicon.png" />
       </Head>
 
-      {openModal && <Modal email={whitelistEmail} />}
 
+      {/* <Modal email={whitelistEmail} /> */}
       <LandingContainer>
         <div className="double-phone-container">
           <Lottie animationData={DoublePhone} loop={false} />

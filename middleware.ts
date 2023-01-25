@@ -6,7 +6,7 @@ export function middleware(req: NextRequest) {
   const url = req.nextUrl.clone();
   url.pathname = "/fr-FR";
 
-  console.log("country,country", country, req.nextUrl.pathname);
+  // console.log("country,country", country, req.nextUrl.pathname);
 
   const stringCheck = ["/fr-FR", "/en-FR", "/en-GB"];
 
@@ -20,13 +20,15 @@ export function middleware(req: NextRequest) {
   ) {
     return NextResponse.next();
   }
-  console.log("test", req.nextUrl.href.split("/"));
+  // console.log("test", req.nextUrl.href.split("/"));
   if (
     country === "FR" &&
     !req.nextUrl.href.split("/").some((el) => stringCheck.includes(el))
   ) {
     return NextResponse.redirect(url);
   }
+
+  console.log("URL", url, req);
 }
 
 export const config = {
