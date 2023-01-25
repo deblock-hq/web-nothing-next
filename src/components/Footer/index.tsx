@@ -3,15 +3,30 @@ import Link from "next/link";
 import React from "react";
 import { devices } from "../../utils/devices";
 import styled from "styled-components";
+import Blob from "../../views/Blob";
+
+import Linkedin from "../../assets/LinkedIn.svg";
+import Twitter from "../../assets/Twitter.svg";
+import Instagram from "../../assets/Instagram.svg";
 
 const FooterContainer = styled.footer`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   height: 440px;
-  background-color: #30302f;
+  background-color: #171616;
   line-height: 28px;
   z-index: 10;
+  position: relative;
+  overflow: hidden;
+
+  .Blob {
+    position: absolute;
+  }
+
+  .blob-left {
+    top: -200px;
+  }
 
   a,
   h4,
@@ -22,6 +37,10 @@ const FooterContainer = styled.footer`
   @media ${devices.tabletMax} {
     gap: 40px;
     height: 100%;
+
+    .Blob {
+      display: none;
+    }
   }
 `;
 const FooterHeader = styled.div`
@@ -29,6 +48,22 @@ const FooterHeader = styled.div`
   justify-content: space-between;
   padding: 40px 140px 0 140px;
   font-weight: 700;
+
+  .community {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    span {
+      padding-right: 16px;
+    }
+
+    a {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+    }
+  }
 
   @media ${devices.tabletMax} {
     padding: 48px 24px 0 24px;
@@ -41,6 +76,11 @@ const LinksContainer = styled.div`
   flex-wrap: wrap;
   padding: 0 140px;
   gap: 12px;
+  row-gap: 32px;
+
+  * {
+    z-index: 3;
+  }
 
   h4 {
     font-weight: 700;
@@ -63,6 +103,7 @@ const DeblockAddress = styled.div`
   background-color: black;
   height: 75px;
   padding: 0 140px;
+  z-index: 3;
 
   @media ${devices.tabletMax} {
     padding: 0 24px;
@@ -75,14 +116,24 @@ const Footer = () => {
       <FooterHeader>
         <div>
           {/* <Image /> */}
-          <span>France</span>
-          <span>Français</span>
+          {/* <span>France</span>
+          <span>Français</span> */}
         </div>
-        <div>
+        <div className="community">
           <span>Join our community</span>
-          {/* <Image /> */}
-          {/* <Image /> */}
-          {/* <Image /> */}
+          <a href="">
+            <Image src={Instagram} alt="Instagram logo" />
+          </a>
+          <a
+            target="_blank"
+            rel="noreferrer"
+            href="https://twitter.com/DeblockApp"
+          >
+            <Image src={Twitter} alt="Twitter logo" />
+          </a>
+          <a href="">
+            <Image src={Linkedin} alt="Linkedin" />
+          </a>
         </div>
       </FooterHeader>
       <LinksContainer>
@@ -122,14 +173,17 @@ const Footer = () => {
               <Link href="/ncw">Non-custodial wallet</Link>
             </li>
             <li>
-              <Link href="">Fees Services</Link>
+              <Link href="">Features</Link>
             </li>
             <li>
               <Link href="">NFTs</Link>
             </li>
+            <li>
+              <Link href="/pricing">Pricing plan</Link>
+            </li>
           </ul>
         </Crypto>
-        <FiatAccount>
+        {/* <FiatAccount>
           <h4>FIAT Account</h4>
           <ul>
             <li>
@@ -139,18 +193,36 @@ const Footer = () => {
               <Link href="">NFTs</Link>
             </li>
           </ul>
-        </FiatAccount>
+        </FiatAccount> */}
         <Help>
           <h4>Help</h4>
           <ul>
             <li>
-              <Link href="">Customer help</Link>
+              <Link href="/support">Contact</Link>
             </li>
             <li>
-              <Link href="">Community System</Link>
+              <a
+                target="_blank"
+                rel="noreferrer"
+                href="https://discord.gg/uSqj6t9G9e"
+              >
+                Discord
+              </a>
             </li>
             <li>
-              <Link href="">Status Complaints</Link>
+              <a
+                target="_blank"
+                rel="noreferrer"
+                href="https://twitter.com/DeblockApp"
+              >
+                Twitter
+              </a>
+            </li>
+            <li>
+              <Link href="">Complaints</Link>
+            </li>
+            <li>
+              <Link href="">FAQ</Link>
             </li>
           </ul>
         </Help>
@@ -175,6 +247,8 @@ const Footer = () => {
       <DeblockAddress>
         Deblock LTD, 8-14 Verulam St, London WC1X 8LZ United Kingdom
       </DeblockAddress>
+      <Blob className="blob-left" color="#141313" />
+      <Blob className="blob-right" color="#141313" />
     </FooterContainer>
   );
 };

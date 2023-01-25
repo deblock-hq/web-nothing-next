@@ -21,6 +21,12 @@ const Container = styled.div`
   .blob-right {
     top: 0;
   }
+
+  @media ${devices.tabletMax} {
+    .Blob {
+      display: none;
+    }
+  }
 `;
 
 const BlogContainer = styled.div`
