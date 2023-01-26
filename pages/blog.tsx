@@ -50,13 +50,13 @@ const BlogContainer = styled.div`
   }
 
   h2 {
-    font-size: 30px;
+    font-size: 24px;
     line-height: 44px;
     padding-bottom: 24px;
   }
 
   p {
-    font-size: 18px;
+    font-size: 14px;
     line-height: 28px;
     color: #4d4d4d;
     padding-bottom: 16px;
@@ -89,19 +89,21 @@ const BlogCard = styled.div`
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.07);
   border-radius: 30px;
   padding: 16px 32px 24px 16px;
+  width: 80%;
+  margin: auto;
 
   img {
     max-width: unset;
   }
 
   .number {
-    font-size: 95px;
+    font-size: 78px;
     line-height: 57px;
     letter-spacing: 0.16px;
     background: #fbfaf9;
     border-radius: 22px;
-    height: 132px;
-    width: 154px;
+    height: 108px;
+    width: 126px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -118,14 +120,14 @@ const BlogCard = styled.div`
 
     > div:first-child {
       min-width: fit-content;
-      font-size: 14px;
+      font-size: 12px;
       line-height: 28px;
     }
 
     > div:last-child {
       display: flex;
       gap: 26px;
-      font-size: 18px;
+      font-size: 14px;
 
       div {
         display: flex;
