@@ -173,7 +173,7 @@ const Footer = () => {
               <Link href="/ncw">Non-custodial wallet</Link>
             </li>
             <li>
-              <Link href="">Features</Link>
+              <Link href="/product">Features</Link>
             </li>
             <li>
               <Link href="">NFTs</Link>
