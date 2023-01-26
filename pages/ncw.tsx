@@ -106,7 +106,7 @@ const KeyTakeway = styled.div`
   font-family: "Georgia";
   font-size: 21px;
   line-height: 41px;
-  /* margin-top: -20px; */
+  margin-top: -8px;
 
   .header-container {
     display: flex;
