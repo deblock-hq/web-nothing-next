@@ -31,6 +31,7 @@ const HeaderContainer = styled.header<Props>`
   .logo {
     width: 110px;
     cursor: pointer;
+    /* margin-left: 40px; */
   }
 
   > div {
@@ -82,14 +83,20 @@ const HeaderContainer = styled.header<Props>`
       background: #ffffff;
       border: 2px solid #000000;
       border-radius: 5px;
-      width: 80%;
+      /* width: 80%; */
+      width: 90%;
+      max-width: 1152px;
       margin: auto;
       top: 80px;
-      left: 10%;
+      left: 2%;
+      /* left: 10%; */
       box-shadow: 2px 2px 0px 0px rgb(0 0 0);
       padding: 12px;
 
       a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
         border-radius: 4px;
         padding: 16px 0px;
         text-align: center;
@@ -100,14 +107,24 @@ const HeaderContainer = styled.header<Props>`
 
         /* :before {
           content: "";
-          background: url("../../assets/arrow.svg");
+          background: url("/arrow.svg") no-repeat;
           position: absolute;
-          width: 30px;
-          height: 30px;
+          width: 10px;
+          height: 10px;
+          background-size: 100%;
         } */
 
         :hover {
           background: #f3f3f3;
+          :before {
+            content: "";
+            background: url("/arrow.svg") no-repeat;
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-size: 100%;
+            right: 80px;
+          }
         }
       }
     }
@@ -134,7 +151,26 @@ const HeaderContainer = styled.header<Props>`
         box-shadow: 0px 2px 0px 0px lightgray;
         border: none;
         border-radius: 0;
-        width: 100%;
+
+        .desktop-tablet-display {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          position: absolute;
+          gap: 12px;
+          background: #ffffff;
+          border: 2px solid #000000;
+          border-radius: 5px;
+          /* width: 80%; */
+          width: 90%;
+          max-width: 1152px;
+          margin: auto;
+          top: 80px;
+          left: 2%;
+          /* left: 10%; */
+          box-shadow: 2px 2px 0px 0px rgb(0 0 0);
+          padding: 12px;
+        }
       }
     `};
 `;
