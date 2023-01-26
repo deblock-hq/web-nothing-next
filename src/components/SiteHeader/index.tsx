@@ -152,7 +152,7 @@ const HeaderContainer = styled.header<Props>`
       box-shadow: 2px 2px 0px 0px rgb(0 0 0);
       padding: 0 40px;
       max-width: 1152px;
-      animation: fadeIn 0.5s;
+      animation: fadeIn 0.2s;
 
       @media ${devices.tabletMax} {
         top: 0;
