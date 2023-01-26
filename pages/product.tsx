@@ -27,8 +27,8 @@ const ProductContainer = styled.div`
   margin: auto;
   gap: 40px;
   padding-bottom: 134px;
-  padding-top: 40px;
-  padding: 40px 12px 134px 12px;
+  /* padding-top: 40px; */
+  padding: 72px 12px 134px 12px;
 
   ul {
     list-style: initial;

@@ -64,7 +64,7 @@ const AboutUsContainer = styled.div`
   gap: 96px;
   max-width: 1152px;
   margin: auto;
-  padding: 40px 12px;
+  padding: 72px 12px;
 
   * {
     z-index: 2;

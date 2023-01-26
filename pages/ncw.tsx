@@ -45,7 +45,7 @@ const NCWContainer = styled.div`
   font-size: 21px;
   line-height: 41px;
   font-family: "Georgia";
-  padding: 40px 24px 24px 24px;
+  padding: 72px 24px 24px 24px;
 
   * {
     z-index: 2;

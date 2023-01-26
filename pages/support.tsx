@@ -33,7 +33,7 @@ const Container = styled.div`
 `;
 
 const SupportContainer = styled.div`
-  padding: 40px 24px;
+  padding: 72px 24px;
   z-index: 2;
 
   * {
