@@ -43,7 +43,7 @@ const PressContainer = styled.div`
   max-width: 1044px;
   align-items: center;
   margin: auto;
-  padding: 80px 24px;
+  padding: 40px 24px;
 
   * {
     z-index: 3;

@@ -46,7 +46,7 @@ const BlogContainer = styled.div`
     line-height: 57px;
     text-align: center;
     letter-spacing: 0.16px;
-    padding: 80px;
+    padding: 40px 80px 80px 80px;
   }
 
   h2 {

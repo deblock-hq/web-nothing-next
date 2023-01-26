@@ -50,7 +50,7 @@ const PricingContainer = styled.div`
     font-size: 48px;
     line-height: 57px;
     text-align: center;
-    padding: 72px 0;
+    padding-bottom: 72px;
     letter-spacing: 0.16px;
 
     span {
