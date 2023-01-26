@@ -942,7 +942,7 @@ const Home = () => {
               virtual cards, and 15+ currencies at the best exchange rates.
             </div>
             <LearnMoreButton>
-              <Link href="/">
+              <Link href="/product">
                 Learn more <Image src={Arrow} alt="Arrow right" />{" "}
               </Link>
             </LearnMoreButton>
@@ -970,7 +970,7 @@ const Home = () => {
             </div>
             <div>
               <LearnMoreButton>
-                <Link href="/">
+                <Link href="/ncw">
                   Learn more <Image src={Arrow} alt="Arrow right" />{" "}
                 </Link>
               </LearnMoreButton>

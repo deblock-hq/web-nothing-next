@@ -223,7 +223,7 @@ const Header = () => {
       )}
       <div className="hide-on-mobile">
         <Link href="/blog">Blog</Link>
-        <Link href="/product">About</Link>
+        <Link href="/aboutus">About</Link>
         <a
           href="https://apply.workable.com/deblock"
           target="_blank"
