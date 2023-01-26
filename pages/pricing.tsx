@@ -29,6 +29,8 @@ const Container = styled.div`
   }
 
   @media ${devices.pricing} {
+    overflow: visible;
+
     .Blob {
       display: none;
     }
@@ -38,7 +40,7 @@ const Container = styled.div`
 const PricingContainer = styled.div`
   max-width: 1224px;
   margin: auto;
-  padding: 24px;
+  padding: 40px 24px;
 
   * {
     z-index: 2;
@@ -101,6 +103,10 @@ const PricingContainer = styled.div`
         display: none;
       }
     }
+  }
+
+  @media ${devices.tabletMax} {
+    width: auto;
   }
 `;
 

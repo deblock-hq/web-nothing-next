@@ -87,15 +87,14 @@ const HeaderContainer = styled.header<Props>`
       top: 80px;
       left: 10%;
       box-shadow: 2px 2px 0px 0px rgb(0 0 0);
-      padding: 12px 0;
+      padding: 12px;
 
       a {
         border-radius: 4px;
-        padding: 16px 28px;
-        max-width: 302px;
-        width: 100%;
+        padding: 16px 0px;
         text-align: center;
         font-size: 16px;
+        width: 100%;
         line-height: 19px;
         font-weight: 400;
 
