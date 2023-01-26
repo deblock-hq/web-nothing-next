@@ -341,7 +341,7 @@ const Press = () => {
               <div className="text-container">
                 <p>20 november 2022</p>
                 <h3>
-                  Deblock annonce sa levée de €12m avant même d'avoir lancé son
+                  Deblock annonce sa levée de €12m avant même d&apos;avoir lancé son
                   service
                 </h3>
               </div>
@@ -354,7 +354,7 @@ const Press = () => {
               <div className="text-container">
                 <p>20 november 2022</p>
                 <h3>
-                  Deblock annonce sa levée de €12m avant même d'avoir lancé son
+                  Deblock annonce sa levée de €12m avant même d&apos;avoir lancé son
                   service
                 </h3>
               </div>
@@ -367,7 +367,7 @@ const Press = () => {
               <div className="text-container">
                 <p>20 november 2022</p>
                 <h3>
-                  Deblock annonce sa levée de €12m avant même d'avoir lancé son
+                  Deblock annonce sa levée de €12m avant même d&apos;avoir lancé son
                   service
                 </h3>
               </div>
@@ -380,7 +380,7 @@ const Press = () => {
               <div className="text-container">
                 <p>20 november 2022</p>
                 <h3>
-                  Deblock annonce sa levée de €12m avant même d'avoir lancé son
+                  Deblock annonce sa levée de €12m avant même d&apos;avoir lancé son
                   service
                 </h3>
               </div>
