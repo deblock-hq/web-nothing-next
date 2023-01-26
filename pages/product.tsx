@@ -48,7 +48,6 @@ const ProductContainer = styled.div`
     line-height: 57px;
     text-align: center;
     letter-spacing: 0.16px;
-    padding-bottom: 24px;
   }
 
   h2 {
@@ -372,8 +371,13 @@ const LicensedAndRegulated = styled.div`
 
     .italic-texte {
       padding-top: 40px;
-      padding-left: 26px;
+      /* padding-left: 26px; */
       font-style: italic;
+
+      @media ${devices.tabletMax} {
+        padding-top: 0px;
+        padding-left: 12px;
+      }
     }
   }
 
