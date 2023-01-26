@@ -57,7 +57,8 @@ const ProductContainer = styled.div`
   }
 
   p {
-    line-height: 24px;
+    text-align: center;
+    line-height: 32px;
   }
 
   .image-container {
