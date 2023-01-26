@@ -47,6 +47,10 @@ const HeaderContainer = styled.header<Props>`
     }
   }
 
+  .hide-on-desktop {
+    display: none;
+  }
+
   @media ${devices.tabletMax} {
     top: 0;
     box-shadow: 0px 2px 0px 0px lightgray;
@@ -56,6 +60,10 @@ const HeaderContainer = styled.header<Props>`
 
     .hide-on-mobile {
       display: none;
+    }
+
+    .hide-on-desktop {
+      display: block;
     }
 
     .burger-menu {
@@ -144,7 +152,7 @@ const HeaderContainer = styled.header<Props>`
       box-shadow: 2px 2px 0px 0px rgb(0 0 0);
       padding: 0 40px;
       max-width: 1152px;
-      animation: fadeIn .5s;
+      animation: fadeIn 0.5s;
 
       @media ${devices.tabletMax} {
         top: 0;
@@ -200,7 +208,7 @@ const Header = () => {
         {openMenu && <Image src={Cross} alt="lose button" />}
       </div>
       {openMenu && (
-        <div className="desktop-tablet-display">
+        <div className="desktop-tablet-display hide-on-desktop">
           <Link href="/blog">Blog</Link>
           <Link href="/aboutus">About</Link>
           <a
