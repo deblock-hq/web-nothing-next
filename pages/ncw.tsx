@@ -39,7 +39,7 @@ const Container = styled.div`
 const NCWContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 80px;
+  gap: 72px;
   margin: auto;
   max-width: 796px;
   font-size: 21px;
@@ -79,7 +79,7 @@ const NCWContainer = styled.div`
 
 const TitleContainer = styled.div`
   max-width: 724px;
-  padding-left: 68px;
+  padding-left: 48px;
 
   h1 {
     font-size: 48px;
@@ -106,6 +106,7 @@ const KeyTakeway = styled.div`
   font-family: "Georgia";
   font-size: 21px;
   line-height: 41px;
+  /* margin-top: -20px; */
 
   .header-container {
     display: flex;
