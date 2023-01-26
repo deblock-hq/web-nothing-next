@@ -81,7 +81,7 @@ const AboutUsContainer = styled.div`
     font-size: 48px;
     line-height: 57px;
     text-align: center;
-    padding-bottom: 72px;
+    /* padding-bottom: 72px; */
     padding-top: 16px;
   }
 
