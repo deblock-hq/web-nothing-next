@@ -23,6 +23,7 @@ const Container = styled.div`
     position: absolute;
     z-index: 1;
   }
+  
   .blob-top {
     top: -480px;
     left: 350px;

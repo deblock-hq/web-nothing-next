@@ -1,8 +1,17 @@
 import axios from "axios";
+import { useGlobalContext } from "../../../context";
 import Image from "next/image";
-import React, { ReactNode, useEffect, useState } from "react";
+import React, {
+  ReactNode,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
+import { getFromStorage } from "../../utils/getFromStorage";
 import styled from "styled-components";
 import Blob from "../Blob";
+import { flushSync } from "react-dom";
 
 const Container = styled.div`
   position: absolute;
@@ -205,19 +214,29 @@ const Modal = ({
 }: ModalProps) => {
   const [phoneCode, setPhoneCode] = useState("+44");
   const [phoneNumber, setPhoneNumber] = useState<number>();
+  const [phoneVerifyCode, setPhoneVerifyCode] = useState("");
+  const phoneVerifyRef = useRef(null);
 
   const [openDropdown, setOpenDropdown] = useState(false);
   const [triggerSendNumber, setTriggerSendNumber] = useState(false);
+
+  const [actualStep, setActualStep] = useState("");
 
   const handleChange = (e: any) => {
     const value = e.target.value.replace(/\D/g, "");
     setPhoneNumber(value);
   };
 
+  let token: unknown;
+  if (typeof window !== "undefined") token = localStorage.getItem("token");
+
+  const baseUrl = "https://waitlist-staging.deblock.com/v1";
+
+  /** Send mail */
   useEffect(() => {
     axios
       .post(
-        "https://waitlist-staging.deblock.com/v1/waitlist/email",
+        `${baseUrl}/waitlist/email`,
         {
           user: {
             email: "sam.adib@free.fr",
@@ -232,31 +251,130 @@ const Modal = ({
           },
         }
       )
-      .then(async (response) => {
-        console.log("response", response);
+      .then(async (res) => {
+        console.log("response", res);
       })
       .catch((error) => {
         console.log("error", error);
       });
   }, [email]);
 
+  /** Verify email */
+  useEffect(() => {
+    fetch(`${baseUrl}/waitlist/email/verify`, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then(async (res) => {
+        console.log("verify", res);
+      })
+      .catch((err) => {
+        console.log("errverify", err);
+      });
+  }, [token]);
+
+  // useEffect(() => {
+  //   axios
+  //     .get(`${baseUrl}/waitlist/status`, {
+  //       headers: {
+  //         Authorization: `Bearer ${token}`,
+  //       },
+  //     })
+  //     .then(async (res) => {
+  //       setActualStep(res.data.result.user.step);
+  //       console.log("res", res, actualStep);
+  //     })
+  //     .catch((err) => {
+  //       console.log("err", err);
+  //     });
+  // }, [token, actualStep]);
+
+  /** Send phone code */
+  const sendPhoneNumber = () => {
+    axios
+      .post(
+        `${baseUrl}/waitlist/phone`,
+        {
+          user: {
+            phone_number: `${phoneCode}${phoneNumber}`,
+          },
+        },
+        {
+          headers: {
+            "Accept-Language": "fr",
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        }
+      )
+      .then(async (res) => {
+        setActualStep(res.data.result.user.step);
+        console.log("phoneres", res, actualStep);
+      })
+      .catch((err) => {
+        console.log("phoneerr", err);
+      });
+  };
+
+  /** Verify phone code */
+  useEffect(() => {
+    console.log(
+      "phoneVerifyCode.length",
+      phoneVerifyCode.length,
+      "phoneVerifyCode",
+      phoneVerifyCode
+    );
+
+    if (phoneVerifyCode.length == 4) {
+      console.log("phoneVerifyCode length ", phoneVerifyCode);
+      axios
+        .post(
+          `${baseUrl}/waitlist/phone/verify`,
+          {
+            user: {
+              phone_number: `${phoneCode}${phoneNumber}`,
+              code: `${phoneVerifyCode}`,
+            },
+          },
+          {
+            headers: {
+              "Accept-Language": "fr",
+              Authorization: `Bearer ${token}`,
+              "Content-Type": "application/json",
+            },
+          }
+        )
+        .then(async (res) => {
+          // setActualStep(res.data.result.user.step);
+          console.log("phonecode res", res);
+        })
+        .catch((err) => {
+          console.log("phonecode err", err);
+        });
+    }
+  }, [actualStep, phoneCode, phoneNumber, phoneVerifyCode, token]);
+
+  /** Get status */
   useEffect(() => {
     axios
-      .get("https://waitlist-staging.deblock.com/v1/waitlist/status", {
+      .get(`${baseUrl}/waitlist/status`, {
         headers: {
-          Authorization: "Bearer 64726720888b45b06e7f8f22ac2cbb4ece5cefe6016cf31986b80ad47fece262de9bb18db4225f728816d611eb28487fddf9",
+          Authorization: `Bearer ${token}`,
         },
       })
       .then(async (res) => {
-        console.log("res", res);
+        setActualStep(res.data.result.user.step);
+        console.log("status res", res, actualStep);
       })
       .catch((err) => {
-        console.log("err", err);
+        console.log("status err", err);
       });
-  }, []);
+  }, [actualStep, phoneCode, phoneNumber, phoneVerifyCode, token]);
 
   const StepsVerification = () => {
-    if (step === "verify_email") {
+    if (actualStep === "verify_email") {
       return (
         <div className="email-verification">
           <div>
@@ -265,7 +383,7 @@ const Modal = ({
           <div>Waiting for email verification...</div>
         </div>
       );
-    } else if (step === "phone") {
+    } else if (actualStep === "phone") {
       if (!!phoneNumber && phoneCode && triggerSendNumber) {
         return (
           <div>
@@ -274,7 +392,13 @@ const Modal = ({
               {phoneNumber}{" "}
             </div>
             <div>
-              <div>_ _ _ _</div>
+              <input
+                ref={phoneVerifyRef}
+                type="number"
+                value={phoneVerifyCode}
+                onChange={(e) => setPhoneVerifyCode(e.target.value)}
+                placeholder="_ _ _ _"
+              />
               <div onClick={() => setTriggerSendNumber(false)}>
                 change your phone
               </div>
@@ -313,12 +437,19 @@ const Modal = ({
               onChange={handleChange}
               placeholder="your phone number"
             />
-            <button onClick={() => setTriggerSendNumber(!triggerSendNumber)}>
+            <button
+              onClick={() => {
+                sendPhoneNumber();
+                setTriggerSendNumber(!triggerSendNumber);
+              }}
+            >
               Send Code
             </button>
           </div>
         </div>
       );
+    } else if (actualStep === "invite_friend") {
+      return <div>INVITE FRIEND</div>;
     }
   };
 

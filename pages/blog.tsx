@@ -46,7 +46,7 @@ const BlogContainer = styled.div`
     line-height: 57px;
     text-align: center;
     letter-spacing: 0.16px;
-    padding: 72px 80px 80px 80px;
+    padding: 72px 80px 48px 80px;
   }
 
   h2 {
@@ -88,7 +88,7 @@ const BlogCard = styled.div`
   background: #ffffff;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.07);
   border-radius: 30px;
-  padding: 16px 32px 24px 16px;
+  padding: 16px 22px 22px 16px;
   width: 80%;
   margin: auto;
 

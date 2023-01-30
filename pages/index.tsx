@@ -230,6 +230,10 @@ const FirstContainer = styled.div`
         color: rgba(88, 88, 88, 0.5);
       }
 
+      :focus {
+        outline: none;
+      }
+
       @media ${devices.tablet} {
         width: 196px;
         box-shadow: 2px 2px 0px 0px rgb(0 0 0);
@@ -877,8 +881,6 @@ const Home = () => {
         "perspective(400px) rotateY(0deg) rotateX(0deg)";
     }
   }, []);
-
-  console.log("router", router);
 
   return (
     <div>
