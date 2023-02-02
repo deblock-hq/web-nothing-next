@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import styled from "styled-components";
 
 import DoublePhone from "../src/assets/lottie/landing/DoublePhone.json";
@@ -18,6 +18,8 @@ import Rent from "../src/assets/backed/rent.svg";
 import Coffee from "../src/assets/backed/coffee.svg";
 import Commission from "../src/assets/backed/commission.svg";
 import Arrow from "../src/assets/arrow.svg";
+import MockupPhone1 from "../src/assets/landing-phone-mockup-1.svg";
+import MockupPhone2 from "../src/assets/landing-phone-mockup-2.svg";
 import { devices } from "../src/utils/devices";
 
 import Blob from "../src/views/Blob";
@@ -29,6 +31,34 @@ import { GetStaticProps } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Modal from "../src/views/Modal";
 import { useRouter } from "next/router";
+
+import dynamic from "next/dynamic";
+const Animator = dynamic(
+  import("react-scroll-motion").then((it) => it.Animator),
+  { ssr: false }
+);
+
+import {
+  ScrollContainer,
+  ScrollPage,
+  batch,
+  Fade,
+  FadeIn,
+  FadeOut,
+  Move,
+  MoveIn,
+  MoveOut,
+  Sticky,
+  StickyIn,
+  StickyOut,
+  Zoom,
+  ZoomIn,
+  ZoomOut,
+} from "react-scroll-motion";
+
+interface Props {
+  animate: boolean;
+}
 
 const LandingContainer = styled.div`
   display: flex;
@@ -183,7 +213,7 @@ const FirstContainer = styled.div`
       gap: 40px;
 
       h1 {
-        font-size: 48px;
+        /* font-size: 48px; */
         line-height: 56px;
         padding-bottom: 20px;
       }
@@ -195,8 +225,28 @@ const FirstContainer = styled.div`
     }
   }
   h1 {
-    font-size: 26px;
+    /* font-size: 26px; */
+    /* font-size: max(26px, 48px); */
+    font-size: clamp(26px, 4em, 48px);
     line-height: 34px;
+    position: relative;
+    /* min-width: 26px;
+    max-width: 48px;
+    width: 3vw; */
+
+    > span:first-child {
+      position: relative;
+      :after {
+        content: "";
+        background: url("/mobile-background/info-i.svg");
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        top: 12px;
+        left: 140px;
+        cursor: pointer;
+      }
+    }
   }
   p {
     font-size: 18px;
@@ -271,7 +321,7 @@ const BackedByContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 20px;
 
   @media ${devices.tablet} {
@@ -290,7 +340,7 @@ const BackedByContainer = styled.div`
     padding-top: 24px;
 
     @media ${devices.tablet} {
-      padding-top: 0px;
+      padding-top: 16px;
       color: black;
     }
   }
@@ -339,15 +389,15 @@ const BestAccount = styled.div`
 
   @media ${devices.tablet} {
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
     background-color: rgba(162, 167, 245, 0.1);
     border-radius: 30px;
-    gap: 0;
+    gap: 140px;
     position: relative;
     align-items: center;
     height: 506px;
     padding: 0;
-    margin-bottom: 24px;
+    margin-bottom: 8px;
     overflow: hidden;
     width: 100%;
     max-width: 1152px;
@@ -387,6 +437,7 @@ const BestAccount = styled.div`
       div {
         max-width: 502px;
         min-width: 400px;
+        width: 90%;
       }
     }
   }
@@ -399,7 +450,8 @@ const BestAccount = styled.div`
 
     @media ${devices.tablet} {
       gap: 32px;
-      width: 40%;
+      width: 45%;
+      padding: 0;
     }
 
     h2 {
@@ -432,7 +484,7 @@ const BestAccount = styled.div`
 
       @media ${devices.tablet} {
         font-size: 18px;
-        width: 88%;
+        width: 80%;
       }
     }
   }
@@ -452,7 +504,7 @@ const NftContainer = styled.div`
     flex-direction: row-reverse;
     justify-content: space-between;
     /* padding: 0 52px 0 90px; */
-    margin-bottom: 14px;
+    margin-bottom: 8px;
     z-index: 2;
 
     h2 {
@@ -473,9 +525,10 @@ const NftContainer = styled.div`
 
     @media ${devices.tablet} {
       background: none;
-      width: 216px;
+      width: 356px;
       height: 280px;
       /* padding-top: top; */
+      justify-content: flex-start;
     }
 
     img {
@@ -488,6 +541,28 @@ const NftContainer = styled.div`
       }
     }
   }
+
+  .text-container {
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    border-radius: 30px;
+
+    .blob-nft {
+      display: none;
+
+      @media ${devices.tablet} {
+        display: block;
+        position: absolute;
+        top: -60px;
+        left: -100px;
+        width: 200px;
+      }
+    }
+  }
+
   h2 {
     text-align: center;
     padding: 0px 22px;
@@ -498,7 +573,7 @@ const NftContainer = styled.div`
     @media ${devices.tablet} {
       font-size: 40px;
       line-height: 48px;
-      width: 50%;
+      width: 55%;
       padding: 0;
       text-align: left;
     }
@@ -514,7 +589,7 @@ const Deposit = styled.div`
     justify-content: space-around;
     background-color: #f8f2f4;
     border-radius: 30px;
-    gap: 0;
+    gap: 100px;
     align-items: center;
     height: 506px;
     padding: 0;
@@ -547,12 +622,14 @@ const Deposit = styled.div`
 
     div {
       max-width: 240px;
+      width: 90%;
     }
 
     @media ${devices.tablet} {
       background: none;
       z-index: 2;
       max-width: 324px;
+      padding-left: 70px;
 
       div {
         max-width: 324px;
@@ -568,8 +645,13 @@ const Deposit = styled.div`
 
     @media ${devices.tablet} {
       gap: 32px;
-      width: 42%;
+      width: 37%;
       z-index: 2;
+      padding: 0;
+
+      div:first-child {
+        width: 80%;
+      }
     }
   }
 `;
@@ -580,7 +662,7 @@ const CashOrCrypto = styled.div`
   gap: 88px;
 
   @media ${devices.tablet} {
-    padding-top: 90px;
+    padding-top: 112px;
     max-width: 880px;
   }
 
@@ -648,6 +730,16 @@ const CashOrCrypto = styled.div`
     flex-direction: column;
     gap: 30px;
     align-items: center;
+
+    @media ${devices.tablet} {
+      :nth-child(2) {
+        justify-content: space-between;
+
+        img {
+          padding-top: 16px;
+        }
+      }
+    }
   }
 `;
 const SafestAccount = styled.div`
@@ -671,7 +763,7 @@ const SafestAccount = styled.div`
     > div:first-child {
       display: flex;
       flex-direction: row-reverse;
-      justify-content: center;
+      justify-content: space-between;
       border-radius: 30px;
       height: 418px;
       align-items: center;
@@ -700,13 +792,14 @@ const SafestAccount = styled.div`
     /* max-width: 362px; */
 
     div {
-      max-width: 362px;
+      max-width: 368px;
     }
 
     @media ${devices.tablet} {
       background: none;
       max-width: 362px;
       z-index: 2;
+      padding-right: 20%;
     }
   }
   .first-block {
@@ -774,11 +867,14 @@ const SafestAccount = styled.div`
       padding-top: 0;
 
       h3 {
-        font-size: 26px;
+        font-size: 16px;
+        font-weight: 700;
+        padding-top: 16px;
       }
 
       p {
         width: 70%;
+        font-size: 16px;
       }
     }
 
@@ -810,6 +906,60 @@ const LearnMoreButton = styled.span`
     font-weight: 700;
     font-size: 16px;
     padding: 0;
+
+    img {
+      transition: transform 250ms;
+    }
+  }
+
+  a:hover > img {
+    transform: translateX(10px);
+  }
+`;
+const Tooltip = styled.span`
+  display: flex;
+  align-items: center;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 23px;
+  padding: 11px 11px 11px 19px;
+  width: 620px;
+  gap: 16px;
+  top: -70px;
+  left: -180px;
+
+  visibility: hidden;
+  background-color: white;
+  border-radius: 4px;
+  border: 1px solid black;
+  box-shadow: 3px 3px 0px 0px rgb(0 0 0);
+
+  position: absolute;
+  z-index: 5;
+
+  ::before {
+    content: " ";
+    position: absolute;
+    top: 100%; /* At the bottom of the tooltip */
+    left: 50%;
+    margin-left: -4px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: white transparent transparent transparent;
+    z-index: 3;
+    /* box-shadow: 3px 3px 0px 0px rgb(0 0 0); */
+  }
+
+  ::after {
+    content: " ";
+    position: absolute;
+    top: 100%; /* At the bottom of the tooltip */
+    left: 50%;
+    margin-left: -5px;
+    border-width: 8px;
+    border-style: solid;
+    border-color: black transparent transparent transparent;
+    /* box-shadow: 3px 3px 0px 0px rgb(0 0 0); */
   }
 `;
 
@@ -882,31 +1032,56 @@ const Home = () => {
     }
   }, []);
 
+  let checkLocalStorage;
+  if (typeof window !== "undefined")
+    checkLocalStorage = localStorage.getItem("token");
+
   return (
     <div>
-      {/* <Modal email={whitelistEmail} /> */}
-
       <LandingContainer>
+        {/* <Modal email={whitelistEmail} /> */}
         <div className="double-phone-container">
           <Lottie animationData={DoublePhone} loop={false} />
+          {/* <div className="animation-phones">
+            <Image src={MockupPhone1} alt="" />
+            <Image src={MockupPhone2} alt="" />
+          </div> */}
           <FirstContainer>
             <div className="image-container">
               <Lottie animationData={DoublePhone} loop={false} />
             </div>
             <div className="text-container">
-              <h1>A GBP account merged with a non-custodial wallet</h1>
+              <h1>
+                A GBP account merged with a non-custodial{" "}
+                <span>
+                  wallet
+                  <Tooltip>
+                    <Image
+                      width={20}
+                      height={20}
+                      src="/mobile-background/info-i.svg"
+                      alt="information logo"
+                    />
+                    Non-custodial crypto wallets give you complete control and
+                    ownership of your funds. Nobody can freeze your
+                    assets/withdrawals, block them or take them away.
+                  </Tooltip>
+                </span>
+              </h1>
               <p>
                 Spend, transfer and exchange your pounds or your crypto
                 indifferently
               </p>
               <form>
-                <input
-                  type="email"
-                  placeholder="Your email"
-                  value={whitelistEmail}
-                  onChange={(e) => setWhitelistEmail(e.target.value)}
-                />
-                <button type="submit" onClick={() => setOpenModal(true)}>
+                {!checkLocalStorage ? (
+                  <input
+                    type="email"
+                    placeholder="Your email"
+                    value={whitelistEmail}
+                    onChange={(e) => setWhitelistEmail(e.target.value)}
+                  />
+                ) : null}
+                <button onClick={() => setOpenModal(!openModal)}>
                   Request access
                 </button>
               </form>
@@ -940,7 +1115,7 @@ const Home = () => {
             </h2>
             <div>
               Get your own IBANs, instant transfers, physical/
-              <br />
+              {/* <br /> */}
               virtual cards, and 15+ currencies at the best exchange rates.
             </div>
             <LearnMoreButton>
@@ -958,7 +1133,10 @@ const Home = () => {
               <Image id="panel-container" src={Nft} alt="Nft card" />
             </div>
           </div>
-          <h2>Brand your card with your own NFT</h2>
+          <div className="text-container">
+            <h2>Brand your card with your own NFT</h2>
+            <Blob className="blob-nft" color="#F7DFC5" />
+          </div>
         </NftContainer>
         <Deposit>
           <div className="image-container">
@@ -1038,7 +1216,7 @@ const Home = () => {
               <div>
                 This is self-custody.{" "}
                 <span style={{ fontWeight: 700 }}>
-                  Even if Deblock disappears
+                  Even if Deblock goes down
                 </span>
                 , 100% of your wallet is protected.
                 <br />

@@ -194,6 +194,7 @@ const VerificationSteps = styled.div`
 `;
 
 interface ModalProps {
+  // isOpen: boolean;
   email?: string;
   step?: string;
   size?: number;
@@ -205,6 +206,7 @@ interface ModalProps {
 
 const Modal = ({
   email,
+  // isOpen,
   step = "verify_email",
   size = 13456,
   previousPosition,
@@ -239,7 +241,7 @@ const Modal = ({
         `${baseUrl}/waitlist/email`,
         {
           user: {
-            email: "sam.adib@free.fr",
+            email: `${email}`,
           },
         },
         {
@@ -274,22 +276,6 @@ const Modal = ({
         console.log("errverify", err);
       });
   }, [token]);
-
-  // useEffect(() => {
-  //   axios
-  //     .get(`${baseUrl}/waitlist/status`, {
-  //       headers: {
-  //         Authorization: `Bearer ${token}`,
-  //       },
-  //     })
-  //     .then(async (res) => {
-  //       setActualStep(res.data.result.user.step);
-  //       console.log("res", res, actualStep);
-  //     })
-  //     .catch((err) => {
-  //       console.log("err", err);
-  //     });
-  // }, [token, actualStep]);
 
   /** Send phone code */
   const sendPhoneNumber = () => {
@@ -454,6 +440,8 @@ const Modal = ({
   };
 
   return (
+    // <>
+    //   {isOpen ? (
     <Container>
       <ModalContainer>
         <div>
@@ -483,6 +471,8 @@ const Modal = ({
         <Blob className="blob-right" color="#F5EAD2" />
       </ModalContainer>
     </Container>
+    //   ) : null}
+    // </>
   );
 };
 

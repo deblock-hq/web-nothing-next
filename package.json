@@ -26,6 +26,7 @@
     "ni18n": "^1.0.5",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-scroll-motion": "^0.3.2",
     "simplex-noise": "^4.0.1",
     "styled-components": "^5.3.6",
     "typescript": "4.9.4"
