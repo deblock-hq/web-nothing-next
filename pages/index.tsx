@@ -213,7 +213,7 @@ const FirstContainer = styled.div`
       gap: 40px;
 
       h1 {
-        /* font-size: 48px; */
+        font-size: 48px;
         line-height: 56px;
         padding-bottom: 20px;
       }
@@ -225,26 +225,36 @@ const FirstContainer = styled.div`
     }
   }
   h1 {
-    /* font-size: 26px; */
+    font-size: 26px;
     /* font-size: max(26px, 48px); */
-    font-size: clamp(26px, 4em, 48px);
+    /* font-size: clamp(26px, 4em, 48px); */
     line-height: 34px;
     position: relative;
     /* min-width: 26px;
     max-width: 48px;
     width: 3vw; */
 
+    > span:hover span {
+      visibility: visible;
+    }
+
     > span:first-child {
       position: relative;
+
       :after {
         content: "";
         background: url("/mobile-background/info-i.svg");
         position: absolute;
         width: 20px;
         height: 20px;
-        top: 12px;
-        left: 140px;
+        top: 0;
+        left: 80px;
         cursor: pointer;
+
+        @media ${devices.tablet} {
+          top: 12px;
+          left: 140px;
+        }
       }
     }
   }
@@ -281,7 +291,7 @@ const FirstContainer = styled.div`
       }
 
       :focus {
-        outline: none;
+        outline: 1px solid #1cd0ba;
       }
 
       @media ${devices.tablet} {
@@ -300,6 +310,11 @@ const FirstContainer = styled.div`
       height: 58px;
       font-size: 16px;
       width: 100%;
+      cursor: pointer;
+
+      :hover {
+        background: rgba(0, 0, 0, 0.7);
+      }
 
       @media ${devices.tablet} {
         font-size: 13px;
@@ -1055,7 +1070,7 @@ const Home = () => {
                 A GBP account merged with a non-custodial{" "}
                 <span>
                   wallet
-                  <Tooltip>
+                  {/* <Tooltip>
                     <Image
                       width={20}
                       height={20}
@@ -1065,7 +1080,7 @@ const Home = () => {
                     Non-custodial crypto wallets give you complete control and
                     ownership of your funds. Nobody can freeze your
                     assets/withdrawals, block them or take them away.
-                  </Tooltip>
+                  </Tooltip> */}
                 </span>
               </h1>
               <p>
