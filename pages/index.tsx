@@ -210,12 +210,11 @@ const FirstContainer = styled.div`
     @media ${devices.tablet} {
       padding: 72px 90px;
       width: 55%;
-      gap: 40px;
+      gap: 56px;
 
       h1 {
         font-size: 48px;
         line-height: 56px;
-        padding-bottom: 20px;
       }
       p {
         width: 65%;
@@ -234,7 +233,8 @@ const FirstContainer = styled.div`
     max-width: 48px;
     width: 3vw; */
 
-    > span:hover span {
+    > span:hover span,
+    > span:hover + .display-on-mobile {
       visibility: visible;
     }
 
@@ -324,9 +324,6 @@ const FirstContainer = styled.div`
         width: 132px;
       }
     }
-  }
-  .hide-in-mobile {
-    display: none;
   }
 `;
 const BackedByContainer = styled.div`
@@ -938,11 +935,11 @@ const Tooltip = styled.span`
   font-size: 14px;
   line-height: 23px;
   padding: 11px 11px 11px 19px;
-  width: 620px;
+  width: 416px;
+  /* width: 100%; */
   gap: 16px;
-  top: -70px;
-  left: -180px;
-
+  top: -92px;
+  left: -277px;
   visibility: hidden;
   background-color: white;
   border-radius: 4px;
@@ -956,11 +953,11 @@ const Tooltip = styled.span`
     content: " ";
     position: absolute;
     top: 100%; /* At the bottom of the tooltip */
-    left: 50%;
+    left: 95%;
     margin-left: -4px;
     border-width: 5px;
     border-style: solid;
-    border-color: white transparent transparent transparent;
+    border-color: transparent;
     z-index: 3;
     /* box-shadow: 3px 3px 0px 0px rgb(0 0 0); */
   }
@@ -969,12 +966,51 @@ const Tooltip = styled.span`
     content: " ";
     position: absolute;
     top: 100%; /* At the bottom of the tooltip */
-    left: 50%;
+    left: 95%;
     margin-left: -5px;
     border-width: 8px;
     border-style: solid;
-    border-color: black transparent transparent transparent;
+    border-color: transparent;
     /* box-shadow: 3px 3px 0px 0px rgb(0 0 0); */
+  }
+
+  &.hide-on-mobile {
+    display: none;
+  }
+
+  &.display-on-mobile {
+    display: flex;
+    width: auto;
+    left: 0;
+  }
+
+  @media ${devices.tablet} {
+    &.hide-on-mobile {
+      display: flex;
+    }
+
+    width: 416px;
+    /* width: 100%; */
+    gap: 16px;
+    top: -92px;
+    left: -277px;
+
+    ::before,
+    ::after {
+      left: 95%;
+    }
+
+    ::before {
+      border-color: white transparent transparent transparent;
+    }
+
+    ::after {
+      border-color: black transparent transparent transparent;
+    }
+
+    &.display-on-mobile {
+      display: none;
+    }
   }
 `;
 
@@ -1070,7 +1106,7 @@ const Home = () => {
                 A GBP account merged with a non-custodial{" "}
                 <span>
                   wallet
-                  {/* <Tooltip>
+                  <Tooltip className="hide-on-mobile">
                     <Image
                       width={20}
                       height={20}
@@ -1080,8 +1116,19 @@ const Home = () => {
                     Non-custodial crypto wallets give you complete control and
                     ownership of your funds. Nobody can freeze your
                     assets/withdrawals, block them or take them away.
-                  </Tooltip> */}
+                  </Tooltip>
                 </span>
+                <Tooltip className="display-on-mobile">
+                  <Image
+                    width={20}
+                    height={20}
+                    src="/mobile-background/info-i.svg"
+                    alt="information logo"
+                  />
+                  Non-custodial crypto wallets give you complete control and
+                  ownership of your funds. Nobody can freeze your
+                  assets/withdrawals, block them or take them away.
+                </Tooltip>
               </h1>
               <p>
                 Spend, transfer and exchange your pounds or your crypto
@@ -1100,11 +1147,6 @@ const Home = () => {
                   Request access
                 </button>
               </form>
-            </div>
-            <div className="hide-in-mobile">
-              Non-custodial crypto wallets give you complete control and
-              ownership of your funds. Nobody can freeze your
-              assets/withdrawals, block them or take them away.{" "}
             </div>
             <Blob className="blob-left" color="#E5E0EA" />
             <Blob className="blob-top" color="#F9D6BE" />
