@@ -279,7 +279,7 @@ const FirstContainer = styled.div`
     }
 
     input {
-      border: 0.95393px solid #000000;
+      border: 1px solid #000000;
       border-radius: 3.81572px;
       box-shadow: 3px 3px 0px 0px rgb(0 0 0);
       height: 58px;
@@ -292,6 +292,8 @@ const FirstContainer = styled.div`
 
       :focus {
         outline: 1px solid #1cd0ba;
+        border: 1px solid transparent;
+
       }
 
       @media ${devices.tablet} {
