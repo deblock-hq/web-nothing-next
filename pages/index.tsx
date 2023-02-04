@@ -98,15 +98,56 @@ const LandingContainer = styled.div`
       width: 100%;
       max-width: 1340px;
       position: relative;
+      animation: FadeIn 1s;
+
+      @keyframes FadeIn {
+        0% {
+          opacity: 0;
+        }
+        30% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+
+      @keyframes FadeIn3 {
+        0% {
+          opacity: 0;
+        }
+        60% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
 
       > div:first-child {
         display: block;
         position: absolute;
         max-width: 571px;
         right: 0;
-        top: 80px;
+        /* top: 80px; */
         z-index: 3;
         width: 40%;
+
+        div {
+          overflow: visible !important;
+        }
+
+        .mockup-phone-1 {
+          position: absolute;
+          right: -250px;
+          top: -220px;
+        }
+
+        .mockup-phone-2 {
+          position: absolute;
+          left: -175px;
+          top: 465px;
+        }
       }
     }
 
@@ -141,7 +182,7 @@ const FirstContainer = styled.div`
 
   @media ${devices.tablet} {
     gap: 0;
-    height: 580px;
+    height: 600px;
     position: relative;
     /* margin-bottom: 20px; */
     overflow: hidden;
@@ -149,6 +190,16 @@ const FirstContainer = styled.div`
     max-width: 1152px;
     justify-content: center;
     background-color: #faf5ef;
+    animation: backgroundFadeIn 0.5s;
+
+    @keyframes backgroundFadeIn {
+      0% {
+        background-color: #fbfaf9;
+      }
+      100% {
+        background-color: #faf5ef;
+      }
+    }
 
     .blob-left,
     .blob-top,
@@ -156,6 +207,8 @@ const FirstContainer = styled.div`
       position: absolute;
       z-index: -1;
       width: 55%;
+
+      animation: FadeIn 0.5s;
     }
 
     .blob-left {
@@ -209,17 +262,19 @@ const FirstContainer = styled.div`
 
     @media ${devices.tablet} {
       padding: 72px 90px;
-      width: 55%;
+      width: 56%;
       gap: 56px;
 
       h1 {
-        font-size: 48px;
-        line-height: 56px;
+        font-size: 50px;
+        line-height: 65px;
+        animation: FadeIn 1s;
       }
       p {
         width: 65%;
         font-size: 18px;
         line-height: 28px;
+        animation: FadeIn3 1.5s;
       }
     }
   }
@@ -276,6 +331,7 @@ const FirstContainer = styled.div`
       gap: 14px;
       height: 40px;
       padding-top: 0;
+      animation: FadeIn3 2s;
     }
 
     input {
@@ -293,7 +349,6 @@ const FirstContainer = styled.div`
       :focus {
         outline: 1px solid #1cd0ba;
         border: 1px solid transparent;
-
       }
 
       @media ${devices.tablet} {
@@ -1094,11 +1149,24 @@ const Home = () => {
       <LandingContainer>
         {/* <Modal email={whitelistEmail} /> */}
         <div className="double-phone-container">
-          <Lottie animationData={DoublePhone} loop={false} />
-          {/* <div className="animation-phones">
-            <Image src={MockupPhone1} alt="" />
-            <Image src={MockupPhone2} alt="" />
-          </div> */}
+          {/* <Lottie animationData={DoublePhone} loop={false} /> */}
+          <div className="animation-phones">
+            <ScrollPage>
+              <Animator
+                animation={MoveIn(-250, 250)}
+                className="mockup-phone-1"
+              >
+                <Image src={MockupPhone1} alt="" />
+              </Animator>
+              <Animator
+                animation={MoveIn(250, -250)}
+                className="mockup-phone-2"
+              >
+                <Image src={MockupPhone2} alt="" />
+              </Animator>
+            </ScrollPage>
+          </div>
+
           <FirstContainer>
             <div className="image-container">
               <Lottie animationData={DoublePhone} loop={false} />

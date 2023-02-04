@@ -7,6 +7,7 @@ import Header from "../src/components/SiteHeader";
 import Footer from "../src/components/Footer";
 import Head from "next/head";
 import { GlobalContextProvider } from "../context/globalContext";
+import { ScrollContainer } from "react-scroll-motion";
 
 function App({ Component, pageProps }: AppProps) {
   return (
@@ -21,9 +22,11 @@ function App({ Component, pageProps }: AppProps) {
       </Head>
 
       <GlobalContextProvider>
-        <Header />
-        <Component {...pageProps} />
-        <Footer />
+        <ScrollContainer>
+          <Header />
+          <Component {...pageProps} />
+          <Footer />
+        </ScrollContainer>
       </GlobalContextProvider>
     </>
   );
