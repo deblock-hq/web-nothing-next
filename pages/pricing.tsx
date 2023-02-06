@@ -38,7 +38,7 @@ const Container = styled.div`
 `;
 
 const PricingContainer = styled.div`
-  max-width: 1224px;
+  max-width: 1191px;
   margin: auto;
   padding: 72px 24px;
 
