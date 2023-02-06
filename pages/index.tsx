@@ -334,6 +334,7 @@ const FirstContainer = styled.div`
       :focus {
         outline: 1.5px solid black;
         box-shadow: 3px 3px 0px 0px rgb(0 0 0);
+        background-color: #f5f5f5;
       }
 
       @media ${devices.tablet} {
