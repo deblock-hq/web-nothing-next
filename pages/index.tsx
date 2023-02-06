@@ -24,7 +24,7 @@ import { devices } from "../src/utils/devices";
 
 import Blob from "../src/views/Blob";
 import Image from "next/image";
-import Lottie from "lottie-react";
+import Lottie, { useLottie, useLottieInteractivity } from "lottie-react";
 import Link from "next/link";
 import Head from "next/head";
 import { GetStaticProps } from "next";
@@ -139,14 +139,18 @@ const LandingContainer = styled.div`
 
         .mockup-phone-1 {
           position: absolute;
-          right: -250px;
-          top: -220px;
+          /* right: -250px;
+          top: -220px; */
+          right: -120px;
+          top: -100px;
         }
 
         .mockup-phone-2 {
           position: absolute;
-          left: -175px;
-          top: 465px;
+          /* left: -175px;
+          top: 465px; */
+          left: -60px;
+          top: 340px;
         }
       }
     }
@@ -1144,29 +1148,66 @@ const Home = () => {
   if (typeof window !== "undefined")
     checkLocalStorage = localStorage.getItem("token");
 
+  const SupportAnimation = () => {
+    const lottieObj = useLottie({
+      animationData: SafeAccount,
+      loop: false,
+    });
+    const Animation = useLottieInteractivity({
+      lottieObj,
+      mode: "scroll",
+      actions: [
+        {
+          visibility: [0.1, 1.0],
+          type: "play",
+          frames: [0, 121],
+        },
+      ],
+    });
+    return Animation;
+  };
+
+  const TestAnimation = () => {
+    const lottieObj = useLottie({
+      animationData: DoublePhone,
+    });
+    const Animation = useLottieInteractivity({
+      lottieObj,
+      mode: "scroll",
+      actions: [
+        {
+          visibility: [0, 1],
+          type: "seek",
+          frames: [0, 30],
+        },
+      ],
+    });
+    return Animation;
+  };
+
   return (
     <div>
       <LandingContainer>
         {/* <Modal email={whitelistEmail} /> */}
         <div className="double-phone-container">
           {/* <Lottie animationData={DoublePhone} loop={false} /> */}
-          <div className="animation-phones">
+          <TestAnimation />
+          {/* <div className="animation-phones">
             <ScrollPage>
               <Animator
-                animation={MoveIn(-250, 250)}
+                animation={MoveIn(-125, 125)}
                 className="mockup-phone-1"
               >
                 <Image src={MockupPhone1} alt="" />
               </Animator>
               <Animator
-                animation={MoveIn(250, -250)}
+                animation={MoveIn(125, -125)}
                 className="mockup-phone-2"
               >
                 <Image src={MockupPhone2} alt="" />
               </Animator>
             </ScrollPage>
-          </div>
-
+          </div> */}
           <FirstContainer>
             <div className="image-container">
               <Lottie animationData={DoublePhone} loop={false} />
@@ -1334,7 +1375,8 @@ const Home = () => {
         <SafestAccount>
           <div>
             <div className="image-container">
-              <Lottie animationData={SafeAccount} loop={false} />
+              {/* <Lottie animationData={SafeAccount} loop={false} /> */}
+              <SupportAnimation />
             </div>
             <div className="first-block">
               <h2>

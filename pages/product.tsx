@@ -1,4 +1,4 @@
-import Lottie from "lottie-react";
+import Lottie, { useLottie, useLottieInteractivity } from "lottie-react";
 import Image from "next/image";
 import React from "react";
 import styled from "styled-components";
@@ -19,8 +19,15 @@ interface Props {
   padding?: string;
 }
 
+interface AnimationProps {
+  lottieFile: any;
+  loop?: boolean;
+  maxFrame: number;
+  altText: string;
+}
+
 const ProductContainer = styled.div`
-  max-width: 1152px;
+  max-width: 958px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -59,6 +66,9 @@ const ProductContainer = styled.div`
   p {
     text-align: center;
     line-height: 32px;
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 28px;
   }
 
   .image-container {
@@ -200,10 +210,10 @@ const DoubleContainer = styled.div<Props>`
   }
 
   .texte-container {
-    width: 48%;
+    width: 49%;
 
     ul {
-      padding-top: 28px;
+      padding-top: 32px;
     }
   }
 
@@ -251,7 +261,8 @@ const UniqueCard = styled.div`
 `;
 const MaximumSecurity = styled.div`
   display: flex;
-  justify-content: space-around;
+  justify-content: end;
+  gap: 60px;
 
   .image-container {
     max-width: 320px;
@@ -354,6 +365,13 @@ const LicensedAndRegulated = styled.div`
   position: relative;
   overflow: hidden;
 
+  p {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 28px;
+    text-align: left;
+  }
+
   .image-container {
     position: absolute;
     left: 570px;
@@ -372,7 +390,7 @@ const LicensedAndRegulated = styled.div`
 
     .italic-texte {
       padding-top: 40px;
-      /* padding-left: 26px; */
+      padding-left: 16px;
       font-style: italic;
 
       @media ${devices.tabletMax} {
@@ -427,6 +445,31 @@ const LicensedAndRegulated = styled.div`
 `;
 
 const Product = () => {
+  const ScrollAnimation = ({
+    lottieFile,
+    loop,
+    maxFrame,
+    altText,
+  }: AnimationProps) => {
+    const lottieObj = useLottie({
+      animationData: lottieFile,
+      loop: loop || false,
+      alt: "altText",
+    });
+    const Animation = useLottieInteractivity({
+      lottieObj,
+      mode: "scroll",
+      actions: [
+        {
+          visibility: [0.1, 1.0],
+          type: "play",
+          frames: [0, maxFrame],
+        },
+      ],
+    });
+    return Animation;
+  };
+
   return (
     <div>
       <ProductContainer>
@@ -457,10 +500,10 @@ const Product = () => {
         <DoubleContainer backgroundColor="#f2f2f9" height="692px">
           <UniqueCard>
             <div className="image-container">
-              <Lottie
-                animationData={UniqueCardImage}
-                alt="Uniques cards image"
-                loop={false}
+              <ScrollAnimation
+                lottieFile={UniqueCardImage}
+                maxFrame={36}
+                altText="Uniques cards image"
               />
             </div>
             <div className="texte-container">
@@ -474,14 +517,16 @@ const Product = () => {
           </UniqueCard>
           <MaximumSecurity>
             <div className="image-container">
-              <Lottie
-                animationData={MaxSecurity}
-                alt="Uniques cards image"
+              <ScrollAnimation
+                lottieFile={MaxSecurity}
                 loop={false}
+                maxFrame={36}
+                altText="Uniques cards image"
               />
             </div>
             <div className="texte-container">
               <h2>One-off cards for a maximum security</h2>
+
               <ul>
                 <li>A new number is generated after each use</li>
                 <li>Buy on the internet with peace of mind</li>
@@ -498,7 +543,10 @@ const Product = () => {
         >
           <CryptoAssets>
             <div className="image-container">
-              <Lottie animationData={CryptoWallet} alt="Uniques cards image" />
+              <Lottie
+                animationData={CryptoWallet}
+                alt="Deposit your crypto-assets"
+              />
             </div>
             <div className="texte-container">
               <h2>Deposit your crypto-assets...</h2>
@@ -514,7 +562,12 @@ const Product = () => {
           </CryptoAssets>
           <SelfCustody>
             <div className="image-container">
-              <Lottie animationData={SafeAnimation} loop={false} />
+              {/* <Lottie animationData={SafeAnimation} loop={false} /> */}
+              <ScrollAnimation
+                lottieFile={SafeAnimation}
+                maxFrame={68}
+                altText="Money dropping out of a suitecase"
+              />
             </div>
             <div className="texte-container">
               <h2>...in your self-custody</h2>
@@ -538,10 +591,10 @@ const Product = () => {
         </DoubleContainer>
         <LicensedAndRegulated>
           <div className="image-container">
-            <Lottie
-              animationData={Licensed}
-              alt="Uniques cards image"
-              loop={false}
+            <ScrollAnimation
+              lottieFile={Licensed}
+              maxFrame={61}
+              altText="Uniques cards image"
             />
           </div>
           <div className="texte-container-licensed">
