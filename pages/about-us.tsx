@@ -62,7 +62,7 @@ const Container = styled.div`
 const AboutUsContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 96px;
+  gap: 88px;
   max-width: 1152px;
   margin: auto;
   padding: 72px 12px;
@@ -289,8 +289,8 @@ const ValuesContainer = styled.div`
       max-width: 268px;
 
       h3 {
-        font-weight: 500;
-        font-size: 24px;
+        font-weight: 700;
+        font-size: 16px;
         line-height: 57px;
       }
     }
@@ -434,7 +434,7 @@ const AboutUs = () => {
           </div>
         </ValuesContainer>
         <div className="image-container">
-          {/* <Image src={Photos} alt="Photos" /> */}
+          <Image src={Photos} alt="Photos" />
         </div>
       </AboutUsContainer>
       <Blob className="blob-top" color="#F9D4BF" />
