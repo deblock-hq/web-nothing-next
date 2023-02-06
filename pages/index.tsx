@@ -400,10 +400,16 @@ const BackedByContainer = styled.div`
       color: black;
     }
   }
+
+  .kraken-logo {
+    max-height: 22px;
+  }
+
   img {
     max-width: 100%;
     width: fit-content;
     height: 20px;
+    align-self: center;
 
     @media ${devices.tablet} {
       height: 26px;
@@ -645,7 +651,7 @@ const Deposit = styled.div`
     justify-content: space-around;
     background-color: #f8f2f4;
     border-radius: 30px;
-    gap: 100px;
+    gap: 80px;
     align-items: center;
     height: 506px;
     padding: 0;
@@ -969,7 +975,7 @@ const LearnMoreButton = styled.span`
   }
 
   a:hover > img {
-    transform: translateX(10px);
+    transform: translateX(5px);
   }
 `;
 const Tooltip = styled.span`
@@ -1216,7 +1222,7 @@ const Home = () => {
           <h3>Backed by the best</h3>
           <div className="image-container">
             <Image src={Vc} alt="20vc logo" />
-            <Image src={Kraken} alt="Kraken logo" />
+            <Image className="kraken-logo" src={Kraken} alt="Kraken logo" />
             <Image src={Hoxton} alt="Hoxton logo" />
             <Image src={Headline} alt="Headline logo" />
           </div>
@@ -1356,7 +1362,9 @@ const Home = () => {
             <div>
               <Image src={Commission} alt="Commission free" />
               <div>
-                <h3>Buy commission-free</h3>
+                <Link href="/pricing">
+                  <h3>Buy commission-free</h3>
+                </Link>
                 <p>
                   Unlimited and in perpetuity
                   <br />
@@ -1372,9 +1380,16 @@ const Home = () => {
             <div className="support-section">
               <Lottie animationData={Support} />
               <div>
-                <h3>24/7 Live support</h3>
+                <Link href="/support">
+                  <h3>24/7 Live support</h3>{" "}
+                </Link>
                 <p>
-                  Talk to a real human (not a machine). We are here for you.
+                  Talk to a real human (not a machine). We are{" "}
+                  <LearnMoreButton>
+                    <Link href="/support">
+                      here for you <Image src={Arrow} alt="Arrow right" />{" "}
+                    </Link>
+                  </LearnMoreButton>
                 </p>
               </div>
             </div>
