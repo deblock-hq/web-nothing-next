@@ -254,13 +254,13 @@ const FirstContainer = styled.div`
         font-size: 50px;
         line-height: 65px;
         animation: FadeIn 1s;
-        padding-bottom: 8px;
       }
       p {
         width: 65%;
         font-size: 18px;
         line-height: 28px;
         animation: FadeIn3 1.5s;
+        padding-bottom: 8px;
       }
     }
   }
@@ -284,7 +284,7 @@ const FirstContainer = styled.div`
 
       :after {
         content: "";
-        background: url("/mobile-background/info-i.svg");
+        background: url("/mobile-background/info-i.svg") no-repeat;
         position: absolute;
         width: 20px;
         height: 20px;
@@ -1140,7 +1140,7 @@ const Home = () => {
       mode: "scroll",
       actions: [
         {
-          visibility: [0.8, 1],
+          visibility: [0.7, 1],
           type: "seek",
           frames: [0, 43],
         },
