@@ -6,6 +6,8 @@ import Mail from "../src/assets/support/mail.svg";
 import Image from "next/image";
 import { devices } from "../src/utils/devices";
 import Blob from "../src/views/Blob";
+import Lottie from "lottie-react";
+import SupportAnimation from "../src/assets/lottie/landing/Support.json";
 
 const Container = styled.div`
   position: relative;
@@ -52,7 +54,6 @@ const SupportContainer = styled.div`
     font-size: 16px;
     line-height: 28px;
     text-align: center;
-    padding-bottom: 8px;
   }
 
   p {
@@ -81,7 +82,7 @@ const SupportContainer = styled.div`
       padding: 63px 0px;
       width: 100%;
 
-      img {
+      svg {
         max-height: 121px;
       }
 
@@ -123,7 +124,8 @@ const Support = () => {
             </div>
           </div>
           <div>
-            <Image src={Chat} alt="live chat" />
+            {/* <Image src={Chat} alt="live chat" /> */}
+            <Lottie animationData={SupportAnimation} />
             <div>
               <h2>In-app chat</h2>
               <p>Available 24/7 Response time ~4 min</p>

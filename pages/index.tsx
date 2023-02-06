@@ -396,7 +396,7 @@ const BackedByContainer = styled.div`
     padding-top: 24px;
 
     @media ${devices.tablet} {
-      padding-top: 16px;
+      padding-top: 20px;
       color: black;
     }
   }
@@ -1156,22 +1156,6 @@ const Home = () => {
         <div className="double-phone-container">
           {/* <Lottie animationData={DoublePhone} loop={false} /> */}
           <PhoneOnscrollAnimation />
-          {/* <div className="animation-phones">
-            <ScrollPage>
-              <Animator
-                animation={MoveIn(-125, 125)}
-                className="mockup-phone-1"
-              >
-                <Image src={MockupPhone1} alt="" />
-              </Animator>
-              <Animator
-                animation={MoveIn(125, -125)}
-                className="mockup-phone-2"
-              >
-                <Image src={MockupPhone2} alt="" />
-              </Animator>
-            </ScrollPage>
-          </div> */}
           <FirstContainer>
             <div className="image-container">
               <Lottie animationData={DoublePhone} loop={false} />
