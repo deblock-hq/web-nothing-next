@@ -1075,7 +1075,7 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
 // }
 
 const Home = () => {
-  const router = useRouter();
+  // const router = useRouter();
   const [whitelistEmail, setWhitelistEmail] = useState("");
   const [openModal, setOpenModal] = useState(false);
 
