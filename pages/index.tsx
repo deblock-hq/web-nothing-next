@@ -31,30 +31,6 @@ import { GetStaticProps } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Modal from "../src/views/Modal";
 import { useRouter } from "next/router";
-
-import dynamic from "next/dynamic";
-const Animator = dynamic(
-  import("react-scroll-motion").then((it) => it.Animator),
-  { ssr: false }
-);
-
-import {
-  ScrollContainer,
-  ScrollPage,
-  batch,
-  Fade,
-  FadeIn,
-  FadeOut,
-  Move,
-  MoveIn,
-  MoveOut,
-  Sticky,
-  StickyIn,
-  StickyOut,
-  Zoom,
-  ZoomIn,
-  ZoomOut,
-} from "react-scroll-motion";
 import { ScrollAnimation } from "../src/utils/ScrollAnimation";
 
 interface Props {
@@ -79,6 +55,7 @@ const LandingContainer = styled.div`
   }
 
   .double-phone-container {
+    padding-top: 40px;
     > div:first-child {
       display: none;
     }
@@ -96,6 +73,7 @@ const LandingContainer = styled.div`
     .double-phone-container {
       display: flex;
       justify-content: center;
+      padding-top: 0px;
       width: 100%;
       max-width: 1340px;
       position: relative;
@@ -133,6 +111,8 @@ const LandingContainer = styled.div`
         /* top: 80px; */
         z-index: 3;
         width: 40%;
+        top: 45px;
+        right: -30px;
 
         div {
           overflow: visible !important;
@@ -352,8 +332,8 @@ const FirstContainer = styled.div`
       }
 
       :focus {
-        outline: 1px solid #1cd0ba;
-        border: 1px solid transparent;
+        outline: 1.5px solid black;
+        /* border: 1px solid transparent; */
       }
 
       @media ${devices.tablet} {
@@ -1158,9 +1138,9 @@ const Home = () => {
       mode: "scroll",
       actions: [
         {
-          visibility: [0, 1],
+          visibility: [0.6, 1],
           type: "seek",
-          frames: [0, 30],
+          frames: [0, 43],
         },
       ],
     });
