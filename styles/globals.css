@@ -18,13 +18,13 @@ main {
   height: 100vh;
 }
 
-#__next > div {
+#__next {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
 
-#__next > div > div {
+#__next > div {
   padding-top: 48px;
 }
 

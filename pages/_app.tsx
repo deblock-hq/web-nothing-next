@@ -22,11 +22,9 @@ function App({ Component, pageProps }: AppProps) {
       </Head>
 
       <GlobalContextProvider>
-        <ScrollContainer>
           <Header />
           <Component {...pageProps} />
           <Footer />
-        </ScrollContainer>
       </GlobalContextProvider>
     </>
   );

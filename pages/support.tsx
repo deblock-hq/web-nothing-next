@@ -37,7 +37,7 @@ const SupportContainer = styled.div`
   z-index: 2;
 
   * {
-    z-index: 2;
+    z-index: 4;
   }
 
   h1 {
@@ -48,15 +48,15 @@ const SupportContainer = styled.div`
   }
 
   h2 {
-    font-weight: 600;
-    font-size: 28px;
+    font-weight: 700;
+    font-size: 16px;
     line-height: 28px;
     text-align: center;
     padding-bottom: 8px;
   }
 
   p {
-    font-size: 22px;
+    font-size: 16px;
     line-height: 38px;
     text-align: center;
   }
@@ -73,13 +73,21 @@ const SupportContainer = styled.div`
       align-items: center;
       justify-content: center;
       gap: 60px;
-      max-width: 510px;
+      max-width: 408px;
       max-height: 398px;
       background: #ffffff;
       box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.04);
       border-radius: 30px;
       padding: 63px 0px;
       width: 100%;
+
+      img {
+        max-height: 121px;
+      }
+
+      @media ${devices.tabletMax} {
+        gap: 21px;
+      }
     }
   }
 
