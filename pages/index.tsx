@@ -294,7 +294,7 @@ const FirstContainer = styled.div`
 
         @media ${devices.tablet} {
           top: 12px;
-          left: 140px;
+          left: 144px;
         }
       }
     }
