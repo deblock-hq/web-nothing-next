@@ -248,12 +248,13 @@ const FirstContainer = styled.div`
     @media ${devices.tablet} {
       padding: 72px 90px;
       width: 56%;
-      gap: 48px;
+      gap: 40px;
 
       h1 {
         font-size: 50px;
         line-height: 65px;
         animation: FadeIn 1s;
+        padding-bottom: 8px;
       }
       p {
         width: 65%;
