@@ -1149,25 +1149,6 @@ const Home = () => {
   if (typeof window !== "undefined")
     checkLocalStorage = localStorage.getItem("token");
 
-  const SupportAnimation = () => {
-    const lottieObj = useLottie({
-      animationData: SafeAccount,
-      loop: false,
-    });
-    const Animation = useLottieInteractivity({
-      lottieObj,
-      mode: "scroll",
-      actions: [
-        {
-          visibility: [0.1, 1.0],
-          type: "play",
-          frames: [0, 121],
-        },
-      ],
-    });
-    return Animation;
-  };
-
   const PhoneOnscrollAnimation = () => {
     const lottieObj = useLottie({
       animationData: DoublePhone,
