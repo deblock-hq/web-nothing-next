@@ -8,6 +8,7 @@ import WarningIcone from "../public/warning-icone.svg";
 import Image from "next/image";
 import { devices } from "../src/utils/devices";
 import Blob from "../src/views/Blob";
+import { ScrollAnimation } from "../src/utils/ScrollAnimation";
 
 interface Props {
   color: string;
@@ -39,7 +40,7 @@ const Container = styled.div`
 const NCWContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 72px;
+  gap: 96px;
   margin: auto;
   max-width: 796px;
   font-size: 21px;
@@ -78,7 +79,7 @@ const NCWContainer = styled.div`
 `;
 
 const TitleContainer = styled.div`
-  max-width: 724px;
+  max-width: 706px;
   padding-left: 48px;
 
   h1 {
@@ -88,10 +89,11 @@ const TitleContainer = styled.div`
     font-family: "Inter";
   }
 
-  span {
+  p {
     font-weight: 500;
     font-size: 22px;
     line-height: 28px;
+    font-family: "Inter";
   }
 
   @media ${devices.tabletMax} {
@@ -107,6 +109,7 @@ const KeyTakeway = styled.div`
   font-size: 21px;
   line-height: 41px;
   margin-top: -8px;
+  max-width: 774px;
 
   .header-container {
     display: flex;
@@ -169,6 +172,10 @@ const MultiParty = styled.div`
     }
   }
 
+  .image-container {
+    padding-left: 50px;
+  }
+
   .liste-container {
     div {
       font-family: "Georgia";
@@ -177,7 +184,7 @@ const MultiParty = styled.div`
     }
 
     ul {
-      padding-left: 16px;
+      /* padding-left: 16px; */
     }
 
     li {
@@ -231,7 +238,7 @@ const DeblockDisappears = styled.div`
   }
 
   div {
-    padding-top: 90px;
+    padding-top: 56px;
     padding-bottom: 24px;
     @media ${devices.tabletMax} {
       padding-top: 26px;
@@ -270,10 +277,10 @@ const NonCustodialWallet = () => {
       <NCWContainer>
         <TitleContainer>
           <h1>The best non-custodial wallet in the world</h1>
-          <span>
+          <p>
             A highly secured non-custodial wallet where your assets only belong
             to you.
-          </span>
+          </p>
         </TitleContainer>
         <KeyTakeway>
           <div className="header-container">
@@ -310,7 +317,12 @@ const NonCustodialWallet = () => {
         </KeyTakeway>
         <MultiParty>
           <h2>Multi-Party Computation</h2>
-          <Lottie animationData={MultiPartyAnimation} loop={false} />
+          <ScrollAnimation
+            className="image-container"
+            lottieFile={MultiPartyAnimation}
+            maxFrame={109}
+            altText="Multi-Party Computation"
+          />
           <div className="liste-container">
             <div>
               <TextHighlight color="#C7DFFC">Your shard</TextHighlight> of the
@@ -430,7 +442,11 @@ const NonCustodialWallet = () => {
             And you have <BoldText>NO app</BoldText> and{" "}
             <BoldText>NO backup</BoldText>
           </span>
-          <Lottie animationData={Emergency} loop={false} />
+          <ScrollAnimation
+            lottieFile={Emergency}
+            maxFrame={252}
+            altText="Emergency Recovery Process "
+          />
           <p style={{ paddingBottom: "40px" }}>
             Both{" "}
             <TextHighlight color="#D5FCC5">

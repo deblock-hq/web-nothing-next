@@ -55,6 +55,7 @@ import {
   ZoomIn,
   ZoomOut,
 } from "react-scroll-motion";
+import { ScrollAnimation } from "../src/utils/ScrollAnimation";
 
 interface Props {
   animate: boolean;
@@ -1167,7 +1168,7 @@ const Home = () => {
     return Animation;
   };
 
-  const TestAnimation = () => {
+  const PhoneOnscrollAnimation = () => {
     const lottieObj = useLottie({
       animationData: DoublePhone,
     });
@@ -1191,7 +1192,7 @@ const Home = () => {
         {/* <Modal email={whitelistEmail} /> */}
         <div className="double-phone-container">
           {/* <Lottie animationData={DoublePhone} loop={false} /> */}
-          <TestAnimation />
+          <PhoneOnscrollAnimation />
           {/* <div className="animation-phones">
             <ScrollPage>
               <Animator
@@ -1376,7 +1377,11 @@ const Home = () => {
           <div>
             <div className="image-container">
               {/* <Lottie animationData={SafeAccount} loop={false} /> */}
-              <SupportAnimation />
+              <ScrollAnimation
+                lottieFile={SafeAccount}
+                maxFrame={121}
+                altText="Money dropping out of a bed"
+              />
             </div>
             <div className="first-block">
               <h2>

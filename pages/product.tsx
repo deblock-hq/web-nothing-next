@@ -12,18 +12,12 @@ import SafeAnimation from "../src/assets/lottie/product/SelfCustody.json";
 
 import Blob from "../src/views/Blob";
 import { devices } from "../src/utils/devices";
+import { ScrollAnimation } from "../src/utils/ScrollAnimation";
 
 interface Props {
   backgroundColor: string;
   height: string;
   padding?: string;
-}
-
-interface AnimationProps {
-  lottieFile: any;
-  loop?: boolean;
-  maxFrame: number;
-  altText: string;
 }
 
 const ProductContainer = styled.div`
@@ -445,31 +439,6 @@ const LicensedAndRegulated = styled.div`
 `;
 
 const Product = () => {
-  const ScrollAnimation = ({
-    lottieFile,
-    loop,
-    maxFrame,
-    altText,
-  }: AnimationProps) => {
-    const lottieObj = useLottie({
-      animationData: lottieFile,
-      loop: loop || false,
-      alt: "altText",
-    });
-    const Animation = useLottieInteractivity({
-      lottieObj,
-      mode: "scroll",
-      actions: [
-        {
-          visibility: [0.1, 1.0],
-          type: "play",
-          frames: [0, maxFrame],
-        },
-      ],
-    });
-    return Animation;
-  };
-
   return (
     <div>
       <ProductContainer>
@@ -485,7 +454,7 @@ const Product = () => {
             <Lottie animationData={BetterBank} alt="Iban and card image" />
           </div>
           <div className="texte-container">
-            <h2>Better & Faster than your usual bank account</h2>
+            <h2>Better than your usual bank account</h2>
             <ul>
               <li>Your own IBAN & account numbers</li>
               <li>15+ different currencies</li>
