@@ -248,7 +248,7 @@ const FirstContainer = styled.div`
     @media ${devices.tablet} {
       padding: 72px 90px;
       width: 56%;
-      gap: 56px;
+      gap: 48px;
 
       h1 {
         font-size: 50px;
@@ -322,7 +322,7 @@ const FirstContainer = styled.div`
     input {
       border: 1px solid #000000;
       border-radius: 3.81572px;
-      box-shadow: 3px 3px 0px 0px rgb(0 0 0);
+      box-shadow: 1px 1px 0px 0px rgb(0 0 0);
       height: 58px;
       width: calc(100% - 28px);
       padding-left: 20px;
@@ -333,12 +333,12 @@ const FirstContainer = styled.div`
 
       :focus {
         outline: 1.5px solid black;
-        /* border: 1px solid transparent; */
+        box-shadow: 3px 3px 0px 0px rgb(0 0 0);
       }
 
       @media ${devices.tablet} {
         width: 196px;
-        box-shadow: 2px 2px 0px 0px rgb(0 0 0);
+        box-shadow: 1px 1px 0px 0px rgb(0 0 0);
         height: 40px;
         padding-left: 12px;
       }
@@ -1138,7 +1138,7 @@ const Home = () => {
       mode: "scroll",
       actions: [
         {
-          visibility: [0.6, 1],
+          visibility: [0.8, 1],
           type: "seek",
           frames: [0, 43],
         },
