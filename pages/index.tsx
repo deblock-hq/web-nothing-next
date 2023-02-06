@@ -248,7 +248,7 @@ const FirstContainer = styled.div`
     @media ${devices.tablet} {
       padding: 72px 90px;
       width: 56%;
-      gap: 40px;
+      gap: 32px;
 
       h1 {
         font-size: 50px;
