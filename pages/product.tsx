@@ -558,7 +558,7 @@ const Product = () => {
           <Blob className="blob-top" color="#CCDEDF" />
           <Blob className="blob-bot" color="#F2CDDE" />
         </DoubleContainer>
-        <LicensedAndRegulated>
+        {/* <LicensedAndRegulated>
           <div className="image-container">
             <ScrollAnimation
               lottieFile={Licensed}
@@ -583,7 +583,7 @@ const Product = () => {
           </div>
           <Blob className="blob-top" color="#FBF3BF" />
           <Blob className="blob-bot" color="#FCF5DF" />
-        </LicensedAndRegulated>
+        </LicensedAndRegulated> */}
       </ProductContainer>
     </div>
   );
