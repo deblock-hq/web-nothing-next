@@ -7,7 +7,6 @@ import Header from "../src/components/Header";
 import Footer from "../src/components/Footer";
 import Head from "next/head";
 import { GlobalContextProvider } from "../context/globalContext";
-import { ScrollContainer } from "react-scroll-motion";
 
 function App({ Component, pageProps }: AppProps) {
   return (

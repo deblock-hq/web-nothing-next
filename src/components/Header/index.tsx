@@ -209,8 +209,10 @@ const Header = () => {
     }
   };
 
-  document.addEventListener("mousedown", closeOpenMenus);
-  document.addEventListener("scroll", closeOpenMenus);
+  if (typeof window !== "undefined") {
+    document.addEventListener("mousedown", closeOpenMenus);
+    document.addEventListener("scroll", closeOpenMenus);
+  }
 
   const handleScroll = () => {
     setScrollY(window.pageYOffset);
