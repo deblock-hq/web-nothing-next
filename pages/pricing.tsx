@@ -73,11 +73,19 @@ const PricingContainer = styled.div`
     width: 100%;
   }
 
+  .br-spacing {
+    height: 40px;
+  }
+
   @media ${devices.pricing} {
     width: max-content;
 
     table {
       border-collapse: collapse;
+    }
+
+    .br-spacing {
+      height: 70px;
     }
 
     h1 {
@@ -159,7 +167,7 @@ const TableBody = styled.tbody`
         background-color: #fbfaf9;
         color: black;
         padding-right: 40px;
-        min-width: 274px;
+        min-width: 300px;
       }
 
       @media ${devices.pricing} {
@@ -195,6 +203,9 @@ const TableBody = styled.tbody`
   }
 
   .orange-text {
+    td {
+      padding-bottom: 56px;
+    }
     td:first-child {
       font-weight: 600;
       font-size: 22px;
@@ -206,6 +217,10 @@ const TableBody = styled.tbody`
       line-height: 28px;
       color: #ff9900;
     }
+  }
+
+  .second-block-first-line td {
+    padding-top: 48px !important;
   }
 
   @media ${devices.pricing} {
@@ -466,12 +481,16 @@ const Pricing = () => {
             </tr>
           </TableBody>
 
-          <br />
-          <br />
-          <br />
+          <tbody className="br-spacing">
+            <tr>
+              <td>
+                <br />
+              </td>
+            </tr>
+          </tbody>
 
           <TableBody>
-            <tr>
+            <tr className="second-block-first-line">
               <td>Free number of crypto buy</td>
               <td>1 in a lifetime</td>
               <td>1 per mounth</td>

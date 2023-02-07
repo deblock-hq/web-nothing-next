@@ -1146,7 +1146,7 @@ const Home = () => {
       mode: "scroll",
       actions: [
         {
-          visibility: [0.7, 1],
+          visibility: [0.5, 1],
           type: "seek",
           frames: [0, 43],
         },
