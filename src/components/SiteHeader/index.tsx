@@ -53,7 +53,7 @@ const HeaderContainer = styled.header<Props>`
 
   @media ${devices.tabletMax} {
     top: 0;
-    box-shadow: 0px 2px 0px 0px lightgray;
+    box-shadow: 0px 1px 0px 0px lightgray;
     border: none;
     border-radius: 0;
     width: 100%;

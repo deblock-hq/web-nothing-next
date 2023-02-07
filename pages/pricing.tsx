@@ -38,7 +38,7 @@ const Container = styled.div`
 `;
 
 const PricingContainer = styled.div`
-  max-width: 1191px;
+  max-width: 952px;
   margin: auto;
   padding: 72px 24px;
 
@@ -78,7 +78,7 @@ const PricingContainer = styled.div`
   }
 
   @media ${devices.pricing} {
-    width: max-content;
+    /* width: max-content; */
 
     table {
       border-collapse: collapse;
@@ -148,26 +148,26 @@ const TableBody = styled.tbody`
     width: 266px;
     text-align: center;
 
-    @media ${devices.pricing} {
+    /* @media ${devices.pricing} {
       width: 124px;
-    }
+    } */
   }
 
   tr {
     background-color: white;
 
     td {
-      padding-bottom: 40px;
+      padding-bottom: 28px;
       font-weight: 600;
-      font-size: 15px;
-      line-height: 28px;
+      font-size: 12px;
+      line-height: 22px;
       color: #515151;
 
       :first-child {
         background-color: #fbfaf9;
         color: black;
-        padding-right: 40px;
-        min-width: 300px;
+        /* padding-right: 40px; */
+        min-width: 260px;
       }
 
       @media ${devices.pricing} {
@@ -191,7 +191,7 @@ const TableBody = styled.tbody`
 
     :last-child {
       td {
-        padding-bottom: 32px;
+        padding-bottom: 24px;
 
         :not(:first-child) {
           border-bottom-left-radius: 22px;
@@ -204,30 +204,64 @@ const TableBody = styled.tbody`
 
   .orange-text {
     td {
-      padding-bottom: 56px;
+      padding-bottom: 40px;
+      padding-top: 20px;
     }
     td:first-child {
       font-weight: 600;
-      font-size: 22px;
+      font-size: 16px;
+      line-height: 22px;
       color: rgba(0, 0, 0, 0.5);
     }
     td {
       font-weight: 700;
-      font-size: 22px;
-      line-height: 28px;
+      font-size: 16px;
+      line-height: 22px;
       color: #ff9900;
+    }
+
+    @media ${devices.pricing} {
+      td {
+        font-size: 22px !important;
+        line-height: 28px;
+      }
     }
   }
 
   .second-block-first-line td {
-    padding-top: 48px !important;
+    padding-top: 28px !important;
   }
 
   @media ${devices.pricing} {
+    .image-section td {
+      border-top-left-radius: 30px;
+      border-top-right-radius: 30px;
+      position: relative;
+      height: 120px;
+      img {
+        position: absolute;
+        bottom: 40px;
+        left: 90px;
+      }
+    }
+  }
+
+  @media ${devices.tabletMax} {
+    td:not(:first-child) {
+      width: auto;
+      min-width: 124px;
+    }
     .image-section {
       display: none;
     }
+    .orange-text {
+      background-color: transparent;
+      display: none;
 
+      td {
+        background-color: transparent;
+      }
+    }
     tr {
       :nth-child(2) {
         background-color: transparent;
@@ -244,15 +278,6 @@ const TableBody = styled.tbody`
         }
       }
     }
-
-    .orange-text {
-      background-color: transparent;
-      display: none;
-
-      td {
-        background-color: transparent;
-      }
-    }
   }
 `;
 
@@ -262,23 +287,30 @@ const Button = styled.button`
   align-items: center;
   margin: auto;
   background-color: #fbfaf9;
-  border-radius: 22px;
+  border-radius: 17px;
   border: none;
-  padding: 20px 60px;
+  padding: 20px 0;
   font-weight: 500;
-  max-width: 240px;
-  max-height: 58px;
+  max-width: 188px;
+  max-height: 48px;
   width: 100%;
   height: 100%;
-  font-size: 22px;
+  font-size: 16px;
+  line-height: 35px;
 `;
 
 const MobileButtonContainer = styled.div`
   display: none;
+  padding-bottom: 115px;
+
+  @media ${devices.tabletMax} {
+    padding-bottom: 0;
+  }
 
   @media ${devices.pricing} {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    gap: 20px;
   }
 `;
 
@@ -316,7 +348,7 @@ const PriceContainer = styled.div`
   line-height: 28px;
   color: #ff9900;
 
-  @media ${devices.pricing} {
+  @media ${devices.tabletMax} {
     display: flex;
   }
 `;
