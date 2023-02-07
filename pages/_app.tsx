@@ -3,7 +3,7 @@ import "../styles/globals.css";
 import type { AppProps } from "next/app";
 // import "../i18n/i18n";
 import { appWithTranslation } from "next-i18next";
-import Header from "../src/components/SiteHeader";
+import Header from "../src/components/Header";
 import Footer from "../src/components/Footer";
 import Head from "next/head";
 import { GlobalContextProvider } from "../context/globalContext";

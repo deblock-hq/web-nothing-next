@@ -7,7 +7,7 @@ import Pro from "../src/assets/pricing/pro.svg";
 import Native from "../src/assets/pricing/native.svg";
 import Check from "../src/assets/pricing/check.svg";
 import Cross from "../src/assets/pricing/cross.svg";
-import Header from "../src/components/SiteHeader";
+import Header from "../src/components/Header";
 import { devices } from "../src/utils/devices";
 import Blob from "../src/views/Blob";
 

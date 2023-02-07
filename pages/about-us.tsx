@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React from "react";
 import Footer from "../src/components/Footer";
-import Header from "../src/components/SiteHeader";
+import Header from "../src/components/Header";
 import styled from "styled-components";
 import Blob from "../src/views/Blob";
 

@@ -86,6 +86,15 @@ const LinksContainer = styled.div`
     font-weight: 700;
   }
 
+  a {
+    color: #dadada;
+
+    :hover {
+      color: white;
+      font-weight: 600;
+    }
+  }
+
   @media ${devices.tabletMax} {
     padding: 0 24px;
   }
