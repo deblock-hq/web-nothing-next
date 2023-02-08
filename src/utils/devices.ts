@@ -10,5 +10,6 @@ export const devices = {
   tablet: `(min-width: ${sizes.tablet})`,
   tabletMax: `(max-width: ${sizes.tablet})`,
   pricing: `(max-width: ${sizes.pricing})`,
+  pricingMin: `(min-width: ${sizes.pricing})`,
   desktop: `(min-width: ${sizes.desktop})`,
 };

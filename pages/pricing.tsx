@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 import Basic from "../src/assets/pricing/basic.svg";
 import Pro from "../src/assets/pricing/pro.svg";
@@ -10,6 +10,10 @@ import Cross from "../src/assets/pricing/cross.svg";
 import Header from "../src/components/Header";
 import { devices } from "../src/utils/devices";
 import Blob from "../src/views/Blob";
+
+interface Props {
+  scrollY: number;
+}
 
 const Container = styled.div`
   overflow: hidden;
@@ -30,14 +34,16 @@ const Container = styled.div`
 
   @media ${devices.pricing} {
     overflow: visible;
-
+    /* tr:hover {
+      background-color: yellow;
+    } */
     .Blob {
       display: none;
     }
   }
 `;
 
-const PricingContainer = styled.div`
+const PricingContainer = styled.div<Props>`
   max-width: 952px;
   margin: auto;
   padding: 72px 24px;
@@ -71,11 +77,126 @@ const PricingContainer = styled.div`
     border-collapse: separate;
     border-spacing: 16px 0;
     width: 100%;
+
+    @media ${devices.pricing} {
+      max-width: 529px;
+      margin: auto;
+    }
   }
 
   .br-spacing {
     height: 40px;
+
+    @media ${devices.pricing} {
+      :first-child {
+        display: none;
+      }
+    }
   }
+
+  ${(props) =>
+    props.scrollY > 126 &&
+    css`
+      @media ${devices.pricingMin} {
+        .fixed-price {
+          position: fixed;
+          left: 0;
+          top: -230px;
+          width: 100%;
+          padding-bottom: 30px;
+          background: rgba(251, 250, 249, 0.89);
+          box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.06);
+          backdrop-filter: blur(2px);
+
+          table {
+            max-width: 952px;
+            margin: 0 auto;
+
+            .plan-section td {
+              transition: padding-bottom 0.5s ease-out;
+              padding-bottom: 0;
+            }
+
+            .orange-text td {
+              transition: padding-top 0.5s ease-out;
+              padding-top: 0;
+            }
+
+            .image-section {
+              td {
+                transition: padding 0.5s ease-out;
+                padding: 0;
+
+                img {
+                  transition: height 1s ease-out, width 1s ease-out;
+                  height: 0;
+                  width: 0;
+                }
+              }
+            }
+
+            tr,
+            td:first-child {
+              background-color: transparent;
+            }
+          }
+        }
+
+        table:last-child {
+          margin-top: 349px;
+        }
+      }
+    `};
+
+  ${(props) =>
+    props.scrollY > 160 &&
+    css`
+      @media ${devices.pricing} {
+        .fixed-price-mobile {
+          position: fixed;
+          left: 0;
+          top: 0;
+          width: 100%;
+          padding: 88px 0 30px 0;
+          background: rgba(251, 250, 249, 0.89);
+          box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.06);
+          backdrop-filter: blur(2px);
+
+          div:last-child {
+            padding-bottom: 0;
+            max-width: 529px;
+            margin: auto;
+
+            td {
+              padding-left: 44px;
+            }
+          }
+
+          table {
+            max-width: 952px;
+            margin: 0 auto;
+
+            .plan-section td {
+              transition: padding-bottom 0.5s ease-out;
+              padding-bottom: 0;
+            }
+
+            .orange-text td {
+              transition: padding-top 0.5s ease-out;
+              padding-top: 0;
+            }
+
+            tr,
+            td:first-child {
+              background-color: transparent;
+            }
+          }
+        }
+      }
+      > table:last-child {
+        margin-top: 196px;
+      }
+    `};
 
   @media ${devices.pricing} {
     /* width: max-content; */
@@ -88,9 +209,9 @@ const PricingContainer = styled.div`
       height: 70px;
     }
 
-    h1 {
+    /* h1 {
       display: none;
-    }
+    } */
 
     &.basic {
       td:nth-child(3),
@@ -155,6 +276,7 @@ const TableBody = styled.tbody`
 
   tr {
     background-color: white;
+    z-index: 1;
 
     td {
       padding-bottom: 28px;
@@ -233,20 +355,45 @@ const TableBody = styled.tbody`
   }
 
   @media ${devices.pricing} {
-    .image-section td {
-      border-top-left-radius: 30px;
-      border-top-right-radius: 30px;
-      position: relative;
-      height: 120px;
-      img {
-        position: absolute;
-        bottom: 40px;
-        left: 90px;
+    background-color: white;
+    box-shadow: 0px 4px 4px rgb(0 0 0 / 4%);
+    border-radius: 30px;
+
+    tr {
+      cursor: pointer;
+      td {
+        padding-left: 44px;
+        background-color: unset !important;
+      }
+
+      :first-child {
+        td {
+          background-color: unset;
+
+          :first-child {
+            border-top-right-radius: 0;
+            border-top-left-radius: 22px;
+          }
+          :not(:first-child) {
+            border-top-right-radius: 22px;
+            border-top-left-radius: 0;
+          }
+        }
       }
     }
-  }
+    tr:nth-child(4) td {
+      border-top-left-radius: 0 !important;
+      border-top-right-radius: 0 !important;
+    }
+    tr:last-child td:not(:first-child) {
+      border-bottom-left-radius: 0;
+      box-shadow: none;
+    }
+    tr:last-child td {
+      border-bottom-left-radius: 22px;
+    }
 
-  @media ${devices.tabletMax} {
+    /* @media ${devices.pricing} { */
     td:not(:first-child) {
       width: auto;
       min-width: 124px;
@@ -264,7 +411,7 @@ const TableBody = styled.tbody`
     }
     tr {
       :nth-child(2) {
-        background-color: transparent;
+        /* background-color: transparent; */
         td {
           /* background-color: transparent; */
         }
@@ -272,7 +419,7 @@ const TableBody = styled.tbody`
 
       :nth-child(4) {
         td {
-          padding-top: 12px;
+          /* padding-top: 12px; */
           border-top-left-radius: 22px;
           border-top-right-radius: 22px;
         }
@@ -301,7 +448,7 @@ const Button = styled.button`
 
 const MobileButtonContainer = styled.div`
   display: none;
-  padding-bottom: 115px;
+  /* padding-bottom: 115px; */
 
   @media ${devices.tabletMax} {
     padding-bottom: 0;
@@ -324,6 +471,7 @@ const MobileButton = styled.button`
   line-height: 44px;
   text-align: center;
   width: 100px;
+  cursor: pointer;
 
   &.active {
     background: #ffffff;
@@ -334,7 +482,6 @@ const MobileButton = styled.button`
 
 const PriceContainer = styled.div`
   display: none;
-  justify-content: space-between;
   padding: 58px 0 62px 0;
 
   .price {
@@ -348,8 +495,17 @@ const PriceContainer = styled.div`
   line-height: 28px;
   color: #ff9900;
 
-  @media ${devices.tabletMax} {
-    display: flex;
+  @media ${devices.pricing} {
+    display: block;
+
+    td:first-child {
+      padding-left: 44px;
+    }
+
+    td:not(:first-child) {
+      text-align: end;
+      padding-right: 44px;
+    }
   }
 `;
 
@@ -362,87 +518,117 @@ const Pricing = () => {
     setSelected(divNum);
   };
 
+  const [scrollY, setScrollY] = useState<number>(0);
+  const handleScroll = () => {
+    setScrollY(window.pageYOffset);
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  console.log(scrollY);
+
   return (
     <Container>
-      <PricingContainer className={selectedPlan}>
+      <PricingContainer className={selectedPlan} scrollY={scrollY}>
         <h1>
           Own <span>your plan</span>
         </h1>
-        <MobileButtonContainer>
-          <MobileButton
-            className={selected == 1 ? "active" : ""}
-            onClick={() => {
-              setSelectedPlan("basic");
-              handleClick(1);
-            }}
-          >
-            Basic
-          </MobileButton>
-          <MobileButton
-            className={selected == 2 ? "active" : ""}
-            onClick={() => {
-              setSelectedPlan("pro");
-              handleClick(2);
-            }}
-          >
-            Pro
-          </MobileButton>
-          <MobileButton
-            className={selected == 3 ? "active" : ""}
-            onClick={() => {
-              setSelectedPlan("native");
-              handleClick(3);
-            }}
-          >
-            Native
-          </MobileButton>
-        </MobileButtonContainer>
-        <PriceContainer>
-          <div className="price">Price</div>
-          {selectedPlan === "basic" ? (
-            <div>Free</div>
-          ) : selectedPlan === "pro" ? (
-            <div>£9.99/mo</div>
-          ) : selectedPlan === "native" ? (
-            <div>Hold 1 Deblock NFT</div>
-          ) : (
-            ""
-          )}
-        </PriceContainer>
+        <div className="fixed-price-mobile">
+          <MobileButtonContainer>
+            <MobileButton
+              className={selected == 1 ? "active" : ""}
+              onClick={() => {
+                setSelectedPlan("basic");
+                handleClick(1);
+              }}
+            >
+              Basic
+            </MobileButton>
+            <MobileButton
+              className={selected == 2 ? "active" : ""}
+              onClick={() => {
+                setSelectedPlan("pro");
+                handleClick(2);
+              }}
+            >
+              Pro
+            </MobileButton>
+            <MobileButton
+              className={selected == 3 ? "active" : ""}
+              onClick={() => {
+                setSelectedPlan("native");
+                handleClick(3);
+              }}
+            >
+              Native
+            </MobileButton>
+          </MobileButtonContainer>
+          <PriceContainer>
+            <table>
+              <tbody>
+                <tr>
+                  <td className="price">Price</td>
+                  <td>Free</td>
+                  <td>£9.99/mo</td>
+                  <td>Hold 1 Deblock NFT</td>
+                </tr>
+              </tbody>
+            </table>
+          </PriceContainer>
+        </div>
+        <div className="fixed-price">
+          <table>
+            <TableBody>
+              <PlansSection className="plan-section">
+                <td></td>
+                <td onClick={() => setSelectedPlan("basic")}>
+                  <Button>Basic</Button>
+                </td>
+                <td onClick={() => setSelectedPlan("pro")}>
+                  <Button>Pro</Button>
+                </td>
+                <td onClick={() => setSelectedPlan("native")}>
+                  <Button>Native</Button>
+                </td>
+              </PlansSection>
+              <tr className="image-section">
+                <td></td>
+                <td>
+                  <Image src={Basic} alt="Free chat" />
+                </td>
+                <td>
+                  <Image src={Pro} alt="Rocket" />
+                </td>
+                <td>
+                  <Image src={Native} alt="Nft card" />
+                </td>
+              </tr>
+
+              <tr className="orange-text">
+                <td>Price</td>
+                <td>Free</td>
+                <td>£9.99/mo</td>
+                <td>Hold 1 Deblock NFT</td>
+              </tr>
+            </TableBody>
+          </table>
+        </div>
+
         <table>
+          <tbody className="br-spacing">
+            <tr>
+              <td>
+                <br />
+              </td>
+            </tr>
+          </tbody>
+
           <TableBody>
-            <PlansSection>
-              <td></td>
-              <td onClick={() => setSelectedPlan("basic")}>
-                <Button>Basic</Button>
-              </td>
-              <td onClick={() => setSelectedPlan("pro")}>
-                <Button>Pro</Button>
-              </td>
-              <td onClick={() => setSelectedPlan("native")}>
-                <Button>Native</Button>
-              </td>
-            </PlansSection>
-            <tr className="image-section">
-              <td></td>
-              <td>
-                <Image src={Basic} alt="Free chat" />
-              </td>
-              <td>
-                <Image src={Pro} alt="Rocket" />
-              </td>
-              <td>
-                <Image src={Native} alt="Nft card" />
-              </td>
-            </tr>
-
-            <tr className="orange-text">
-              <td>Price</td>
-              <td>Free</td>
-              <td>£9.99/mo</td>
-              <td>Hold 1 Deblock NFT</td>
-            </tr>
-
             <tr>
               <td>Free currency exchange (USD, GBP, ...)</td>
               <td>£1,000/mo</td>
@@ -547,9 +733,9 @@ const Pricing = () => {
               <td style={{ paddingTop: "0" }}>
                 Crypto swap fee (Crypto -{">"} Crypto)
               </td>
-              <td style={{ padding: "0", borderRadius: "0" }}>1.5%</td>
-              <td style={{ padding: "0", borderRadius: "0" }}>1%</td>
-              <td style={{ padding: "0", borderRadius: "0" }}>0.5%</td>
+              <td style={{ paddingTop: "0", borderRadius: "0" }}>1.5%</td>
+              <td style={{ paddingTop: "0", borderRadius: "0" }}>1%</td>
+              <td style={{ paddingTop: "0", borderRadius: "0" }}>0.5%</td>
             </tr>
 
             <tr>

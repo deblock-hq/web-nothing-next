@@ -142,6 +142,16 @@ const HeaderContainer = styled.header<Props>`
             right: 80px;
           }
         }
+        &:after {
+          content: attr(data-text);
+          content: attr(data-text) / "";
+          height: 0;
+          visibility: hidden;
+          overflow: hidden;
+          user-select: none;
+          pointer-events: none;
+          font-weight: 600;
+        }
       }
     }
   }

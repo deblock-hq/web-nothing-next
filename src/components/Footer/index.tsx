@@ -8,6 +8,7 @@ import Blob from "../../views/Blob";
 import Linkedin from "../../assets/LinkedIn.svg";
 import Twitter from "../../assets/Twitter.svg";
 import Instagram from "../../assets/Instagram.svg";
+import Placeholder from "../../assets/footer-placeholder.svg";
 
 const FooterContainer = styled.footer`
   display: flex;
@@ -93,6 +94,17 @@ const LinksContainer = styled.div`
       color: white;
       font-weight: 600;
     }
+
+    /* :after {
+      content: attr(data-text);
+      content: attr(data-text) / "";
+      height: 0;
+      visibility: hidden;
+      overflow: hidden;
+      user-select: none;
+      pointer-events: none;
+      font-weight: 600;
+    } */
   }
 
   @media ${devices.tabletMax} {
@@ -127,6 +139,7 @@ const Footer = () => {
           {/* <Image /> */}
           {/* <span>France</span>
           <span>Français</span> */}
+          <Image src={Placeholder} alt="placeholder" />
         </div>
         <div className="community">
           <span>Join our community</span>
