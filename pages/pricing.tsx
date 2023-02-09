@@ -34,9 +34,9 @@ const Container = styled.div`
 
   @media ${devices.pricing} {
     overflow: visible;
-    /* tr:hover {
+    tr:hover {
       background-color: yellow;
-    } */
+    }
     .Blob {
       display: none;
     }
