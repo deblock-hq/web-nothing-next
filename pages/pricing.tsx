@@ -113,23 +113,23 @@ const PricingContainer = styled.div<Props>`
             margin: 0 auto;
 
             .plan-section td {
-              transition: padding-bottom 0.5s ease-out;
+              transition: padding-bottom 0.4s ease-out;
               padding-bottom: 0;
             }
 
             .orange-text td {
-              transition: padding-top 0.5s ease-out;
+              transition: padding-top 0.4s ease-out;
               padding-top: 0;
             }
 
             .image-section {
               td {
-                transition: padding 0.5s ease-out;
+                transition: padding 0.4s ease-out;
                 padding: 0;
 
                 img {
-                  transition: height .9s ease-out, width .9s ease-out,
-                    opacity 0.7s ease-out;
+                  transition: height .5s ease-out, width .5s ease-out,
+                    opacity 0.4s ease-out;
                   height: 0;
                   width: 0;
                   opacity: 0;
