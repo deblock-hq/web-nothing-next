@@ -60,7 +60,7 @@ const ProductContainer = styled.div`
   p {
     text-align: center;
     line-height: 32px;
-    font-weight: 500;
+    font-weight: 400;
     font-size: 22px;
     line-height: 28px;
   }

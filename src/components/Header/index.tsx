@@ -250,7 +250,7 @@ const Header = () => {
           className="desktop-tablet-display hide-on-desktop"
         >
           <Link href="/blog">Blog</Link>
-          <Link href="/aboutus">About</Link>
+          <Link href="/about-us">About</Link>
           <a
             href="https://apply.workable.com/deblock"
             target="_blank"

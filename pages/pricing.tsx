@@ -269,6 +269,11 @@ const TableBody = styled.tbody`
       width: 124px;
     } */
   }
+  .first-block-first-line {
+    td {
+      padding-top: 28px !important;
+    }
+  }
 
   tr {
     background-color: white;
@@ -630,7 +635,7 @@ const Pricing = () => {
           </tbody>
 
           <TableBody>
-            <tr>
+            <tr className="first-block-first-line">
               <td>Free currency exchange (USD, GBP, ...)</td>
               <td>£1,000/mo</td>
               <td>unlimited</td>
