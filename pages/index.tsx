@@ -1224,7 +1224,7 @@ const Home = () => {
                   />
                 ) : null}
                 <button type="button" onClick={displayModal}>
-                  Request access
+                  {!checkLocalStorage ? "Request access" : "See My Postion"}
                 </button>
               </form>
             </div>

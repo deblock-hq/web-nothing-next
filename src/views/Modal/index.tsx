@@ -11,7 +11,7 @@ import React, {
 import { getFromStorage } from "../../utils/getFromStorage";
 import styled from "styled-components";
 import Blob from "../Blob";
-import { flushSync } from "react-dom";
+import Arrow from "../../assets/arrow.svg";
 
 const Container = styled.div`
   position: absolute;
@@ -31,7 +31,9 @@ const ModalContainer = styled.div`
   display: flex;
   justify-content: center;
   max-width: 864px;
-  max-height: 460px;
+  /* max-height: 460px; */
+  max-height: 560px;
+
   width: 100%;
   height: 100%;
   background-color: #fbfaf9;
@@ -112,7 +114,7 @@ const ModalContainer = styled.div`
     .phone-verification {
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 20px;
 
       > div {
         display: flex;
@@ -127,18 +129,66 @@ const ModalContainer = styled.div`
             border-radius: 4px;
             padding: 8px 16px;
             position: relative;
+            cursor: pointer;
           }
           .phone-dropdown {
             position: absolute;
             display: flex;
             flex-direction: column;
-            justify-content: flex-start;
-            width: 316px;
+            justify-content: space-evenly;
+            align-items: flex-start;
+            width: 300px;
+            height: 96px;
             background: #ffffff;
             border: 1px solid #000000;
             box-shadow: 0px 2.85227px 2.85227px rgba(0, 0, 0, 0.04);
             border-radius: 4px;
+            bottom: 54px;
+            padding: 8px;
+
+            li {
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              height: 100%;
+              width: 100%;
+              cursor: pointer;
+              border-radius: 4px;
+
+              img {
+                visibility: hidden;
+              }
+
+              :hover {
+                background-color: #f3f3f3;
+                img {
+                  visibility: visible;
+                }
+              }
+            }
           }
+        }
+
+        input {
+          border: 1px solid #000000;
+          border-radius: 4px;
+          box-shadow: 1px 1px 0px 0px rgb(0 0 0);
+          width: 198px;
+          padding-left: 12px;
+
+          ::placeholder {
+            font-size: 14px;
+            line-height: 27px;
+          }
+        }
+
+        button {
+          color: white;
+          font-weight: 600;
+          background: #000000;
+          border: 1px solid #000000;
+          border-radius: 4px;
+          width: 134px;
         }
       }
     }
@@ -405,11 +455,13 @@ const Modal = ({ email }: { email: string }) => {
                     {/* <Image /> */}
                     <span>+44</span>
                     <span>United Kingdom</span>
+                    <Image src={Arrow} alt="Arrow right" />
                   </li>
                   <li onClick={() => setPhoneCode("+33")}>
                     {/* <Image /> */}
                     <span>+33</span>
                     <span>France</span>
+                    <Image src={Arrow} alt="Arrow right" />
                   </li>
                 </ul>
               )}
