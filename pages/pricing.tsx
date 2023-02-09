@@ -128,8 +128,8 @@ const PricingContainer = styled.div<Props>`
                 padding: 0;
 
                 img {
-                  transition: height 1s ease-out, width 1s ease-out,
-                    opacity 0.8s ease-out;
+                  transition: height .9s ease-out, width .9s ease-out,
+                    opacity 0.7s ease-out;
                   height: 0;
                   width: 0;
                   opacity: 0;
