@@ -453,7 +453,7 @@ const MobileButtonContainer = styled.div`
   @media ${devices.pricing} {
     display: flex;
     justify-content: center;
-    gap: 20px;
+    gap: 40px;
   }
 `;
 
@@ -473,6 +473,11 @@ const MobileButton = styled.button`
     background: #ffffff;
     border: 1px solid #000000;
     box-shadow: 3px 3px 0px 0px rgb(0 0 0);
+  }
+
+  :hover {
+    background-color: white;
+    border: 1px solid black;
   }
 `;
 
