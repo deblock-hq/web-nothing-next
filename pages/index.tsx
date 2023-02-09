@@ -1,4 +1,11 @@
-import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
+import React, {
+  useCallback,
+  useContext,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from "react";
 import styled from "styled-components";
 
 import DoublePhone from "../src/assets/lottie/landing/DoublePhone.json";
@@ -32,6 +39,7 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Modal from "../src/views/Modal";
 import { useRouter } from "next/router";
 import { ScrollAnimation } from "../src/utils/ScrollAnimation";
+import { GlobalContext } from "../context/globalContext";
 
 interface Props {
   animate: boolean;
@@ -1082,8 +1090,15 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
 
 const Home = () => {
   // const router = useRouter();
+  const { email, setEmail } = useContext(GlobalContext);
   const [whitelistEmail, setWhitelistEmail] = useState("");
   const [openModal, setOpenModal] = useState(false);
+
+  const displayModal = useCallback(() => {
+    if (!openModal) {
+      setOpenModal(true);
+    }
+  }, [openModal]);
 
   useEffect(() => {
     let myPanel = document.getElementById("panel");
@@ -1158,7 +1173,7 @@ const Home = () => {
   return (
     <div>
       <LandingContainer>
-        {/* <Modal email={whitelistEmail} /> */}
+        {openModal ? <Modal email={whitelistEmail} /> : null}
         <div className="double-phone-container">
           {/* <Lottie animationData={DoublePhone} loop={false} /> */}
           <PhoneOnscrollAnimation />
@@ -1208,7 +1223,7 @@ const Home = () => {
                     onChange={(e) => setWhitelistEmail(e.target.value)}
                   />
                 ) : null}
-                <button onClick={() => setOpenModal(!openModal)}>
+                <button type="button" onClick={displayModal}>
                   Request access
                 </button>
               </form>

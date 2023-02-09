@@ -193,27 +193,7 @@ const VerificationSteps = styled.div`
   }
 `;
 
-interface ModalProps {
-  // isOpen: boolean;
-  email?: string;
-  step?: string;
-  size?: number;
-  previousPosition?: number;
-  currentPosition?: number;
-  jumpPosition?: number;
-  priorityAccess?: number;
-}
-
-const Modal = ({
-  email,
-  // isOpen,
-  step = "verify_email",
-  size = 13456,
-  previousPosition,
-  currentPosition = 5236,
-  jumpPosition = 1000,
-  priorityAccess = 3000,
-}: ModalProps) => {
+const Modal = ({ email }: { email: string }) => {
   const [phoneCode, setPhoneCode] = useState("+44");
   const [phoneNumber, setPhoneNumber] = useState<number>();
   const [phoneVerifyCode, setPhoneVerifyCode] = useState("");
@@ -223,6 +203,14 @@ const Modal = ({
   const [triggerSendNumber, setTriggerSendNumber] = useState(false);
 
   const [actualStep, setActualStep] = useState("");
+
+  const [referral, setReferral] = useState("");
+
+  const [queueSize, setQueueSize] = useState<number>();
+  const [previousPosition, setPreviousPosition] = useState<number>();
+  const [currentPosition, setCurrentPosition] = useState<number>();
+  const [jumpPosition, setJumpPosition] = useState<number>();
+  const [priorityAccess, setPriorityAccess] = useState<number>();
 
   const handleChange = (e: any) => {
     const value = e.target.value.replace(/\D/g, "");
@@ -254,28 +242,32 @@ const Modal = ({
         }
       )
       .then(async (res) => {
-        console.log("response", res);
+        console.log("Emailresponse", res);
+        setActualStep("verify_email");
       })
       .catch((error) => {
-        console.log("error", error);
+        console.log("Emailerror", error);
       });
   }, [email]);
 
   /** Verify email */
   useEffect(() => {
-    fetch(`${baseUrl}/waitlist/email/verify`, {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    })
-      .then(async (res) => {
-        console.log("verify", res);
+    if (actualStep === "verify_email") {
+      fetch(`${baseUrl}/waitlist/email/verify`, {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
       })
-      .catch((err) => {
-        console.log("errverify", err);
-      });
-  }, [token]);
+        .then(async (res) => {
+          console.log("verifyEmail", res);
+          // setActualStep("phone");
+        })
+        .catch((err) => {
+          console.log("verifyEmailErr", err);
+        });
+    }
+  }, [actualStep, token]);
 
   /** Send phone code */
   const sendPhoneNumber = () => {
@@ -296,11 +288,11 @@ const Modal = ({
         }
       )
       .then(async (res) => {
-        setActualStep(res.data.result.user.step);
-        console.log("phoneres", res, actualStep);
+        // setActualStep(res.data.result.user.step);
+        console.log("SendPhone", res, actualStep);
       })
       .catch((err) => {
-        console.log("phoneerr", err);
+        console.log("SendPhoneErr", err);
       });
   };
 
@@ -314,7 +306,6 @@ const Modal = ({
     );
 
     if (phoneVerifyCode.length == 4) {
-      console.log("phoneVerifyCode length ", phoneVerifyCode);
       axios
         .post(
           `${baseUrl}/waitlist/phone/verify`,
@@ -334,10 +325,11 @@ const Modal = ({
         )
         .then(async (res) => {
           // setActualStep(res.data.result.user.step);
-          console.log("phonecode res", res);
+          console.log("VerifyPhone res", res);
+          // setActualStep("invite_friend");
         })
         .catch((err) => {
-          console.log("phonecode err", err);
+          console.log("VerifyPhone err", err);
         });
     }
   }, [actualStep, phoneCode, phoneNumber, phoneVerifyCode, token]);
@@ -353,6 +345,11 @@ const Modal = ({
       .then(async (res) => {
         setActualStep(res.data.result.user.step);
         console.log("status res", res, actualStep);
+        setReferral(res.data.result.user.referrals.url);
+        setQueueSize(res.data.result.user.size);
+        setCurrentPosition(res.data.result.user.current_position);
+        setJumpPosition(res.data.result.user.jump_by);
+        setPriorityAccess(res.data.result.user.priority_access);
       })
       .catch((err) => {
         console.log("status err", err);
@@ -435,13 +432,20 @@ const Modal = ({
         </div>
       );
     } else if (actualStep === "invite_friend") {
-      return <div>INVITE FRIEND</div>;
+      return <div>{referral}</div>;
     }
   };
 
+  // console.log("actualStep", actualStep, referral);
+
+  // const actualStepCss = useEffect(() => {
+  //   if (actualStep === "verify_email") return "step1";
+  //   if (actualStep === "phone") return "step2";
+  //   if (actualStep === "phone" && triggerSendNumber) return "step3";
+  //   if (actualStep === "invite_friend") return "step4";
+  // }, [actualStep, triggerSendNumber]);
+
   return (
-    // <>
-    //   {isOpen ? (
     <Container>
       <ModalContainer>
         <div>
@@ -454,9 +458,9 @@ const Modal = ({
           <div className="place-container">
             <div>Your place</div>
             <div>{currentPosition}</div>
-            <div>in a queue of {size}</div>
+            <div>in a queue of {queueSize}</div>
           </div>
-          <VerificationSteps>
+          <VerificationSteps className={""}>
             <div />
             <div />
             <div />
@@ -471,8 +475,6 @@ const Modal = ({
         <Blob className="blob-right" color="#F5EAD2" />
       </ModalContainer>
     </Container>
-    //   ) : null}
-    // </>
   );
 };
 
