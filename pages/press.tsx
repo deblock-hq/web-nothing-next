@@ -145,7 +145,7 @@ const PressContainer = styled.div`
           padding: 0;
           rotate: 350deg;
           top: -70px;
-          right: -25px;
+          right: -35px;
         }
       }
     }
