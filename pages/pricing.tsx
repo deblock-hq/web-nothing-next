@@ -34,8 +34,9 @@ const Container = styled.div`
 
   @media ${devices.pricing} {
     overflow: visible;
-    tr:hover {
-      background-color: yellow;
+    tr:hover td {
+      color: #ff9900 !important;
+      font-weight: 700;
     }
     .Blob {
       display: none;
@@ -128,7 +129,7 @@ const PricingContainer = styled.div<Props>`
                 padding: 0;
 
                 img {
-                  transition: height .5s ease-out, width .5s ease-out,
+                  transition: height 0.5s ease-out, width 0.5s ease-out,
                     opacity 0.4s ease-out;
                   height: 0;
                   width: 0;
