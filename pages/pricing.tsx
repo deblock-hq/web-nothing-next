@@ -128,9 +128,11 @@ const PricingContainer = styled.div<Props>`
                 padding: 0;
 
                 img {
-                  transition: height 1s ease-out, width 1s ease-out;
+                  transition: height 1s ease-out, width 1s ease-out,
+                    opacity 0.8s ease-out;
                   height: 0;
                   width: 0;
+                  opacity: 0;
                 }
               }
             }
@@ -166,10 +168,6 @@ const PricingContainer = styled.div<Props>`
             padding-bottom: 0;
             max-width: 529px;
             margin: auto;
-
-            td {
-              padding-left: 44px;
-            }
           }
 
           table {
@@ -193,6 +191,7 @@ const PricingContainer = styled.div<Props>`
           }
         }
       }
+
       > table:last-child {
         margin-top: 196px;
       }
@@ -206,7 +205,7 @@ const PricingContainer = styled.div<Props>`
     }
 
     .br-spacing {
-      height: 70px;
+      height: 42px;
     }
 
     /* h1 {
@@ -232,10 +231,6 @@ const PricingContainer = styled.div<Props>`
         display: none;
       }
     }
-  }
-
-  @media ${devices.tabletMax} {
-    width: auto;
   }
 `;
 

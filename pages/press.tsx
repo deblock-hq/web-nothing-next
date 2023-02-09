@@ -52,7 +52,7 @@ const PressContainer = styled.div`
   > div {
     display: flex;
     flex-direction: column;
-    gap: 32px;
+    gap: 90px;
 
     h1 {
       font-size: 48px;
@@ -79,6 +79,7 @@ const PressContainer = styled.div`
       display: flex;
       justify-content: center;
       gap: 8px;
+      position: relative;
 
       button {
         display: flex;
@@ -106,12 +107,18 @@ const PressContainer = styled.div`
       }
       > img {
         padding-bottom: 28px;
+        position: absolute;
+        right: 80px;
+        bottom: 20px;
+        transform: rotate(334deg);
       }
     }
   }
 
   @media ${devices.tabletMax} {
     > div {
+      gap: 56px;
+      
       h1 {
         font-size: 28px;
         line-height: 34px;
@@ -130,13 +137,13 @@ const PressContainer = styled.div`
       .button-container {
         position: relative;
         button {
-          width: 226px;
+          max-width: 226px;
           height: 55px;
         }
         > img {
           position: absolute;
           padding: 0;
-          rotate: 316deg;
+          rotate: 350deg;
           top: -70px;
           right: -25px;
         }
@@ -327,7 +334,7 @@ const Press = () => {
             <Image src={TitleArrow} alt="Arrow" />
           </div>
         </div>
-        <ArticleCard>
+        {/* <ArticleCard>
           <h2>Our latest press release</h2>
           <div className="filter">
             Filter by Country <Image src={Down} alt="arrow down" />
@@ -409,11 +416,11 @@ const Press = () => {
               </div>
             </div>
           </div>
-        </LatestVideos>
+        </LatestVideos> */}
       </PressContainer>
       <Blob className="blob-left" color="#F9E7CA" />
       <Blob className="blob-top-right" color="#E3F7F3" />
-      <Blob className="blob-right" color="#E0D8CA" />
+      {/* <Blob className="blob-right" color="#E0D8CA" /> */}
     </Container>
   );
 };
