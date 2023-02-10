@@ -1090,9 +1090,10 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
 
 const Home = () => {
   // const router = useRouter();
-  const { email, setEmail } = useContext(GlobalContext);
+  // const { email, setEmail } = useContext(GlobalContext);
   const [whitelistEmail, setWhitelistEmail] = useState("");
   const [openModal, setOpenModal] = useState(false);
+  const modalRef = useRef<HTMLInputElement>(null);
 
   const displayModal = useCallback(() => {
     if (!openModal) {
@@ -1149,9 +1150,13 @@ const Home = () => {
   }, []);
 
   let checkLocalStorage;
-  if (typeof window !== "undefined")
+  if (typeof window !== "undefined") {
     checkLocalStorage = localStorage.getItem("token");
 
+    if (openModal) {
+      document.body.style.overflow = "hidden";
+    } else document.body.style.overflow = "visible";
+  }
   const PhoneOnscrollAnimation = () => {
     const lottieObj = useLottie({
       animationData: DoublePhone,
@@ -1173,7 +1178,11 @@ const Home = () => {
   return (
     <div>
       <LandingContainer>
-        {openModal ? <Modal email={whitelistEmail} /> : null}
+        <Modal
+          isOpen={openModal}
+          setIsOpen={setOpenModal}
+          email={whitelistEmail}
+        />
         <div className="double-phone-container">
           {/* <Lottie animationData={DoublePhone} loop={false} /> */}
           <PhoneOnscrollAnimation />

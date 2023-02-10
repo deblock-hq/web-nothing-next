@@ -9,9 +9,14 @@ import React, {
   useState,
 } from "react";
 import { getFromStorage } from "../../utils/getFromStorage";
-import styled from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 import Blob from "../Blob";
 import Arrow from "../../assets/arrow.svg";
+
+interface Props {
+  step: string;
+  trigger: boolean;
+}
 
 const Container = styled.div`
   position: absolute;
@@ -215,23 +220,58 @@ const ModalContainer = styled.div`
   }
 `;
 
-const VerificationSteps = styled.div`
+const VerificationSteps = styled.div<Props>`
   display: flex;
   width: 308px;
   margin: auto;
-  padding-bottom: 24px;
+  position: relative;
+  /* padding-bottom: 24px; */
 
-  div {
+  background: transparent;
+  height: 12px;
+  align-items: center;
+  border: 0px solid transparent;
+  border-radius: 5px;
+
+  transition: all 2s ease;
+
+  .progress {
+    position: absolute;
+    border: 0px solid transparent;
+    border-radius: 5px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    background: #2cd5c4;
+    /* width: 0; */
+    height: 12px;
+    z-index: 1;
+
+    width: ${(props) =>
+      props.step === "verify_email"
+        ? "80px"
+        : props.step === "phone"
+        ? "103px"
+        : props.step === "phone" && props.trigger
+        ? "width :50%"
+        : props.step === "invite_friend"
+        ? "width: 203px"
+        : ""};
+
+    transition: width 0.4s linear;
+  }
+
+  div:not(:first-child) {
     border: 2px solid black;
     height: 12px;
     width: 100%;
+    z-index: 2;
 
-    :first-child {
+    :nth-child(2) {
       border-top-left-radius: 6px;
       border-bottom-left-radius: 6px;
     }
 
-    :nth-child(2) {
+    :nth-child(3) {
       border-left: 0px;
       border-right: 0px;
     }
@@ -241,9 +281,39 @@ const VerificationSteps = styled.div`
       border-bottom-right-radius: 6px;
     }
   }
+
+  /* &.step1 .progress {
+    width: 80px;
+  }
+
+  &.step2 .progress {
+    width: 103px;
+  }
+
+  &.step3 .progress {
+    width: 50%;
+  }
+
+  &.step4 .progress {
+    width: 203px;
+  }
+
+  &.step5 .progress {
+    width: 100%;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+  } */
 `;
 
-const Modal = ({ email }: { email: string }) => {
+const Modal = ({
+  email,
+  isOpen,
+  setIsOpen,
+}: {
+  email: string;
+  isOpen: boolean;
+  setIsOpen: (isOpen: boolean) => void;
+}) => {
   const [phoneCode, setPhoneCode] = useState("+44");
   const [phoneNumber, setPhoneNumber] = useState<number>();
   const [phoneVerifyCode, setPhoneVerifyCode] = useState("");
@@ -262,13 +332,26 @@ const Modal = ({ email }: { email: string }) => {
   const [jumpPosition, setJumpPosition] = useState<number>();
   const [priorityAccess, setPriorityAccess] = useState<number>();
 
+  const [triggerStatus, setTriggerStatus] = useState(true);
+
+  const modalRef = useRef<HTMLInputElement>(null);
+
   const handleChange = (e: any) => {
     const value = e.target.value.replace(/\D/g, "");
     setPhoneNumber(value);
   };
 
+  const closeModal = (e: { target: any }) => {
+    if (modalRef.current && isOpen && !modalRef.current.contains(e.target)) {
+      setIsOpen(false);
+    }
+  };
+
   let token: unknown;
-  if (typeof window !== "undefined") token = localStorage.getItem("token");
+  if (typeof window !== "undefined") {
+    token = localStorage.getItem("token");
+    document.addEventListener("mousedown", closeModal);
+  }
 
   const baseUrl = "https://waitlist-staging.deblock.com/v1";
 
@@ -293,7 +376,13 @@ const Modal = ({ email }: { email: string }) => {
       )
       .then(async (res) => {
         console.log("Emailresponse", res);
+        setQueueSize(res.data.result.user.size);
+        setCurrentPosition(res.data.result.user.current_position);
+        setJumpPosition(res.data.result.user.jump_by);
+        setPriorityAccess(res.data.result.user.priority_access);
+
         setActualStep("verify_email");
+        setTriggerStatus(true);
       })
       .catch((error) => {
         console.log("Emailerror", error);
@@ -311,6 +400,8 @@ const Modal = ({ email }: { email: string }) => {
       })
         .then(async (res) => {
           console.log("verifyEmail", res);
+          setTriggerStatus(true);
+
           // setActualStep("phone");
         })
         .catch((err) => {
@@ -340,6 +431,7 @@ const Modal = ({ email }: { email: string }) => {
       .then(async (res) => {
         // setActualStep(res.data.result.user.step);
         console.log("SendPhone", res, actualStep);
+        setTriggerStatus(true);
       })
       .catch((err) => {
         console.log("SendPhoneErr", err);
@@ -355,7 +447,7 @@ const Modal = ({ email }: { email: string }) => {
       phoneVerifyCode
     );
 
-    if (phoneVerifyCode.length == 4) {
+    if (phoneVerifyCode.length === 4) {
       axios
         .post(
           `${baseUrl}/waitlist/phone/verify`,
@@ -376,6 +468,8 @@ const Modal = ({ email }: { email: string }) => {
         .then(async (res) => {
           // setActualStep(res.data.result.user.step);
           console.log("VerifyPhone res", res);
+          setTriggerStatus(true);
+
           // setActualStep("invite_friend");
         })
         .catch((err) => {
@@ -386,25 +480,29 @@ const Modal = ({ email }: { email: string }) => {
 
   /** Get status */
   useEffect(() => {
-    axios
-      .get(`${baseUrl}/waitlist/status`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-      .then(async (res) => {
-        setActualStep(res.data.result.user.step);
-        console.log("status res", res, actualStep);
-        setReferral(res.data.result.user.referrals.url);
-        setQueueSize(res.data.result.user.size);
-        setCurrentPosition(res.data.result.user.current_position);
-        setJumpPosition(res.data.result.user.jump_by);
-        setPriorityAccess(res.data.result.user.priority_access);
-      })
-      .catch((err) => {
-        console.log("status err", err);
-      });
-  }, [actualStep, phoneCode, phoneNumber, phoneVerifyCode, token]);
+    triggerStatus &&
+      axios
+        .get(`${baseUrl}/waitlist/status`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .then(async (res) => {
+          setActualStep(res.data.result.user.step);
+          console.log("status res", res, actualStep);
+          setReferral(res.data.result.user.referrals.url);
+          setQueueSize(res.data.result.user.size);
+          setCurrentPosition(res.data.result.user.current_position);
+          setJumpPosition(res.data.result.user.jump_by);
+          setPriorityAccess(res.data.result.user.priority_access);
+
+          setTriggerStatus(false);
+        })
+        .catch((err) => {
+          console.log("status err", err);
+          setTriggerStatus(false);
+        });
+  }, [triggerStatus]);
 
   const StepsVerification = () => {
     if (actualStep === "verify_email") {
@@ -488,45 +586,61 @@ const Modal = ({ email }: { email: string }) => {
     }
   };
 
-  // console.log("actualStep", actualStep, referral);
-
-  // const actualStepCss = useEffect(() => {
-  //   if (actualStep === "verify_email") return "step1";
-  //   if (actualStep === "phone") return "step2";
-  //   if (actualStep === "phone" && triggerSendNumber) return "step3";
-  //   if (actualStep === "invite_friend") return "step4";
+  console.log("actualStep", actualStep, referral);
+  // const [actualStepCss, setActualStepCss] = useState("");
+  // useEffect(() => {
+  //   actualStep === "verify_email"
+  //     ? setActualStepCss("step1")
+  //     : actualStep === "phone"
+  //     ? setActualStepCss("step2")
+  //     : actualStep === "phone" && triggerSendNumber == true
+  //     ? setActualStepCss("step3")
+  //     : actualStep === "invite_friend"
+  //     ? setActualStepCss("step4")
+  //     : setActualStepCss("");
   // }, [actualStep, triggerSendNumber]);
 
+  // console.log("triggerSendNumber", triggerSendNumber);
+
   return (
-    <Container>
-      <ModalContainer>
-        <div>
-          <h2>
-            <span>
-              The first <span>{priorityAccess} </span>
-            </span>{" "}
-            will get priority access
-          </h2>
-          <div className="place-container">
-            <div>Your place</div>
-            <div>{currentPosition}</div>
-            <div>in a queue of {queueSize}</div>
-          </div>
-          <VerificationSteps className={""}>
-            <div />
-            <div />
-            <div />
-          </VerificationSteps>
-          <div className="queue">
-            Cut the queue by <strong> {jumpPosition} spots</strong>
-          </div>
-          {StepsVerification()}
-        </div>
-        <Blob className="blob-top" color="#F9D6BE" />
-        <Blob className="blob-left" color="#E5E0EA" />
-        <Blob className="blob-right" color="#F5EAD2" />
-      </ModalContainer>
-    </Container>
+    <>
+      {isOpen ? (
+        <Container>
+          <ModalContainer>
+            <div ref={modalRef}>
+              <h2>
+                <span>
+                  The first <strong>{priorityAccess} </strong>
+                </span>{" "}
+                will get priority access
+              </h2>
+              <div className="place-container">
+                <div>Your place</div>
+                <div>{currentPosition}</div>
+                <div>in a queue of {queueSize}</div>
+              </div>
+              <VerificationSteps
+                step={actualStep}
+                trigger={triggerSendNumber}
+                // className={actualStep}
+              >
+                <div className="progress" />
+                <div />
+                <div />
+                <div />
+              </VerificationSteps>
+              <div className="queue">
+                Cut the queue by <strong> {jumpPosition} spots</strong>
+              </div>
+              {StepsVerification()}
+            </div>
+            {/* <Blob className="blob-top" color="#F9D6BE" />
+            <Blob className="blob-left" color="#E5E0EA" />
+            <Blob className="blob-right" color="#F5EAD2" /> */}
+          </ModalContainer>
+        </Container>
+      ) : null}
+    </>
   );
 };
 
