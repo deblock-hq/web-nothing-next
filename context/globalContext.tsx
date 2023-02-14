@@ -3,8 +3,8 @@ import React, { ReactNode, useState } from "react";
 interface IGlobalContextProps {
   token?: string;
   setToken: (token: string) => void;
-  email?: string;
-  setEmail: (email: string) => void;
+  displayRequestButton?: boolean;
+  setDisplayRequestButton: (token: boolean) => void;
 }
 
 type Props = {
@@ -14,21 +14,21 @@ type Props = {
 export const GlobalContext = React.createContext<IGlobalContextProps>({
   token: "",
   setToken: () => {},
-  email: "",
-  setEmail: () => {},
+  displayRequestButton: false,
+  setDisplayRequestButton: () => {},
 });
 
 export const GlobalContextProvider = ({ children }: Props) => {
   const [token, setToken] = useState("");
-  const [email, setEmail] = useState("");
+  const [displayRequestButton, setDisplayRequestButton] = useState(false);
 
   return (
     <GlobalContext.Provider
       value={{
         token: token,
         setToken: setToken,
-        email: email,
-        setEmail: setEmail,
+        displayRequestButton: displayRequestButton,
+        setDisplayRequestButton: setDisplayRequestButton,
       }}
     >
       {children}

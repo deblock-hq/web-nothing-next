@@ -85,7 +85,7 @@ const LandingContainer = styled.div`
       width: 100%;
       max-width: 1340px;
       position: relative;
-      animation: FadeIn 1s;
+      animation: FadeIn 0.5s;
 
       @keyframes FadeIn {
         0% {
@@ -343,7 +343,7 @@ const FirstContainer = styled.div`
       :focus {
         outline: 1.5px solid black;
         box-shadow: 3px 3px 0px 0px rgb(0 0 0);
-        background-color: #f5f5f5;
+        background-color: white;
       }
 
       @media ${devices.tablet} {
@@ -387,14 +387,15 @@ const BackedByContainer = styled.div`
   align-items: center;
   justify-content: flex-start;
   gap: 20px;
+  background-color: white;
+  padding: 0 8px;
 
   @media ${devices.tablet} {
     height: 134px;
     gap: 26px;
     max-width: 1152px;
     width: 100%;
-    background-color: white;
-
+    padding: 0;
     /* margin-bottom: 100px; */
   }
 
@@ -402,6 +403,7 @@ const BackedByContainer = styled.div`
     font-size: 16px;
     color: gray;
     padding-top: 24px;
+    line-height: 24px;
 
     @media ${devices.tablet} {
       padding-top: 20px;
@@ -755,12 +757,12 @@ const CashOrCrypto = styled.div`
       position: absolute;
       width: 165px;
       height: 46px;
-      bottom: 24px;
+      bottom: 30px;
       left: 36px;
       background-size: 100%;
 
       @media ${devices.tablet} {
-        bottom: 39px;
+        bottom: 48px;
       }
     }
   }

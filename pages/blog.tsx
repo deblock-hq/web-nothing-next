@@ -230,48 +230,6 @@ const Blog = () => {
             <div className="image-number">01</div>
           </div>
         </BlogCard>
-        <BlogCard>
-          <div className="number">02</div>
-          <div className="text-container">
-            <h2>The Deblock non-custodial wallet is an absolute breeze?</h2>
-            <p>
-              The Schrödinger key. Have your keys and don&apos;t have them at
-              the same time.
-            </p>
-            <div className="blog-infos">
-              <div>Nov 22ּ • 3 min read</div>
-              <div>
-                <div>#ncw</div>
-                <div>#crypto</div>
-              </div>
-            </div>
-          </div>
-          <div className="image-container">
-            <Image src={Placeholder} alt="Blog image placeholder" />
-            <div className="image-number">02</div>
-          </div>
-        </BlogCard>
-        <BlogCard>
-          <div className="number">03</div>
-          <div className="text-container">
-            <h2>The Deblock non-custodial wallet is an absolute breeze?</h2>
-            <p>
-              The Schrödinger key. Have your keys and don&apos;t have them at
-              the same time.
-            </p>
-            <div className="blog-infos">
-              <div>Nov 22ּ • 3 min read</div>
-              <div>
-                <div>#ncw</div>
-                <div>#crypto</div>
-              </div>
-            </div>
-          </div>
-          <div className="image-container">
-            <Image src={Placeholder} alt="Blog image placeholder" />
-            <div className="image-number">03</div>
-          </div>
-        </BlogCard>
       </BlogContainer>
       <Blob className="blob-left" color="#F9DFE5" />
       <Blob className="blob-right" color="#ECE9D3" />

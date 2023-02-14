@@ -49,6 +49,7 @@ const FooterHeader = styled.div`
   justify-content: space-between;
   padding: 40px 140px 0 140px;
   font-weight: 700;
+  z-index: 3;
 
   .community {
     display: flex;
