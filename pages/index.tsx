@@ -267,7 +267,7 @@ const FirstContainer = styled.div`
         width: 65%;
         font-size: 18px;
         line-height: 28px;
-        animation: FadeIn3 1.5s;
+        animation: FadeIn 1.2s;
         padding-bottom: 8px;
       }
     }
@@ -325,7 +325,7 @@ const FirstContainer = styled.div`
       gap: 14px;
       height: 40px;
       padding-top: 0;
-      animation: FadeIn3 2s;
+      animation: FadeIn 1.2s;
     }
 
     input {
@@ -338,6 +338,7 @@ const FirstContainer = styled.div`
 
       ::placeholder {
         color: rgba(88, 88, 88, 0.5);
+        font-size: 16px;
       }
 
       :focus {
@@ -361,7 +362,7 @@ const FirstContainer = styled.div`
       font-weight: 600;
       height: 58px;
       font-size: 16px;
-      width: 100%;
+      width: calc(100% - 3px);
       cursor: pointer;
 
       :hover {
@@ -605,7 +606,6 @@ const NftContainer = styled.div`
 
     img {
       width: 160px;
-      padding-top: 30px;
 
       @media ${devices.tablet} {
         width: 100%;
@@ -802,16 +802,6 @@ const CashOrCrypto = styled.div`
     flex-direction: column;
     gap: 30px;
     align-items: center;
-
-    @media ${devices.tablet} {
-      :nth-child(2) {
-        justify-content: space-between;
-
-        img {
-          padding-top: 16px;
-        }
-      }
-    }
   }
 `;
 const SafestAccount = styled.div`
@@ -1090,18 +1080,24 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
 //   };
 // }
 
-const Home = () => {
+interface LandingProps {
+  displayModal: () => void;
+  whitelistEmail: string;
+  setWhitelistEmail: (whitelistEmail: string) => void;
+  openModal: boolean;
+  setOpenModal: (openModal: boolean) => void;
+}
+
+const Home = ({
+  displayModal,
+  whitelistEmail,
+  setWhitelistEmail,
+  openModal,
+  setOpenModal,
+}: LandingProps) => {
   // const router = useRouter();
   // const { email, setEmail } = useContext(GlobalContext);
-  const [whitelistEmail, setWhitelistEmail] = useState("");
-  const [openModal, setOpenModal] = useState(false);
   const modalRef = useRef<HTMLInputElement>(null);
-
-  const displayModal = useCallback(() => {
-    if (!openModal) {
-      setOpenModal(true);
-    }
-  }, [openModal]);
 
   useEffect(() => {
     let myPanel = document.getElementById("panel");
@@ -1168,6 +1164,11 @@ const Home = () => {
       mode: "scroll",
       actions: [
         {
+          visibility: [0, 0.5],
+          type: "play",
+          frames: [0, 43],
+        },
+        {
           visibility: [0.5, 1],
           type: "seek",
           frames: [0, 43],
@@ -1190,7 +1191,7 @@ const Home = () => {
           <PhoneOnscrollAnimation />
           <FirstContainer>
             <div className="image-container">
-              <Lottie animationData={DoublePhone} loop={false} />
+              <PhoneOnscrollAnimation />
             </div>
             <div className="text-container">
               <h1>

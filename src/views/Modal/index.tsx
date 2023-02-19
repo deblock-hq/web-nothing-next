@@ -387,7 +387,7 @@ const Modal = ({
       .catch((error) => {
         console.log("Emailerror", error);
       });
-  }, [email]);
+  }, []);
 
   /** Verify email */
   useEffect(() => {

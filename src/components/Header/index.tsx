@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { devices } from "../../utils/devices";
 import styled, { css } from "styled-components";
 
@@ -8,6 +8,7 @@ import Burgermenu from "../../assets/burger-menu.svg";
 import Cross from "../../assets/cross.svg";
 
 import Logo from "../../../public/HeaderLogo.svg";
+import { GlobalContext } from "../../../context/globalContext";
 
 interface Props {
   scrollY: number;
@@ -23,6 +24,10 @@ const HeaderContainer = styled.header<Props>`
   align-self: center;
   position: absolute;
   padding-top: 8px;
+
+  button {
+    display: none;
+  }
 
   .burger-menu {
     display: none;
@@ -172,6 +177,32 @@ const HeaderContainer = styled.header<Props>`
         padding: 0 40px;
         max-width: 1152px;
         animation: fadeIn 0.4s;
+
+        .hide-on-mobile {
+          width: 100%;
+          align-items: center;
+          justify-content: end;
+          gap: 30px;
+
+          button {
+            display: block;
+            color: white;
+            background: #000000;
+            border: 0.95393px solid #000000;
+            border-radius: 3.81572px;
+            font-weight: 600;
+            height: 40px;
+            max-width: 134px;
+            font-size: 13px;
+            line-height: 16px;
+            width: 100%;
+            cursor: pointer;
+
+            :hover {
+              background: rgba(0, 0, 0, 0.7);
+            }
+          }
+        }
       }
     `};
 `;
@@ -203,7 +234,9 @@ const HeaderContainer = styled.header<Props>`
 //   }
 // }
 
-const Header = () => {
+const Header = ({ displayModal }: { displayModal: () => void }) => {
+  const { setDisplayRequestButton } = useContext(GlobalContext);
+
   const [scrollY, setScrollY] = useState<number>(0);
   const [openMenu, setOpenMenu] = useState(false);
 
@@ -234,6 +267,11 @@ const Header = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
+  let checkLocalStorage;
+  if (typeof window !== "undefined") {
+    checkLocalStorage = localStorage.getItem("token");
+  }
 
   return (
     <HeaderContainer scrollY={scrollY}>
@@ -272,6 +310,9 @@ const Header = () => {
           Careers
         </a>
         <Link href="/support">Support</Link>
+        {checkLocalStorage && (
+          <button onClick={() => displayModal()}>Request access</button>
+        )}
       </div>
     </HeaderContainer>
   );

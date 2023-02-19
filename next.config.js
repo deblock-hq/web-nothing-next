@@ -11,6 +11,19 @@ const nextConfig = {
     styledComponents: true,
   },
 
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "deblock-blog.s3.eu-west-3.amazonaws.com",
+      },
+      {
+        protocol: "https",
+        hostname: "s3.us-west-2.amazonaws.com",
+      },
+    ],
+  },
+
   async rewrites() {
     return [
       {

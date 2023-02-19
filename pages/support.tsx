@@ -1,13 +1,13 @@
 import React from "react";
 import styled from "styled-components";
 
-import Chat from "../src/assets/support/chat.svg";
 import Mail from "../src/assets/support/mail.svg";
 import Image from "next/image";
 import { devices } from "../src/utils/devices";
 import Blob from "../src/views/Blob";
 import Lottie from "lottie-react";
 import SupportAnimation from "../src/assets/lottie/landing/Support.json";
+import ContactDeblock from "../src/components/ContactDeblock";
 
 const Container = styled.div`
   position: relative;

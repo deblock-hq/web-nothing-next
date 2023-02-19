@@ -199,7 +199,7 @@ const Footer = () => {
               <Link href="/product">Features</Link>
             </li>
             <li>
-              <Link href="">NFTs</Link>
+              <Link href="/nft">NFTs</Link>
             </li>
             <li>
               <Link href="/pricing">Pricing plan</Link>
@@ -253,13 +253,13 @@ const Footer = () => {
           <h4>Legal & Compliance</h4>
           <ul>
             <li>
-              <Link href="">Website terms</Link>
+              <Link href="/terms-and-policies">Website terms</Link>
             </li>
             <li>
-              <Link href="">Legal Agreements</Link>
+              <Link href="/legal">Legal Agreements</Link>
             </li>
             <li>
-              <Link href="">Privacy</Link>
+              <Link href="/privacy">Privacy</Link>
             </li>
             <li>
               <Link href="">Customer Vunerability</Link>
