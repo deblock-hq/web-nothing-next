@@ -27,7 +27,7 @@ const CountrySlection = () => {
   return (
     <div className="CountrySelection">
       <div className="CountrySelection-container">
-        <Header />
+        {/* <Header /> */}
         <span className="titles">{t("only-available-countries")}</span>
         <div className="country-container">
           <span className="choose-country">
