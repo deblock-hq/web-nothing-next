@@ -384,7 +384,6 @@ const BlogArticle = () => {
   if (block) {
     console.log("Block", block, block.length);
 
-    // for (let i = 0; i < block.length; i++) {
     const DisplayBlock = block.map((b, i) => {
       if (b.heading_1) {
         return (
