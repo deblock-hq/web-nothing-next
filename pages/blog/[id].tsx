@@ -14,25 +14,6 @@ interface Props {
 
 const Container = styled.div`
   background-color: #fbfaf9;
-  position: relative;
-  overflow: hidden;
-
-  .blob-left {
-    position: absolute;
-    top: -100px;
-  }
-
-  .blob-right {
-    position: absolute;
-    top: 200px;
-    right: -500px;
-  }
-
-  @media ${devices.tabletMax} {
-    .Blob {
-      display: none;
-    }
-  }
 `;
 
 const NCWContainer = styled.div`
@@ -434,7 +415,13 @@ const BlogArticle = () => {
         return (
           <div key={uuidv4()}>
             {b.image.file && (
-              <Image src={b.image.file.url} alt="" width={760} height={322} />
+              <Image
+                src={b.image.file.url}
+                alt=""
+                style={{ width: "100%", height: "auto" }}
+                width={760}
+                height={0}
+              />
             )}
             {b.image.caption && b.image.caption[0] && (
               <span>{b.image.caption[0].plain_text}</span>

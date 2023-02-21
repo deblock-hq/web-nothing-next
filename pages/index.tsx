@@ -182,7 +182,7 @@ const FirstContainer = styled.div`
     border-radius: 30px;
     max-width: 1152px;
     justify-content: center;
-    background-color: #faf5ef;
+    background-color: white;
     animation: backgroundFadeIn 0.5s;
 
     @keyframes backgroundFadeIn {
@@ -1240,9 +1240,9 @@ const Home = ({
                 </button>
               </form>
             </div>
-            <Blob className="blob-left" color="#E5E0EA" />
-            <Blob className="blob-top" color="#F9D6BE" />
-            <Blob className="blob-right" color="#F5EAD2" />
+            <Blob className="blob-left" color="#F2E1FF" />
+            <Blob className="blob-top" color="#FFB483" />
+            <Blob className="blob-right" color="#FFE5A6" />
           </FirstContainer>
         </div>
         <BackedByContainer>
