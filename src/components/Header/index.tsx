@@ -51,7 +51,8 @@ const HeaderContainer = styled.header<Props>`
       cursor: pointer;
 
       :hover {
-        font-weight: 700;
+        font-weight: 600;
+        color: rgba(255, 153, 0, 0.9);
       }
     }
   }
