@@ -10,7 +10,6 @@ import React, {
 } from "react";
 import { getFromStorage } from "../../utils/getFromStorage";
 import styled, { createGlobalStyle } from "styled-components";
-import Blob from "../Blob";
 import Arrow from "../../assets/arrow.svg";
 
 interface Props {
@@ -249,12 +248,12 @@ const VerificationSteps = styled.div<Props>`
     width: ${(props) =>
       props.step === "verify_email"
         ? "80px"
-        : props.step === "phone"
+        : props.step === "phone" && !props.trigger
         ? "103px"
         : props.step === "phone" && props.trigger
-        ? "width :50%"
+        ? "50%"
         : props.step === "invite_friend"
-        ? "width: 203px"
+        ? "204px"
         : ""};
 
     transition: width 0.4s linear;
@@ -281,37 +280,13 @@ const VerificationSteps = styled.div<Props>`
       border-bottom-right-radius: 6px;
     }
   }
-
-  /* &.step1 .progress {
-    width: 80px;
-  }
-
-  &.step2 .progress {
-    width: 103px;
-  }
-
-  &.step3 .progress {
-    width: 50%;
-  }
-
-  &.step4 .progress {
-    width: 203px;
-  }
-
-  &.step5 .progress {
-    width: 100%;
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
-  } */
 `;
 
 const Modal = ({
   email,
-  isOpen,
   setIsOpen,
 }: {
   email: string;
-  isOpen: boolean;
   setIsOpen: (isOpen: boolean) => void;
 }) => {
   const [phoneCode, setPhoneCode] = useState("+44");
@@ -342,7 +317,7 @@ const Modal = ({
   };
 
   const closeModal = (e: { target: any }) => {
-    if (modalRef.current && isOpen && !modalRef.current.contains(e.target)) {
+    if (modalRef.current && !modalRef.current.contains(e.target)) {
       setIsOpen(false);
     }
   };
@@ -387,7 +362,7 @@ const Modal = ({
       .catch((error) => {
         console.log("Emailerror", error);
       });
-  }, []);
+  }, [email]);
 
   /** Verify email */
   useEffect(() => {
@@ -466,7 +441,6 @@ const Modal = ({
           }
         )
         .then(async (res) => {
-          // setActualStep(res.data.result.user.step);
           console.log("VerifyPhone res", res);
           setTriggerStatus(true);
 
@@ -573,7 +547,7 @@ const Modal = ({
             <button
               onClick={() => {
                 sendPhoneNumber();
-                setTriggerSendNumber(!triggerSendNumber);
+                setTriggerSendNumber(true);
               }}
             >
               Send Code
@@ -586,61 +560,43 @@ const Modal = ({
     }
   };
 
-  console.log("actualStep", actualStep, referral);
-  // const [actualStepCss, setActualStepCss] = useState("");
-  // useEffect(() => {
-  //   actualStep === "verify_email"
-  //     ? setActualStepCss("step1")
-  //     : actualStep === "phone"
-  //     ? setActualStepCss("step2")
-  //     : actualStep === "phone" && triggerSendNumber == true
-  //     ? setActualStepCss("step3")
-  //     : actualStep === "invite_friend"
-  //     ? setActualStepCss("step4")
-  //     : setActualStepCss("");
-  // }, [actualStep, triggerSendNumber]);
-
-  // console.log("triggerSendNumber", triggerSendNumber);
+  console.log("actualStep", actualStep, "trigger", triggerSendNumber);
 
   return (
-    <>
-      {isOpen ? (
-        <Container>
-          <ModalContainer>
-            <div ref={modalRef}>
-              <h2>
-                <span>
-                  The first <strong>{priorityAccess} </strong>
-                </span>{" "}
-                will get priority access
-              </h2>
-              <div className="place-container">
-                <div>Your place</div>
-                <div>{currentPosition}</div>
-                <div>in a queue of {queueSize}</div>
-              </div>
-              <VerificationSteps
-                step={actualStep}
-                trigger={triggerSendNumber}
-                // className={actualStep}
-              >
-                <div className="progress" />
-                <div />
-                <div />
-                <div />
-              </VerificationSteps>
-              <div className="queue">
-                Cut the queue by <strong> {jumpPosition} spots</strong>
-              </div>
-              {StepsVerification()}
-            </div>
-            {/* <Blob className="blob-top" color="#F9D6BE" />
+    <Container>
+      <ModalContainer>
+        <div ref={modalRef}>
+          <h2>
+            <span>
+              The first <strong>{priorityAccess} </strong>
+            </span>{" "}
+            will get priority access
+          </h2>
+          <div className="place-container">
+            <div>Your place</div>
+            <div>{currentPosition}</div>
+            <div>in a queue of {queueSize}</div>
+          </div>
+          <VerificationSteps
+            step={actualStep}
+            trigger={triggerSendNumber}
+            // className={actualStep}
+          >
+            <div className="progress" />
+            <div />
+            <div />
+            <div />
+          </VerificationSteps>
+          <div className="queue">
+            Cut the queue by <strong> {jumpPosition} spots</strong>
+          </div>
+          {StepsVerification()}
+        </div>
+        {/* <Blob className="blob-top" color="#F9D6BE" />
             <Blob className="blob-left" color="#E5E0EA" />
             <Blob className="blob-right" color="#F5EAD2" /> */}
-          </ModalContainer>
-        </Container>
-      ) : null}
-    </>
+      </ModalContainer>
+    </Container>
   );
 };
 

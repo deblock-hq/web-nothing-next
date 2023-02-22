@@ -381,10 +381,16 @@ const BlogArticle = () => {
     // if (fetchBlogList) getBlogList();
   }, [router.query.id]);
 
+  const [style, setStyle] = useState("");
+
   if (block) {
     console.log("Block", block, block.length);
 
     const DisplayBlock = block.map((b, i) => {
+      const Type = Object.keys(b)[3];
+
+      console.log("test", Object.keys(b), Type, b.Type);
+
       if (b.heading_1) {
         return (
           <h1 key={uuidv4()}>
@@ -440,6 +446,13 @@ const BlogArticle = () => {
           <QuoteText key={uuidv4()}>
             {b.quote.rich_text[0] && b.quote.rich_text[0].plain_text}
           </QuoteText>
+        );
+      }
+      if (b.bulleted_list_item) {
+        return (
+          <ul key={uuidv4()}>
+            <li>{b.bulleted_list_item.rich_text[0].plain_text}</li>
+          </ul>
         );
       }
     });

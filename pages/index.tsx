@@ -1181,11 +1181,13 @@ const Home = ({
   return (
     <div>
       <LandingContainer>
-        <Modal
-          isOpen={openModal}
-          setIsOpen={setOpenModal}
-          email={whitelistEmail}
-        />
+        {openModal && (
+          <Modal
+            // isOpen={openModal}
+            setIsOpen={setOpenModal}
+            email={whitelistEmail}
+          />
+        )}
         <div className="double-phone-container">
           {/* <Lottie animationData={DoublePhone} loop={false} /> */}
           <PhoneOnscrollAnimation />

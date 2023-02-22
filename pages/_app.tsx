@@ -14,10 +14,10 @@ function App({ Component, pageProps }: AppProps) {
   const [openModal, setOpenModal] = useState(false);
 
   const displayModal = useCallback(() => {
-    if (!openModal && whitelistEmail) {
+    if (!openModal) {
       setOpenModal(true);
     }
-  }, [openModal, whitelistEmail]);
+  }, [openModal]);
 
   return (
     <>
