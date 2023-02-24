@@ -1,16 +1,13 @@
 import axios from "axios";
-import { useGlobalContext } from "../../../context";
 import Image from "next/image";
-import React, {
-  ReactNode,
-  useCallback,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
-import { getFromStorage } from "../../utils/getFromStorage";
-import styled, { createGlobalStyle } from "styled-components";
+import React, { useEffect, useRef, useState } from "react";
+import styled from "styled-components";
 import Arrow from "../../assets/arrow.svg";
+import { devices } from "../../utils/devices";
+
+import FlagFr from "../../assets/fr-flag.svg";
+import FlagEn from "../../assets/en-flag.svg";
+import Rotate from "../../assets/rotate.svg";
 
 interface Props {
   step: string;
@@ -45,14 +42,26 @@ const ModalContainer = styled.div`
   border-radius: 14px;
   box-shadow: 3px 3px 0px 0px rgb(0 0 0);
   position: relative;
-  overflow: hidden;
-  padding: 48px;
+  padding: 0 48px;
 
   h2 {
     font-size: 35px;
     line-height: 28px;
     text-align: center;
     padding-bottom: 72px;
+    padding-top: 48px;
+    position: relative;
+
+    span:before {
+      content: "";
+      background: url("./mobile-background/modal-trace.svg") no-repeat;
+      position: absolute;
+      width: 235px;
+      height: 23px;
+      bottom: 45px;
+      left: 15px;
+      background-size: 100%;
+    }
   }
 
   > div:first-child {
@@ -65,23 +74,28 @@ const ModalContainer = styled.div`
       gap: 12px;
       padding-bottom: 50px;
 
-      div {
+      .current-position {
+        display: flex;
+        justify-content: center;
+        gap: 3px;
+
+        > div {
+          font-weight: 500;
+          font-size: 58px;
+          line-height: 65px;
+          border: 1px solid black;
+          border-radius: 4px;
+          padding: 8px 4px;
+          background-color: white;
+          box-shadow: 3px 3px 0px 0px rgb(0 0 0);
+        }
+      }
+
+      > div {
         :first-child {
           font-weight: 500;
           font-size: 21px;
           padding-bottom: 4px;
-        }
-        :nth-child(2) {
-          font-weight: 500;
-          font-size: 58px;
-          line-height: 65px;
-          letter-spacing: 0.12em;
-          border: 1px solid black;
-          border-radius: 4px;
-          width: fit-content;
-          margin: auto;
-          background-color: white;
-          box-shadow: 3px 3px 0px 0px rgb(0 0 0);
         }
       }
     }
@@ -131,23 +145,27 @@ const ModalContainer = styled.div`
             background: #ffffff;
             border: 1px solid #000000;
             border-radius: 4px;
-            padding: 8px 16px;
+            padding: 12px 12px 12px 8px;
             position: relative;
             cursor: pointer;
+            display: flex;
+            gap: 8px;
           }
+
           .phone-dropdown {
             position: absolute;
             display: flex;
             flex-direction: column;
             justify-content: space-evenly;
             align-items: flex-start;
-            width: 300px;
+            max-width: 316px;
+            width: 100%;
             height: 96px;
             background: #ffffff;
             border: 1px solid #000000;
             box-shadow: 0px 2.85227px 2.85227px rgba(0, 0, 0, 0.04);
             border-radius: 4px;
-            bottom: 54px;
+            top: 510px;
             padding: 8px;
 
             li {
@@ -155,18 +173,30 @@ const ModalContainer = styled.div`
               align-items: center;
               justify-content: space-between;
               height: 100%;
-              width: 100%;
+              width: 98%;
               cursor: pointer;
               border-radius: 4px;
+              padding-left: 8px;
 
-              img {
+              > div {
+                > div {
+                  display: flex;
+                  gap: 24px;
+                }
+                display: flex;
+                gap: 40px;
+              }
+
+              > img {
                 visibility: hidden;
+                padding-right: 16px;
               }
 
               :hover {
                 background-color: #f3f3f3;
-                img {
+                > img {
                   visibility: visible;
+                  text-align: end;
                 }
               }
             }
@@ -193,29 +223,88 @@ const ModalContainer = styled.div`
           border: 1px solid #000000;
           border-radius: 4px;
           width: 134px;
+          cursor: pointer;
         }
       }
     }
-  }
 
-  .Blob {
-    position: absolute;
-    z-index: 1;
-  }
+    .phone-code {
+      > div:first-child {
+        padding-bottom: 20px;
+        span {
+          font-weight: 700;
+        }
+      }
+      input {
+        display: block;
+        /* display: inline-block; */
+        margin: 1.2rem auto;
+        border: none;
+        padding: 0;
+        width: 5.5ch;
+        background: repeating-linear-gradient(
+            90deg,
+            black 0,
+            black 1ch,
+            transparent 0,
+            transparent 1.5ch
+          )
+          0 100%/ 10ch 2px no-repeat;
+        font: 1.2rem "Ubuntu Mono", monospace;
+        letter-spacing: 0.5ch;
 
-  .blob-top {
-    width: 58%;
-    left: -200px;
-  }
+        ::-webkit-outer-spin-button,
+        ::-webkit-inner-spin-button {
+          -webkit-appearance: none;
+          margin: 0;
+        }
+      }
+    }
 
-  .blob-left {
-    top: 300px;
-  }
+    .invite-friend {
+      h4 {
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 28px;
+        padding-bottom: 28px;
+      }
 
-  .blob-right {
-    width: 50%;
-    top: 130px;
-    left: 720px;
+      > div {
+        display: flex;
+        height: 40px;
+        justify-content: center;
+        gap: 16px;
+
+        input {
+          border: 1px solid #000000;
+          border-radius: 3.81572px;
+          box-shadow: 1px 1px 0px 0px rgb(0 0 0);
+          padding-left: 20px;
+          color: #12baa9;
+          font-weight: 600;
+          font-size: 14px;
+          line-height: 30px;
+          max-width: 210px;
+          width: 100%;
+        }
+
+        button {
+          color: white;
+          background: #000000;
+          border: 0.95393px solid #000000;
+          border-radius: 3.81572px;
+          font-weight: 600;
+          font-size: 16px;
+          max-width: 134px;
+          width: 100%;
+          cursor: pointer;
+
+          :hover {
+            background: rgba(0, 0, 0, 0.7);
+          }
+        }
+      }
+    }
   }
 `;
 
@@ -224,7 +313,7 @@ const VerificationSteps = styled.div<Props>`
   width: 308px;
   margin: auto;
   position: relative;
-  /* padding-bottom: 24px; */
+  padding-bottom: 24px;
 
   background: transparent;
   height: 12px;
@@ -247,13 +336,13 @@ const VerificationSteps = styled.div<Props>`
 
     width: ${(props) =>
       props.step === "verify_email"
-        ? "80px"
+        ? "25%"
         : props.step === "phone" && !props.trigger
-        ? "103px"
+        ? "33.5%"
         : props.step === "phone" && props.trigger
         ? "50%"
         : props.step === "invite_friend"
-        ? "204px"
+        ? "66.5%"
         : ""};
 
     transition: width 0.4s linear;
@@ -300,6 +389,7 @@ const Modal = ({
   const [actualStep, setActualStep] = useState("");
 
   const [referral, setReferral] = useState("");
+  const referralRef = useRef(null);
 
   const [queueSize, setQueueSize] = useState<number>();
   const [previousPosition, setPreviousPosition] = useState<number>();
@@ -491,21 +581,23 @@ const Modal = ({
     } else if (actualStep === "phone") {
       if (!!phoneNumber && phoneCode && triggerSendNumber) {
         return (
-          <div>
+          <div className="phone-code">
             <div>
-              We send a code to {phoneCode}
-              {phoneNumber}{" "}
+              We send a code to{" "}
+              <span>
+                {phoneCode} {phoneNumber}
+              </span>
             </div>
             <div>
               <input
                 ref={phoneVerifyRef}
-                type="number"
+                type="text"
                 value={phoneVerifyCode}
+                maxLength={4}
                 onChange={(e) => setPhoneVerifyCode(e.target.value)}
-                placeholder="_ _ _ _"
               />
               <div onClick={() => setTriggerSendNumber(false)}>
-                change your phone
+                change your phone <Image src={Rotate} alt="Rotate" />
               </div>
             </div>
           </div>
@@ -518,21 +610,48 @@ const Modal = ({
           <div>
             <div className="phone-dropdown-container">
               <div onClick={() => setOpenDropdown(!openDropdown)}>
+                {phoneCode === "+44" ? (
+                  <Image
+                    className="flag"
+                    src={FlagEn}
+                    alt="United kingdom flag"
+                  />
+                ) : phoneCode === "+33" ? (
+                  <Image className="flag" src={FlagFr} alt="France flag" />
+                ) : (
+                  ""
+                )}
                 {phoneCode}
               </div>
 
               {openDropdown && (
                 <ul className="phone-dropdown">
                   <li onClick={() => setPhoneCode("+44")}>
-                    {/* <Image /> */}
-                    <span>+44</span>
-                    <span>United Kingdom</span>
+                    <div>
+                      <div>
+                        <Image
+                          className="flag"
+                          src={FlagEn}
+                          alt="United kingdom flag"
+                        />
+                        <span>+44</span>
+                      </div>
+                      <span>United Kingdom</span>
+                    </div>
                     <Image src={Arrow} alt="Arrow right" />
                   </li>
                   <li onClick={() => setPhoneCode("+33")}>
-                    {/* <Image /> */}
-                    <span>+33</span>
-                    <span>France</span>
+                    <div>
+                      <div>
+                        <Image
+                          className="flag"
+                          src={FlagFr}
+                          alt="France flag"
+                        />
+                        <span>+33</span>
+                      </div>
+                      <span>France</span>
+                    </div>
                     <Image src={Arrow} alt="Arrow right" />
                   </li>
                 </ul>
@@ -556,11 +675,22 @@ const Modal = ({
         </div>
       );
     } else if (actualStep === "invite_friend") {
-      return <div>{referral}</div>;
+      return (
+        <div className="invite-friend">
+          <h4>Invite a friend</h4>
+          <div>
+            <input type="text" value={referral} readOnly ref={referralRef} />
+            <button
+              type="button"
+              onClick={() => navigator.clipboard.writeText(referral)}
+            >
+              Copy
+            </button>
+          </div>
+        </div>
+      );
     }
   };
-
-  console.log("actualStep", actualStep, "trigger", triggerSendNumber);
 
   return (
     <Container>
@@ -574,7 +704,14 @@ const Modal = ({
           </h2>
           <div className="place-container">
             <div>Your place</div>
-            <div>{currentPosition}</div>
+            <div className="current-position">
+              {currentPosition
+                ?.toString()
+                .split("")
+                .map((n, i) => (
+                  <div key={i}>{n}</div>
+                ))}
+            </div>
             <div>in a queue of {queueSize}</div>
           </div>
           <VerificationSteps
@@ -592,9 +729,6 @@ const Modal = ({
           </div>
           {StepsVerification()}
         </div>
-        {/* <Blob className="blob-top" color="#F9D6BE" />
-            <Blob className="blob-left" color="#E5E0EA" />
-            <Blob className="blob-right" color="#F5EAD2" /> */}
       </ModalContainer>
     </Container>
   );

@@ -8,9 +8,6 @@ import Blob from "../../src/views/Blob";
 import Image from "next/image";
 import { v4 as uuidv4 } from "uuid";
 
-interface Props {
-  color: string;
-}
 
 const Container = styled.div`
   background-color: #fbfaf9;
