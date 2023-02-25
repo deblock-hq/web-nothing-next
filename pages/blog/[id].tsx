@@ -8,7 +8,6 @@ import Blob from "../../src/views/Blob";
 import Image from "next/image";
 import { v4 as uuidv4 } from "uuid";
 
-
 const Container = styled.div`
   background-color: #fbfaf9;
 `;
@@ -22,7 +21,8 @@ const NCWContainer = styled.div`
   font-size: 21px;
   line-height: 41px;
   padding: 72px 24px 24px 24px;
-
+  font-family: "Georgia";
+ 
   * {
     z-index: 2;
   }
@@ -33,6 +33,8 @@ const NCWContainer = styled.div`
     padding-bottom: 16px;
     max-width: 706px;
     padding: 44px 0 16px 48px;
+    font-family: "Inter";
+
   }
 
   h2 {

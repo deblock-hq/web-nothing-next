@@ -14,13 +14,24 @@ import Arrow from "../src/assets/down.svg";
 import Discord from "../src/assets/nft/discord.svg";
 import Twitter from "../src/assets/nft/twitter.svg";
 import ContactDeblock from "../src/components/ContactDeblock";
+import Lottie from "lottie-react";
+import Utility from "../src/assets/lottie/nft/utility.json";
+import { devices } from "../src/utils/devices";
 
-const Container = styled.div`
+const Container = styled.div``;
+const NftContainer = styled.div`
   max-width: 1152px;
   display: flex;
   flex-direction: column;
   align-items: center;
   margin: auto;
+  padding: 0 24px;
+
+  h1 {
+    font-size: 48px;
+    line-height: 57px;
+    letter-spacing: 0.16px;
+  }
 
   h2 {
     font-size: 40px;
@@ -39,19 +50,46 @@ const Container = styled.div`
     font-size: 18px;
     line-height: 28px;
   }
+
+  @media ${devices.tabletMax} {
+    h1 {
+      font-size: 30px;
+      line-height: 57px;
+    }
+
+    h2 {
+      font-size: 28px;
+      line-height: 34px;
+    }
+
+    h3 {
+      font-weight: 400;
+      font-size: 22px;
+      line-height: 28px;
+    }
+
+    h4 {
+      font-weight: 600;
+      font-size: 18px;
+      line-height: 28px;
+    }
+
+    p {
+      font-size: 16px !important;
+      line-height: 28px;
+      padding-bottom: 0 !important;
+    }
+  }
 `;
-const NftContainer = styled.div``;
 const HeroContainer = styled.div`
   padding: 72px 0 44px 0;
 
+  @media ${devices.tabletMax} {
+    padding-bottom: 0;
+  }
+
   > div {
     text-align: center;
-
-    h1 {
-      font-size: 48px;
-      line-height: 57px;
-      letter-spacing: 0.16px;
-    }
 
     p {
       font-weight: 500;
@@ -71,6 +109,8 @@ const Countdown = styled.div`
   > div {
     display: flex;
     gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
 
     > div {
       display: flex;
@@ -118,12 +158,17 @@ const Description = styled.div`
 
   .second-block {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     width: 100%;
     padding-bottom: 150px;
 
     > div {
       max-width: 404px;
+
+      .utility-animation {
+        max-width: 350px;
+      }
+
       > p {
         max-width: 387px;
         font-size: 20px;
@@ -139,15 +184,38 @@ const Description = styled.div`
         img {
           width: 35px;
         }
+
+        @media ${devices.tabletMax} {
+          flex-direction: column;
+        }
       }
+    }
+
+    @media ${devices.tabletMax} {
+      flex-direction: column-reverse;
+      width: auto;
+      gap: 40px;
+      padding-bottom: 80px;
     }
   }
 `;
 const Roadmap = styled.div`
   text-align: center;
   padding-bottom: 180px;
+
   h2 {
     padding-bottom: 96px;
+  }
+
+  @media ${devices.tabletMax} {
+    padding-bottom: 80px;
+
+    h2 {
+      padding-bottom: 60px;
+    }
+    img {
+      height: 80%;
+    }
   }
 `;
 const Team = styled.div`
@@ -159,6 +227,7 @@ const Team = styled.div`
   h2 {
     padding-bottom: 62px;
   }
+
   > div {
     display: flex;
     flex-direction: column;
@@ -193,6 +262,18 @@ const Team = styled.div`
           letter-spacing: 0.084px;
         }
       }
+    }
+  }
+
+  @media ${devices.tabletMax} {
+    padding-bottom: 80px;
+
+    h2 {
+      padding-bottom: 60px;
+    }
+
+    > div {
+      gap: 40px;
     }
   }
 `;
@@ -287,169 +368,169 @@ const Nft = () => {
 
   return (
     <Container>
-      {/* <NftContainer> */}
-      <HeroContainer>
-        <div>
-          <h1>555 Bursted Bubbles</h1>
-          <p>The first NFT collection of Deblock</p>
-        </div>
-        <Image src={Bubbles} alt="Bubbles drawing" />
-      </HeroContainer>
-      <Countdown>
-        <h3>Mint available in</h3>
-        <div>
+      <NftContainer>
+        <HeroContainer>
           <div>
-            Day <span>1</span>
+            <h1>555 Bursted Bubbles</h1>
+            <p>The first NFT collection of Deblock</p>
           </div>
+          <Image src={Bubbles} alt="Bubbles drawing" />
+        </HeroContainer>
+        <Countdown>
+          <h3>Mint available in</h3>
           <div>
-            hour <span>14</span>
+            <div>
+              Day <span>1</span>
+            </div>
+            <div>
+              hour <span>14</span>
+            </div>
+            <div>
+              minutes <span>47</span>
+            </div>
+            <div>
+              seconds <span>06</span>
+            </div>
           </div>
-          <div>
-            minutes <span>47</span>
-          </div>
-          <div>
-            seconds <span>06</span>
-          </div>
-        </div>
-      </Countdown>
-      <Description>
-        <Image src={HandDrawing} alt="hand drawing" />
-        <div className="first-block">
-          <h2>555 hand-drawn BB by Pierone</h2>
-          <p>
-            The idea of a non-custodial future has spread in every living mind
-            when 500 bubbles bursted over the world in the last year. Deblock is
-            finally turning this idea into a reality by delivering 500 unique
-            NFTs with utility, hand drawn by Oscar nominee Pierone.
-          </p>
-        </div>
-        <div className="second-block">
-          <div>
-            <h2>Utility and beyond...</h2>
+        </Countdown>
+        <Description>
+          <Image src={HandDrawing} alt="hand drawing" />
+          <div className="first-block">
+            <h2>555 hand-drawn BB by Pierone</h2>
             <p>
-              Deblock is the first FIAT account merged with a non-custodial
-              wallet in the process of being regulated in Europe.
+              The idea of a non-custodial future has spread in every living mind
+              when 500 bubbles bursted over the world in the last year. Deblock
+              is finally turning this idea into a reality by delivering 500
+              unique NFTs with utility, hand drawn by Oscar nominee Pierone.
             </p>
+          </div>
+          <div className="second-block">
             <div>
-              <Image src={Sun} alt="Sun" />
+              <h2>Utility and beyond...</h2>
+              <p>
+                Deblock is the first FIAT account merged with a non-custodial
+                wallet in the process of being regulated in Europe.
+              </p>
               <div>
-                <h4>Early Access to Deblock</h4>
-                <p>Be among the first early users. Make history.</p>
+                <Image src={Sun} alt="Sun" />
+                <div>
+                  <h4>Early Access to Deblock</h4>
+                  <p>Be among the first early users. Make history.</p>
+                </div>
               </div>
-            </div>
-            <br />
-            <div>
-              <Image src={Vip} alt="Vip" />
+              <br />
               <div>
-                <h4>Exclusive Native Plan on Deblock</h4>
-                <p>0% on-ramping, free international transfers...</p>
+                <Image src={Vip} alt="Vip" />
+                <div>
+                  <h4>Exclusive Native Plan on Deblock</h4>
+                  <p>0% on-ramping, free international transfers...</p>
+                </div>
               </div>
-            </div>
-            <br />
+              <br />
 
-            <div>
-              <Image src={Hand} alt="Red hand" />
               <div>
-                <h4>Private access to the TBB Lounge</h4>
-                <p>Exclusive WLs, NFT Drops and collabs</p>
+                <Image src={Hand} alt="Red hand" />
+                <div>
+                  <h4>Private access to the TBB Lounge</h4>
+                  <p>Exclusive WLs, NFT Drops and collabs</p>
+                </div>
               </div>
             </div>
+            <Lottie className="utility-animation" animationData={Utility} />
           </div>
-          <span>Animation placeholder</span>
-        </div>
-      </Description>
-      <Roadmap>
-        <h2>Roadmap</h2>
-        <Image src={RoadmapImage} alt="Nft roadmap" />
-      </Roadmap>
-      <Team>
-        <h2>Team</h2>
-        <div>
-          <div className="card">
-            <Image src={Placeholder} alt="" />
-            <div>
-              <div>
-                Pierre Ducos aka. Pierone
-                <a href="">
-                  <Image src={Linkedin} alt="Linkedin logo" />
-                </a>
-              </div>
-              <span>The Artist</span>
-              <p>
-                World renowned artist in Digital art and animation with 25 years
-                experience.Oscar (academy award) nominee in 2020 for the
-                animated movie &quot;I lost my body&quot; 3x nominee in multiple
-                festivals for his movie La détente (Best animation)
-              </p>
-            </div>
-          </div>
-          <div className="card">
-            <Image src={Placeholder} alt="" />
-            <div>
-              <div>
-                Jean Meyer
-                <a href="">
-                  <Image src={Linkedin} alt="Linkedin logo" />
-                </a>
-              </div>
-              <span>The Product</span>
-              <p>
-                Former Head of Crypto @Revolut Created multiple tech products
-                with 10m+ cumulated active users Entrepreneur with 3x exits.
-                Over $25mm raised.
-              </p>
-            </div>
-          </div>
-          <div className="card">
-            <Image src={Placeholder} alt="" />
-            <div>
-              <div>
-                Mario Eguiluz
-                <a href="">
-                  <Image src={Linkedin} alt="Linkedin logo" />
-                </a>
-              </div>
-              <span>The Tech</span>
-              <p>
-                Former Head of Engineering @ Ledger. Contributor in multiple
-                solidity projects. Former entrepreneur incl. the first
-                acquisition by Revolut ever.
-              </p>
-            </div>
-          </div>
-        </div>
-      </Team>
-      <Faq>
-        {faqList.map((f, i) => {
-          return (
-            <ToggleItem
-              key={i}
-              question={f.question}
-              answer={f.answer}
-              id={i}
-            />
-          );
-        })}
-      </Faq>
-      <CommunityContact>
-        <div className="community">
-          <h2>Join the community</h2>
+        </Description>
+        <Roadmap>
+          <h2>Roadmap</h2>
+          <Image src={RoadmapImage} alt="Nft roadmap" />
+        </Roadmap>
+        <Team>
+          <h2>Team</h2>
           <div>
-            <a href="">
-              <Image src={Discord} alt="Discord logo" />
-            </a>
-            <a href="">
-              <Image src={Twitter} alt="Twitter logo" />
-            </a>
+            <div className="card">
+              <Image src={Placeholder} alt="" />
+              <div>
+                <div>
+                  Pierre Ducos aka. Pierone
+                  <a href="">
+                    <Image src={Linkedin} alt="Linkedin logo" />
+                  </a>
+                </div>
+                <span>The Artist</span>
+                <p>
+                  World renowned artist in Digital art and animation with 25
+                  years experience.Oscar (academy award) nominee in 2020 for the
+                  animated movie &quot;I lost my body&quot; 3x nominee in
+                  multiple festivals for his movie La détente (Best animation)
+                </p>
+              </div>
+            </div>
+            <div className="card">
+              <Image src={Placeholder} alt="" />
+              <div>
+                <div>
+                  Jean Meyer
+                  <a href="">
+                    <Image src={Linkedin} alt="Linkedin logo" />
+                  </a>
+                </div>
+                <span>The Product</span>
+                <p>
+                  Former Head of Crypto @Revolut Created multiple tech products
+                  with 10m+ cumulated active users Entrepreneur with 3x exits.
+                  Over $25mm raised.
+                </p>
+              </div>
+            </div>
+            <div className="card">
+              <Image src={Placeholder} alt="" />
+              <div>
+                <div>
+                  Mario Eguiluz
+                  <a href="">
+                    <Image src={Linkedin} alt="Linkedin logo" />
+                  </a>
+                </div>
+                <span>The Tech</span>
+                <p>
+                  Former Head of Engineering @ Ledger. Contributor in multiple
+                  solidity projects. Former entrepreneur incl. the first
+                  acquisition by Revolut ever.
+                </p>
+              </div>
+            </div>
           </div>
-        </div>
+        </Team>
+        <Faq>
+          {faqList.map((f, i) => {
+            return (
+              <ToggleItem
+                key={i}
+                question={f.question}
+                answer={f.answer}
+                id={i}
+              />
+            );
+          })}
+        </Faq>
+        <CommunityContact>
+          <div className="community">
+            <h2>Join the community</h2>
+            <div>
+              <a href="">
+                <Image src={Discord} alt="Discord logo" />
+              </a>
+              <a href="">
+                <Image src={Twitter} alt="Twitter logo" />
+              </a>
+            </div>
+          </div>
 
-        <div>
-          <h2>Want to partner with us?</h2>
-          <ContactDeblock />
-        </div>
-      </CommunityContact>
-      {/* </NftContainer> */}
+          <div>
+            <h2>Want to partner with us?</h2>
+            <ContactDeblock />
+          </div>
+        </CommunityContact>
+      </NftContainer>
     </Container>
   );
 };

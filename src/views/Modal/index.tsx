@@ -8,6 +8,7 @@ import { devices } from "../../utils/devices";
 import FlagFr from "../../assets/fr-flag.svg";
 import FlagEn from "../../assets/en-flag.svg";
 import Rotate from "../../assets/rotate.svg";
+import Popup from "../../components/Popup";
 
 interface Props {
   step: string;
@@ -24,7 +25,7 @@ const Container = styled.div`
   display: flex;
   align-items: top;
   justify-content: center;
-  padding-top: 88px;
+  padding: 76px 16px 0 16px;
   z-index: 5;
 `;
 
@@ -44,6 +45,13 @@ const ModalContainer = styled.div`
   position: relative;
   padding: 0 48px;
 
+  @media ${devices.tabletMax} {
+    padding: 0 8px;
+    max-height: 100%;
+    border: none;
+    box-shadow: none;
+  }
+
   h2 {
     font-size: 35px;
     line-height: 28px;
@@ -52,15 +60,30 @@ const ModalContainer = styled.div`
     padding-top: 48px;
     position: relative;
 
-    span:before {
-      content: "";
-      background: url("./mobile-background/modal-trace.svg") no-repeat;
-      position: absolute;
-      width: 235px;
-      height: 23px;
-      bottom: 45px;
-      left: 15px;
-      background-size: 100%;
+    span {
+      position: relative;
+      :before {
+        content: "";
+        background: url("./mobile-background/modal-trace.svg") no-repeat;
+        position: absolute;
+        width: 235px;
+        height: 23px;
+        top: 40px;
+        left: 15px;
+        background-size: 100%;
+      }
+    }
+
+    @media ${devices.tabletMax} {
+      font-size: 28px;
+      line-height: 39px;
+
+      span:before {
+        width: 152px;
+        height: 15px;
+        top: 30px;
+        left: 25px;
+      }
     }
   }
 
@@ -88,6 +111,7 @@ const ModalContainer = styled.div`
           padding: 8px 4px;
           background-color: white;
           box-shadow: 3px 3px 0px 0px rgb(0 0 0);
+          min-width: 46px;
         }
       }
 
@@ -136,9 +160,26 @@ const ModalContainer = styled.div`
 
       > div {
         display: flex;
-        justify-content: space-around;
-        width: 462px;
-        margin: auto;
+        justify-content: center;
+        gap: 10px;
+        /* width: 462px;
+        margin: auto; */
+
+        @media ${devices.tabletMax} {
+          flex-direction: column;
+          align-items: center;
+
+          button {
+            max-width: 334px;
+            width: 100% !important;
+            height: 42px;
+          }
+        }
+
+        > div {
+          display: flex;
+          gap: 10px;
+        }
 
         .phone-dropdown-container {
           > div {
@@ -167,6 +208,22 @@ const ModalContainer = styled.div`
             border-radius: 4px;
             top: 510px;
             padding: 8px;
+
+            @media ${devices.tabletMax} {
+              flex-direction: column;
+              justify-content: start;
+              border: none;
+              box-shadow: none;
+              border-radius: 0;
+              max-width: 100%;
+              width: 100vw;
+              height: 100%;
+              top: 536px;
+              padding: 15px;
+              gap: 40px;
+              left: -15px;
+              border-top: 1px solid rgba(0, 0, 0, 0.1);
+            }
 
             li {
               display: flex;
@@ -199,6 +256,11 @@ const ModalContainer = styled.div`
                   text-align: end;
                 }
               }
+
+              @media ${devices.tabletMax} {
+                height: 52px;
+                width: 92%;
+              }
             }
           }
         }
@@ -207,7 +269,7 @@ const ModalContainer = styled.div`
           border: 1px solid #000000;
           border-radius: 4px;
           box-shadow: 1px 1px 0px 0px rgb(0 0 0);
-          width: 198px;
+          width: 224px;
           padding-left: 12px;
 
           ::placeholder {
@@ -224,6 +286,10 @@ const ModalContainer = styled.div`
           border-radius: 4px;
           width: 134px;
           cursor: pointer;
+
+          :hover {
+            background: rgba(0, 0, 0, 0.7);
+          }
         }
       }
     }
@@ -237,11 +303,9 @@ const ModalContainer = styled.div`
       }
       input {
         display: block;
-        /* display: inline-block; */
-        margin: 1.2rem auto;
-        border: none;
+        margin: auto;
         padding: 0;
-        width: 5.5ch;
+        width: 6ch;
         background: repeating-linear-gradient(
             90deg,
             black 0,
@@ -249,14 +313,39 @@ const ModalContainer = styled.div`
             transparent 0,
             transparent 1.5ch
           )
-          0 100%/ 10ch 2px no-repeat;
-        font: 1.2rem "Ubuntu Mono", monospace;
+          0 84%/ 6ch 2px no-repeat;
+        font: 2.2rem "Ubuntu Mono", monospace;
         letter-spacing: 0.5ch;
+        background-color: #ffffff;
+        border: 1px solid #000000;
+        padding: 0px 20px 8px 20px;
+        border-radius: 4px;
+        background-position-x: center;
+        text-align: left;
+        box-shadow: rgb(0 0 0) 2px 2px 0px 0px;
+
+        :focus {
+          outline: none;
+        }
 
         ::-webkit-outer-spin-button,
         ::-webkit-inner-spin-button {
           -webkit-appearance: none;
           margin: 0;
+        }
+      }
+
+      > div:last-child {
+        > div {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-weight: 700;
+          font-size: 14px;
+          line-height: 28px;
+          gap: 8px;
+          padding-top: 12px;
+          cursor: pointer;
         }
       }
     }
@@ -399,11 +488,18 @@ const Modal = ({
 
   const [triggerStatus, setTriggerStatus] = useState(true);
 
+  const [triggerPopup, setTriggerPopup] = useState(false);
+
   const modalRef = useRef<HTMLInputElement>(null);
 
-  const handleChange = (e: any) => {
+  const handleChangePhoneTel = (e: any) => {
     const value = e.target.value.replace(/\D/g, "");
     setPhoneNumber(value);
+  };
+
+  const handleChangePhoneCode = (e: any) => {
+    const value = e.target.value.replace(/\D/g, "");
+    setPhoneVerifyCode(value);
   };
 
   const closeModal = (e: { target: any }) => {
@@ -411,6 +507,26 @@ const Modal = ({
       setIsOpen(false);
     }
   };
+
+  const displayPopup = () => {
+    if (actualStep === "phone" && !triggerSendNumber) {
+      setTimeout(() => {
+        setTriggerPopup(false);
+      }, 5000);
+      return (
+        <Popup
+          color="#2CD5C4"
+          texte={`Thank you for verifying your email. We bumped you up by ${
+            currentPosition! - previousPosition!
+          } spots!`}
+        />
+      );
+    }
+  };
+
+  // setTimeout(() => {
+  //   setTriggerpopup(false);
+  // }, 2000);
 
   let token: unknown;
   if (typeof window !== "undefined") {
@@ -467,7 +583,7 @@ const Modal = ({
           console.log("verifyEmail", res);
           setTriggerStatus(true);
 
-          // setActualStep("phone");
+          setTriggerPopup(true);
         })
         .catch((err) => {
           console.log("verifyEmailErr", err);
@@ -559,7 +675,7 @@ const Modal = ({
           setCurrentPosition(res.data.result.user.current_position);
           setJumpPosition(res.data.result.user.jump_by);
           setPriorityAccess(res.data.result.user.priority_access);
-
+          setPreviousPosition(res.data.result.user.previous_position);
           setTriggerStatus(false);
         })
         .catch((err) => {
@@ -594,7 +710,7 @@ const Modal = ({
                 type="text"
                 value={phoneVerifyCode}
                 maxLength={4}
-                onChange={(e) => setPhoneVerifyCode(e.target.value)}
+                onChange={handleChangePhoneCode}
               />
               <div onClick={() => setTriggerSendNumber(false)}>
                 change your phone <Image src={Rotate} alt="Rotate" />
@@ -608,61 +724,63 @@ const Modal = ({
         <div className="phone-verification">
           <strong>Verify your phone number </strong>
           <div>
-            <div className="phone-dropdown-container">
-              <div onClick={() => setOpenDropdown(!openDropdown)}>
-                {phoneCode === "+44" ? (
-                  <Image
-                    className="flag"
-                    src={FlagEn}
-                    alt="United kingdom flag"
-                  />
-                ) : phoneCode === "+33" ? (
-                  <Image className="flag" src={FlagFr} alt="France flag" />
-                ) : (
-                  ""
-                )}
-                {phoneCode}
-              </div>
+            <div>
+              <div className="phone-dropdown-container">
+                <div onClick={() => setOpenDropdown(!openDropdown)}>
+                  {phoneCode === "+44" ? (
+                    <Image
+                      className="flag"
+                      src={FlagEn}
+                      alt="United kingdom flag"
+                    />
+                  ) : phoneCode === "+33" ? (
+                    <Image className="flag" src={FlagFr} alt="France flag" />
+                  ) : (
+                    ""
+                  )}
+                  {phoneCode}
+                </div>
 
-              {openDropdown && (
-                <ul className="phone-dropdown">
-                  <li onClick={() => setPhoneCode("+44")}>
-                    <div>
+                {openDropdown && (
+                  <ul className="phone-dropdown">
+                    <li onClick={() => setPhoneCode("+44")}>
                       <div>
-                        <Image
-                          className="flag"
-                          src={FlagEn}
-                          alt="United kingdom flag"
-                        />
-                        <span>+44</span>
+                        <div>
+                          <Image
+                            className="flag"
+                            src={FlagEn}
+                            alt="United kingdom flag"
+                          />
+                          <span>+44</span>
+                        </div>
+                        <span>United Kingdom</span>
                       </div>
-                      <span>United Kingdom</span>
-                    </div>
-                    <Image src={Arrow} alt="Arrow right" />
-                  </li>
-                  <li onClick={() => setPhoneCode("+33")}>
-                    <div>
+                      <Image src={Arrow} alt="Arrow right" />
+                    </li>
+                    <li onClick={() => setPhoneCode("+33")}>
                       <div>
-                        <Image
-                          className="flag"
-                          src={FlagFr}
-                          alt="France flag"
-                        />
-                        <span>+33</span>
+                        <div>
+                          <Image
+                            className="flag"
+                            src={FlagFr}
+                            alt="France flag"
+                          />
+                          <span>+33</span>
+                        </div>
+                        <span>France</span>
                       </div>
-                      <span>France</span>
-                    </div>
-                    <Image src={Arrow} alt="Arrow right" />
-                  </li>
-                </ul>
-              )}
+                      <Image src={Arrow} alt="Arrow right" />
+                    </li>
+                  </ul>
+                )}
+              </div>
+              <input
+                type="tel"
+                value={phoneNumber}
+                onChange={handleChangePhoneTel}
+                placeholder="your phone number"
+              />
             </div>
-            <input
-              type="tel"
-              value={phoneNumber}
-              onChange={handleChange}
-              placeholder="your phone number"
-            />
             <button
               onClick={() => {
                 sendPhoneNumber();
@@ -694,6 +812,7 @@ const Modal = ({
 
   return (
     <Container>
+      {triggerPopup && displayPopup()}
       <ModalContainer>
         <div ref={modalRef}>
           <h2>

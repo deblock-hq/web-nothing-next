@@ -91,7 +91,7 @@ const BlogCard = styled.div`
   background: #ffffff;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.07);
   border-radius: 30px;
-  padding: 16px 22px 22px 16px;
+  padding: 22px 22px 22px 16px;
   width: 80%;
   margin: auto;
   max-height: 180px;
@@ -126,6 +126,7 @@ const BlogCard = styled.div`
     display: flex;
     gap: 60px;
     align-items: end;
+    align-items: center;
 
     > div:first-child {
       min-width: fit-content;
