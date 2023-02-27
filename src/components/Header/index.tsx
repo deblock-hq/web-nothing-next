@@ -51,10 +51,26 @@ const HeaderContainer = styled.header<Props>`
 
     a {
       cursor: pointer;
+      display: inline-flex;
+      flex-direction: column;
+      /* align-items: center; */
+      justify-content: space-between;
+      text-decoration: none;
+
+      :after {
+        content: attr(data-text);
+        content: attr(data-text) / "";
+        height: 0;
+        visibility: hidden;
+        overflow: hidden;
+        user-select: none;
+        pointer-events: none;
+        font-weight: 600;
+      }
 
       :hover {
         font-weight: 600;
-        color: rgba(255, 153, 0, 0.9);
+        color: #2cd5c4;
       }
     }
   }
