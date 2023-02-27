@@ -940,7 +940,7 @@ const SafestAccount = styled.div`
       }
     }
 
-    > div {
+    > a > div {
       text-align: -webkit-center;
     }
 
@@ -1324,7 +1324,7 @@ const Home = ({
             <div className="text-container">
               <Image src={Salary} alt="Get your salary" />
               <div>
-                <span>Get your salary </span>
+                <span>Get your salary</span>
                 <br />
                 in Crypto or GBP
               </div>
@@ -1388,40 +1388,37 @@ const Home = ({
             <Blob className="blob-right" color="#F5D299" />
           </div>
           <div className="last-block">
-            <div>
-              <Image src={Commission} alt="Commission free" />
+            <Link href="/pricing">
               <div>
-                <Link href="/pricing">
+                <Image src={Commission} alt="Commission free" />
+                <div>
+                  {/* <Link href="/pricing"> */}
                   <h3>Buy commission-free</h3>
-                </Link>
-                <p>
-                  Unlimited and in perpetuity
-                  <br />
-                  with our{" "}
-                  <LearnMoreButton>
-                    <Link href="/pricing">
-                      native plan <Image src={Arrow} alt="Arrow right" />{" "}
-                    </Link>
-                  </LearnMoreButton>
-                </p>
+                  {/* </Link> */}
+                  <p>
+                    Unlimited and in perpetuity
+                    <br />
+                    with our native plan.{/* <LearnMoreButton> */}
+                    {/*  <Image src={Arrow} alt="Arrow right" />{" "} */}
+                    {/* </LearnMoreButton> */}
+                  </p>
+                </div>
               </div>
-            </div>
-            <div className="support-section">
-              <Lottie animationData={Support} />
-              <div>
-                <Link href="/support">
-                  <h3>24/7 Live support</h3>{" "}
-                </Link>
-                <p>
-                  Talk to a real human (not a machine). We are{" "}
-                  <LearnMoreButton>
-                    <Link href="/support">
-                      here for you <Image src={Arrow} alt="Arrow right" />
-                    </Link>
-                  </LearnMoreButton>
-                </p>
+            </Link>
+            <Link href="/support">
+              <div className="support-section">
+                <Lottie animationData={Support} />
+                <div>
+                  {/* <Link href="/support"> */}
+                  <h3>24/7 Live support</h3> {/* </Link> */}
+                  <p>
+                    Talk to a real human (not a machine). We are here for you.
+                    {/* <LearnMoreButton> */}
+                    {/* </LearnMoreButton> */}
+                  </p>
+                </div>
               </div>
-            </div>
+            </Link>
           </div>
         </SafestAccount>
       </LandingContainer>
