@@ -137,10 +137,10 @@ const Footer = () => {
     <FooterContainer>
       <FooterHeader>
         <div>
-          {/* <Image /> */}
-          {/* <span>France</span>
-          <span>Français</span> */}
-          <Image src={Placeholder} alt="placeholder" />
+          <Image />
+          {/* <span>France</span> */}
+          <span>Change language component</span>
+          {/* <Image src={Placeholder} alt="placeholder" /> */}
         </div>
         <div className="community">
           <span>Join our community</span>
