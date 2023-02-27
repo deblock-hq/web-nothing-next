@@ -153,7 +153,7 @@ const Footer = () => {
     <FooterContainer>
       <FooterHeader>
         <div>
-          <Image />
+          {/* <Image /> */}
           {/* <span>France</span> */}
           <span>Change language component</span>
           {/* <Image src={Placeholder} alt="placeholder" /> */}
