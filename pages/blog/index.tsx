@@ -90,8 +90,8 @@ const BlogCard = styled.div`
   gap: 24px;
   background: #ffffff;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.07);
-  border-radius: 30px;
-  padding: 22px 22px 22px 16px;
+  border-radius: 24px;
+  padding: 14px;
   width: 80%;
   margin: auto;
   max-height: 180px;
@@ -110,7 +110,7 @@ const BlogCard = styled.div`
     line-height: 57px;
     letter-spacing: 0.16px;
     background: #fbfaf9;
-    border-radius: 22px;
+    border-radius: 10px;
     height: 108px;
     width: 126px;
     display: flex;

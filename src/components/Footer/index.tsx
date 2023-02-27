@@ -90,6 +90,22 @@ const LinksContainer = styled.div`
 
   a {
     color: #dadada;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    text-decoration: none;
+
+    :after {
+      content: attr(data-text);
+      content: attr(data-text) / "";
+      height: 0;
+      visibility: hidden;
+      overflow: hidden;
+      user-select: none;
+      pointer-events: none;
+      font-weight: 600;
+    }
 
     :hover {
       color: white;
@@ -164,22 +180,31 @@ const Footer = () => {
           <h4>Company</h4>
           <ul>
             <li>
-              <Link href="/">Home</Link>
+              <Link href="/" data-text="Home">
+                Home
+              </Link>
             </li>
             <li>
-              <Link href="/blog">Blog</Link>
+              <Link href="/blog" data-text="Blog">
+                Blog
+              </Link>
             </li>
             <li>
-              <Link href="/aboutus">About</Link>
+              <Link href="/aboutus" data-text="About">
+                About
+              </Link>
             </li>
             <li>
-              <Link href="/press">Press</Link>
+              <Link href="/press" data-text="Press">
+                Press
+              </Link>
             </li>
             <li>
               <a
                 href="https://apply.workable.com/deblock"
                 target="_blank"
                 rel="noreferrer"
+                data-text="Career"
               >
                 Career
               </a>
@@ -193,7 +218,9 @@ const Footer = () => {
           <h4>Crypto</h4>
           <ul>
             <li>
-              <Link href="/ncw">Non-custodial wallet</Link>
+              <Link href="/ncw" data-text="Non-custodial wallet">
+                Non-custodial wallet
+              </Link>
             </li>
             <li>
               <Link href="/product">Features</Link>
