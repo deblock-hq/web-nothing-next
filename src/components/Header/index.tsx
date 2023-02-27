@@ -7,7 +7,8 @@ import styled, { css } from "styled-components";
 import Burgermenu from "../../assets/burger-menu.svg";
 import Cross from "../../assets/cross.svg";
 
-import Logo from "../../../public/TestLogo1.svg";
+// import Logo from "../../../public/TestLogo1.svg";
+import Logo from "../../../public/TestLogo2.svg";
 // import Logo from "../../../public/HeaderLogo.svg";
 import { GlobalContext } from "../../../context/globalContext";
 
