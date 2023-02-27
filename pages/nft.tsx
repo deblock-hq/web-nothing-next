@@ -17,6 +17,7 @@ import ContactDeblock from "../src/components/ContactDeblock";
 import Lottie from "lottie-react";
 import Utility from "../src/assets/lottie/nft/utility.json";
 import { devices } from "../src/utils/devices";
+import VideoPlayer from "../src/components/VideoPlayer";
 
 const Container = styled.div``;
 const NftContainer = styled.div`
@@ -374,7 +375,10 @@ const Nft = () => {
             <h1>555 Bursted Bubbles</h1>
             <p>The first NFT collection of Deblock</p>
           </div>
-          <Image src={Bubbles} alt="Bubbles drawing" />
+          {/* <Image src={Bubbles} alt="Bubbles drawing" /> */}
+          <VideoPlayer
+            src="https://cdn1.deblock.com/videos/bubbles.mp4"
+          />
         </HeroContainer>
         <Countdown>
           <h3>Mint available in</h3>
@@ -394,7 +398,9 @@ const Nft = () => {
           </div>
         </Countdown>
         <Description>
-          <Image src={HandDrawing} alt="hand drawing" />
+          {/* <Image src={HandDrawing} alt="hand drawing" /> */}
+          <VideoPlayer src="https://cdn1.deblock.com/videos/pierre-hand.mp4" />
+
           <div className="first-block">
             <h2>555 hand-drawn BB by Pierone</h2>
             <p>
