@@ -92,7 +92,7 @@ const LinksContainer = styled.div`
     color: #dadada;
     display: inline-flex;
     flex-direction: column;
-    align-items: center;
+    /* align-items: center; */
     justify-content: space-between;
     text-decoration: none;
 

@@ -91,7 +91,7 @@ const BlogCard = styled.div`
   background: #ffffff;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.07);
   border-radius: 24px;
-  padding: 14px;
+  padding: 14px 14px 18px 14px;
   width: 80%;
   margin: auto;
   max-height: 180px;
