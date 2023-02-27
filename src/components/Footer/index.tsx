@@ -210,7 +210,9 @@ const Footer = () => {
               </a>
             </li>
             <li>
-              <Link href="/support">Contact</Link>
+              <Link href="/support" data-text="Career">
+                Contact
+              </Link>
             </li>
           </ul>
         </Company>
@@ -223,13 +225,19 @@ const Footer = () => {
               </Link>
             </li>
             <li>
-              <Link href="/product">Features</Link>
+              <Link href="/product" data-text="Features">
+                Features
+              </Link>
             </li>
             <li>
-              <Link href="/nft">NFTs</Link>
+              <Link href="/nft" data-text="NFTs">
+                NFTs
+              </Link>
             </li>
             <li>
-              <Link href="/pricing">Pricing plan</Link>
+              <Link href="/pricing" data-text="Pricing plan">
+                Pricing plan
+              </Link>
             </li>
           </ul>
         </Crypto>
@@ -248,13 +256,16 @@ const Footer = () => {
           <h4>Help</h4>
           <ul>
             <li>
-              <Link href="/support">Contact</Link>
+              <Link href="/support" data-text="Contact">
+                Contact
+              </Link>
             </li>
             <li>
               <a
                 target="_blank"
                 rel="noreferrer"
                 href="https://discord.gg/uSqj6t9G9e"
+                data-text="Discord"
               >
                 Discord
               </a>
@@ -264,15 +275,20 @@ const Footer = () => {
                 target="_blank"
                 rel="noreferrer"
                 href="https://twitter.com/DeblockApp"
+                data-text="Twitter"
               >
                 Twitter
               </a>
             </li>
             <li>
-              <Link href="">Complaints</Link>
+              <Link href="" data-text="Complaints">
+                Complaints
+              </Link>
             </li>
             <li>
-              <Link href="">FAQ</Link>
+              <Link href="" data-text="FAQ">
+                FAQ
+              </Link>
             </li>
           </ul>
         </Help>
@@ -280,16 +296,24 @@ const Footer = () => {
           <h4>Legal & Compliance</h4>
           <ul>
             <li>
-              <Link href="/terms-and-policies">Website terms</Link>
+              <Link href="/terms-and-policies" data-text="Website terms">
+                Website terms
+              </Link>
             </li>
             <li>
-              <Link href="/legal">Legal Agreements</Link>
+              <Link href="/legal" data-text="Legal Agreements">
+                Legal Agreements
+              </Link>
             </li>
             <li>
-              <Link href="/privacy">Privacy</Link>
+              <Link href="/privacy" data-text="Privacy">
+                Privacy
+              </Link>
             </li>
             <li>
-              <Link href="">Customer Vunerability</Link>
+              <Link href="" data-text="Customer Vunerability">
+                Customer Vunerability
+              </Link>
             </li>
           </ul>
         </LegalCompliance>
