@@ -1416,7 +1416,7 @@ const Home = ({
                   Talk to a real human (not a machine). We are{" "}
                   <LearnMoreButton>
                     <Link href="/support">
-                      here for you <Image src={Arrow} alt="Arrow right" />{" "}
+                      here for you <Image src={Arrow} alt="Arrow right" />
                     </Link>
                   </LearnMoreButton>
                 </p>

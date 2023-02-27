@@ -7,7 +7,8 @@ import styled, { css } from "styled-components";
 import Burgermenu from "../../assets/burger-menu.svg";
 import Cross from "../../assets/cross.svg";
 
-import Logo from "../../../public/HeaderLogo.svg";
+import Logo from "../../../public/TestLogo1.svg";
+// import Logo from "../../../public/HeaderLogo.svg";
 import { GlobalContext } from "../../../context/globalContext";
 
 interface Props {
@@ -301,16 +302,23 @@ const Header = ({ displayModal }: { displayModal: () => void }) => {
         </div>
       )}
       <div className="hide-on-mobile">
-        <Link href="/blog">Blog</Link>
-        <Link href="/about-us">About</Link>
+        <Link href="/blog" data-text="Blog">
+          Blog
+        </Link>
+        <Link href="/about-us" data-text="About">
+          About
+        </Link>
         <a
           href="https://apply.workable.com/deblock"
           target="_blank"
           rel="noreferrer"
+          data-text="Careers"
         >
           Careers
         </a>
-        <Link href="/support">Support</Link>
+        <Link href="/support" data-text="Support">
+          Support
+        </Link>
         {checkLocalStorage && (
           <button onClick={() => displayModal()}>Request access</button>
         )}
