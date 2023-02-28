@@ -40,7 +40,7 @@ import Modal from "../src/views/Modal";
 import { useRouter } from "next/router";
 import { ScrollAnimation } from "../src/utils/ScrollAnimation";
 import { GlobalContext } from "../context/globalContext";
-import { useTranslation } from "next-i18next";
+import { Trans, useTranslation } from "next-i18next";
 
 interface Props {
   animate: boolean;
@@ -1263,7 +1263,11 @@ const Home = ({
             <Lottie animationData={Iban} />
           </div>
           <div className="texte-container">
-            <h2>{t("best-account")}</h2>
+            <h2>
+              <Trans i18nKey="best-account" t={t}>
+                One of the <span>best</span> sterling accounts
+              </Trans>
+            </h2>
             <div>
               Get your own IBANs, instant transfers, physical/
               {/* <br /> */}
