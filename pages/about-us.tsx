@@ -13,6 +13,9 @@ import Mountain from "../src/assets/aboutus/mountain.svg";
 import Hand from "../src/assets/aboutus/hand.svg";
 import Photos from "../src/assets/aboutus/photos.svg";
 import { devices } from "../src/utils/devices";
+import { GetStaticProps } from "next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { Trans, useTranslation } from "next-i18next";
 
 const Container = styled.div`
   background-color: #fbfaf9;
@@ -23,7 +26,7 @@ const Container = styled.div`
     position: absolute;
     z-index: 1;
   }
-  
+
   .blob-top {
     top: -480px;
     left: 350px;
@@ -305,38 +308,37 @@ const ValuesContainer = styled.div`
   }
 `;
 
+export const getStaticProps: GetStaticProps = async ({ locale }) => {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale!, ["aboutus"])),
+    },
+  };
+};
+
 const AboutUs = () => {
+  const { t } = useTranslation("aboutus");
+
   return (
     <Container>
       <AboutUsContainer>
-        <h1>We are Deblock!</h1>
+        <h1>{t("title")}</h1>
         <DeblockContainer>
           <div className="hero">
             <Image src={HeroPicture} alt="Groupe photo" />
-            <p>
-              We believe your money is yours and that you should be able to use
-              it however and whenever you want regardless of bank runs,
-              bankruptcies, inflations or even if Deblock stops operating.
-              Nobody can freeze your assets or your transfers on your Deblock
-              non-custodial wallet.
-              <br />
-              <br />
-              We are building the safest non-custodial account in the world to
-              own, transfer, deposit, and exchange crypto or cash indifferently
-              so you can finally own your money!
-            </p>
+            <p>{t("we-are-deblock")}</p>
           </div>
           <div className="tiles">
             <div>
-              <span>Founded</span>
+              <span>{t("founded")}</span>
               <span>Oct 22</span>
             </div>
             <div>
-              <span>Team size</span>
+              <span>{t("team-size")}</span>
               <span>22</span>
             </div>
             <div>
-              <span>Countries represented</span>
+              <span>{t("countries-represented")}</span>
               <span>9</span>
             </div>
           </div>
@@ -397,38 +399,31 @@ const AboutUs = () => {
           </div>
         </TeamContainer> */}
         <h2 className="values-title">
-          Our <span>values</span>
+          <Trans i18nKey="our-values" t={t}>
+            Our <span>values</span>
+          </Trans>
         </h2>
         <ValuesContainer>
           <div>
             <div>
               <Image src={Rocket} alt="Rocket" />
               <div>
-                <h3>#SpeedIsEverything</h3>
-                <p>
-                  We test first. We validate first. We deliver first. We succeed
-                  first... or fail and we iterate first.
-                </p>
+                <h3>{t("speed-is-everything")}</h3>
+                <p>{t("speed-is-everything-text")}</p>
               </div>
             </div>
             <div>
               <Image src={Mountain} alt="Mountain" />
               <div>
-                <h3>#DoMore</h3>
-                <p>
-                  Pushing the limits of innovation to deliver the best possible
-                  service to our customers.
-                </p>
+                <h3>{t("do-more")}</h3>
+                <p>{t("do-more-text")}</p>
               </div>
             </div>
             <div>
               <Image src={Hand} alt="Hand" />
               <div>
-                <h3>#NoBlameGame</h3>
-                <p>
-                  Win as a team but also lose as a team. We never blame each
-                  other, we lead together.
-                </p>
+                <h3>{t("no-blame-game")}</h3>
+                <p>{t("no-blame-game-text")}</p>
               </div>
             </div>
           </div>
