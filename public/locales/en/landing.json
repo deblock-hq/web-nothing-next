@@ -1,5 +1,6 @@
 {
   "title": "A GBP account merged with a non-custodial wallet",
+  "test-title": "A GBP account merged with a non-custodial<span>wallet<Tooltip className='hide-on-mobile'><Image width={20} height={20} src='/mobile-background/info-i.svg' alt='information logo'/>{t('tooltip')}</Tooltip></span>",
   "tooltip": "Non-custodial crypto wallets give you complete control and ownership of your funds. Nobody can freeze your assets/withdrawals, block them or take them away.",
   "hero-description": "Spend, transfer and exchange your pounds or your crypto indifferently",
   "whitelist-placeholder": "Your email",
