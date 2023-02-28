@@ -1200,7 +1200,7 @@ const Home = ({
             </div>
             <div className="text-container">
               <h1>
-                A GBP account merged with a non-custodial{" "}
+                {/* A GBP account merged with a non-custodial{" "}
                 <span>
                   wallet
                   <Tooltip className="hide-on-mobile">
@@ -1212,7 +1212,8 @@ const Home = ({
                     />
                     {t("tooltip")}
                   </Tooltip>
-                </span>
+                </span> */}
+                {t("test-title")}
                 <Tooltip className="display-on-mobile">
                   <Image
                     width={20}

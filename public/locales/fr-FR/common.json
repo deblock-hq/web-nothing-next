@@ -5,42 +5,4 @@
   "choose-your-country": "Choisissez votre pays ou région",
   "europe": "Europe",
   "only-available-countries": "Disponible uniquement dans les pays suivants",
-
-  "landing": {
-    "title": "A GBP account merged with a non-custodial wallet",
-    "tooltip": "Non-custodial crypto wallets give you complete control and ownership of your funds. Nobody can freeze your assets/withdrawals, block them or take them away.",
-    "hero-description": "Spend, transfer and exchange your pounds or your crypto indifferently",
-    "whitelist-placeholder": "Your email",
-    "button-request": "Request access",
-    "button-position": "See My Postion",
-
-    "backed-by-the-best": "Backed by the best",
-
-    "best-account": "One of the best sterling accounts",
-    "best-account-text": "Get your own IBANs, instant transfers, physical/ virtual cards, and 15+ currencies at the best exchange rates.",
-
-    "learn-more": "Learn more",
-
-    "brand-your-card": "Brand your card with your own NFT",
-
-    "deposit-your-crypto": "Where you can deposit all your crypto",
-    "deposit-your-crypt-text": "Unlimited crypto deposit and withdrawals. Unlimited exchange to GBP, EUR or USD.",
-
-    "cash-or-crypto": "In Cash or in Crypto It's up to you!",
-    "cash-or-crypto-text": "We'll handle the exchange of Crypto and GBP under the hood based on your needs",
-
-    "get-your-salary": "Get your salary",
-    "in-crypto-or-money": "in Crypto or GBP",
-    "buy-a-car": "Buy a car",
-    "pay-your-rent": "Pay your rent",
-    "buy-your-coffee": "Buy your coffee",
-
-    "your-keys-your-assets": "Your keys. Your assets.",
-    "your-keys-your-assets-text": "This is self-custody. Even if Deblock goes down, 100% of your wallet is protected. Your wealth is safe and nobody can freeze it or take it away.",
-
-    "commission-free": "Buy commission-free",
-    "commission-free-text": "Unlimited and in perpetuity with our native plan.",
-    "live-support": "24/7 Live support",
-    "live-support-text": "Talk to a real human (not a machine). We are here for you."
-  }
 }
