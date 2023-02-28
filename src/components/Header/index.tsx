@@ -38,9 +38,10 @@ const HeaderContainer = styled.header<Props>`
     max-height: 110px;
     justify-content: left;
     align-items: center;
+    min-width: 138px;
 
     > div {
-      max-width: 36px;
+      max-width: 28px;
     }
 
     img {
@@ -122,6 +123,7 @@ const HeaderContainer = styled.header<Props>`
     .burger-menu {
       display: block;
       text-align: right;
+      padding-right: 24px;
       cursor: pointer;
 
       img {
@@ -216,30 +218,34 @@ const HeaderContainer = styled.header<Props>`
         padding: 0 40px;
         max-width: 1152px;
         animation: fadeIn 0.4s;
+      }
+    `};
 
-        .hide-on-mobile {
+  ${(props) =>
+    props.scrollY > 480 &&
+    css`
+      .hide-on-mobile {
+        width: 100%;
+        align-items: center;
+        justify-content: end;
+        gap: 30px;
+
+        button {
+          display: block;
+          color: white;
+          background: #000000;
+          border: 0.95393px solid #000000;
+          border-radius: 3.81572px;
+          font-weight: 600;
+          height: 40px;
+          max-width: 134px;
+          font-size: 13px;
+          line-height: 16px;
           width: 100%;
-          align-items: center;
-          justify-content: end;
-          gap: 30px;
+          cursor: pointer;
 
-          button {
-            display: block;
-            color: white;
-            background: #000000;
-            border: 0.95393px solid #000000;
-            border-radius: 3.81572px;
-            font-weight: 600;
-            height: 40px;
-            max-width: 134px;
-            font-size: 13px;
-            line-height: 16px;
-            width: 100%;
-            cursor: pointer;
-
-            :hover {
-              background: rgba(0, 0, 0, 0.7);
-            }
+          :hover {
+            background: rgba(0, 0, 0, 0.7);
           }
         }
       }
