@@ -1,0 +1,140 @@
+{
+  "v": "4.8.0",
+  "ip": 0,
+  "op": 56,
+  "fr": 29,
+  "w": 300,
+  "h": 300,
+  "nm": "D",
+  "assets": [
+    {
+      "h": 201,
+      "w": 125,
+      "id": "image_0",
+      "p": "data:image/webp;base64,UklGRsYAAABXRUJQVlA4WAoAAAAQAAAAfAAAyAAAQUxQSDUAAAABJyAQIKTwH2kjIoJTKGokSVkysKeELJx/Xwuvw4j+TwDkP03Jg5rK99+yUYe9UdHY33//QABWUDggagAAAJAJAJ0BKn0AyQA+bTaYSSQjIqEjKACADYlpbuFykRtAvM7Pt5u5U+bB/2A7W5lTMHAlfGe/pgBbdbmegIy66butzPQEZddN3W5noCMuum7rcz0A2AAA/v9YHH/pLQWHib///b+wAAAAAAA=",
+      "u": "",
+      "e": 1
+    },
+    {
+      "h": 270,
+      "w": 184,
+      "id": "image_1",
+      "p": "data:image/webp;base64,UklGRrIBAABXRUJQVlA4WAoAAAAQAAAAtwAADQEAQUxQSAYBAAANcBXbdp0cHBQHwUEkVEIdEBQUFGRQkEFBQEElFAcgAQfggP/Xnjt9JSIYuW3jSANtX123vkB/MVznhTzqJOYRayFTUW91nYaQRrZ1o4nUDT+ENLZ76sYGutENIo20NnXDZ+pGMHXDZepGgrZtqBurQaQRTN3QTdTDY6PiPyVZXC9T//qpRG2ktvHUhdbYhWhs65q6gD3vh5Hrs2+oC9jbOmMX2hV1IQwjhYhdWFMftKc2C5o8kBSCsQvJ2IXgbP3i1OVh+2NGHEY+MCpgo+I/xX+K/3ySV2VtpOI/pRce2O5GSO/YHiZ/Xo/QXs7U9pM/Tzdoj09q30vbHv71g29VfZudPocAVlA4IIYAAAAwDgCdASq4AA4BPm02mUmkIyKhICgAgA2JaW7hdrEbQAnsA99snIe+2TkPfbJyHvtk5D32ych77ZOQ99snIe+2TkPfbJyHvtk5D32ych77ZOQ99snIe+2TkPfbJyHvtk5D32ych77ZOQ99snIe+2TkPfbJyHvtk5DeAAD+/9YAAAAAAAAAAA==",
+      "u": "",
+      "e": 1
+    }
+  ],
+  "layers": [
+    {
+      "ind": 1,
+      "ty": 2,
+      "nm": "d",
+      "sr": 1.0,
+      "ks": {
+        "o": { "a": 0, "k": 100.0 },
+        "r": { "a": 0, "k": 0.0 },
+        "p": {
+          "k": [
+            {
+              "i": { "x": 0.667, "y": 0.667 },
+              "o": { "x": 0.333, "y": 0.333 },
+              "t": 0,
+              "s": [154, 135, 0],
+              "ti": [0, 0, 0],
+              "to": [0, 0, 0]
+            },
+            {
+              "i": { "x": 0.667, "y": 1.0 },
+              "o": { "x": 0.333, "y": 0.0 },
+              "t": 4,
+              "s": [154, 135, 0],
+              "ti": [0, 0, 0],
+              "to": [0, 0, 0]
+            },
+            {
+              "i": { "x": 0.667, "y": 0.667 },
+              "o": { "x": 0.333, "y": 0.333 },
+              "t": 26,
+              "s": [142, 153, 0],
+              "ti": [0, 0, 0],
+              "to": [0, 0, 0]
+            },
+            {
+              "i": { "x": 0.833, "y": 0.833 },
+              "o": { "x": 0.333, "y": 0.0 },
+              "t": 30,
+              "s": [142, 153, 0],
+              "ti": [0, 0, 0],
+              "to": [0, 0, 0]
+            },
+            { "t": 55.0, "s": [154, 135, 0] }
+          ],
+          "a": 1
+        },
+        "a": { "a": 0, "k": [62.5, 100.5, 0.0] },
+        "s": { "a": 0, "k": [100.0, 100.0, 100.0] }
+      },
+      "cl": "png",
+      "ip": 0,
+      "op": 900.0,
+      "st": 0.0,
+      "refId": "image_0"
+    },
+    {
+      "ind": 2,
+      "ty": 2,
+      "nm": "d",
+      "sr": 1.0,
+      "ks": {
+        "o": { "a": 0, "k": 100.0 },
+        "r": { "a": 0, "k": 0.0 },
+        "p": {
+          "k": [
+            {
+              "i": { "x": 0.667, "y": 0.667 },
+              "o": { "x": 0.333, "y": 0.333 },
+              "t": 0,
+              "s": [139, 157, 0],
+              "ti": [0, 0, 0],
+              "to": [0, 0, 0]
+            },
+            {
+              "i": { "x": 0.667, "y": 1.0 },
+              "o": { "x": 0.333, "y": 0.0 },
+              "t": 4,
+              "s": [139, 157, 0],
+              "ti": [0, 0, 0],
+              "to": [0, 0, 0]
+            },
+            {
+              "i": { "x": 0.667, "y": 0.667 },
+              "o": { "x": 0.333, "y": 0.333 },
+              "t": 26,
+              "s": [155, 138, 0],
+              "ti": [0, 0, 0],
+              "to": [0, 0, 0]
+            },
+            {
+              "i": { "x": 0.833, "y": 0.833 },
+              "o": { "x": 0.333, "y": 0.0 },
+              "t": 30,
+              "s": [155, 138, 0],
+              "ti": [0, 0, 0],
+              "to": [0, 0, 0]
+            },
+            { "t": 55.0, "s": [139, 157, 0] }
+          ],
+          "a": 1
+        },
+        "a": { "a": 0, "k": [92.0, 135.0, 0.0] },
+        "s": { "a": 0, "k": [100.0, 100.0, 100.0] }
+      },
+      "cl": "png",
+      "ip": 0,
+      "op": 900.0,
+      "st": 0.0,
+      "refId": "image_1"
+    }
+  ],
+  "markers": []
+}

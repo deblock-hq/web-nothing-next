@@ -3,14 +3,20 @@ import Link from "next/link";
 import React, { useContext, useEffect, useRef, useState } from "react";
 import { devices } from "../../utils/devices";
 import styled, { css } from "styled-components";
+import Loader from "../../assets/lottie/loader.json";
 
 import Burgermenu from "../../assets/burger-menu.svg";
 import Cross from "../../assets/cross.svg";
 
-// import Logo from "../../../public/TestLogo1.svg";
-import Logo from "../../../public/TestLogo2.svg";
+import Logo from "../../../public/typo-logo.svg";
+// import Logo from "../../../public/TestLogo2.svg";
 // import Logo from "../../../public/HeaderLogo.svg";
 import { GlobalContext } from "../../../context/globalContext";
+import Lottie, {
+  LottiePlayer,
+  useLottie,
+  useLottieInteractivity,
+} from "lottie-react";
 
 interface Props {
   scrollY: number;
@@ -27,6 +33,21 @@ const HeaderContainer = styled.header<Props>`
   position: absolute;
   padding-top: 8px;
 
+  .logo-section {
+    display: flex;
+    max-height: 110px;
+    justify-content: left;
+    align-items: center;
+
+    > div {
+      max-width: 36px;
+    }
+
+    img {
+      padding: 0;
+    }
+  }
+
   button {
     display: none;
   }
@@ -36,7 +57,7 @@ const HeaderContainer = styled.header<Props>`
   }
 
   .logo {
-    width: 110px;
+    max-width: 110px;
     cursor: pointer;
     /* margin-left: 40px; */
   }
@@ -109,9 +130,8 @@ const HeaderContainer = styled.header<Props>`
       }
     }
 
-    img {
-      padding: 0 24px;
-      max-width: 112px;
+    .logo-section {
+      padding-left: 24px;
     }
 
     .desktop-tablet-display {
@@ -292,10 +312,30 @@ const Header = ({ displayModal }: { displayModal: () => void }) => {
     checkLocalStorage = localStorage.getItem("token");
   }
 
+  const animationRef = useRef<any | string>(null);
+
+  const setAnimationDirection = (number: number) => {
+    animationRef.current.setDirection(number);
+    animationRef.current.play();
+  };
+
   return (
     <HeaderContainer scrollY={scrollY}>
       <Link href="/">
-        <Image className="logo" src={Logo} alt="Deblock logo" />
+        {/* <Image className="logo" src={Logo} alt="Deblock logo" /> */}
+        <div
+          onMouseEnter={() => setAnimationDirection(-1)}
+          onMouseLeave={() => setAnimationDirection(1)}
+          className="logo-section"
+        >
+          <Lottie
+            lottieRef={animationRef}
+            loop={false}
+            autoPlay={false}
+            animationData={Loader}
+          />
+          <Image className="logo" src={Logo} alt="Deblock logo" />
+        </div>
       </Link>
       <div className="burger-menu" onClick={() => setOpenMenu(!openMenu)}>
         {!openMenu && <Image src={Burgermenu} alt="Burger menu" />}

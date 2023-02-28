@@ -26,8 +26,12 @@
   "buy-a-car": "Buy a car",
   "pay-your-rent": "Pay your rent",
   "buy-your-coffee": "Buy your coffee",
-  "": "",
-  "": "",
-  "": "",
-  "": ""
+
+  "your-keys-your-assets": "Your keys. Your assets.",
+  "your-keys-your-assets-text": "This is self-custody. Even if Deblock goes down, 100% of your wallet is protected. Your wealth is safe and nobody can freeze it or take it away.",
+
+  "commission-free": "Buy commission-free",
+  "commission-free-text": "Unlimited and in perpetuity with our native plan.",
+  "live-support": "24/7 Live support",
+  "live-support-text": "Talk to a real human (not a machine). We are here for you."
 }

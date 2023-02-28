@@ -1,0 +1,37 @@
+{
+  "title": "Un compte courant intégré à un non-custodial wallet",
+  "tooltip": "Les portefeuilles de crypto-monnaies sans garde vous donnent le contrôle total et la propriété de vos fonds. Personne ne peut geler vos actifs/retraits, les bloquer ou les retirer.",
+  "hero-description": "SDéposez, dépensez et échangez vos Euros ou vos Cryptos sans distinction",
+  "whitelist-placeholder": "Votre email",
+  "button-request": "Demandez un accès",
+  "button-position": "Voir Ma Postion",
+
+  "backed-by-the-best": "Ils nous font confiance",
+
+  "best-account": "Mieux qu’un compte bancaire",
+  "best-account-text": "Votre IBAN, votre carte bleue, virement bancaire instantané, échange de devises ou crypto sans frais.",
+
+  "learn-more": "En savoir plus",
+
+  "brand-your-card": "Personnalisez vos cartes bleues avec vos NFTs",
+
+  "deposit-your-crypto": "Déposez vos cryptos sur votre compte courant",
+  "deposit-your-crypt-text": "Déposez ou retirez vos cryptos et NFTs sans limite. Échangez-les pour des EUR ou USD.",
+
+  "cash-or-crypto": "Euro ou Crypto C’est vous qui décidez",
+  "cash-or-crypto-text": "Nous nous occupons de l'échange de Crypto et Euro selon vos besoins",
+
+  "get-your-salary": "Recevez votre salaire",
+  "in-crypto-or-money": "en Crypto ou en Euro",
+  "buy-a-car": "Achetez une voiture",
+  "pay-your-rent": "Payez votre loyer",
+  "buy-your-coffee": "Achetez votre café",
+
+  "your-keys-your-assets": "Vos clés. Vos cryptos.",
+  "your-keys-your-assets-text": "100% de vos cryptos vous appartiennent même si Deblock disparaît. Vous pouvez exporter vos clés à tout moment. Personne ne peut geler vos actifs ou vos retraits.",
+
+  "commission-free": "Achetez sans frais",
+  "commission-free-text": "Sans limite et ad vitam eternam avec notre plan natif.",
+  "live-support": "À votre écoute 24h/24",
+  "live-support-text": "Parlez avec de vraies personnes (pas des machines)."
+}
