@@ -7,7 +7,7 @@ import Header from "../src/components/Header";
 import Footer from "../src/components/Footer";
 import Head from "next/head";
 import { GlobalContextProvider } from "../context/globalContext";
-import { useCallback, useState } from "react";
+import { Suspense, useCallback, useState } from "react";
 
 function App({ Component, pageProps }: AppProps) {
   const [whitelistEmail, setWhitelistEmail] = useState("");
@@ -31,16 +31,18 @@ function App({ Component, pageProps }: AppProps) {
       </Head>
 
       <GlobalContextProvider>
-        <Header displayModal={displayModal} />
-        <Component
-          {...pageProps}
-          displayModal={displayModal}
-          whitelistEmail={whitelistEmail}
-          setWhitelistEmail={setWhitelistEmail}
-          openModal={openModal}
-          setOpenModal={setOpenModal}
-        />
-        <Footer />
+        <Suspense fallback="loading">
+          <Header displayModal={displayModal} />
+          <Component
+            {...pageProps}
+            displayModal={displayModal}
+            whitelistEmail={whitelistEmail}
+            setWhitelistEmail={setWhitelistEmail}
+            openModal={openModal}
+            setOpenModal={setOpenModal}
+          />
+          <Footer />
+        </Suspense>
       </GlobalContextProvider>
     </>
   );
