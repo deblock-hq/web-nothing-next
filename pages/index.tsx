@@ -1230,7 +1230,7 @@ const Home = ({
               <p>
                 {/* Spend, transfer and exchange your pounds or your crypto
                 indifferently */}
-                {t("landing.hero-description")}
+                {t("hero-description")}
               </p>
               <form>
                 {!checkLocalStorage ? (
