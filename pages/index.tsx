@@ -376,6 +376,7 @@ const FirstContainer = styled.div`
         font-weight: 700;
         height: 46px;
         width: 132px;
+        min-width: fit-content;
       }
     }
   }
