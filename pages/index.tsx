@@ -1210,9 +1210,7 @@ const Home = ({
                       src="/mobile-background/info-i.svg"
                       alt="information logo"
                     />
-                    Non-custodial crypto wallets give you complete control and
-                    ownership of your funds. Nobody can freeze your
-                    assets/withdrawals, block them or take them away.
+                    {t("tooltip")}
                   </Tooltip>
                 </span>
                 <Tooltip className="display-on-mobile">
@@ -1222,9 +1220,7 @@ const Home = ({
                     src="/mobile-background/info-i.svg"
                     alt="information logo"
                   />
-                  Non-custodial crypto wallets give you complete control and
-                  ownership of your funds. Nobody can freeze your
-                  assets/withdrawals, block them or take them away.
+                  {t("tooltip")}
                 </Tooltip>
               </h1>
               <p>
