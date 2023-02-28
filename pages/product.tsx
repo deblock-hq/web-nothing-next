@@ -557,7 +557,6 @@ const Product = () => {
                     <span className="bold-text">
                       You fundes are 100% safe even if Deblock disappears
                     </span>
-                    <br />
                     You can export your keys at any time
                   </Trans>
                 </li>
