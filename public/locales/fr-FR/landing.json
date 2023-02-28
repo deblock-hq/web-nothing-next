@@ -1,5 +1,6 @@
 {
-  "title": "Un compte courant intégré à un non-custodial wallet",
+  "title": "Un compte courant intégré à un non-custodial",
+  "wallet": "wallet",
   "tooltip": "Les portefeuilles de crypto-monnaies sans garde vous donnent le contrôle total et la propriété de vos fonds. Personne ne peut geler vos actifs/retraits, les bloquer ou les retirer.",
   "hero-description": "Déposez, dépensez et échangez vos Euros ou vos Cryptos sans distinction",
   "whitelist-placeholder": "Votre email",

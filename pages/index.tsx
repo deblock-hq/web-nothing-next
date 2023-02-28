@@ -1200,9 +1200,9 @@ const Home = ({
             </div>
             <div className="text-container">
               <h1>
-                {/* A GBP account merged with a non-custodial{" "}
+                {t("title")}
                 <span>
-                  wallet
+                  {t("wallet")}
                   <Tooltip className="hide-on-mobile">
                     <Image
                       width={20}
@@ -1212,8 +1212,7 @@ const Home = ({
                     />
                     {t("tooltip")}
                   </Tooltip>
-                </span> */}
-                {t("test-title")}
+                </span>
                 <Tooltip className="display-on-mobile">
                   <Image
                     width={20}
