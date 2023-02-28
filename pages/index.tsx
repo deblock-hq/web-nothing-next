@@ -40,6 +40,7 @@ import Modal from "../src/views/Modal";
 import { useRouter } from "next/router";
 import { ScrollAnimation } from "../src/utils/ScrollAnimation";
 import { GlobalContext } from "../context/globalContext";
+import { useTranslation } from "react-i18next";
 
 interface Props {
   animate: boolean;
@@ -1067,7 +1068,7 @@ const Tooltip = styled.span`
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
   return {
     props: {
-      ...(await serverSideTranslations(locale!, ["common"])),
+      ...(await serverSideTranslations(locale, ["common"])),
     },
   };
 };
@@ -1097,6 +1098,8 @@ const Home = ({
 }: LandingProps) => {
   // const router = useRouter();
   // const { email, setEmail } = useContext(GlobalContext);
+  const { t } = useTranslation("common");
+
   const modalRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -1225,8 +1228,9 @@ const Home = ({
                 </Tooltip>
               </h1>
               <p>
-                Spend, transfer and exchange your pounds or your crypto
-                indifferently
+                {/* Spend, transfer and exchange your pounds or your crypto
+                indifferently */}
+                {t("landing.hero-description")}
               </p>
               <form>
                 {!checkLocalStorage ? (
