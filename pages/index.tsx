@@ -1268,14 +1268,10 @@ const Home = ({
                 One of the <span>best</span> sterling accounts
               </Trans>
             </h2>
-            <div>
-              Get your own IBANs, instant transfers, physical/
-              {/* <br /> */}
-              virtual cards, and 15+ currencies at the best exchange rates.
-            </div>
+            <div>{t("best-account-text")}</div>
             <LearnMoreButton>
               <Link href="/product">
-                Learn more <Image src={Arrow} alt="Arrow right" />{" "}
+                {t("learn-more")} <Image src={Arrow} alt="Arrow right" />{" "}
               </Link>
             </LearnMoreButton>
           </div>
@@ -1289,7 +1285,7 @@ const Home = ({
             </div>
           </div>
           <div className="text-container">
-            <h2>Brand your card with your own NFT</h2>
+            <h2>{t("brand-your-card")}</h2>
             <Blob className="blob-nft" color="#F7DFC5" />
           </div>
         </NftContainer>
@@ -1298,15 +1294,12 @@ const Home = ({
             <Lottie animationData={BankAnimation} />
           </div>
           <div className="texte-container">
-            <h2>Where you can deposit all your crypto</h2>
-            <div>
-              Unlimited crypto deposit and withdrawals. Unlimited exchange to
-              GBP, EUR or USD.
-            </div>
+            <h2>{t("deposit-your-crypto")}</h2>
+            <div>{t("deposit-your-crypto-text")}</div>
             <div>
               <LearnMoreButton>
                 <Link href="/ncw">
-                  Learn more <Image src={Arrow} alt="Arrow right" />{" "}
+                  {t("learn-more")} <Image src={Arrow} alt="Arrow right" />{" "}
                 </Link>
               </LearnMoreButton>
             </div>
@@ -1317,44 +1310,43 @@ const Home = ({
         <CashOrCrypto>
           <div>
             <h2>
-              In <span>Cash</span> or in Crypto It&apos;s up to you!
+              <Trans i18nKey="cash-or-crypto" t={t}>
+                In <span>Cash</span> or in Crypto It&apos;s up to you!
+              </Trans>
             </h2>
-            <p>
-              We&apos;ll handle the exchange of Crypto and GBP under the hood
-              based on your needs
-            </p>
+            <p>{t("cash-or-crypto-text")}</p>
           </div>
           <div>
             <div className="text-container">
               <Image src={Salary} alt="Get your salary" />
               <div>
-                <span>Get your salary</span>
+                <span>{t("get-your-salary")}</span>
                 <br />
-                in Crypto or GBP
+                {t("in-crypto-or-money")}
               </div>
             </div>
             <div className="text-container">
               <Image src={Car} alt="Buy a car" />
               <div>
-                <span>Buy a car</span>
+                <span>{t("buy-a-car")}</span>
                 <br />
-                in Crypto or GBP
+                {t("in-crypto-or-money")}
               </div>
             </div>
             <div className="text-container">
               <Image src={Rent} alt="Pay your rent" />
               <div>
-                <span>Pay your rent</span>
+                <span>{t("pay-your-rent")}</span>
                 <br />
-                in Crypto or GBP
+                {t("in-crypto-or-money")}
               </div>
             </div>
             <div className="text-container">
               <Image src={Coffee} alt="Buy your coffee" />
               <div>
-                <span>Buy your coffee</span>
+                <span>{t("buy-your-coffee")}</span>
                 <br />
-                in Crypto or GBP
+                {t("in-crypto-or-money")}
               </div>
             </div>
           </div>
@@ -1371,21 +1363,25 @@ const Home = ({
             </div>
             <div className="first-block">
               <h2>
-                Your <span>keys</span>. Your assets.
+                <Trans i18nKey="your-keys-your-assets" t={t}>
+                  Your <span>keys</span>. Your assets.
+                </Trans>
               </h2>
               <div>
-                This is self-custody.{" "}
-                <span style={{ fontWeight: 700 }}>
-                  Even if Deblock goes down
-                </span>
-                , 100% of your wallet is protected.
-                <br />
-                <br />
-                Your wealth is safe and nobody can freeze it or take it away.
+                <Trans i18nKey="your-keys-your-assets-text" t={t}>
+                  This is self-custody.{" "}
+                  <span style={{ fontWeight: 700 }}>
+                    Even if Deblock goes down
+                  </span>
+                  , 100% of your wallet is protected.
+                  <br />
+                  <br />
+                  Your wealth is safe and nobody can freeze it or take it away.
+                </Trans>
               </div>
               <LearnMoreButton>
                 <Link href="/ncw">
-                  Learn more <Image src={Arrow} alt="Arrow right" />
+                  {t("learn-more")} <Image src={Arrow} alt="Arrow right" />
                 </Link>
               </LearnMoreButton>
             </div>
@@ -1396,15 +1392,12 @@ const Home = ({
               <div>
                 <Image src={Commission} alt="Commission free" />
                 <div>
-                  {/* <Link href="/pricing"> */}
-                  <h3>Buy commission-free</h3>
-                  {/* </Link> */}
+                  <h3>{t("commission-free")}</h3>
                   <p>
-                    Unlimited and in perpetuity
+                    {/* Unlimited and in perpetuity
                     <br />
-                    with our native plan.{/* <LearnMoreButton> */}
-                    {/*  <Image src={Arrow} alt="Arrow right" />{" "} */}
-                    {/* </LearnMoreButton> */}
+                    with our native plan. */}
+                    {t("commission-free-text")}
                   </p>
                 </div>
               </div>
@@ -1413,13 +1406,8 @@ const Home = ({
               <div className="support-section">
                 <Lottie animationData={Support} />
                 <div>
-                  {/* <Link href="/support"> */}
-                  <h3>24/7 Live support</h3> {/* </Link> */}
-                  <p>
-                    Talk to a real human (not a machine). We are here for you.
-                    {/* <LearnMoreButton> */}
-                    {/* </LearnMoreButton> */}
-                  </p>
+                  <h3>{t("live-support")}</h3>
+                  <p>{t("commission-free-text")}</p>
                 </div>
               </div>
             </Link>

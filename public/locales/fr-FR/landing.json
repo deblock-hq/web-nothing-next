@@ -19,7 +19,7 @@
   "deposit-your-crypto": "Déposez vos cryptos sur votre compte courant",
   "deposit-your-crypt-text": "Déposez ou retirez vos cryptos et NFTs sans limite. Échangez-les pour des EUR ou USD.",
 
-  "cash-or-crypto": "Euro ou Crypto C’est vous qui décidez",
+  "cash-or-crypto": "<1>Euro</1> ou Crypto C’est vous qui décidez",
   "cash-or-crypto-text": "Nous nous occupons de l'échange de Crypto et Euro selon vos besoins",
 
   "get-your-salary": "Recevez votre salaire",
@@ -28,8 +28,8 @@
   "pay-your-rent": "Payez votre loyer",
   "buy-your-coffee": "Achetez votre café",
 
-  "your-keys-your-assets": "Vos clés. Vos cryptos.",
-  "your-keys-your-assets-text": "100% de vos cryptos vous appartiennent même si Deblock disparaît. Vous pouvez exporter vos clés à tout moment. Personne ne peut geler vos actifs ou vos retraits.",
+  "your-keys-your-assets": "Vos <1>clés</1>. Vos cryptos.",
+  "your-keys-your-assets-text": "100% de vos cryptos vous appartiennent <1>même si Deblock disparaît</1>. Vous pouvez exporter vos clés à tout moment.<br/><br/>Personne ne peut geler vos actifs ou vos retraits.",
 
   "commission-free": "Achetez sans frais",
   "commission-free-text": "Sans limite et ad vitam eternam avec notre plan natif.",
