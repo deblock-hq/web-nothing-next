@@ -1232,13 +1232,15 @@ const Home = ({
                 {!checkLocalStorage ? (
                   <input
                     type="email"
-                    placeholder="Your email"
+                    placeholder={t("whitelist-placeholder") || ""}
                     value={whitelistEmail}
                     onChange={(e) => setWhitelistEmail(e.target.value)}
                   />
                 ) : null}
                 <button type="button" onClick={displayModal}>
-                  {!checkLocalStorage ? "Request access" : "See My Postion"}
+                  {!checkLocalStorage
+                    ? t("button-request")
+                    : t("button-position")}
                 </button>
               </form>
             </div>
@@ -1248,7 +1250,7 @@ const Home = ({
           </FirstContainer>
         </div>
         <BackedByContainer>
-          <h3>Backed by the best</h3>
+          <h3>{t("backed-by-the-best")}</h3>
           <div className="image-container">
             <Image src={Vc} alt="20vc logo" />
             <Image className="kraken-logo" src={Kraken} alt="Kraken logo" />
@@ -1261,9 +1263,7 @@ const Home = ({
             <Lottie animationData={Iban} />
           </div>
           <div className="texte-container">
-            <h2>
-              One of the <span>best</span> sterling accounts
-            </h2>
+            <h2>{t("best-account")}</h2>
             <div>
               Get your own IBANs, instant transfers, physical/
               {/* <br /> */}
