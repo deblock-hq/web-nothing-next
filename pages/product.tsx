@@ -13,6 +13,9 @@ import SafeAnimation from "../src/assets/lottie/product/SelfCustody.json";
 import Blob from "../src/views/Blob";
 import { devices } from "../src/utils/devices";
 import { ScrollAnimation } from "../src/utils/ScrollAnimation";
+import { Trans, useTranslation } from "next-i18next";
+import { GetStaticProps } from "next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 interface Props {
   backgroundColor: string;
@@ -438,29 +441,35 @@ const LicensedAndRegulated = styled.div`
   }
 `;
 
+export const getStaticProps: GetStaticProps = async ({ locale }) => {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale!, ["product"])),
+    },
+  };
+};
+
 const Product = () => {
+  const { t } = useTranslation("product");
   return (
     <div>
       <ProductContainer>
         <div>
-          <h1>What is Deblock exactly?</h1>
-          <p>
-            What if your bank account and your non-custodial wallet had a
-            prodigy?
-          </p>
+          <h1>{t("title")}</h1>
+          <p>{t("description")}</p>
         </div>
         <FirstContainer>
           <div className="image-container">
             <Lottie animationData={BetterBank} alt="Iban and card image" />
           </div>
           <div className="texte-container">
-            <h2>Better than your usual bank account</h2>
+            <h2>{t("better-than-your-bank")}</h2>
             <ul>
-              <li>Your own IBAN & account numbers</li>
-              <li>15+ different currencies</li>
-              <li>Free exchange in any currency</li>
-              <li>Instant transfer</li>
-              <li>Open Banking</li>
+              <li>{t("your-iban")}</li>
+              <li>{t("different-currencies")}</li>
+              <li>{t("free-exchange")}</li>
+              <li>{t("instant-transfer")}r</li>
+              <li>{t("open-banking")}</li>
             </ul>
           </div>
           <Blob className="blob-left" color="#D4DAE5" />
@@ -476,11 +485,11 @@ const Product = () => {
               />
             </div>
             <div className="texte-container">
-              <h2>Stand out with a unique Debit Card...</h2>
+              <h2>{t("unique-card")}</h2>
               <ul>
-                <li>Physical or Virtual Cards</li>
-                <li>Personalise your card with your own NFT</li>
-                <li>Apple and Google Pay compatible</li>
+                <li>{t("physical-or-virtual-card")}</li>
+                <li>{t("personalise-your-card")}</li>
+                <li>{t("pay-compatible")}</li>
               </ul>
             </div>
           </UniqueCard>
@@ -494,11 +503,10 @@ const Product = () => {
               />
             </div>
             <div className="texte-container">
-              <h2>One-off cards for a maximum security</h2>
-
+              <h2>{t("maximum-security")}</h2>
               <ul>
-                <li>A new number is generated after each use</li>
-                <li>Buy on the internet with peace of mind</li>
+                <li>{t("new-number")}</li>
+                <li>{t("buy-on-internet")}</li>
               </ul>
             </div>
           </MaximumSecurity>
@@ -518,14 +526,11 @@ const Product = () => {
               />
             </div>
             <div className="texte-container">
-              <h2>Deposit your crypto-assets...</h2>
+              <h2>{t("deposit-crypto-assets")}</h2>
               <ul>
-                <li>Deposit all of your Cryptos and NFTs</li>
-                <li>Exchange your Cryptos for GBP</li>
-                <li>
-                  Use your Cryptos to buy a house or a car, we&apos;ll off-ramp
-                  them in the background
-                </li>
+                <li>{t("deposit-all")}</li>
+                <li>{t("exchange-crypto")}</li>
+                <li>{t("use-crypto")}</li>
               </ul>
             </div>
           </CryptoAssets>
@@ -539,18 +544,22 @@ const Product = () => {
               />
             </div>
             <div className="texte-container">
-              <h2>...in your self-custody</h2>
+              <h2>{t("in-self-custody")}</h2>
               <ul>
                 <li>
-                  <span className="bold-text">Nobody can freeze</span> your
-                  wallet or your withdrawals
+                  <Trans i18nKey="nobody-can-freeze" t={t}>
+                    <span className="bold-text">Nobody can freeze</span> your
+                    wallet or your withdrawals
+                  </Trans>
                 </li>
                 <li>
-                  <span className="bold-text">
-                    You fundes are 100% safe even if Deblock disappears
-                  </span>
-                  <br />
-                  You can export your keys at any time
+                  <Trans i18nKey="fundes-safe" t={t}>
+                    <span className="bold-text">
+                      You fundes are 100% safe even if Deblock disappears
+                    </span>
+                    <br />
+                    You can export your keys at any time
+                  </Trans>
                 </li>
               </ul>
             </div>
