@@ -1200,7 +1200,7 @@ const Home = ({
             </div>
             <div className="text-container">
               <h1>
-                {t("title")}
+                {t("title")}{" "}
                 <span>
                   {t("wallet")}
                   <Tooltip className="hide-on-mobile">
