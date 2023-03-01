@@ -894,7 +894,7 @@ const SafestAccount = styled.div`
       justify-content: space-between;
       > div {
         padding-right: 100px;
-        width: 79%;
+        width: 73%;
         br:first-of-type {
           display: none;
         }
