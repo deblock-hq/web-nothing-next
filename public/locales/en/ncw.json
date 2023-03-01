@@ -1,0 +1,45 @@
+{
+  "title": "The best non-custodial wallet in the world",
+  "description": " A highly secured non-custodial wallet where your assets only belong to you.",
+
+  "key-takeway": "Key Takeways",
+  "more-secure": "More secure than your usual wallet",
+  "more-secure-text": "MPC (Multi-Party Computation) would require coordinated attacks on different and independent systems. Just hacking your phone isn't enough anymore.",
+  "human-error": "Human-error tolerant",
+  "human-error-text": "No need to remember a seed phrase anymore. Your shard of the key is backed up with multiple third-parties.",
+  "your-keys": "Always your keys. Always your crypto.",
+  "your-keys-text": "Export the seed phrase whenever you want. Nobody but you can have access to the wallet. Your keys. Your crypto.",
+
+  "multi-party": "Multi-Party Computation",
+  "your-shard": "<1>Your shard</1> of the key (2)",
+  "your-shard-list1": "Generated upon signup on your device.",
+  "your-shard-list2": "Encrypted and backed-up in case you lose your phone.",
+
+  "deblocks-shard": "<1>The Deblock's shard</1> of the key (1)",
+  "deblocks-shard-list1": "Generated upon signup on Deblock's server.",
+  "deblocks-shard-list2": "Encrypted and backed-up in a cold storage in case a meteorite crash on our datacenter.",
+
+  "shards-required": "The 2 shards are required in order to sign a transaction",
+  "shards-required-list1": "Only <1>your shard</1> can initiate a transaction.",
+  "shards-required-list2": "Only <1>your shard</1> can request to download the <2>Deblock’s shard</2> in order to export the wallet seed phrase.",
+
+  "warning-1": "A hacker would need to hack your device AND our servers to access your wallet. It's 2x more secure than just storing your keys on your device.",
+
+  "human-error-tolerant": "Human-error tolerant",
+  "your-encrypted-shard": "<1>Your encrypted shard🔒</1> is backed-up in multiple locations and yet SAFE because",
+  "": "",
+
+
+  "": "",
+  "": "",
+
+  "": "",
+
+  "": "",
+
+  "": "",
+  "": "",
+
+  "": "",
+  "": ""
+}

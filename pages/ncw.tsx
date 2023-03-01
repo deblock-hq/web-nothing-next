@@ -9,6 +9,9 @@ import Image from "next/image";
 import { devices } from "../src/utils/devices";
 import Blob from "../src/views/Blob";
 import { ScrollAnimation } from "../src/utils/ScrollAnimation";
+import { GetStaticProps } from "next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { useTranslation } from "next-i18next";
 
 interface Props {
   color: string;
@@ -364,7 +367,17 @@ const BoldText = styled.span`
   font-weight: 700;
 `;
 
+export const getStaticProps: GetStaticProps = async ({ locale }) => {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale!, ["ncw"])),
+    },
+  };
+};
+
 const NonCustodialWallet = () => {
+  const { t } = useTranslation("ncw");
+
   return (
     <Container>
       <NCWContainer>
