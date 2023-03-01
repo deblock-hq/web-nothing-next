@@ -10,17 +10,18 @@
   "backed-by-the-best": "Backed by the best",
 
   "best-account": "One of the <1>best</1> sterling accounts",
-  "best-account-text": "Get your own IBANs, instant transfers, physical/ virtual cards, and 15+ currencies at the best exchange rates.",
+  "best-account-text": "Get your own account number, instant transfers, physical/virtual cards, and multiple currencies at the best exchange rates.",
 
   "learn-more": "Learn more",
 
   "brand-your-card": "Brand your card with your own NFT",
 
   "deposit-your-crypto": "Where you can deposit all your crypto",
-  "deposit-your-crypto-text": "Unlimited crypto deposit and withdrawals. Unlimited exchange to GBP, EUR or USD.",
+  "deposit-your-crypto-text": "Unlimited crypto deposit and withdrawals. Unlimited exchange to FIAT.",
 
   "cash-or-crypto": "In <1>Cash</1> or in Crypto It's up to you!",
-  "cash-or-crypto-text": "We'll handle the exchange of Crypto and GBP under the hood based on your needs",
+  "cash-or-crypto-text-1": "We'll handle the exchange of Crypto and GBP",
+  "cash-or-crypto-text-2": "under the hood based on your needs",
 
   "get-your-salary": "Get your salary",
   "in-crypto-or-money": "in Crypto or GBP",
@@ -29,7 +30,10 @@
   "buy-your-coffee": "Buy your coffee",
 
   "your-keys-your-assets": "Your <1>keys</1>. Your assets.",
-  "your-keys-your-assets-text": "This is self-custody. <1>Even if Deblock goes down</1>, 100% of your wallet is protected.<br/><br/> Your wealth is safe and nobody can freeze it or take it away.",
+  "your-keys-your-assets-text-1": "This is self-custody.",
+  "Even if Deblock goes down": "Even if Deblock goes down",
+  "wallet protected-1": ", 100% of your wallet is protected.",
+  "wallet protected-2": "our wealth is safe and nobody can freeze it or take it away",
 
   "commission-free": "Buy commission-free",
   "commission-free-text": "Unlimited and in perpetuity<br/> with our native plan.",

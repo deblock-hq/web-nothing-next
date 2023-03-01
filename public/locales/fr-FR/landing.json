@@ -20,7 +20,8 @@
   "deposit-your-crypt-text": "Déposez ou retirez vos cryptos et NFTs sans limite. Échangez-les pour des EUR ou USD.",
 
   "cash-or-crypto": "<1>Euro</1> ou Crypto C’est vous qui décidez",
-  "cash-or-crypto-text": "Nous nous occupons de l'échange de Crypto et Euro selon vos besoins",
+  "cash-or-crypto-text-1": "Nous nous occupons de l'échangens",
+  "cash-or-crypto-text-2": "de Crypto et Euro selon vos besoi",
 
   "get-your-salary": "Recevez votre salaire",
   "in-crypto-or-money": "en Crypto ou en Euro",
@@ -29,7 +30,10 @@
   "buy-your-coffee": "Achetez votre café",
 
   "your-keys-your-assets": "Vos <1>clés</1>. Vos cryptos.",
-  "your-keys-your-assets-text": "100% de vos cryptos vous appartiennent <1>même si Deblock disparaît</1>. Vous pouvez exporter vos clés à tout moment.<br/><br/>Personne ne peut geler vos actifs ou vos retraits.",
+  "your-keys-your-assets-text-1": "100% de vos cryptos vous appartiennent",
+  "Even if Deblock goes down": "même si Deblock disparaît.",
+  "wallet protected-1": "Vous pouvez exporter vos clés à tout moment.",
+  "wallet protected-2": "Personne ne peut geler vos actifs ou vos retraits.",
 
   "commission-free": "Achetez sans frais",
   "commission-free-text": "Sans limite et ad vitam eternam avec notre plan natif.",

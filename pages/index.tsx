@@ -254,9 +254,19 @@ const FirstContainer = styled.div`
     gap: 16px;
     padding: 0px 14px;
 
+    .wallet-tooltip {
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+
+      > img {
+        padding-bottom: 4px;
+      }
+    }
+
     @media ${devices.tablet} {
       padding: 72px 90px;
-      width: 56%;
+      width: 58%;
       gap: 32px;
 
       h1 {
@@ -270,6 +280,11 @@ const FirstContainer = styled.div`
         line-height: 28px;
         animation: FadeIn 1.2s;
         padding-bottom: 8px;
+      }
+      .wallet-tooltip {
+        > img {
+          padding-bottom: 16px;
+        }
       }
     }
   }
@@ -291,7 +306,7 @@ const FirstContainer = styled.div`
     > span:first-child {
       position: relative;
 
-      :after {
+      /* :after {
         content: "";
         background: url("/mobile-background/info-i.svg") no-repeat;
         position: absolute;
@@ -300,12 +315,12 @@ const FirstContainer = styled.div`
         top: 0;
         left: 80px;
         cursor: pointer;
-
-        @media ${devices.tablet} {
+ */
+      /* @media ${devices.tablet} {
           top: 12px;
           left: 144px;
-        }
-      }
+        } */
+      /* } */
     }
   }
   p {
@@ -374,7 +389,7 @@ const FirstContainer = styled.div`
         font-size: 13px;
         padding: 12px 14px;
         font-weight: 700;
-        height: 46px;
+        height: 45px;
         width: 132px;
         min-width: fit-content;
       }
@@ -863,7 +878,7 @@ const SafestAccount = styled.div`
       background: none;
       max-width: 362px;
       z-index: 2;
-      padding-right: 20%;
+      padding-right: 15%;
     }
   }
   .first-block {
@@ -875,7 +890,7 @@ const SafestAccount = styled.div`
     @media ${devices.tablet} {
       gap: 30px;
       padding-left: 90px;
-      width: 50%;
+      width: 57%;
       justify-content: space-between;
       > div {
         padding-right: 100px;
@@ -997,7 +1012,7 @@ const Tooltip = styled.span`
   background-color: white;
   border-radius: 4px;
   border: 1px solid black;
-  box-shadow: 3px 3px 0px 0px rgb(0 0 0);
+  box-shadow: 2px 2px 0px 0px rgb(0 0 0);
 
   position: absolute;
   z-index: 5;
@@ -1046,7 +1061,7 @@ const Tooltip = styled.span`
     /* width: 100%; */
     gap: 16px;
     top: -92px;
-    left: -277px;
+    left: -268px;
 
     ::before,
     ::after {
@@ -1103,6 +1118,8 @@ const Home = ({
   const { t } = useTranslation("landing");
 
   const modalRef = useRef<HTMLInputElement>(null);
+
+  const [openTooltip, setOpenTooltip] = useState(false);
 
   useEffect(() => {
     let myPanel = document.getElementById("panel");
@@ -1203,27 +1220,39 @@ const Home = ({
             <div className="text-container">
               <h1>
                 {t("title")}{" "}
-                <span>
+                <span className="wallet-tooltip">
                   {t("wallet")}
-                  <Tooltip className="hide-on-mobile">
+                  <Image
+                    className="hide-on-mobile"
+                    width={18}
+                    height={18}
+                    src="/mobile-background/info-i.svg"
+                    alt="information logo"
+                    onClick={() => setOpenTooltip((prev) => !prev)}
+                  />
+                  {openTooltip && (
+                    <Tooltip className="hide-on-mobile">
+                      <Image
+                        width={18}
+                        height={18}
+                        src="/mobile-background/info-i.svg"
+                        alt="information logo"
+                      />
+                      {t("tooltip")}
+                    </Tooltip>
+                  )}
+                </span>
+                {openTooltip && (
+                  <Tooltip className="display-on-mobile">
                     <Image
-                      width={20}
-                      height={20}
+                      width={18}
+                      height={18}
                       src="/mobile-background/info-i.svg"
                       alt="information logo"
                     />
                     {t("tooltip")}
                   </Tooltip>
-                </span>
-                <Tooltip className="display-on-mobile">
-                  <Image
-                    width={20}
-                    height={20}
-                    src="/mobile-background/info-i.svg"
-                    alt="information logo"
-                  />
-                  {t("tooltip")}
-                </Tooltip>
+                )}
               </h1>
               <p>
                 {/* Spend, transfer and exchange your pounds or your crypto
@@ -1316,7 +1345,12 @@ const Home = ({
                 In <span>Cash</span> or in Crypto It&apos;s up to you!
               </Trans>
             </h2>
-            <p>{t("cash-or-crypto-text")}</p>
+            <p>
+              {t("cash-or-crypto-text-1")}
+              <br />
+              {t("cash-or-crypto-text-2")}
+              <br />
+            </p>
           </div>
           <div>
             <div className="text-container">
@@ -1370,16 +1404,14 @@ const Home = ({
                 </Trans>
               </h2>
               <div>
-                <Trans i18nKey="your-keys-your-assets-text" t={t}>
-                  This is self-custody.{" "}
-                  <span style={{ fontWeight: 700 }}>
-                    Even if Deblock goes down
-                  </span>
-                  , 100% of your wallet is protected.
-                  <br />
-                  <br />
-                  Your wealth is safe and nobody can freeze it or take it away.
-                </Trans>
+                {t("your-keys-your-assets-text-1")}{" "}
+                <span style={{ fontWeight: 700 }}>
+                  {t("Even if Deblock goes down")}
+                </span>{" "}
+                {t("wallet protected-1")}
+                <br />
+                <br />
+                {t("wallet protected-2")}
               </div>
               <LearnMoreButton>
                 <Link href="/ncw">

@@ -9,6 +9,9 @@ import FlagFr from "../../assets/fr-flag.svg";
 import FlagEn from "../../assets/en-flag.svg";
 import Rotate from "../../assets/rotate.svg";
 import Popup from "../../components/Popup";
+import { GetStaticProps } from "next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { useTranslation } from "react-i18next";
 
 interface Props {
   step: string;
@@ -467,6 +470,8 @@ const Modal = ({
   email: string;
   setIsOpen: (isOpen: boolean) => void;
 }) => {
+  const { t } = useTranslation("modal");
+
   const [phoneCode, setPhoneCode] = useState("+44");
   const [phoneNumber, setPhoneNumber] = useState<number>();
   const [phoneVerifyCode, setPhoneVerifyCode] = useState("");
@@ -563,7 +568,7 @@ const Modal = ({
         setPriorityAccess(res.data.result.user.priority_access);
 
         setActualStep("verify_email");
-        setTriggerStatus(true);
+        // setTriggerStatus(true);
       })
       .catch((error) => {
         console.log("Emailerror", error);
