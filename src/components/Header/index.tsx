@@ -60,7 +60,7 @@ const HeaderContainer = styled.header<Props>`
   .logo {
     max-width: 110px;
     cursor: pointer;
-    /* margin-left: 40px; */
+    width: 50%;
   }
 
   > div {
