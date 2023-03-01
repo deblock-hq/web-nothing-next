@@ -1,8 +1,9 @@
 {
   "title": "The best non-custodial wallet in the world",
-  "description": " A highly secured non-custodial wallet where your assets only belong to you.",
+  "description": "A highly secured non-custodial wallet where your assets only belong to you.",
 
   "key-takeway": "Key Takeways",
+  "read": "read",
   "more-secure": "More secure than your usual wallet",
   "more-secure-text": "MPC (Multi-Party Computation) would require coordinated attacks on different and independent systems. Just hacking your phone isn't enough anymore.",
   "human-error": "Human-error tolerant",
@@ -11,35 +12,36 @@
   "your-keys-text": "Export the seed phrase whenever you want. Nobody but you can have access to the wallet. Your keys. Your crypto.",
 
   "multi-party": "Multi-Party Computation",
-  "your-shard": "<1>Your shard</1> of the key (2)",
-  "your-shard-list1": "Generated upon signup on your device.",
-  "your-shard-list2": "Encrypted and backed-up in case you lose your phone.",
 
-  "deblocks-shard": "<1>The Deblock's shard</1> of the key (1)",
-  "deblocks-shard-list1": "Generated upon signup on Deblock's server.",
-  "deblocks-shard-list2": "Encrypted and backed-up in a cold storage in case a meteorite crash on our datacenter.",
+  "your-shard": "<1>Your shard</1> of the key (2)",
+  "your-shard-list-1": "Generated upon signup on your device.",
+  "your-shard-list-2": "Encrypted and backed-up in case you lose your phone.",
+
+  "deblocks-shard": " <1>The Deblock's shard</1>of the key (1)",
+  "deblocks-shard-list-1": "Generated upon signup on Deblock's server.",
+  "deblocks-shard-list-2": "Encrypted and backed-up in a cold storage in case a meteorite crash on our datacenter.",
 
   "shards-required": "The 2 shards are required in order to sign a transaction",
-  "shards-required-list1": "Only <1>your shard</1> can initiate a transaction.",
-  "shards-required-list2": "Only <1>your shard</1> can request to download the <2>Deblock’s shard</2> in order to export the wallet seed phrase.",
+  "shards-required-list-1": "Only <1>your shard</1> can initiate a transaction.",
+  "shards-required-list-2": "Only <1>your shard</1> can request to download the <2>Deblock’s shard</2> in order to export the wallet seed phrase.",
 
   "warning-1": "A hacker would need to hack your device AND our servers to access your wallet. It's 2x more secure than just storing your keys on your device.",
 
   "human-error-tolerant": "Human-error tolerant",
-  "your-encrypted-shard": "<1>Your encrypted shard🔒</1> is backed-up in multiple locations and yet SAFE because",
-  "": "",
+  "your-encrypted-shard": "<1>Your encrypted shard🔒</1> is backed-up in multiple locations and yet SAFE because <2>always encrypted.</2>",
+  "no-need-to-remember": "No need to remember a complicated seed phrase",
+  "if-you-lose-your-phone": "If you lose your phone, delete Deblock or just change device... You only need to retrieve <1>your encrypted shard🔒</1> and then KYC again to decrypt it.",
 
+  "always-your-keys": "Always & Still your keys",
+  "always-your-keys-text": "Request at <1>any point in time</1> your seed phrase (mnemonic of your private key).",
 
-  "": "",
-  "": "",
+  "highlight-1": "The app will request and download the <1>encrypted Deblock's shard🔒</1> and then decrypt it into <2>Deblock’s shard</2> on your device.",
+  "highlight-2": "The app will use <1>your shard</1> and  <2>Deblock’s shard</2> on your device to reconstruct the wallet private key and your seed phrase.",
 
-  "": "",
+  "warning-2": "If you decide to export your wallet private key out of Deblock, we will have to close your FIAT account.",
 
-  "": "",
-
-  "": "",
-  "": "",
-
-  "": "",
-  "": ""
+  "deblock-disappears": "What if Deblock disappears?",
+  "deblock-disappears-text-1": "And you have <1>NO app</1> and <2>NO backup</2>",
+  "deblock-disappears-text-2": "Both <1>your encrypted shard🔒</1> and <2>Deblock encrypted shard🔒</2> will be released from cold storage.",
+  "deblock-disappears-text-3": "A trusted third-party will securely release an app to decrypt both shards and reconstruct your wallet private key and your seed phrase."
 }

@@ -11,7 +11,7 @@ import Blob from "../src/views/Blob";
 import { ScrollAnimation } from "../src/utils/ScrollAnimation";
 import { GetStaticProps } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { useTranslation } from "next-i18next";
+import { Trans, useTranslation } from "next-i18next";
 
 interface Props {
   color: string;
@@ -382,47 +382,34 @@ const NonCustodialWallet = () => {
     <Container>
       <NCWContainer>
         <TitleContainer>
-          <h1>The best non-custodial wallet in the world</h1>
-          <p>
-            A highly secured non-custodial wallet where your assets only belong
-            to you.
-          </p>
+          <h1>{t("title")}</h1>
+          <p>{t("description")}</p>
         </TitleContainer>
         <KeyTakeway>
           <div className="header-container">
-            <h2>Key Takeways</h2>
+            <h2>{t("key-takeway")}</h2>
             <div>
               <div>#ncw</div>
-              <div>3 min read</div>
+              <div>3 min {t("read")}</div>
             </div>
           </div>
           <ul>
             <li>
-              <h3>More secure than your usual wallet</h3>
-              <p>
-                MPC (Multi-Party Computation) would require coordinated attacks
-                on different and independent systems. Just hacking your phone
-                isn&apos;t enough anymore.
-              </p>
+              <h3>{t("more-secure")}</h3>
+              <p>{t("more-secure-text")}</p>
             </li>
             <li>
-              <h3>Human-error tolerant</h3>
-              <p>
-                No need to remember a seed phrase anymore. Your shard of the key
-                is backed up with multiple third-parties.{" "}
-              </p>
+              <h3>{t("human-error")}</h3>
+              <p>{t("human-error-text")}</p>
             </li>
             <li>
-              <h3>Always your keys. Always your crypto.</h3>
-              <p>
-                Export the seed phrase whenever you want. Nobody but you can
-                have access to the wallet. Your keys. Your crypto.
-              </p>
+              <h3>{t("your-keys")}</h3>
+              <p>{t("your-keys-text")}</p>
             </li>
           </ul>
         </KeyTakeway>
         <MultiParty>
-          <h2>Multi-Party Computation</h2>
+          <h2>{t("multi-party")}</h2>
           <ScrollAnimation
             className="image-container"
             lottieFile={MultiPartyAnimation}
@@ -431,122 +418,134 @@ const NonCustodialWallet = () => {
           />
           <div className="liste-container">
             <div>
-              <TextHighlight color="#C7DFFC">Your shard</TextHighlight> of the
-              key (2)
+              <Trans i18nKey="your-shard" t={t}>
+                {" "}
+                <TextHighlight color="#C7DFFC">Your shard</TextHighlight> of the
+                key (2)
+              </Trans>
             </div>
             <ul>
-              <li>Generated upon signup on your device.</li>
-              <li>Encrypted and backed-up in case you lose your phone.</li>
+              <li>{t("your-shard-list-1")}</li>
+              <li>{t("your-shard-list-2")}</li>
             </ul>
             <div>
-              <TextHighlight color="#FED54D">
-                The Deblock&apos;s shard
-              </TextHighlight>{" "}
-              of the key (1)
+              <Trans i18nKey="deblocks-shard" t={t}>
+                {" "}
+                <TextHighlight color="#FED54D">
+                  The Deblock&apos;s shard
+                </TextHighlight>{" "}
+                of the key (1)
+              </Trans>
             </div>
             <ul>
-              <li>Generated upon signup on Deblock&apos;s server.</li>
-              <li>
-                Encrypted and backed-up in a cold storage in case a meteorite
-                crash on our datacenter.
-              </li>
+              <li>{t("deblocks-shard-list-1")}</li>
+              <li>{t("deblocks-shard-list-2")}</li>
             </ul>
-            <div>The 2 shards are required in order to sign a transaction</div>
+            <div>{t("shards-required")}</div>
             <ul>
               <li>
-                Only <TextHighlight color="#C7DFFC">your shard</TextHighlight>{" "}
-                can initiate a transaction.
+                <Trans i18nKey="shards-required-list-1">
+                  Only <TextHighlight color="#C7DFFC">your shard</TextHighlight>{" "}
+                  can initiate a transaction.
+                </Trans>
               </li>
               <li>
-                Only <TextHighlight color="#C7DFFC">your shard</TextHighlight>{" "}
-                can request to download the{" "}
-                <TextHighlight color="#FED54D">Deblock’s shard</TextHighlight>{" "}
-                in order to export the wallet seed phrase.
+                <Trans i18nKey="shards-required-list-2" t={t}>
+                  Only <TextHighlight color="#C7DFFC">your shard</TextHighlight>{" "}
+                  can request to download the{" "}
+                  <TextHighlight color="#FED54D">Deblock’s shard</TextHighlight>{" "}
+                  in order to export the wallet seed phrase.
+                </Trans>
               </li>
             </ul>
           </div>
           <WarningContainer>
             <Image src={WarningIcone} alt="Warning icone" />
-            <p>
-              A hacker would need to hack your device AND our servers to access
-              your wallet. It&apos;s 2x more secure than just storing your keys
-              on your device.
-            </p>
+            <p>{t("warning-1")}</p>
           </WarningContainer>
           <div>
             <div className="human-error">
-              <h2>Human-error tolerant</h2>
+              <h2>{t("human-error-tolerant")}</h2>
               <p>
-                <TextHighlight color="#D5FCC5">
-                  Your encrypted shard🔒
-                </TextHighlight>{" "}
-                is backed-up in multiple locations and yet SAFE because{" "}
-                <BoldText>always encrypted.</BoldText>
+                <Trans i18nKey="your-encrypted-shard" t={t}>
+                  {" "}
+                  <TextHighlight color="#D5FCC5">
+                    Your encrypted shard🔒
+                  </TextHighlight>{" "}
+                  is backed-up in multiple locations and yet SAFE because
+                  <BoldText>always encrypted.</BoldText>
+                </Trans>
               </p>
               <div>
                 <p>
-                  <BoldText>
-                    No need to remember a complicated seed phrase
-                  </BoldText>
+                  <BoldText>{t("no-need-to-remember")}</BoldText>
                 </p>
                 <p>
-                  If you lose your phone, delete Deblock or just change
-                  device... You only need to retrieve{" "}
-                  <TextHighlight color="#D5FCC5">
-                    your encrypted shard🔒
-                  </TextHighlight>{" "}
-                  and then KYC again to decrypt it.
+                  <Trans i18nKey="if-you-lose-your-phone" t={t}>
+                    If you lose your phone, delete Deblock or just change
+                    device... You only need to retrieve{" "}
+                    <TextHighlight color="#D5FCC5">
+                      your encrypted shard🔒
+                    </TextHighlight>{" "}
+                    and then KYC again to decrypt it.
+                  </Trans>
                 </p>
               </div>
             </div>
             <div className="keys-container">
-              <h2>Always & Still your keys</h2>
+              <h2>{t("always-your-keys")}</h2>
               <p>
-                Request at{" "}
-                <span
-                  style={{ fontStyle: "italic", textDecoration: "underline" }}
-                >
-                  any point in time
-                </span>{" "}
-                your seed phrase (mnemonic of your private key).
+                <Trans i18nKey="always-your-keys-text" t={t}>
+                  Request at{" "}
+                  <span
+                    style={{ fontStyle: "italic", textDecoration: "underline" }}
+                  >
+                    any point in time
+                  </span>{" "}
+                  your seed phrase (mnemonic of your private key).
+                </Trans>
               </p>
               <div className="yellow-border">
                 <p>
-                  The app will request and download the{" "}
-                  <TextHighlight color="#F9DBAF">
-                    encrypted Deblock&apos;s shard🔒
-                  </TextHighlight>{" "}
-                  and then decrypt it into{" "}
-                  <TextHighlight color="#FED54D">
-                    Deblock&apos;s shard
-                  </TextHighlight>{" "}
-                  on your device.
+                  <Trans i18nKey="highlight-1" t={t}>
+                    The app will request and download the{" "}
+                    <TextHighlight color="#F9DBAF">
+                      encrypted Deblock&apos;s shard🔒
+                    </TextHighlight>{" "}
+                    and then decrypt it into{" "}
+                    <TextHighlight color="#FED54D">
+                      Deblock&apos;s shard
+                    </TextHighlight>{" "}
+                    on your device.
+                  </Trans>
                 </p>
                 <p>
-                  The app will use{" "}
-                  <TextHighlight color="#C7DFFC">your shard</TextHighlight> and{" "}
-                  <TextHighlight color="#FED54D">
-                    Deblock&apos;s shard
-                  </TextHighlight>{" "}
-                  on your device to reconstruct the wallet private key and your
-                  seed phrase.
+                  <Trans i18nKey="highlight-2" t={t}>
+                    The app will use{" "}
+                    <TextHighlight color="#C7DFFC">your shard</TextHighlight>{" "}
+                    and{" "}
+                    <TextHighlight color="#FED54D">
+                      Deblock&apos;s shard
+                    </TextHighlight>{" "}
+                    on your device to reconstruct the wallet private key and
+                    your seed phrase.
+                  </Trans>
                 </p>
               </div>
               <WarningContainer>
                 <Image src={WarningIcone} alt="Warning icone" />
-                <p>
-                  If you decide to export your wallet private key out of
-                  Deblock, we will have to close your FIAT account.
-                </p>
+                <p>{t("warning-2")}</p>
               </WarningContainer>
             </div>
           </div>
         </MultiParty>
         <DeblockDisappears>
-          <h2>What if Deblock disappears?</h2>
+          <h2>{t("deblock-disappears")}</h2>
           <span>
-            And you have <BoldText>NO app</BoldText> and{" "}
-            <BoldText>NO backup</BoldText>
+            <Trans i18nKey="deblock-disappears-text-1" t={t}>
+              And you have <BoldText>NO app</BoldText> and{" "}
+              <BoldText>NO backup</BoldText>
+            </Trans>
           </span>
           <ScrollAnimation
             lottieFile={Emergency}
@@ -554,20 +553,19 @@ const NonCustodialWallet = () => {
             altText="Emergency Recovery Process "
           />
           <p style={{ paddingBottom: "40px" }}>
-            Both{" "}
-            <TextHighlight color="#D5FCC5">
-              your encrypted shard🔒
-            </TextHighlight>{" "}
-            and{" "}
-            <TextHighlight color="#F9DBAF">
-              Deblock encrypted shard🔒
-            </TextHighlight>{" "}
-            will be released from cold storage.
+            <Trans i18nKey="deblock-disappears-text-2" t={t}>
+              Both{" "}
+              <TextHighlight color="#D5FCC5">
+                your encrypted shard🔒
+              </TextHighlight>{" "}
+              and{" "}
+              <TextHighlight color="#F9DBAF">
+                Deblock encrypted shard🔒
+              </TextHighlight>{" "}
+              will be released from cold storage.
+            </Trans>
           </p>
-          <p>
-            A trusted third-party will securely release an app to decrypt both
-            shards and reconstruct your wallet private key and your seed phrase.
-          </p>
+          <p>{t("deblock-disappears-text-3")}</p>
         </DeblockDisappears>
       </NCWContainer>
       <Blob className="blob-left" color="#D0D8E4" />

@@ -1,0 +1,46 @@
+{
+  "title": "Le meilleur non-custodial wallet au monde",
+  "description": "L’état de l’art de la sécurité et de la simplicité",
+
+  "key-takeway": "Points Clés",
+  "read": "de lecture",
+  "more-secure": "Plus sécurisé qu’un wallet traditionnel",
+  "more-secure-text": "Le wallet Deblock est basé sur un modèle d'architecture MPC (Multi-Party Computation). Le seul piratage de votre téléphone ou de votre ordinateur ne suffit plus à voler vos crypto-actifs.",
+  "human-error": "Peu importe votre mémoire",
+  "human-error-text": "N’ayez plus peur de perdre vos actifs parce que vous avez perdu votre mot de passe ou votre phrase secrète.",
+  "your-keys": "Vos clés. Vos cryptos.",
+  "your-keys-text": "Exportez votre clé quand vous le souhaitez. Personne d'autre que vous ne peut avoir accès au wallet. Vos clés. Vos cryptos.",
+
+  "multi-party": "Une architecture MPC",
+  "your-shard": "<1>Votre fragment</1> de clé (2)",
+  "your-shard-list-1": "Généré sur votre téléphone lors de votre inscription ",
+  "your-shard-list-2": "Crypté et sauvegardé sur des serveurs tiers",
+
+  "deblocks-shard": "<1>Le fragment de clé de Deblock</1> (1)",
+  "deblocks-shard-list-1": "Généré sur nos serveurs lors de votre inscription",
+  "deblocks-shard-list-2": "Crypté et sécurisé hors ligne",
+
+  "shards-required": "Les 2 fragments sont nécessaires pour signer vos transactions",
+  "shards-required-list-1": "Seul <1>votre fragment</1> peut initier une transaction.",
+  "shards-required-list-2": "Seul <1>votre fragment</1> peut télécharger le <2>fragment de Deblock</2> pour reconstruire votre clé.",
+
+  "warning-1": "Un hacker devrait pirater à la fois votre téléphone ET les serveurs de Deblock pour accéder à vos cryptos: 2x plus sécurisé qu’un wallet traditionnel.",
+
+  "human-error-tolerant": "La fin des erreurs humaines ?",
+  "your-encrypted-shard": "<1>Votre fragment crypté 🔒</1> est sauvegardé sur plusieurs serveurs mais sera toujours crypté et donc sécurisé.",
+  "no-need-to-remember": "Plus besoin de se rappeler d’une phrase secrète compliquée",
+  "if-you-lose-your-phone": "Si vous perdez votre téléphone ou supprimez Deblock... Vous pourrez simplement décrypter <1>votre fragment crypté 🔒</1> en prouvant votre identité.",
+
+  "always-your-keys": "Vos clés. Vos cryptos.",
+  "always-your-keys-text": "Exportez <1>quand vous le souhaitez</1> votre phrase secrète (le mnémonique de votre clé privée).",
+
+  "highlight-1": "L’application téléchargera alors le <1>fragment crypté de Deblock🔒</1> et le decryptera en <2>fragment de Deblock</2> sur votre téléphone.",
+  "highlight-2": "L’application utilisera alors <1>votre fragment</1> et le <2>fragment de Deblock</2> sur votre téléphone pour reconstruire votre clé privée et votre phrase secrète.",
+
+  "warning-2": "Si vous décidez d’exporter votre wallet en dehors de l’ecosytème Deblock, nous devrons cloturer votre compte.",
+
+  "deblock-disappears": "Et si Deblock disparaît ?",
+  "deblock-disappears-text-1": "<1>Sans app et sans sauvegarde...</1>",
+  "deblock-disappears-text-2": "<1>Votre fragment crypté 🔒</1> et le <2>Deblock encrypted shard🔒</2> seront téléchargés depuis des serveurs dédiés sécurisés.",
+  "deblock-disappears-text-3": "Un tiers de confiance indépendant vous enverra par email une application permettant de décrypter, en prouvant votre identité, les deux fragments en votre clé privé."
+}
