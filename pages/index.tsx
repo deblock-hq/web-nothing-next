@@ -935,7 +935,7 @@ const SafestAccount = styled.div`
     margin: auto;
     padding-top: 80px;
     padding-bottom: 22px;
-    cursor:pointer;
+    cursor: pointer;
 
     p {
       padding-top: 14px;
@@ -1412,7 +1412,7 @@ const Home = ({
               <div>
                 {t("your-keys-your-assets-text-1")}{" "}
                 <span style={{ fontWeight: 700 }}>
-                  {t("Even if Deblock goes down")}
+                  {t("Even if Deblock goes down")}{" "}
                 </span>
                 {t("wallet protected-1")}
                 <br />
