@@ -894,6 +894,7 @@ const SafestAccount = styled.div`
       justify-content: space-between;
       > div {
         padding-right: 100px;
+        width: 79%;
         br:first-of-type {
           display: none;
         }
@@ -934,6 +935,7 @@ const SafestAccount = styled.div`
     margin: auto;
     padding-top: 80px;
     padding-bottom: 22px;
+    cursor:pointer;
 
     p {
       padding-top: 14px;
@@ -1412,8 +1414,8 @@ const Home = ({
                 <span style={{ fontWeight: 700 }}>
                   {t("Even if Deblock goes down")}
                 </span>
-                <br />
                 {t("wallet protected-1")}
+                <br />
                 <br />
                 {t("wallet protected-2")}
               </div>
