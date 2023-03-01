@@ -952,7 +952,7 @@ const SafestAccount = styled.div`
       }
 
       p {
-        width: 70%;
+        width: 100%;
         font-size: 16px;
       }
     }
@@ -967,8 +967,12 @@ const SafestAccount = styled.div`
       align-items: center;
       justify-content: space-around;
 
+      h3 {
+        padding-top: 18px;
+      }
+
       div:first-child {
-        height: 230px;
+        height: 240px;
       }
     }
   }
@@ -1407,9 +1411,9 @@ const Home = ({
                 {t("your-keys-your-assets-text-1")}{" "}
                 <span style={{ fontWeight: 700 }}>
                   {t("Even if Deblock goes down")}
-                </span>{" "}
-                {t("wallet protected-1")}
+                </span>
                 <br />
+                {t("wallet protected-1")}
                 <br />
                 {t("wallet protected-2")}
               </div>
@@ -1428,10 +1432,9 @@ const Home = ({
                 <div>
                   <h3>{t("commission-free")}</h3>
                   <p>
-                    {/* Unlimited and in perpetuity
-                    <br />
-                    with our native plan. */}
                     {t("commission-free-text")}
+                    <br />
+                    {t("with our native plan.")}
                   </p>
                 </div>
               </div>
@@ -1441,7 +1444,11 @@ const Home = ({
                 <Lottie animationData={Support} />
                 <div>
                   <h3>{t("live-support")}</h3>
-                  <p>{t("commission-free-text")}</p>
+                  <p>
+                    {t("live-support-text")}
+                    <br />
+                    {t("We are here for you.")}
+                  </p>
                 </div>
               </div>
             </Link>
