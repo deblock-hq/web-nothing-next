@@ -8,6 +8,9 @@ import Blob from "../src/views/Blob";
 import Lottie from "lottie-react";
 import SupportAnimation from "../src/assets/lottie/landing/Support.json";
 import ContactDeblock from "../src/components/ContactDeblock";
+import { GetStaticProps } from "next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { useTranslation } from "next-i18next";
 
 const Container = styled.div`
   position: relative;
@@ -110,25 +113,34 @@ const SupportContainer = styled.div`
   }
 `;
 
+export const getStaticProps: GetStaticProps = async ({ locale }) => {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale!, ["support"])),
+    },
+  };
+};
+
 const Support = () => {
+  const { t } = useTranslation("support");
+
   return (
     <Container>
       <SupportContainer>
-        <h1>Happy to help ;)</h1>
+        <h1>{t("title")}</h1>
         <div>
           <div>
             <Image src={Mail} alt="mail" />
             <div>
               <h2>support@deblock.com</h2>
-              <p>Available 24/7 Response time ~12h</p>
+              <p>{t("mail")}</p>
             </div>
           </div>
           <div>
-            {/* <Image src={Chat} alt="live chat" /> */}
             <Lottie animationData={SupportAnimation} />
             <div>
-              <h2>In-app chat</h2>
-              <p>Available 24/7 Response time ~4 min</p>
+              <h2>{t("chat")}</h2>
+              <p>{t("chat-available")}</p>
             </div>
           </div>
         </div>

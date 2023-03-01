@@ -1,0 +1,48 @@
+{
+  "title": "Own <1>your plan</1>",
+  "Price": "Price",
+  "Free": "Free",
+  "£9.99/mo": "£9.99/mo",
+  "Hold 1 Deblock NFT": "Hold 1 Deblock NFT",
+
+  "Free currency exchange (USD, GBP, ...)": "Free currency exchange (USD, GBP, ...)",
+  "£1,000/mo": "£1,000/mo",
+  "unlimited": "unlimited",
+
+  "International transfer fee - Discount": "International transfer fee - Discount",
+
+  "Physical debit card": "Physical debit card",
+  "1 annually": "1 annually",
+  "up to 3 annually": "up to 3 annually",
+
+  "NFT branded debit card": "NFT branded debit card",
+
+  "Virtual debit card": "Virtual debit card",
+
+  "Internet purchase one-off card": "Internet purchase one-off card",
+  "3 in a lifetime": "3 in a lifetime",
+
+  "Free ATM withdrawal amount": "Free ATM withdrawal amount",
+  "£100/mo": "£100/mo",
+  "£1000/mo": "£1000/mo",
+
+  "Free number of ATM withdrawals": "Free number of ATM withdrawals",
+  "1 per month": "1 per month",
+  "3 per month": "3 per month",
+
+  "Cashback on card payments": "Cashback on card payments",
+  "up to 1%": "up to 1%",
+
+  "Free number of crypto buy": "Free number of crypto buy",
+  "1 in a lifetime": "1 in a lifetime",
+
+  "Buy crypto fee": "Buy crypto fee (GBP -{'>'} Crypto)",
+
+  "Sell crypto fee": "Sell crypto fee (Crypto -{'>'} GBP",
+
+  "Crypto swap fee": "Crypto swap fee (Crypto -{'>'}Crypto)",
+
+  "Convert % of salary payment to crypto": "Convert % of salary payment to crypto",
+  "free": "free",
+  "Store GBP in Stablecoins (GBP ↔ Stable)": "Store GBP in Stablecoins (GBP ↔ Stable)"
+}

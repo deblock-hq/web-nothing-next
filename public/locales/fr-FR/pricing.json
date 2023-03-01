@@ -1,0 +1,48 @@
+{
+  "title": "Choisissez <1>votre abonnement</1>",
+  "Price": "Prix",
+  "Free": "Gratuit",
+  "£9.99/mo": "€9,99/mois",
+  "Hold 1 Deblock NFT": "Posséder 1 NFT Deblock",
+
+  "Free currency exchange": "Échanges de devises sans frais",
+  "£1,000/mo": "€1 000/mois",
+  "unlimited": "illimité",
+
+  "International transfer fee - Discount": "Réduction sur les virements internationaux",
+
+  "Physical debit card": "Carte bleue physique",
+  "1 annually": "1 par an",
+  "up to 3 annually": "jusqu’à 3 par an",
+
+  "NFT branded debit card": "CB personnalisables avec vos NFTs",
+
+  "Virtual debit card": "Cartes bleues virtuelles",
+
+  "Internet purchase one-off card": "Cartes bleues à usage unique",
+  "3 in a lifetime": "3",
+
+  "Free ATM withdrawal amount": "Free ATM withdrawal amount",
+  "£100/mo": "£100/mo",
+  "£1000/mo": "£1000/mo",
+
+  "Free number of ATM withdrawals": "Retraits aux distributeurs de billets sans frais",
+  "1 per month": "1 par mois",
+  "3 per month": "3 par mois",
+
+  "Cashback on card payments": "Cashback sur les paiements par carte",
+  "up to 1%": "jusqu’à 1%",
+
+  "Free number of crypto buy": "Nombre d’achats de crypto sans frais",
+  "1 in a lifetime": "1",
+
+  "Buy crypto fee": "Frais d’achat cryptos (EUR -> Crypto)",
+
+  "Sell crypto fee": "Frais de vente cryptos (Crypto -> EUR)",
+
+  "Crypto swap fee": "Frais de change cryptos (Crypto -> Crypto)",
+
+  "Convert % of salary payment to crypto": "Convertir un % de son salaire en crypto",
+  "free": "gratuit",
+  "Store GBP in Stablecoins (GBP ↔ Stable)": "Conserver des EUR en EUROC (EUR ↔ Stable)"
+}

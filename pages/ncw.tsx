@@ -473,7 +473,7 @@ const NonCustodialWallet = () => {
                     Your encrypted shard🔒
                   </TextHighlight>{" "}
                   is backed-up in multiple locations and yet SAFE because
-                  <BoldText>always encrypted.</BoldText>
+                  <BoldText> always encrypted.</BoldText>
                 </Trans>
               </p>
               <div>
@@ -496,10 +496,11 @@ const NonCustodialWallet = () => {
               <h2>{t("always-your-keys")}</h2>
               <p>
                 <Trans i18nKey="always-your-keys-text" t={t}>
-                  Request at{" "}
+                  Request at
                   <span
                     style={{ fontStyle: "italic", textDecoration: "underline" }}
                   >
+                    {" "}
                     any point in time
                   </span>{" "}
                   your seed phrase (mnemonic of your private key).
@@ -554,14 +555,13 @@ const NonCustodialWallet = () => {
           />
           <p style={{ paddingBottom: "40px" }}>
             <Trans i18nKey="deblock-disappears-text-2" t={t}>
-              Both{" "}
+              Both
               <TextHighlight color="#D5FCC5">
-                your encrypted shard🔒
+                {" "}
+                your encrypted shard🔒{" "}
               </TextHighlight>{" "}
               and{" "}
-              <TextHighlight color="#F9DBAF">
-                Deblock encrypted shard🔒
-              </TextHighlight>{" "}
+              <TextHighlight color="#F9DBAF">Deblock encrypted shard🔒{" "}</TextHighlight>
               will be released from cold storage.
             </Trans>
           </p>

@@ -10,6 +10,9 @@ import Cross from "../src/assets/pricing/cross.svg";
 import Header from "../src/components/Header";
 import { devices } from "../src/utils/devices";
 import Blob from "../src/views/Blob";
+import { GetStaticProps } from "next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { useTranslation } from "next-i18next";
 
 interface Props {
   scrollY: number;
@@ -515,7 +518,17 @@ const PriceContainer = styled.div`
   }
 `;
 
+export const getStaticProps: GetStaticProps = async ({ locale }) => {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale!, ["pricing"])),
+    },
+  };
+};
+
 const Pricing = () => {
+  const { t } = useTranslation("pricing");
+
   const [selectedPlan, setSelectedPlan] = useState(
     "basic" || "pro" || "native"
   );
@@ -541,9 +554,7 @@ const Pricing = () => {
   return (
     <Container>
       <PricingContainer className={selectedPlan} scrollY={scrollY}>
-        <h1>
-          Own <span>your plan</span>
-        </h1>
+        <h1>{t("title")}</h1>
         <div className="fixed-price-mobile">
           <MobileButtonContainer>
             <MobileButton
@@ -578,10 +589,10 @@ const Pricing = () => {
             <table>
               <tbody>
                 <tr>
-                  <td className="price">Price</td>
-                  <td>Free</td>
-                  <td>£9.99/mo</td>
-                  <td>Hold 1 Deblock NFT</td>
+                  <td className="price">{t("Price")}</td>
+                  <td>{t("Free")}</td>
+                  <td>{t("£9.99/mo")}</td>
+                  <td>{t("Hold 1 Deblock NFT")}</td>
                 </tr>
               </tbody>
             </table>
@@ -616,10 +627,10 @@ const Pricing = () => {
               </tr>
 
               <tr className="orange-text">
-                <td>Price</td>
-                <td>Free</td>
-                <td>£9.99/mo</td>
-                <td>Hold 1 Deblock NFT</td>
+                <td>{t("Price")}</td>
+                <td>{t("Free")}</td>
+                <td>{t("£9.99/mo")}</td>
+                <td>{t("Hold 1 Deblock NFT")}</td>
               </tr>
             </TableBody>
           </table>
@@ -636,28 +647,28 @@ const Pricing = () => {
 
           <TableBody>
             <tr className="first-block-first-line">
-              <td>Free currency exchange (USD, GBP, ...)</td>
-              <td>£1,000/mo</td>
-              <td>unlimited</td>
-              <td>unlimited</td>
+              <td>{t("Free currency exchange (USD, GBP, ...)")}</td>
+              <td>{t("£1,000/mo")}</td>
+              <td>{t("unlimited")}</td>
+              <td>{t("unlimited")}</td>
             </tr>
 
             <tr>
-              <td>International transfer fee - Discount</td>
+              <td>{t("International transfer fee - Discount")}</td>
               <td>0%</td>
               <td>50%</td>
               <td>100%</td>
             </tr>
 
             <tr>
-              <td>Physical debit card </td>
-              <td>1 annually</td>
-              <td>up to 3 annually</td>
-              <td>up to 3 annually</td>
+              <td>{t("Physical debit card")}</td>
+              <td>{t("1 annually")}</td>
+              <td>{t("up to 3 annually")}</td>
+              <td>{t("up to 3 annually")}</td>
             </tr>
 
             <tr>
-              <td>NFT branded debit card</td>
+              <td>{t("NFT branded debit card")}</td>
               <td>
                 <Image src={Cross} alt="Red cross" />
               </td>
@@ -670,38 +681,38 @@ const Pricing = () => {
             </tr>
 
             <tr>
-              <td>Virtual debit card</td>
+              <td>{t("Virtual debit card")}</td>
               <td>1</td>
               <td>10</td>
               <td>10</td>
             </tr>
 
             <tr>
-              <td>Internet purchase one-off card </td>
-              <td>3 in a lifetime </td>
-              <td>unlimited</td>
-              <td>unlimited</td>
+              <td>{t("Internet purchase one-off card")}</td>
+              <td>{t("3 in a lifetime")}</td>
+              <td>{t("unlimited")}</td>
+              <td>{t("unlimited")}</td>
             </tr>
 
             <tr>
-              <td>Free ATM withdrawal amount</td>
-              <td>£100/mo</td>
-              <td>£1000/mo</td>
-              <td>£1000/mo</td>
+              <td>{t("Free ATM withdrawal amount")}</td>
+              <td>{t("£100/mo")}</td>
+              <td>{t("£1000/mo")}</td>
+              <td>{t("£1000/mo")}</td>
             </tr>
 
             <tr>
-              <td>Free number of ATM withdrawals </td>
-              <td>1 per month</td>
-              <td>3 per month</td>
-              <td>3 per month</td>
+              <td>{t("Free number of ATM withdrawals")}</td>
+              <td>{t("1 per month")}</td>
+              <td>{t("3 per month")}</td>
+              <td>{t("3 per month")}</td>
             </tr>
 
             <tr>
-              <td>Cashback on card payments</td>
+              <td>{t("Cashback on card payments")}</td>
               <td>0%</td>
-              <td>up to 1%</td>
-              <td>up to 1%</td>
+              <td>{t("up to 1%")}</td>
+              <td>{t("up to 1%")}</td>
             </tr>
           </TableBody>
 
@@ -715,47 +726,45 @@ const Pricing = () => {
 
           <TableBody>
             <tr className="second-block-first-line">
-              <td>Free number of crypto buy</td>
-              <td>1 in a lifetime</td>
-              <td>1 per mounth</td>
-              <td>unlimited</td>
+              <td>{t("Free number of crypto buy")}</td>
+              <td>{t("1 in a lifetime")}</td>
+              <td>{t("1 per mounth")}</td>
+              <td>{t("unlimited")}</td>
             </tr>
 
             <tr>
-              <td>Buy crypto fee (GBP -{">"} Crypto)</td>
+              <td>{t("Buy crypto fee")})</td>
               <td>2%</td>
               <td>1%</td>
               <td>0%</td>
             </tr>
 
             <tr>
-              <td>Sell crypto fee (Crypto -{">"} GBP)</td>
+              <td>{t("Sell crypto fee")}</td>
               <td>3%</td>
               <td>1.5%</td>
               <td>0.5%</td>
             </tr>
 
             <tr>
-              <td style={{ paddingTop: "0" }}>
-                Crypto swap fee (Crypto -{">"} Crypto)
-              </td>
+              <td style={{ paddingTop: "0" }}>{t("Crypto swap fee")}</td>
               <td style={{ paddingTop: "0", borderRadius: "0" }}>1.5%</td>
               <td style={{ paddingTop: "0", borderRadius: "0" }}>1%</td>
               <td style={{ paddingTop: "0", borderRadius: "0" }}>0.5%</td>
             </tr>
 
             <tr>
-              <td>Convert % of salary payment to crypto</td>
-              <td>free</td>
-              <td>free</td>
-              <td>free</td>
+              <td>{t("Convert % of salary payment to crypto")}</td>
+              <td>{t("free")}</td>
+              <td>{t("free")}</td>
+              <td>{t("free")}</td>
             </tr>
 
             <tr>
-              <td>Store GBP in Stablecoins (GBP ↔ Stable)</td>
-              <td>free</td>
-              <td>free</td>
-              <td>free</td>
+              <td>{t("Store GBP in Stablecoins (GBP ↔ Stable)")}</td>
+              <td>{t("free")}</td>
+              <td>{t("free")}</td>
+              <td>{t("free")}</td>
             </tr>
           </TableBody>
         </table>
