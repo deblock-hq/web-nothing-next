@@ -37,7 +37,6 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Modal from "../src/views/Modal";
 import { ScrollAnimation } from "../src/utils/ScrollAnimation";
 import { Trans, useTranslation } from "next-i18next";
-import { Waypoint } from "react-waypoint";
 import { useInView } from "react-intersection-observer";
 
 interface Props {
