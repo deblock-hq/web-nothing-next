@@ -298,10 +298,10 @@ const FirstContainer = styled.div`
     max-width: 48px;
     width: 3vw; */
 
-    > span:hover span,
+    /* > span:hover span,
     > span:hover + .display-on-mobile {
       visibility: visible;
-    }
+    } */
 
     > span:first-child {
       position: relative;
@@ -662,7 +662,7 @@ const NftContainer = styled.div`
     @media ${devices.tablet} {
       font-size: 40px;
       line-height: 48px;
-      width: 55%;
+      width: 58%;
       padding: 0;
       text-align: left;
     }
@@ -794,14 +794,14 @@ const CashOrCrypto = styled.div`
     gap: 16px;
 
     @media ${devices.tablet} {
-      width: 46%;
+      width: 50%;
       align-self: center;
     }
   }
   > div:last-child {
     display: flex;
     flex-direction: column;
-    gap: 88px;
+    gap: 70px;
 
     @media ${devices.tablet} {
       flex-direction: row;
@@ -1014,7 +1014,7 @@ const Tooltip = styled.span`
   gap: 16px;
   top: -92px;
   left: -277px;
-  visibility: hidden;
+  /* visibility: hidden; */
   background-color: white;
   border-radius: 4px;
   border: 1px solid black;
@@ -1063,15 +1063,19 @@ const Tooltip = styled.span`
       display: flex;
     }
 
-    width: 416px;
-    /* width: 100%; */
+    /* width: 416px;
     gap: 16px;
     top: -92px;
+    left: -268px; */
+    min-width: 416px;
+    width: 454px;
+    gap: 16px;
+    top: -95px;
     left: -268px;
 
     ::before,
     ::after {
-      left: 95%;
+      left: 87%;
     }
 
     ::before {
@@ -1348,7 +1352,9 @@ const Home = ({
           <div>
             <h2>
               <Trans i18nKey="cash-or-crypto" t={t}>
-                In <span>Cash</span> or in Crypto It&apos;s up to you!
+                In <span>Cash</span> or in Crypto
+                <br />
+                It&apos;s up to you!
               </Trans>
             </h2>
             <p>
