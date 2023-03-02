@@ -313,6 +313,8 @@ const Header = ({ displayModal }: { displayModal: () => void }) => {
     };
   }, []);
 
+  // console.log(scrollY);
+
   let checkLocalStorage;
   if (typeof window !== "undefined") {
     checkLocalStorage = localStorage.getItem("token");

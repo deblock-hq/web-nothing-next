@@ -29,6 +29,7 @@
     "notion-client": "^6.16.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-intersection-observer": "^9.4.3",
     "react-notion-x": "^6.16.0",
     "react-scroll-motion": "^0.3.2",
     "simplex-noise": "^4.0.1",

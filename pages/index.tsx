@@ -26,13 +26,19 @@ import { devices } from "../src/utils/devices";
 
 import Blob from "../src/views/Blob";
 import Image from "next/image";
-import Lottie, { useLottie, useLottieInteractivity } from "lottie-react";
+import Lottie, {
+  LottieRefCurrentProps,
+  useLottie,
+  useLottieInteractivity,
+} from "lottie-react";
 import Link from "next/link";
 import { GetStaticProps } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Modal from "../src/views/Modal";
 import { ScrollAnimation } from "../src/utils/ScrollAnimation";
 import { Trans, useTranslation } from "next-i18next";
+import { Waypoint } from "react-waypoint";
+import { useInView } from "react-intersection-observer";
 
 interface Props {
   animate: boolean;
@@ -276,6 +282,7 @@ const FirstContainer = styled.div`
       .wallet-tooltip {
         > img {
           padding-bottom: 16px;
+          cursor: pointer;
         }
       }
     }
@@ -1121,9 +1128,25 @@ const Home = ({
 
   const frAssets = i18n.language.includes("fr");
 
-  const modalRef = useRef<HTMLInputElement>(null);
+  const tooltipRef = useRef<HTMLInputElement>(null);
+
+  // const [renderSafeAccount, setRenderSafeAccount] = useState(false);
 
   const [openTooltip, setOpenTooltip] = useState(false);
+
+  const closeTooltip = (e: { target: any }) => {
+    if (
+      tooltipRef.current &&
+      openTooltip &&
+      !tooltipRef.current.contains(e.target)
+    ) {
+      setOpenTooltip(false);
+    }
+  };
+
+  if (typeof window !== "undefined") {
+    document.addEventListener("mousedown", closeTooltip);
+  }
 
   useEffect(() => {
     let myPanel = document.getElementById("panel");
@@ -1204,6 +1227,17 @@ const Home = ({
     return Animation;
   };
 
+  const lottieRef = useRef<any>(null);
+  const { ref: myRef, inView: renderSafeAccount } = useInView();
+
+  useEffect(() => {
+    if (renderSafeAccount && lottieRef.current) {
+      lottieRef.current.play();
+    } else {
+      lottieRef.current.pause();
+    }
+  }, [renderSafeAccount]);
+
   return (
     <div>
       <LandingContainer>
@@ -1235,7 +1269,7 @@ const Home = ({
                     onClick={() => setOpenTooltip((prev) => !prev)}
                   />
                   {openTooltip && (
-                    <Tooltip className="hide-on-mobile">
+                    <Tooltip ref={tooltipRef} className="hide-on-mobile">
                       <Image
                         width={18}
                         height={18}
@@ -1395,13 +1429,20 @@ const Home = ({
         </CashOrCrypto>
         <SafestAccount>
           <div>
-            <div className="image-container">
-              {/* <Lottie animationData={SafeAccount} loop={false} /> */}
-              <ScrollAnimation
+            <div className="image-container" ref={myRef}>
+              {/* {renderSafeAccount && ( */}
+              <Lottie
+                animationData={SafeAccount}
+                loop={false}
+                autoPlay={false}
+                lottieRef={lottieRef}
+              />
+              {/* )} */}
+              {/* <ScrollAnimation
                 lottieFile={SafeAccount}
                 maxFrame={121}
                 altText="Money dropping out of a bed"
-              />
+              /> */}
             </div>
             <div className="first-block">
               <h2>
