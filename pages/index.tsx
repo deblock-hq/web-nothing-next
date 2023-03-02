@@ -1,18 +1,15 @@
-import React, {
-  useCallback,
-  useContext,
-  useEffect,
-  useLayoutEffect,
-  useRef,
-  useState,
-} from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 
-import DoublePhone from "../src/assets/lottie/landing/DoublePhone.json";
-import Iban from "../src/assets/lottie/landing/Iban.json";
-import BankAnimation from "../src/assets/lottie/landing/Bank.json";
+import DoublePhoneEn from "../src/assets/lottie/landing/DoublePhoneEn.json";
+import DoublePhoneFr from "../src/assets/lottie/landing/DoublePhoneFr.json";
+import IbanEn from "../src/assets/lottie/landing/IbanEn.json";
+import IbanFr from "../src/assets/lottie/landing/IbanFr.json";
+import BankEn from "../src/assets/lottie/landing/BankEn.json";
+import BankFr from "../src/assets/lottie/landing/BankFr.json";
 import SafeAccount from "../src/assets/lottie/landing/SafeAccount.json";
-import Support from "../src/assets/lottie/landing/Support.json";
+import SupportEn from "../src/assets/lottie/landing/SupportEn.json";
+import SupportFr from "../src/assets/lottie/landing/SupportFr.json";
 
 import Vc from "../src/assets/backed/20vc.svg";
 import Headline from "../src/assets/backed/headline.svg";
@@ -25,21 +22,16 @@ import Rent from "../src/assets/backed/rent.svg";
 import Coffee from "../src/assets/backed/coffee.svg";
 import Commission from "../src/assets/backed/commission.svg";
 import Arrow from "../src/assets/arrow.svg";
-import MockupPhone1 from "../src/assets/landing-phone-mockup-1.svg";
-import MockupPhone2 from "../src/assets/landing-phone-mockup-2.svg";
 import { devices } from "../src/utils/devices";
 
 import Blob from "../src/views/Blob";
 import Image from "next/image";
 import Lottie, { useLottie, useLottieInteractivity } from "lottie-react";
 import Link from "next/link";
-import Head from "next/head";
 import { GetStaticProps } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Modal from "../src/views/Modal";
-import { useRouter } from "next/router";
 import { ScrollAnimation } from "../src/utils/ScrollAnimation";
-import { GlobalContext } from "../context/globalContext";
 import { Trans, useTranslation } from "next-i18next";
 
 interface Props {
@@ -1125,7 +1117,9 @@ const Home = ({
 }: LandingProps) => {
   // const router = useRouter();
   // const { email, setEmail } = useContext(GlobalContext);
-  const { t } = useTranslation("landing");
+  const { t, i18n } = useTranslation("landing");
+
+  const frAssets = i18n.language.includes("fr");
 
   const modalRef = useRef<HTMLInputElement>(null);
 
@@ -1189,7 +1183,7 @@ const Home = ({
   }
   const PhoneOnscrollAnimation = () => {
     const lottieObj = useLottie({
-      animationData: DoublePhone,
+      animationData: frAssets ? DoublePhoneFr : DoublePhoneEn,
     });
     const Animation = useLottieInteractivity({
       lottieObj,
@@ -1301,7 +1295,7 @@ const Home = ({
         </BackedByContainer>
         <BestAccount>
           <div className="image-container">
-            <Lottie animationData={Iban} />
+            <Lottie animationData={frAssets ? IbanFr : IbanEn} />
           </div>
           <div className="texte-container">
             <h2>
@@ -1332,7 +1326,7 @@ const Home = ({
         </NftContainer>
         <Deposit>
           <div className="image-container">
-            <Lottie animationData={BankAnimation} />
+            <Lottie animationData={frAssets ? BankFr : BankEn} />
           </div>
           <div className="texte-container">
             <h2>{t("deposit-your-crypto")}</h2>
@@ -1449,7 +1443,7 @@ const Home = ({
             </Link>
             <Link href="/support">
               <div className="support-section">
-                <Lottie animationData={Support} />
+                <Lottie animationData={frAssets ? SupportFr : SupportEn} />
                 <div>
                   <h3>{t("live-support")}</h3>
                   <p>
