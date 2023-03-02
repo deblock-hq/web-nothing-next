@@ -6,7 +6,7 @@ import Image from "next/image";
 import { devices } from "../src/utils/devices";
 import Blob from "../src/views/Blob";
 import Lottie from "lottie-react";
-import SupportAnimation from "../src/assets/lottie/landing/Support.json";
+import SupportAnimation from "../src/assets/lottie/landing/SupportEn.json";
 import ContactDeblock from "../src/components/ContactDeblock";
 import { GetStaticProps } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";

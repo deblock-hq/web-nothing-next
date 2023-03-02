@@ -1,7 +1,7 @@
 {
   "title": "Un compte courant intégré à un non-custodial",
   "wallet": "wallet",
-  "tooltip": "Les portefeuilles de crypto-monnaies sans garde vous donnent le contrôle total et la propriété de vos fonds. Personne ne peut geler vos actifs/retraits, les bloquer ou les retirer.",
+  "tooltip": "Les portefeuilles cryptos non-custodial vous donnent le contrôle total de vos fonds. Personne ne peut geler vos actifs/retraits, les bloquer ou les retirer.",
   "hero-description": "Déposez, dépensez et échangez vos Euros ou vos Cryptos sans distinction",
   "whitelist-placeholder": "Votre email",
   "button-request": "Demandez un accès",
@@ -17,7 +17,7 @@
   "brand-your-card": "Personnalisez vos cartes bleues avec vos NFTs",
 
   "deposit-your-crypto": "Vos cryptos sur votre compte courant",
-  "deposit-your-crypto-text": "Déposez ou retirez vos cryptos et NFTs sans limite. Échangez-les pour des EUR ou USD.",
+  "deposit-your-crypto-text": "Déposez ou retirez vos cryptos et NFTs sans limite. Échangez-les pour des Euros.",
 
   "cash-or-crypto": "<1>Euro</1> ou Crypto<br/>C’est vous qui décidez",
   "cash-or-crypto-text-1": "Nous nous occupons de l'échange",
