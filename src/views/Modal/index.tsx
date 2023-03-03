@@ -728,8 +728,8 @@ const Modal = ({
           },
         })
         .then(async (res) => {
-          // setActualStep(res.data.result.user.step);
-          setActualStep("phone");
+          setActualStep(res.data.result.user.step);
+          // setActualStep("phone");
           console.log("status res", res, actualStep);
           setReferral(res.data.result.user.referrals.url);
           setQueueSize(res.data.result.user.size);
@@ -787,7 +787,7 @@ const Modal = ({
           <form onSubmit={(e) => e.preventDefault()}>
             <div>
               <div className="phone-dropdown-container">
-                <div onClick={() => setOpenDropdown(!openDropdown)}>
+                <div onClick={() => setOpenDropdown((prev) => !prev)}>
                   {phoneCode === "+44" ? (
                     <Image
                       className="flag"
@@ -896,10 +896,7 @@ const Modal = ({
               </div>
               <div>in a queue of {queueSize}</div>
             </div>
-            <VerificationSteps
-              step={actualStep}
-              trigger={triggerSendNumber}
-            >
+            <VerificationSteps step={actualStep} trigger={triggerSendNumber}>
               <div className="progress" />
               <div />
               <div />
