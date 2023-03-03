@@ -6,10 +6,12 @@ import { appWithTranslation } from "next-i18next";
 import Header from "../src/components/Header";
 import Footer from "../src/components/Footer";
 import Head from "next/head";
-import { GlobalContextProvider } from "../context/globalContext";
-import { Suspense, useCallback, useState } from "react";
+import { GlobalContext, GlobalContextProvider } from "../context/globalContext";
+import { Suspense, useCallback, useContext, useState } from "react";
 
 function App({ Component, pageProps }: AppProps) {
+  // const { openModal, setOpenModal } = useContext(GlobalContext);
+
   const [whitelistEmail, setWhitelistEmail] = useState("");
   const [openModal, setOpenModal] = useState(false);
 

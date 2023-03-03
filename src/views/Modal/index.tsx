@@ -41,7 +41,9 @@ const ModalContainer = styled.div`
 
   width: 100%;
   height: 100%;
-  background-color: #fbfaf9;
+  background: url("/mobile-background/modal-background.svg") no-repeat;
+  background-size: cover;
+
   border: 2px solid #000000;
   border-radius: 14px;
   box-shadow: 3px 3px 0px 0px rgb(0 0 0);
@@ -53,6 +55,7 @@ const ModalContainer = styled.div`
     max-height: 100%;
     border: none;
     box-shadow: none;
+    background: #fbfaf9;
   }
 
   h2 {
@@ -98,7 +101,8 @@ const ModalContainer = styled.div`
       display: flex;
       flex-direction: column;
       gap: 12px;
-      padding-bottom: 50px;
+      /* padding-bottom: 50px; */
+      min-height: 198px;
 
       .current-position {
         display: flex;
@@ -161,7 +165,7 @@ const ModalContainer = styled.div`
       flex-direction: column;
       gap: 20px;
 
-      > div {
+      > form {
         display: flex;
         justify-content: center;
         gap: 10px;
@@ -185,6 +189,9 @@ const ModalContainer = styled.div`
         }
 
         .phone-dropdown-container {
+          cursor: pointer;
+          min-width: 84px;
+
           > div {
             background: #ffffff;
             border: 1px solid #000000;
@@ -273,11 +280,19 @@ const ModalContainer = styled.div`
           border-radius: 4px;
           box-shadow: 1px 1px 0px 0px rgb(0 0 0);
           width: 224px;
-          padding-left: 12px;
+          padding-left: 20px;
+          font-size: 16px;
+          height: 37px;
 
           ::placeholder {
-            font-size: 14px;
-            line-height: 27px;
+            color: rgba(88, 88, 88, 0.5);
+            font-size: 16px;
+          }
+
+          :focus {
+            outline: 1.5px solid black;
+            box-shadow: 3px 3px 0px 0px rgb(0 0 0);
+            background-color: white;
           }
         }
 
@@ -289,6 +304,7 @@ const ModalContainer = styled.div`
           border-radius: 4px;
           width: 134px;
           cursor: pointer;
+          min-height: 41px;
 
           :hover {
             background: rgba(0, 0, 0, 0.7);
@@ -309,6 +325,7 @@ const ModalContainer = styled.div`
         margin: auto;
         padding: 0;
         width: 6ch;
+        min-height: 40px;
         background: repeating-linear-gradient(
             90deg,
             black 0,
@@ -317,11 +334,11 @@ const ModalContainer = styled.div`
             transparent 1.5ch
           )
           0 84%/ 6ch 2px no-repeat;
-        font: 2.2rem "Ubuntu Mono", monospace;
+        font-size: 1.6rem;
         letter-spacing: 0.5ch;
         background-color: #ffffff;
         border: 1px solid #000000;
-        padding: 0px 20px 8px 20px;
+        padding: 0px 20px;
         border-radius: 4px;
         background-position-x: center;
         text-align: left;
@@ -340,6 +357,7 @@ const ModalContainer = styled.div`
 
       > div:last-child {
         > div {
+          margin: auto;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -349,6 +367,11 @@ const ModalContainer = styled.div`
           gap: 8px;
           padding-top: 12px;
           cursor: pointer;
+          width: fit-content;
+
+          :hover {
+            color: rgba(0, 0, 0, 0.7);
+          }
         }
       }
     }
@@ -378,6 +401,12 @@ const ModalContainer = styled.div`
           line-height: 30px;
           max-width: 210px;
           width: 100%;
+
+          :focus {
+            outline: 1.5px solid black;
+            box-shadow: 3px 3px 0px 0px rgb(0 0 0);
+            background-color: white;
+          }
         }
 
         button {
@@ -390,6 +419,7 @@ const ModalContainer = styled.div`
           max-width: 134px;
           width: 100%;
           cursor: pointer;
+          min-height: 41px;
 
           :hover {
             background: rgba(0, 0, 0, 0.7);
@@ -496,6 +526,7 @@ const Modal = ({
   const [triggerPopup, setTriggerPopup] = useState(false);
 
   const modalRef = useRef<HTMLInputElement>(null);
+  const dropdownRef = useRef<HTMLUListElement>(null);
 
   const handleChangePhoneTel = (e: any) => {
     const value = e.target.value.replace(/\D/g, "");
@@ -510,6 +541,12 @@ const Modal = ({
   const closeModal = (e: { target: any }) => {
     if (modalRef.current && !modalRef.current.contains(e.target)) {
       setIsOpen(false);
+    }
+  };
+
+  const closeDropdown = (e: { target: any }) => {
+    if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+      setOpenDropdown(false);
     }
   };
 
@@ -529,14 +566,11 @@ const Modal = ({
     }
   };
 
-  // setTimeout(() => {
-  //   setTriggerpopup(false);
-  // }, 2000);
-
   let token: unknown;
   if (typeof window !== "undefined") {
     token = localStorage.getItem("token");
     document.addEventListener("mousedown", closeModal);
+    document.addEventListener("mousedown", closeDropdown);
   }
 
   const baseUrl = "https://waitlist-staging.deblock.com/v1";
@@ -587,7 +621,6 @@ const Modal = ({
         .then(async (res) => {
           console.log("verifyEmail", res);
           setTriggerStatus(true);
-
           setTriggerPopup(true);
         })
         .catch((err) => {
@@ -661,7 +694,7 @@ const Modal = ({
           console.log("VerifyPhone err", err);
         });
     }
-  }, [actualStep, phoneCode, phoneNumber, phoneVerifyCode, token]);
+  }, [actualStep, phoneVerifyCode, token]);
 
   /** Get status */
   useEffect(() => {
@@ -673,7 +706,8 @@ const Modal = ({
           },
         })
         .then(async (res) => {
-          setActualStep(res.data.result.user.step);
+          // setActualStep(res.data.result.user.step);
+          setActualStep("phone");
           console.log("status res", res, actualStep);
           setReferral(res.data.result.user.referrals.url);
           setQueueSize(res.data.result.user.size);
@@ -728,7 +762,7 @@ const Modal = ({
       return (
         <div className="phone-verification">
           <strong>Verify your phone number </strong>
-          <div>
+          <form onSubmit={(e) => e.preventDefault()}>
             <div>
               <div className="phone-dropdown-container">
                 <div onClick={() => setOpenDropdown(!openDropdown)}>
@@ -747,7 +781,7 @@ const Modal = ({
                 </div>
 
                 {openDropdown && (
-                  <ul className="phone-dropdown">
+                  <ul className="phone-dropdown" ref={dropdownRef}>
                     <li onClick={() => setPhoneCode("+44")}>
                       <div>
                         <div>
@@ -787,6 +821,7 @@ const Modal = ({
               />
             </div>
             <button
+              type="submit"
               onClick={() => {
                 sendPhoneNumber();
                 setTriggerSendNumber(true);
@@ -794,7 +829,7 @@ const Modal = ({
             >
               Send Code
             </button>
-          </div>
+          </form>
         </div>
       );
     } else if (actualStep === "invite_friend") {
@@ -818,8 +853,8 @@ const Modal = ({
   return (
     <Container>
       {triggerPopup && displayPopup()}
-      <ModalContainer>
-        <div ref={modalRef}>
+      <ModalContainer ref={modalRef}>
+        <div>
           <h2>
             <span>
               The first <strong>{priorityAccess} </strong>

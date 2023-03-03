@@ -1206,6 +1206,8 @@ const Home = ({
   const PhoneOnscrollAnimation = () => {
     const lottieObj = useLottie({
       animationData: frAssets ? DoublePhoneFr : DoublePhoneEn,
+      autoplay: true,
+      loop: 1,
     });
     const Animation = useLottieInteractivity({
       lottieObj,
@@ -1233,7 +1235,7 @@ const Home = ({
     if (renderSafeAccount && lottieRef.current) {
       lottieRef.current.play();
     } else {
-      lottieRef.current.pause();
+      lottieRef.current.stop();
     }
   }, [renderSafeAccount]);
 
@@ -1291,12 +1293,8 @@ const Home = ({
                   </Tooltip>
                 )}
               </h1>
-              <p>
-                {/* Spend, transfer and exchange your pounds or your crypto
-                indifferently */}
-                {t("hero-description")}
-              </p>
-              <form>
+              <p>{t("hero-description")}</p>
+              <form onSubmit={(e) => e.preventDefault()}>
                 {!checkLocalStorage ? (
                   <input
                     type="email"
@@ -1305,7 +1303,7 @@ const Home = ({
                     onChange={(e) => setWhitelistEmail(e.target.value)}
                   />
                 ) : null}
-                <button type="button" onClick={displayModal}>
+                <button type="submit" onClick={displayModal}>
                   {!checkLocalStorage
                     ? t("button-request")
                     : t("button-position")}
