@@ -1200,8 +1200,8 @@ const Home = ({
     checkLocalStorage = localStorage.getItem("token");
 
     if (openModal) {
-      document.body.style.overflow = "hidden";
-    } else document.body.style.overflow = "visible";
+      document.body.style.overflowX = "hidden";
+    } else document.body.style.overflowX = "visible";
   }
   const PhoneOnscrollAnimation = () => {
     const lottieObj = useLottie({
