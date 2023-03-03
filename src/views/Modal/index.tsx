@@ -9,11 +9,8 @@ import FlagFr from "../../assets/fr-flag.svg";
 import FlagEn from "../../assets/en-flag.svg";
 import Rotate from "../../assets/rotate.svg";
 import Popup from "../../components/Popup";
-import { GetStaticProps } from "next";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "react-i18next";
-import Loader from "../../assets/lottie/loader.json";
-import Lottie from "lottie-react";
+import { Loader } from "../../components/Loader";
 
 interface Props {
   step: string;
@@ -30,8 +27,12 @@ const Container = styled.div`
   display: flex;
   align-items: top;
   justify-content: center;
-  padding: 76px 16px 0 16px;
+  padding: 86px 16px 0 16px;
   z-index: 5;
+
+  @media ${devices.tabletMax} {
+    padding: 86px 0px 0 0px;
+  }
 `;
 
 const ModalContainer = styled.div`
@@ -875,11 +876,7 @@ const Modal = ({
     <Container>
       {triggerPopup && displayPopup()}
       <ModalContainer ref={modalRef}>
-        {loading ? (
-          <div className="loader">
-            <Lottie animationData={Loader} loop={true} autoPlay={true} />
-          </div>
-        ) : (
+        <Loader loading={loading}>
           <div>
             <h2>
               <span>
@@ -902,7 +899,6 @@ const Modal = ({
             <VerificationSteps
               step={actualStep}
               trigger={triggerSendNumber}
-              // className={actualStep}
             >
               <div className="progress" />
               <div />
@@ -914,7 +910,7 @@ const Modal = ({
             </div>
             {StepsVerification()}
           </div>
-        )}
+        </Loader>
       </ModalContainer>
     </Container>
   );
