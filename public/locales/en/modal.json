@@ -1,3 +1,22 @@
 {
-    
+  "The first": "The first",
+  "will get priority access": "will get priority access",
+  "Your place": "Your place",
+  "in a queue of": "in a queue of",
+  "Cut the queue by": "Cut the queue by",
+  "spots": "spots",
+  "Just": "Just",
+  "verify your email": "verify your email",
+  "to cut the queue": "to cut the queue",
+  "Waiting for email verification...": "Waiting for email verification...",
+
+  "Verify your phone number": "Verify your phone number",
+  "your phone number": "your phone number",
+  "Send Code": "Send Code",
+
+  "We send a code to": "We send a code to",
+  "change your phone": "change your phone",
+
+  "Invite a friend": "Invite a friend",
+  "Copy": "Copy"
 }

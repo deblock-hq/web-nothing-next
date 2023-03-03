@@ -21,7 +21,7 @@ interface Props {
 }
 
 const Container = styled.div`
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
@@ -184,7 +184,7 @@ const ModalContainer = styled.div`
           align-items: center;
 
           button {
-            max-width: 334px;
+            max-width: 343px;
             width: 100% !important;
             height: 42px;
           }
@@ -782,7 +782,7 @@ const Modal = ({
 
       return (
         <div className="phone-verification">
-          <strong>Verify your phone number </strong>
+          <strong>Verify your phone number</strong>
           <form onSubmit={(e) => e.preventDefault()}>
             <div>
               <div className="phone-dropdown-container">
