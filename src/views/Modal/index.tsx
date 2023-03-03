@@ -12,6 +12,8 @@ import Popup from "../../components/Popup";
 import { GetStaticProps } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "react-i18next";
+import Loader from "../../assets/lottie/loader.json";
+import Lottie from "lottie-react";
 
 interface Props {
   step: string;
@@ -41,6 +43,7 @@ const ModalContainer = styled.div`
 
   width: 100%;
   height: 100%;
+  background: #fbfaf9;
   background: url("/mobile-background/modal-background.svg") no-repeat;
   background-size: cover;
 
@@ -91,6 +94,10 @@ const ModalContainer = styled.div`
         left: 25px;
       }
     }
+  }
+
+  .loader {
+    margin: auto;
   }
 
   > div:first-child {
@@ -370,7 +377,16 @@ const ModalContainer = styled.div`
           width: fit-content;
 
           :hover {
-            color: rgba(0, 0, 0, 0.7);
+            opacity: 0.7;
+
+            img {
+              animation: rotate 2s ease-in-out;
+              @keyframes rotate {
+                50% {
+                  transform: rotate(90deg);
+                }
+              }
+            }
           }
         }
       }
@@ -502,6 +518,8 @@ const Modal = ({
 }) => {
   const { t } = useTranslation("modal");
 
+  const [loading, setLoading] = useState(false);
+
   const [phoneCode, setPhoneCode] = useState("+44");
   const [phoneNumber, setPhoneNumber] = useState<number>();
   const [phoneVerifyCode, setPhoneVerifyCode] = useState("");
@@ -577,6 +595,7 @@ const Modal = ({
 
   /** Send mail */
   useEffect(() => {
+    setLoading(true);
     axios
       .post(
         `${baseUrl}/waitlist/email`,
@@ -602,10 +621,12 @@ const Modal = ({
         setPriorityAccess(res.data.result.user.priority_access);
 
         setActualStep("verify_email");
+        setLoading(false);
         // setTriggerStatus(true);
       })
       .catch((error) => {
         console.log("Emailerror", error);
+        setLoading(false);
       });
   }, [email]);
 
@@ -854,40 +875,46 @@ const Modal = ({
     <Container>
       {triggerPopup && displayPopup()}
       <ModalContainer ref={modalRef}>
-        <div>
-          <h2>
-            <span>
-              The first <strong>{priorityAccess} </strong>
-            </span>{" "}
-            will get priority access
-          </h2>
-          <div className="place-container">
-            <div>Your place</div>
-            <div className="current-position">
-              {currentPosition
-                ?.toString()
-                .split("")
-                .map((n, i) => (
-                  <div key={i}>{n}</div>
-                ))}
+        {loading ? (
+          <div className="loader">
+            <Lottie animationData={Loader} loop={true} autoPlay={true} />
+          </div>
+        ) : (
+          <div>
+            <h2>
+              <span>
+                The first <strong>{priorityAccess} </strong>
+              </span>{" "}
+              will get priority access
+            </h2>
+            <div className="place-container">
+              <div>Your place</div>
+              <div className="current-position">
+                {currentPosition
+                  ?.toString()
+                  .split("")
+                  .map((n, i) => (
+                    <div key={i}>{n}</div>
+                  ))}
+              </div>
+              <div>in a queue of {queueSize}</div>
             </div>
-            <div>in a queue of {queueSize}</div>
+            <VerificationSteps
+              step={actualStep}
+              trigger={triggerSendNumber}
+              // className={actualStep}
+            >
+              <div className="progress" />
+              <div />
+              <div />
+              <div />
+            </VerificationSteps>
+            <div className="queue">
+              Cut the queue by <strong> {jumpPosition} spots</strong>
+            </div>
+            {StepsVerification()}
           </div>
-          <VerificationSteps
-            step={actualStep}
-            trigger={triggerSendNumber}
-            // className={actualStep}
-          >
-            <div className="progress" />
-            <div />
-            <div />
-            <div />
-          </VerificationSteps>
-          <div className="queue">
-            Cut the queue by <strong> {jumpPosition} spots</strong>
-          </div>
-          {StepsVerification()}
-        </div>
+        )}
       </ModalContainer>
     </Container>
   );
