@@ -3,17 +3,25 @@ import { useRouter } from "next/router";
 import { useEffect } from "react";
 import styled from "styled-components";
 import Image from "next/image";
+import Lottie from "lottie-react";
+import LoaderAnim from "../../src/assets/lottie/loader.json";
 
 const LoadingPage = styled.div`
-  position: relative;
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    z-index: 38;
+    background-color: white;
 
   > div {
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 50%;
+    margin: auto;
+    height: 70%;
   }
 `;
-
 const Token = () => {
   const router = useRouter();
 
@@ -33,16 +41,13 @@ const Token = () => {
 
   return (
     <LoadingPage>
-      <div>
-        <div>
-          <h2>Yummy!</h2>
-          <p>
-            Something is cooking
-            <br />
-            <span> You will be automatically redirected soon!</span>
-          </p>
-        </div>
-        {/* <Image src={} alt="" /> */}
+      <div className="loader">
+        <Lottie
+          style={{ width: "50%", margin: "auto" }}
+          animationData={LoaderAnim}
+          loop={true}
+          autoPlay={true}
+        />
       </div>
     </LoadingPage>
   );

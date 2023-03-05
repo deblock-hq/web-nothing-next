@@ -36,9 +36,9 @@
   "wallet protected-2": "Personne ne peut geler vos actifs ou vos retraits.",
 
   "commission-free": "Achetez sans frais",
-  "commission-free-text": "Sans limite et ad vitam eternam avec notre plan natif.",
+  "commission-free-text": "Sans limite et ad vitam eternam",
   "live-support": "À votre écoute 24h/24",
-  "live-support-text": "Parlez avec de vraies personnes (pas des machines).",
-  "with our native plan.": "",
-  "We are here for you.": ""
+  "live-support-text": "Parlez avec de vraies personnes",
+  "with our native plan.": "avec notre plan natif.",
+  "We are here for you.": "(pas des machines)."
 }

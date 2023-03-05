@@ -1203,30 +1203,6 @@ const Home = ({
       document.body.style.overflowX = "hidden";
     } else document.body.style.overflowX = "visible";
   }
-  // const PhoneOnscrollAnimation = () => {
-  //   const lottieObj = useLottie({
-  //     animationData: frAssets ? DoublePhoneFr : DoublePhoneEn,
-  //     autoplay: true,
-  //     loop: 1,
-  //   });
-  //   const Animation = useLottieInteractivity({
-  //     lottieObj,
-  //     mode: "scroll",
-  //     actions: [
-  //       {
-  //         visibility: [0, 0.5],
-  //         type: "play",
-  //         frames: [0, 43],
-  //       },
-  //       {
-  //         visibility: [0.5, 1],
-  //         type: "seek",
-  //         frames: [0, 43],
-  //       },
-  //     ],
-  //   });
-  //   return Animation;
-  // };
 
   const lottieRef = useRef<any>(null);
   const { ref: myRef, inView: renderSafeAccount } = useInView();
@@ -1255,10 +1231,8 @@ const Home = ({
             loop={false}
             autoPlay={true}
           />
-          {/* <PhoneOnscrollAnimation /> */}
           <FirstContainer>
             <div className="image-container">
-              {/* <PhoneOnscrollAnimation /> */}
               <Lottie
                 animationData={frAssets ? DoublePhoneFr : DoublePhoneEn}
                 loop={false}
