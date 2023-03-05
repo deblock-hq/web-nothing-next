@@ -30,7 +30,12 @@ export const Loader = ({ loading, children }: Props) => {
   if (!isExpired) {
     return (
       <div className="loader">
-        <Lottie animationData={LoaderAnim} loop={true} autoPlay={true} />
+        <Lottie
+          style={{ width: "50%", margin: "auto" }}
+          animationData={LoaderAnim}
+          loop={true}
+          autoPlay={true}
+        />
       </div>
     );
   }

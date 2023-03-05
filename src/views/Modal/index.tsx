@@ -519,7 +519,7 @@ const Modal = ({
 }) => {
   const { t } = useTranslation("modal");
 
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const [phoneCode, setPhoneCode] = useState("+44");
   const [phoneNumber, setPhoneNumber] = useState<number>();
@@ -586,8 +586,10 @@ const Modal = ({
   };
 
   let token: unknown;
+  let refCode: unknown;
   if (typeof window !== "undefined") {
     token = localStorage.getItem("token");
+    refCode = localStorage.getItem("ref");
     document.addEventListener("mousedown", closeModal);
     document.addEventListener("mousedown", closeDropdown);
   }
@@ -596,13 +598,13 @@ const Modal = ({
 
   /** Send mail */
   useEffect(() => {
-    setLoading(true);
     axios
       .post(
         `${baseUrl}/waitlist/email`,
         {
           user: {
             email: `${email}`,
+            ref_code: refCode ? `${refCode}` : "",
           },
         },
         {
@@ -627,7 +629,6 @@ const Modal = ({
       })
       .catch((error) => {
         console.log("Emailerror", error);
-        setLoading(false);
       });
   }, [email]);
 
