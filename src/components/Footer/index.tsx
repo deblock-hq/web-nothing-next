@@ -15,9 +15,13 @@ import { useTranslation } from "next-i18next";
 import { useRouter } from "next/router";
 
 const FooterContainer = styled.footer`
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px; /* display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-between; */
   height: 440px;
   background-color: #171616;
   line-height: 28px;
@@ -39,28 +43,12 @@ const FooterContainer = styled.footer`
     color: white;
   }
 
-  @media ${devices.tabletMax} {
-    gap: 40px;
-    height: 100%;
-
-    .Blob {
-      display: none;
-    }
-  }
-`;
-const FooterHeader = styled.div`
-  display: flex;
-  justify-content: space-between;
-  padding: 40px 140px 0 140px;
-  font-weight: 700;
-  z-index: 3;
-
-  .community,
-  .select-language {
+  .community {
     display: flex;
     align-items: center;
     gap: 12px;
     color: white;
+    grid-area: 1 / 4 / 2 / 6;
 
     span {
       padding-right: 16px;
@@ -73,14 +61,38 @@ const FooterHeader = styled.div`
     }
   }
 
-  .select-language {
-    gap: 50px;
-    div {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      cursor: pointer;
+  @media ${devices.tabletMax} {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 40px;
+    height: 100%;
+
+    .Blob {
+      display: none;
     }
+
+    .community {
+      padding: 0 24px;
+    }
+  }
+`;
+const FooterHeader = styled.div`
+  display: flex;
+  padding: 0 140px;
+  font-weight: 700;
+  z-index: 3;
+  grid-area: 1 / 1 / 2 / 3;
+  align-items: center;
+  gap: 12px;
+  color: white;
+  gap: 50px;
+
+  div {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
   }
 
   @media ${devices.tabletMax} {
@@ -95,6 +107,7 @@ const LinksContainer = styled.div`
   padding: 0 140px;
   gap: 12px;
   row-gap: 32px;
+  grid-area: 2 / 1 / 3 / 6;
 
   * {
     z-index: 3;
@@ -158,6 +171,7 @@ const DeblockAddress = styled.div`
   height: 75px;
   padding: 0 140px;
   z-index: 3;
+  grid-area: 4 / 1 / 5 / 6;
 
   @media ${devices.tabletMax} {
     padding: 0 24px;
@@ -175,32 +189,14 @@ const Footer = () => {
   return (
     <FooterContainer>
       <FooterHeader>
-        <div className="select-language">
-          <Image src={LogoFooter} alt="Logo deblock" />
-          <div onClick={() => onToggleLanguageClick("en")}>
-            <Image src={FlagEn} alt="Uk flag" />
-            English
-          </div>
-          <div onClick={() => onToggleLanguageClick("fr-FR")}>
-            <Image src={FlagFr} alt="French flag" />
-            Français
-          </div>
+        <Image src={LogoFooter} alt="Logo deblock" />
+        <div onClick={() => onToggleLanguageClick("en")}>
+          <Image src={FlagEn} alt="Uk flag" />
+          English
         </div>
-        <div className="community">
-          <span>Join our community</span>
-          <a href="">
-            <Image src={Instagram} alt="Instagram logo" />
-          </a>
-          <a
-            target="_blank"
-            rel="noreferrer"
-            href="https://twitter.com/DeblockApp"
-          >
-            <Image src={Twitter} alt="Twitter logo" />
-          </a>
-          <a href="">
-            <Image src={Linkedin} alt="Linkedin" />
-          </a>
+        <div onClick={() => onToggleLanguageClick("fr-FR")}>
+          <Image src={FlagFr} alt="French flag" />
+          Français
         </div>
       </FooterHeader>
       <LinksContainer>
@@ -336,6 +332,23 @@ const Footer = () => {
           </ul>
         </LegalCompliance>
       </LinksContainer>
+      <div className="community">
+        <span>Join our community</span>
+        <a href="">
+          <Image src={Instagram} alt="Instagram logo" />
+        </a>
+        <a
+          target="_blank"
+          rel="noreferrer"
+          href="https://twitter.com/DeblockApp"
+        >
+          <Image src={Twitter} alt="Twitter logo" />
+        </a>
+        <a href="">
+          <Image src={Linkedin} alt="Linkedin" />
+        </a>
+      </div>
+
       <DeblockAddress>
         Deblock LTD, 8-14 Verulam St, London WC1X 8LZ United Kingdom
       </DeblockAddress>
