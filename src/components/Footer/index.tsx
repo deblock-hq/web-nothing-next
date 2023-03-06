@@ -220,23 +220,23 @@ const Footer = () => {
           <h4>Crypto</h4>
           <ul>
             <li>
-              <Link href="/ncw" data-text="Non-custodial wallet">
-                Non-custodial wallet
-              </Link>
-            </li>
-            <li>
               <Link href="/product" data-text="Features">
                 Features
               </Link>
             </li>
             <li>
-              <Link href="/nft" data-text="NFTs">
-                NFTs
+              <Link href="/ncw" data-text="Non-custodial wallet">
+                Non-custodial wallet
               </Link>
             </li>
             <li>
               <Link href="/pricing" data-text="Pricing plan">
                 Pricing plan
+              </Link>
+            </li>
+            <li>
+              <Link href="/nft" data-text="NFTs">
+                Bursted Bubbles
               </Link>
             </li>
           </ul>
@@ -281,11 +281,6 @@ const Footer = () => {
               </a>
             </li>
             <li>
-              <Link href="" data-text="Complaints">
-                Complaints
-              </Link>
-            </li>
-            <li>
               <Link href="" data-text="FAQ">
                 FAQ
               </Link>
@@ -310,19 +305,14 @@ const Footer = () => {
                 Privacy
               </Link>
             </li>
-            <li>
-              <Link href="" data-text="Customer Vunerability">
-                Customer Vunerability
-              </Link>
-            </li>
           </ul>
         </LegalCompliance>
       </LinksContainer>
       <DeblockAddress>
         Deblock LTD, 8-14 Verulam St, London WC1X 8LZ United Kingdom
       </DeblockAddress>
-      <Blob className="blob-left" color="#141313" />
-      <Blob className="blob-right" color="#141313" />
+      <Blob className="blob-left" color="#0B0A0A" />
+      <Blob className="blob-right" color="#0B0A0A" />
     </FooterContainer>
   );
 };

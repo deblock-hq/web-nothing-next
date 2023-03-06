@@ -28,7 +28,7 @@ const Container = styled.div`
   align-items: top;
   justify-content: center;
   padding: 86px 16px 0 16px;
-  z-index: 5;
+  z-index: 15;
 
   @media ${devices.tabletMax} {
     padding: 86px 0px 0 0px;
@@ -590,6 +590,9 @@ const Modal = ({
   if (typeof window !== "undefined") {
     token = localStorage.getItem("token");
     refCode = localStorage.getItem("ref");
+
+    localStorage.getItem("modal") && localStorage.removeItem("modal");
+
     document.addEventListener("mousedown", closeModal);
     document.addEventListener("mousedown", closeDropdown);
   }

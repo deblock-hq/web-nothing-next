@@ -92,7 +92,7 @@ const HeaderContainer = styled.header<Props>`
 
       :hover {
         font-weight: 600;
-        color: #2cd5c4;
+        color: #FF9900;
       }
     }
   }

@@ -6,11 +6,11 @@ import Lottie from "lottie-react";
 import LoaderAnim from "../../src/assets/lottie/loader.json";
 
 const LoadingPage = styled.div`
-    position: absolute;
-    height: 100vh;
-    width: 100vw;
-    z-index: 38;
-    background-color: white;
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  z-index: 38;
+  background-color: white;
 
   > div {
     display: flex;
@@ -34,6 +34,7 @@ const Token = () => {
 
       if (typeof window !== "undefined") {
         setToken(tokenToStored);
+        localStorage.setItem("modal", "true");
         return localStorage.setItem("token", tokenToStored!);
       }
     }
