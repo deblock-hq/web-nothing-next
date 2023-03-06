@@ -213,11 +213,11 @@ const Footer = () => {
         <Image src={LogoFooter} alt="Logo deblock" />
         <div onClick={() => onToggleLanguageClick("en")}>
           <Image src={FlagEn} alt="Uk flag" />
-          <span data-text="English">English</span>
+          <span data-text="English">United Kingdom</span>
         </div>
         <div onClick={() => onToggleLanguageClick("fr-FR")}>
           <Image src={FlagFr} alt="French flag" />
-          <span data-text="Français">Français</span>
+          <span data-text="Français">France</span>
         </div>
       </FooterHeader>
       <LinksContainer>

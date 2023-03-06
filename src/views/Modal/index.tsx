@@ -754,9 +754,10 @@ const Modal = ({
       return (
         <div className="email-verification">
           <div>
-            Just <strong>verify your email</strong> to cut the queue
+            (t{"Just"}) <strong>(t{"verify your email"})</strong>{" "}
+            {t("to cut the queue")}
           </div>
-          <div>Waiting for email verification...</div>
+          <div>{t("Waiting for email verification...")}</div>
         </div>
       );
     } else if (actualStep === "phone") {
@@ -764,7 +765,7 @@ const Modal = ({
         return (
           <div className="phone-code">
             <div>
-              We send a code to{" "}
+              {t("We send a code to")}{" "}
               <span>
                 {phoneCode} {phoneNumber}
               </span>
@@ -778,7 +779,7 @@ const Modal = ({
                 onChange={handleChangePhoneCode}
               />
               <div onClick={() => setTriggerSendNumber(false)}>
-                change your phone <Image src={Rotate} alt="Rotate" />
+                {t("change your phone")} <Image src={Rotate} alt="Rotate" />
               </div>
             </div>
           </div>
@@ -787,7 +788,7 @@ const Modal = ({
 
       return (
         <div className="phone-verification">
-          <strong>Verify your phone number</strong>
+          <strong>{t("Verify your phone number")}</strong>
           <form onSubmit={(e) => e.preventDefault()}>
             <div>
               <div className="phone-dropdown-container">
@@ -853,7 +854,7 @@ const Modal = ({
                 setTriggerSendNumber(true);
               }}
             >
-              Send Code
+              {t("Send Code")}
             </button>
           </form>
         </div>
@@ -861,14 +862,14 @@ const Modal = ({
     } else if (actualStep === "invite_friend") {
       return (
         <div className="invite-friend">
-          <h4>Invite a friend</h4>
+          <h4>{t("Invite a friend")}</h4>
           <div>
             <input type="text" value={referral} readOnly ref={referralRef} />
             <button
               type="button"
               onClick={() => navigator.clipboard.writeText(referral)}
             >
-              Copy
+              {t("Copy")}
             </button>
           </div>
         </div>
@@ -884,12 +885,12 @@ const Modal = ({
           <div>
             <h2>
               <span>
-                The first <strong>{priorityAccess} </strong>
+                {t("The first")} <strong>{priorityAccess}</strong>
               </span>{" "}
-              will get priority access
+              {t("will get priority access")}
             </h2>
             <div className="place-container">
-              <div>Your place</div>
+              <div>{t("Your place")}</div>
               <div className="current-position">
                 {currentPosition
                   ?.toString()
@@ -898,7 +899,9 @@ const Modal = ({
                     <div key={i}>{n}</div>
                   ))}
               </div>
-              <div>in a queue of {queueSize}</div>
+              <div>
+                {t("in a queue of")} {queueSize}
+              </div>
             </div>
             <VerificationSteps step={actualStep} trigger={triggerSendNumber}>
               <div className="progress" />
@@ -907,7 +910,11 @@ const Modal = ({
               <div />
             </VerificationSteps>
             <div className="queue">
-              Cut the queue by <strong> {jumpPosition} spots</strong>
+              {t("Cut the queue by")}{" "}
+              <strong>
+                {" "}
+                {jumpPosition} {t("spots")}
+              </strong>
             </div>
             {StepsVerification()}
           </div>

@@ -31,7 +31,7 @@ export const Loader = ({ loading, children }: Props) => {
     return (
       <div className="loader">
         <Lottie
-          style={{ width: "50%", margin: "auto" }}
+          style={{ width: "25%", margin: "auto" }}
           animationData={LoaderAnim}
           loop={true}
           autoPlay={true}
