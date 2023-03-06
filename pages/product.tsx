@@ -450,7 +450,7 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
 };
 
 const Product = () => {
-  const { t } = useTranslation("product");
+  const { t, i18n } = useTranslation("product");
   return (
     <div>
       <ProductContainer>
@@ -468,8 +468,8 @@ const Product = () => {
               <li>{t("your-iban")}</li>
               <li>{t("different-currencies")}</li>
               <li>{t("free-exchange")}</li>
-              <li>{t("instant-transfer")}r</li>
-              <li>{t("open-banking")}</li>
+              <li>{t("instant-transfer")}</li>
+              {!i18n.languages.includes("fr") && <li>{t("open-banking")}</li>}
             </ul>
           </div>
           <Blob className="blob-left" color="#D4DAE5" />
@@ -526,7 +526,10 @@ const Product = () => {
               />
             </div>
             <div className="texte-container">
-              <h2>{t("deposit-crypto-assets")}</h2>
+              <h2>
+                {t("deposit-crypto-assets-1")} <br />
+                {t("deposit-crypto-assets-2")}
+              </h2>
               <ul>
                 <li>{t("deposit-all")}</li>
                 <li>{t("exchange-crypto")}</li>

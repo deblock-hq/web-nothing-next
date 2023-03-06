@@ -201,6 +201,8 @@ const DeblockAddress = styled.div`
 `;
 
 const Footer = () => {
+  const { t } = useTranslation("footer");
+
   const router = useRouter();
 
   const onToggleLanguageClick = (newLocale: string) => {
@@ -214,7 +216,7 @@ const Footer = () => {
         <Image src={LogoFooter} alt="Logo deblock" />
         <div onClick={() => onToggleLanguageClick("en")}>
           <Image src={FlagEn} alt="Uk flag" />
-          <span data-text="United Kingdom">United Kingdom</span>
+          <span data-text={t("United Kingdom")}>{t("United Kingdom")}</span>
         </div>
         <div onClick={() => onToggleLanguageClick("fr-FR")}>
           <Image src={FlagFr} alt="French flag" />
@@ -223,26 +225,26 @@ const Footer = () => {
       </FooterHeader>
       <LinksContainer>
         <Company>
-          <h4>Company</h4>
+          <h4>{t("Company")}</h4>
           <ul>
             <li>
-              <Link href="/" data-text="Home">
-                Home
+              <Link href="/" data-text={t("Home")}>
+                {t("Home")}
               </Link>
             </li>
             <li>
-              <Link href="/blog" data-text="Blog">
-                Blog
+              <Link href="/blog" data-text={t("Blog")}>
+                {t("Blog")}
               </Link>
             </li>
             <li>
               <Link href="/about-us" data-text="About">
-                About
+                {t("About")}
               </Link>
             </li>
             <li>
               <Link href="/press" data-text="Press">
-                Press
+                {t("Press")}
               </Link>
             </li>
             <li>
@@ -252,36 +254,36 @@ const Footer = () => {
                 rel="noreferrer"
                 data-text="Career"
               >
-                Career
+                {t("Career")}
               </a>
             </li>
             <li>
               <Link href="/support" data-text="Career">
-                Contact
+                {t("Contact")}
               </Link>
             </li>
           </ul>
         </Company>
         <Crypto>
-          <h4>Product</h4>
+          <h4>{t("Product")}</h4>
           <ul>
             <li>
               <Link href="/product" data-text="Features">
-                Features
+                {t("Features")}
               </Link>
             </li>
             <li>
               <Link href="/ncw" data-text="Non-custodial wallet">
-                Non-custodial wallet
+                {t("Non-custodial wallet")}
               </Link>
             </li>
             <li>
               <Link href="/pricing" data-text="Pricing plan">
-                Pricing plan
+                {t("Pricing plan")}
               </Link>
             </li>
             <li>
-              <Link href="/nft" data-text="NFTs">
+              <Link href="/nft" data-text="Bursted Bubbles">
                 Bursted Bubbles
               </Link>
             </li>
@@ -299,11 +301,11 @@ const Footer = () => {
           </ul>
         </FiatAccount> */}
         <Help>
-          <h4>Help</h4>
+          <h4>{t("Help")}</h4>
           <ul>
             <li>
               <Link href="/support" data-text="Contact">
-                Contact
+                {t("Contact-2")}
               </Link>
             </li>
             <li>
@@ -334,28 +336,28 @@ const Footer = () => {
           </ul>
         </Help>
         <LegalCompliance>
-          <h4>Legal & Compliance</h4>
+          <h4>{t("Legal & Compliance")}</h4>
           <ul>
             <li>
               <Link href="/terms-and-policies" data-text="Website terms">
-                Website terms
+                {t("Website terms")}
               </Link>
             </li>
             <li>
               <Link href="/legal" data-text="Legal Agreements">
-                Legal Agreements
+                {t("Legal Agreements")}
               </Link>
             </li>
             <li>
               <Link href="/privacy" data-text="Privacy">
-                Privacy
+                {t("Privacy")}
               </Link>
             </li>
           </ul>
         </LegalCompliance>
       </LinksContainer>
       <div className="community">
-        <span>Join our community</span>
+        <span>{t("Join our community")}</span>
         <a href="">
           <Image src={Instagram} alt="Instagram logo" />
         </a>

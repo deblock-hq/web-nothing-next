@@ -1,23 +1,25 @@
 {
   "United Kingdom": "Royaume-Uni",
-  "Join our community": "Rejoins la communauté",
+  "Join our community": "Rejoignez nous !",
 
-  "Company": "Company",
-  "Home": "Accueil",
-  "About": "A propos",
-  "Press": "Presse",
-  "Career": "Carrière",
-  "Contact": "Contacte",
+  "Company": "Entreprise",
+  "Home": "Page d’accueil",
+  "About": "À propos",
+  "Press": "Presse & Médias",
+  "Career": "Recrutement",
+  "Contact": "Nous contacte",
 
   "Product": "Produit",
-  "Features": "Features",
-  "Non-custodial wallet": "Non-custodial wallet",
-  "Pricing plan": "Pricing plan",
+  "Features": "Fonctionalités",
+  "Non-custodial wallet": "Portefeuille crypto",
+  "Pricing plan": "Abonnements",
   "Bursted Bubbles": "Bursted Bubbles",
 
-  "Help": "Help",
+  "Help": "Aide",
+  "Contact-2": "Aide aux clients",
 
-  "Legal & Compliance": "Legal & Compliance",
-  "Website terms": "Website terms",
-  "Privacy": "Privacy"
+  "Legal & Compliance": "Conformité légale",
+  "Website terms": "Conditions d’utilisation",
+  "Legal Agreements": "Accords juridiques",
+  "Privacy": "Confidentialité"
 }

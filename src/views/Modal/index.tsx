@@ -9,7 +9,7 @@ import FlagFr from "../../assets/fr-flag.svg";
 import FlagEn from "../../assets/en-flag.svg";
 import Rotate from "../../assets/rotate.svg";
 import Popup from "../../components/Popup";
-import { useTranslation } from "react-i18next";
+import { useTranslation } from "next-i18next";
 import { Loader } from "../../components/Loader";
 
 interface Props {
