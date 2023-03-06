@@ -1,6 +1,8 @@
 import { NextRequest, URLPattern } from "next/server";
 import { NextResponse } from "next/server";
 
+const PUBLIC_FILE = /\.(.*)$/;
+
 export function middleware(req: NextRequest) {
   const country = req.geo?.country;
   const url = req.nextUrl.clone();
@@ -22,7 +24,15 @@ export function middleware(req: NextRequest) {
   ) {
     return NextResponse.redirect(url);
   }
-  console.log("URL", url, req);
+
+  if (req.nextUrl.locale === "default") {
+    const locale = req.cookies.get("NEXT_LOCALE")?.value || "en";
+
+    return NextResponse.redirect(
+      new URL(`/${locale}${req.nextUrl.pathname}${req.nextUrl.search}`, req.url)
+    );
+  }
+  // console.log("URL", url, req);
 }
 
 export const config = {
