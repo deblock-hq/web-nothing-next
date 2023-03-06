@@ -1195,15 +1195,18 @@ const Home = ({
     }
   }, []);
 
-  let checkLocalStorage;
-  if (typeof window !== "undefined") {
-    checkLocalStorage = localStorage.getItem("token");
-    if (localStorage.getItem("modal")) setOpenModal(true);
+  const [checkLocalStorage, setCheckLocalStorage] = useState<string | null>();
 
-    if (openModal) {
-      document.body.style.overflowX = "hidden";
-    } else document.body.style.overflowX = "visible";
-  }
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setCheckLocalStorage(localStorage.getItem("token"));
+      if (localStorage.getItem("modal")) setOpenModal(true);
+
+      if (openModal) {
+        document.body.style.overflowX = "hidden";
+      } else document.body.style.overflowX = "visible";
+    }
+  }, [openModal, setOpenModal]);
 
   const lottieRef = useRef<any>(null);
   const { ref: myRef, inView: renderSafeAccount } = useInView();

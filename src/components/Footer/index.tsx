@@ -93,6 +93,7 @@ const FooterHeader = styled.div`
     align-items: center;
     gap: 12px;
     cursor: pointer;
+    min-width: fit-content;
 
     span {
       display: inline-flex;
@@ -213,7 +214,7 @@ const Footer = () => {
         <Image src={LogoFooter} alt="Logo deblock" />
         <div onClick={() => onToggleLanguageClick("en")}>
           <Image src={FlagEn} alt="Uk flag" />
-          <span data-text="English">United Kingdom</span>
+          <span data-text="United Kingdom">United Kingdom</span>
         </div>
         <div onClick={() => onToggleLanguageClick("fr-FR")}>
           <Image src={FlagFr} alt="French flag" />

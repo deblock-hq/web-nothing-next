@@ -92,7 +92,7 @@ const HeaderContainer = styled.header<Props>`
 
       :hover {
         font-weight: 600;
-        color: #FF9900;
+        color: #ff9900;
       }
     }
   }
@@ -315,10 +315,13 @@ const Header = ({ displayModal }: { displayModal: () => void }) => {
 
   // console.log(scrollY);
 
-  let checkLocalStorage;
-  if (typeof window !== "undefined") {
-    checkLocalStorage = localStorage.getItem("token");
-  }
+  const [checkLocalStorage, setCheckLocalStorage] = useState<string | null>();
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setCheckLocalStorage(localStorage.getItem("token"));
+    }
+  }, []);
 
   const animationRef = useRef<any | string>(null);
 

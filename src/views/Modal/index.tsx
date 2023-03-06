@@ -442,6 +442,15 @@ const ModalContainer = styled.div`
             background: rgba(0, 0, 0, 0.7);
           }
         }
+        .isCopied {
+          background: #12baa9;
+          border: 0.95393px solid #12baa9;
+
+          :hover {
+            background-color: #12baa9;
+            opacity: 0.7;
+          }
+        }
       }
     }
   }
@@ -531,6 +540,7 @@ const Modal = ({
 
   const [actualStep, setActualStep] = useState("");
 
+  const [isCopied, setIsCopied] = useState(false);
   const [referral, setReferral] = useState("");
   const referralRef = useRef(null);
 
@@ -754,7 +764,7 @@ const Modal = ({
       return (
         <div className="email-verification">
           <div>
-            (t{"Just"}) <strong>(t{"verify your email"})</strong>{" "}
+            {t("Just")} <strong>{t("verify your email")}</strong>{" "}
             {t("to cut the queue")}
           </div>
           <div>{t("Waiting for email verification...")}</div>
@@ -867,9 +877,13 @@ const Modal = ({
             <input type="text" value={referral} readOnly ref={referralRef} />
             <button
               type="button"
-              onClick={() => navigator.clipboard.writeText(referral)}
+              onClick={() => {
+                navigator.clipboard.writeText(referral);
+                setIsCopied(!isCopied);
+              }}
+              className={isCopied ? "isCopied" : ""}
             >
-              {t("Copy")}
+              {isCopied ? t("Copied!") : t("Copy")}
             </button>
           </div>
         </div>
