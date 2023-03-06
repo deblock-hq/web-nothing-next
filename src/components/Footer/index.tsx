@@ -9,6 +9,7 @@ import Linkedin from "../../assets/LinkedIn.svg";
 import Twitter from "../../assets/Twitter.svg";
 import Instagram from "../../assets/Instagram.svg";
 import Placeholder from "../../assets/footer-placeholder.svg";
+import { useTranslation } from "next-i18next";
 
 const FooterContainer = styled.footer`
   display: flex;
@@ -149,13 +150,16 @@ const DeblockAddress = styled.div`
 `;
 
 const Footer = () => {
+  const { i18n } = useTranslation();
+
   return (
     <FooterContainer>
       <FooterHeader>
         <div>
           {/* <Image /> */}
           {/* <span>France</span> */}
-          <span>Change language component</span>
+          <span onClick={() => i18n.changeLanguage("en")}>EN</span>
+          <span onClick={() => i18n.changeLanguage("fr-FR")}>FR</span>
           {/* <Image src={Placeholder} alt="placeholder" /> */}
         </div>
         <div className="community">
