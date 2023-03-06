@@ -25,13 +25,13 @@ export function middleware(req: NextRequest) {
     return NextResponse.redirect(url);
   }
 
-  if (req.nextUrl.locale === "default") {
-    const locale = req.cookies.get("NEXT_LOCALE")?.value || "/";
+  // if (req.nextUrl.locale === "default") {
+  //   const locale = req.cookies.get("NEXT_LOCALE")?.value || "/";
 
-    return NextResponse.redirect(
-      new URL(`/${locale}${req.nextUrl.pathname}${req.nextUrl.search}`, req.url)
-    );
-  }
+  //   return NextResponse.redirect(
+  //     new URL(`/${locale}${req.nextUrl.pathname}${req.nextUrl.search}`, req.url)
+  //   );
+  // }
   // console.log("URL", url, req);
 }
 
