@@ -49,6 +49,11 @@ const nextConfig = {
         destination: "/:lng-FR",
         permanent: true,
       },
+      {
+        source: "/fr",
+        destination: "/fr-FR",
+        permanent: true,
+      },
     ];
   },
 };

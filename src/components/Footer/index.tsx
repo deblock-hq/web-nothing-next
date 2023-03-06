@@ -8,8 +8,11 @@ import Blob from "../../views/Blob";
 import Linkedin from "../../assets/LinkedIn.svg";
 import Twitter from "../../assets/Twitter.svg";
 import Instagram from "../../assets/Instagram.svg";
-import Placeholder from "../../assets/footer-placeholder.svg";
+import LogoFooter from "../../assets/logo-footer.svg";
+import FlagFr from "../../assets/fr-flag.svg";
+import FlagEn from "../../assets/en-flag.svg";
 import { useTranslation } from "next-i18next";
+import { useRouter } from "next/router";
 
 const FooterContainer = styled.footer`
   display: flex;
@@ -52,10 +55,12 @@ const FooterHeader = styled.div`
   font-weight: 700;
   z-index: 3;
 
-  .community {
+  .community,
+  .select-language {
     display: flex;
     align-items: center;
     gap: 12px;
+    color: white;
 
     span {
       padding-right: 16px;
@@ -64,6 +69,16 @@ const FooterHeader = styled.div`
     a {
       display: flex;
       align-items: center;
+      cursor: pointer;
+    }
+  }
+
+  .select-language {
+    gap: 50px;
+    div {
+      display: flex;
+      align-items: center;
+      gap: 12px;
       cursor: pointer;
     }
   }
@@ -150,17 +165,26 @@ const DeblockAddress = styled.div`
 `;
 
 const Footer = () => {
-  const { i18n } = useTranslation();
+  const router = useRouter();
+
+  const onToggleLanguageClick = (newLocale: string) => {
+    const { pathname, asPath, query } = router;
+    router.push({ pathname, query }, router.asPath, { locale: newLocale });
+  };
 
   return (
     <FooterContainer>
       <FooterHeader>
-        <div>
-          {/* <Image /> */}
-          {/* <span>France</span> */}
-          <span onClick={() => i18n.changeLanguage("en")}>EN</span>
-          <span onClick={() => i18n.changeLanguage("fr-FR")}>FR</span>
-          {/* <Image src={Placeholder} alt="placeholder" /> */}
+        <div className="select-language">
+          <Image src={LogoFooter} alt="Logo deblock" />
+          <div onClick={() => onToggleLanguageClick("en")}>
+            <Image src={FlagEn} alt="Uk flag" />
+            English
+          </div>
+          <div onClick={() => onToggleLanguageClick("fr-FR")}>
+            <Image src={FlagFr} alt="French flag" />
+            Français
+          </div>
         </div>
         <div className="community">
           <span>Join our community</span>
@@ -221,7 +245,7 @@ const Footer = () => {
           </ul>
         </Company>
         <Crypto>
-          <h4>Crypto</h4>
+          <h4>Product</h4>
           <ul>
             <li>
               <Link href="/product" data-text="Features">
