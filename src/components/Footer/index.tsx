@@ -80,7 +80,7 @@ const FooterContainer = styled.footer`
 const FooterHeader = styled.div`
   display: flex;
   padding: 0 140px;
-  font-weight: 700;
+  font-weight: 500;
   z-index: 3;
   grid-area: 1 / 1 / 2 / 3;
   align-items: center;
@@ -93,6 +93,27 @@ const FooterHeader = styled.div`
     align-items: center;
     gap: 12px;
     cursor: pointer;
+
+    span {
+      display: inline-flex;
+      flex-direction: column;
+      justify-content: space-between;
+      text-decoration: none;
+
+      :after {
+        content: attr(data-text);
+        content: attr(data-text) / "";
+        height: 0;
+        visibility: hidden;
+        overflow: hidden;
+        user-select: none;
+        pointer-events: none;
+        font-weight: 700;
+      }
+    }
+    :hover span {
+      font-weight: 700;
+    }
   }
 
   @media ${devices.tabletMax} {
@@ -192,11 +213,11 @@ const Footer = () => {
         <Image src={LogoFooter} alt="Logo deblock" />
         <div onClick={() => onToggleLanguageClick("en")}>
           <Image src={FlagEn} alt="Uk flag" />
-          English
+          <span data-text="English">English</span>
         </div>
         <div onClick={() => onToggleLanguageClick("fr-FR")}>
           <Image src={FlagFr} alt="French flag" />
-          Français
+          <span data-text="Français">Français</span>
         </div>
       </FooterHeader>
       <LinksContainer>
