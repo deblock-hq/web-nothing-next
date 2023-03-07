@@ -176,7 +176,18 @@ const DeblockContainer = styled.div`
 
   .hero {
     display: flex;
-    gap: 44px;
+    gap: 116px;
+
+    > div {
+      h3 {
+        font-weight: 500;
+        font-size: 28px;
+        line-height: 28px;
+      }
+      p {
+        max-width: 444px;
+      }
+    }
   }
 
   .tiles {
@@ -326,7 +337,23 @@ const AboutUs = () => {
         <DeblockContainer>
           <div className="hero">
             <Image src={HeroPicture} alt="Groupe photo" />
-            <p>{t("we-are-deblock")}</p>
+            <div>
+              <h3>{t("We believe your money is yours...")}</h3>
+              <br />
+              <br />
+              <p>
+                {t("we-are-deblock-1")}
+                <br />
+                <br />
+                <strong>{t("we-are-deblock-2-1")}</strong>{" "}
+                {t("we-are-deblock-2-2")}
+                <br />
+                <br />
+                {t("we-are-deblock-3-1")}{" "}
+                <strong>{t("we-are-deblock-3-2")}</strong>{" "}
+                {t("we-are-deblock-3-3")}
+              </p>
+            </div>
           </div>
           <div className="tiles">
             <div>
@@ -399,9 +426,7 @@ const AboutUs = () => {
           </div>
         </TeamContainer> */}
         <h2 className="values-title">
-          <Trans i18nKey="our-values" t={t}>
-            Our <span>values</span>
-          </Trans>
+          {t("our-values-1")} <span>{t("our-values-2")}</span>
         </h2>
         <ValuesContainer>
           <div>

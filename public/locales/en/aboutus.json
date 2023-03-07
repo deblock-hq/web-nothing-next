@@ -1,12 +1,20 @@
 {
   "title": "We are Deblock!",
-  "we-are-deblock": "We believe your money is yours and that you should be able to use it however and whenever you want regardless of bank runs, bankruptcies, inflations or even if Deblock stops operating. Nobody can freeze your assets or your transfers on your Deblock non-custodial wallet.<br /><br /> We are building the safest non-custodial account in the world to own, transfer, deposit, and exchange crypto or cash indifferently so you can finally own your money!",
+  
+  "We believe your money is yours...": "We believe your money is yours...",
+  "we-are-deblock-1": "... and that you should be able to use it however and whenever you want regardless of bank runs, bankruptcies, inflations or even if Deblock stops operating.",
+  "we-are-deblock-2-1": "Nobody can freeze your assets",
+  "we-are-deblock-2-2": "or your transfers on your Deblock non-custodial wallet.",
+  "we-are-deblock-3-1": "We are building",
+  "we-are-deblock-3-2": "the safest non-custodial account",
+  "we-are-deblock-3-3": "in the world to own, transfer, deposit, and exchange crypto or cash indifferently so you can finally own your money!",
 
   "founded": "Founded",
   "team-size": "Team size",
   "countries-represented": "Countries represented",
 
-  "our-values": "Our <1>values</1>",
+  "our-values-1": "Our",
+  "our-values-2": "values",
   "speed-is-everything": "#SpeedIsEverything",
   "speed-is-everything-text": " We test first. We validate first. We deliver first. We succeed first... or fail and we iterate first.",
   "do-more": "#DoMore",

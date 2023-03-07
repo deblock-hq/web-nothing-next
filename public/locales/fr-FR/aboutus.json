@@ -1,12 +1,20 @@
 {
   "title": "Ici, c’est Deblock !",
-  "we-are-deblock": "Nous pensons que votre argent vous appartient et que vous devriez pouvoir l’utiliser comme vous le souhaitez indépendamment des paniques bancaires, de l’hyper-inflation ou même si Deblock cesse ses activités. Personne ne peut geler vos avoirs ou vos transactions sur le non-custodial wallet de Deblock.<br /><br /> Nous développons le compte courant non-custodial le plus sûr du monde pour posséder, échanger, dépenser et transférer vos euros ou vos cryptos sans distinction. Ici, c’est Deblock. Ici, votre argent vous appartient vraiment !",
+
+  "We believe your money is yours...": "Nous pensons que votre argent vous appartient...",
+  "we-are-deblock-1": "... et que vous devriez pouvoir l’utiliser comme vous le souhaitez indépendamment des paniques bancaires, de l’hyper-inflation ou même si Deblock cesse ses activités.",
+  "we-are-deblock-2-1": "Personne ne peut geler vos avoirs",
+  "we-are-deblock-2-2": "ou vos transactions sur le non-custodial wallet de Deblock.",
+  "we-are-deblock-3-1": "Nous développons le compte",
+  "we-are-deblock-3-2": "courant non-custodial le plus sûr",
+  "we-are-deblock-3-3": "du monde pour posséder, échanger, dépenser et transférer vos euros ou vos cryptos sans distinction. Ici, c’est Deblock. Ici, votre argent vous appartient vraiment !",
 
   "founded": "Fondé en",
   "team-size": "Collaborateurs",
   "countries-represented": "Nationalités",
 
-  "our-values": "Nos <1>valeurs</1>",
+  "our-values-1": "Nos",
+  "our-values-2": "valeurs",
   "speed-is-everything": "#SpeedIsEverything",
   "speed-is-everything-text": "Premiers à tester. Premiers à délivrer. Premiers à réussir... ou premiers à recommencer.",
   "do-more": "#DoMore",
