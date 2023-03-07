@@ -25,6 +25,8 @@
   "use-crypto": "Use your Cryptos to buy a house or a car, we'll off-ramp them in the background",
 
   "in-self-custody": "...in your self-custody",
-  "nobody-can-freeze": "<1>Nobody can freeze</1> your wallet or your withdrawals",
-  "fundes-safe": "<1>You fundes are 100% safe even if Deblock disappears</1><br />You can export your keys at any time"
+  "nobody-can-freeze-1": "Nobody can freeze",
+  "nobody-can-freeze-2": "your wallet or your withdrawals",
+  "fundes-safe-1": "You fundes are 100% safe even if Deblock disappears",
+  "fundes-safe-2": "You can export your keys at any time"
 }

@@ -359,13 +359,7 @@ const Header = ({ displayModal }: { displayModal: () => void }) => {
         >
           <Link href="/blog">Blog</Link>
           <Link href="/about-us">About</Link>
-          <a
-            href="https://apply.workable.com/deblock"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Careers
-          </a>
+          <Link href="/faq">FAQ</Link>
           <Link href="/support">Support</Link>
         </div>
       )}
@@ -376,14 +370,7 @@ const Header = ({ displayModal }: { displayModal: () => void }) => {
         <Link href="/about-us" data-text="About">
           About
         </Link>
-        <a
-          href="https://apply.workable.com/deblock"
-          target="_blank"
-          rel="noreferrer"
-          data-text="Careers"
-        >
-          Careers
-        </a>
+        <Link href="/faq">FAQ</Link>
         <Link href="/support" data-text="Support">
           Support
         </Link>

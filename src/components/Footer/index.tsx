@@ -408,17 +408,6 @@ const Footer = () => {
             </li>
           </ul>
         </Crypto>
-        {/* <FiatAccount>
-          <h4>FIAT Account</h4>
-          <ul>
-            <li>
-              <Link href="">Products Plans Services</Link>
-            </li>
-            <li>
-              <Link href="">NFTs</Link>
-            </li>
-          </ul>
-        </FiatAccount> */}
         <Help>
           <h4>{t("Help")}</h4>
           <ul>

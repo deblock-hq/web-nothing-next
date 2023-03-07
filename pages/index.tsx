@@ -83,7 +83,7 @@ const LandingContainer = styled.div`
       width: 100%;
       max-width: 1340px;
       position: relative;
-      animation: FadeIn 0.5s;
+      animation: FadeIn 0.1s;
 
       @keyframes FadeIn {
         0% {
@@ -208,7 +208,7 @@ const FirstContainer = styled.div`
     }
 
     .blob-top {
-      top: -410px;
+      top: -450px;
       left: 300px;
     }
   }

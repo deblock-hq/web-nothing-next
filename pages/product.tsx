@@ -317,10 +317,14 @@ const CryptoAssets = styled.div`
 const SelfCustody = styled.div`
   display: flex;
   justify-content: center;
-  gap: 34px;
+  gap: 26px;
 
   .image-container {
     max-width: 396px;
+  }
+
+  .texte-container {
+    width: 50% !important;
   }
 
   @media ${devices.tabletMax} {
@@ -516,7 +520,7 @@ const Product = () => {
         <DoubleContainer
           backgroundColor="#F5F5F4"
           height="722px"
-          // padding="0px 0px 0px 64px"
+          padding="72px 5px 72px 88px"
         >
           <CryptoAssets>
             <div className="image-container">
@@ -550,18 +554,13 @@ const Product = () => {
               <h2>{t("in-self-custody")}</h2>
               <ul>
                 <li>
-                  <Trans i18nKey="nobody-can-freeze" t={t}>
-                    <span className="bold-text">Nobody can freeze</span> your
-                    wallet or your withdrawals
-                  </Trans>
+                  <span className="bold-text">{t("nobody-can-freeze-1")}</span>{" "}
+                  {t("nobody-can-freeze-2")}
                 </li>
                 <li>
-                  <Trans i18nKey="fundes-safe" t={t}>
-                    <span className="bold-text">
-                      You fundes are 100% safe even if Deblock disappears
-                    </span>
-                    You can export your keys at any time
-                  </Trans>
+                  <span className="bold-text">{t("fundes-safe-1")}</span>
+                  <br />
+                  {t("fundes-safe-2")}
                 </li>
               </ul>
             </div>
