@@ -90,7 +90,7 @@ const LandingContainer = styled.div`
           opacity: 0;
         }
         30% {
-          opacity: 0;
+          opacity: 1;
         }
         100% {
           opacity: 1;
