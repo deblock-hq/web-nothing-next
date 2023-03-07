@@ -549,7 +549,7 @@ const BestAccount = styled.div`
       }
       span:after {
         content: "";
-        background-image: url("./mobile-background/blue-trace.svg");
+        background-image: url("/mobile-background/blue-trace.svg");
         position: absolute;
         width: 61px;
         height: 11px;
@@ -768,7 +768,7 @@ const CashOrCrypto = styled.div`
     }
     span:before {
       content: "";
-      background: url("./mobile-background/right-arrow-curved.svg") no-repeat;
+      background: url("/mobile-background/right-arrow-curved.svg") no-repeat;
       position: absolute;
       width: 165px;
       height: 46px;
@@ -903,7 +903,7 @@ const SafestAccount = styled.div`
       position: relative;
       span:before {
         content: "";
-        background-image: url("./mobile-background/green-trace.svg");
+        background-image: url("/mobile-background/green-trace.svg");
         position: absolute;
         width: 115px;
         height: 9px;

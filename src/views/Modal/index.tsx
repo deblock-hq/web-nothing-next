@@ -79,7 +79,8 @@ const ModalContainer = styled.div`
       position: relative;
       :before {
         content: "";
-        background: url("./mobile-background/modal-trace.svg") no-repeat;
+        /* background: url("/mobile-background/modal-trace.svg") no-repeat; */
+        background: src("/mobile-background/modal-trace.svg") no-repeat;
         position: absolute;
         width: 235px;
         height: 23px;
@@ -879,14 +880,14 @@ const Modal = ({
     } else if (actualStep === "invite_friend") {
       return (
         <div className="invite-friend">
-          <h4>{t("Invite a friend")}</h4>
+          <h4>{t("Invite a friend")} 👇</h4>
           <div>
             <input type="text" value={referral} readOnly ref={referralRef} />
             <button
               type="button"
               onClick={() => {
                 navigator.clipboard.writeText(referral);
-                setIsCopied(!isCopied);
+                setIsCopied(true);
               }}
               className={isCopied ? "isCopied" : ""}
             >
