@@ -79,8 +79,7 @@ const ModalContainer = styled.div`
       position: relative;
       :before {
         content: "";
-        /* background: url("/mobile-background/modal-trace.svg") no-repeat; */
-        background: src("/mobile-background/modal-trace.svg") no-repeat;
+        background: url("/mobile-background/modal-trace.svg") no-repeat;
         position: absolute;
         width: 235px;
         height: 23px;
