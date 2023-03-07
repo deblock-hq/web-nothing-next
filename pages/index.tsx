@@ -1220,11 +1220,11 @@ const Home = ({
     }
   }, [renderSafeAccount]);
 
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     doublPhoneRef?.current?.play();
-  //   }, 5000);
-  // }, []);
+  useEffect(() => {
+    setTimeout(() => {
+      doublPhoneRef?.current?.play();
+    }, 5000);
+  }, []);
 
   return (
     <div>
