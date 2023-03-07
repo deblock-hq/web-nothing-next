@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { devices } from "../../utils/devices";
 import styled from "styled-components";
 import Blob from "../../views/Blob";
@@ -51,6 +51,7 @@ const FooterContainer = styled.footer`
   .community {
     display: flex;
     align-items: center;
+    font-weight: 700;
     gap: 12px;
     color: white;
     grid-area: 1 / 4 / 2 / 6;
@@ -106,6 +107,7 @@ const FooterHeader = styled.div`
         flex-direction: column;
         justify-content: space-between;
         text-decoration: none;
+        font-weight: 700;
 
         :after {
           content: attr(data-text);
@@ -118,9 +120,9 @@ const FooterHeader = styled.div`
           font-weight: 700;
         }
       }
-      :hover {
+      /* :hover {
         font-weight: 700;
-      }
+      } */
     }
 
     > div {
@@ -144,7 +146,7 @@ const FooterHeader = styled.div`
       border: 1px solid #000000;
       box-shadow: 0px 2.85227px 2.85227px rgba(0, 0, 0, 0.04);
       border-radius: 4px;
-      padding: 8px;
+      padding: 4px;
       z-index: 15;
 
       li {
@@ -152,7 +154,7 @@ const FooterHeader = styled.div`
         align-items: center;
         justify-content: space-between;
         height: 100%;
-        width: 98%;
+        width: 96%;
         cursor: pointer;
         border-radius: 4px;
         padding-left: 8px;
@@ -202,7 +204,7 @@ const LinksContainer = styled.div`
   grid-area: 2 / 1 / 3 / 6;
 
   * {
-    z-index: 3;
+    z-index: 2;
   }
 
   h4 {
@@ -275,7 +277,17 @@ const Footer = () => {
   const router = useRouter();
 
   const [openDropdown, setOpenDropdown] = useState(false);
-  // const [selectedCountry, setSelectedCountry] = useState();
+  const dropdownRef = useRef<HTMLUListElement>(null);
+
+  const closeDropdown = (e: { target: any }) => {
+    if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+      setOpenDropdown(false);
+    }
+  };
+
+  if (typeof window !== "undefined") {
+    document.addEventListener("mousedown", closeDropdown);
+  }
 
   const onToggleLanguageClick = (newLocale: string) => {
     const { pathname, asPath, query } = router;
@@ -309,7 +321,7 @@ const Footer = () => {
         <div className="country-selected">
           {CountrySelected()}
           {openDropdown && (
-            <ul className="dropdown">
+            <ul className="dropdown" ref={dropdownRef}>
               <li onClick={() => onToggleLanguageClick("en")}>
                 <div>
                   <Image src={FlagEn} alt="Uk flag" />
