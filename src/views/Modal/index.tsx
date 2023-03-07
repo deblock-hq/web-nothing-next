@@ -12,6 +12,11 @@ import Popup from "../../components/Popup";
 import { useTranslation } from "next-i18next";
 import { Loader } from "../../components/Loader";
 
+import dynamic from "next/dynamic";
+const AnimatedNumbers = dynamic(() => import("react-animated-numbers"), {
+  ssr: false,
+});
+
 interface Props {
   step: string;
   trigger: boolean;
@@ -113,20 +118,22 @@ const ModalContainer = styled.div`
       min-height: 198px;
 
       .current-position {
-        display: flex;
-        justify-content: center;
-        gap: 3px;
-
         > div {
-          font-weight: 500;
-          font-size: 58px;
-          line-height: 65px;
-          border: 1px solid black;
-          border-radius: 4px;
-          padding: 8px 4px;
-          background-color: white;
-          box-shadow: 3px 3px 0px 0px rgb(0 0 0);
-          min-width: 46px;
+          display: flex;
+          justify-content: center;
+          gap: 3px;
+
+          > div {
+            font-weight: 500;
+            font-size: 58px;
+            line-height: 80px;
+            border: 1px solid black;
+            border-radius: 4px;
+            padding: 8px 4px;
+            background-color: white;
+            box-shadow: 3px 3px 0px 0px rgb(0 0 0);
+            min-width: 46px;
+          }
         }
       }
 
@@ -905,13 +912,23 @@ const Modal = ({
             </h2>
             <div className="place-container">
               <div>{t("Your place")}</div>
+
               <div className="current-position">
-                {currentPosition
+                {/* {currentPosition
                   ?.toString()
                   .split("")
                   .map((n, i) => (
                     <div key={i}>{n}</div>
-                  ))}
+                  ))} */}
+                <AnimatedNumbers
+                  animateToNumber={currentPosition!}
+                  fontStyle={{ fontSize: 58, height: "84px" }}
+                  configs={[
+                    { mass: 1, tension: 130, friction: 40 },
+                    { mass: 2, tension: 140, friction: 40 },
+                    { mass: 3, tension: 130, friction: 40 },
+                  ]}
+                ></AnimatedNumbers>
               </div>
               <div>
                 {t("in a queue of")} {queueSize}
