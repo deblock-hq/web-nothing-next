@@ -43,7 +43,7 @@ const Token = () => {
     <LoadingPage>
       <div className="loader">
         <Lottie
-          style={{ width: "50%", margin: "auto" }}
+          style={{ width: "25%", margin: "auto" }}
           animationData={LoaderAnim}
           loop={true}
           autoPlay={true}

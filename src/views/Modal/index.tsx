@@ -928,7 +928,7 @@ const Modal = ({
                     { mass: 2, tension: 140, friction: 40 },
                     { mass: 3, tension: 130, friction: 40 },
                   ]}
-                ></AnimatedNumbers>
+                />
               </div>
               <div>
                 {t("in a queue of")} {queueSize}
