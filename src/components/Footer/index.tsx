@@ -295,7 +295,7 @@ const Footer = () => {
   };
 
   const CountrySelected = () => {
-    if (i18n.language.includes("fr")) {
+    if (i18n.language && i18n.language.includes("fr")) {
       return (
         <div onClick={() => setOpenDropdown(!openDropdown)}>
           <Image src={FlagFr} alt="French flag" />
@@ -303,7 +303,7 @@ const Footer = () => {
           <Image src={Triangle} alt="Triangle down" />
         </div>
       );
-    } else if (i18n.language.includes("en")) {
+    } else {
       return (
         <div onClick={() => setOpenDropdown(!openDropdown)}>
           <Image src={FlagEn} alt="French flag" />
