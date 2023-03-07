@@ -342,7 +342,7 @@ const Footer = () => {
           )}
         </div>
       </FooterHeader>
-      <LinksContainer>
+      {/* <LinksContainer>
         <Company>
           <h4>{t("Company")}</h4>
           <ul>
@@ -463,7 +463,7 @@ const Footer = () => {
             </li>
           </ul>
         </LegalCompliance>
-      </LinksContainer>
+      </LinksContainer> */}
       <div className="community">
         <span>{t("Join our community")}</span>
         <a href="">
