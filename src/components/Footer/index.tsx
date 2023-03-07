@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 import { devices } from "../../utils/devices";
 import styled from "styled-components";
 import Blob from "../../views/Blob";
@@ -11,8 +11,13 @@ import Instagram from "../../assets/Instagram.svg";
 import LogoFooter from "../../assets/logo-footer.svg";
 import FlagFr from "../../assets/fr-flag.svg";
 import FlagEn from "../../assets/en-flag.svg";
+import Arrow from "../../assets/arrow.svg";
+import Triangle from "../../assets/triangle.svg";
+
 import { useTranslation } from "next-i18next";
 import { useRouter } from "next/router";
+import { GetStaticProps } from "next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 const FooterContainer = styled.footer`
   display: grid;
@@ -84,36 +89,101 @@ const FooterHeader = styled.div`
   z-index: 3;
   grid-area: 1 / 1 / 2 / 3;
   align-items: center;
-  gap: 12px;
+  gap: 24px;
   color: white;
-  gap: 50px;
 
-  div {
+  .country-selected {
+    position: relatvie;
     display: flex;
     align-items: center;
     gap: 12px;
     cursor: pointer;
     min-width: fit-content;
 
-    span {
-      display: inline-flex;
-      flex-direction: column;
-      justify-content: space-between;
-      text-decoration: none;
+    > div {
+      > span {
+        display: inline-flex;
+        flex-direction: column;
+        justify-content: space-between;
+        text-decoration: none;
 
-      :after {
-        content: attr(data-text);
-        content: attr(data-text) / "";
-        height: 0;
-        visibility: hidden;
-        overflow: hidden;
-        user-select: none;
-        pointer-events: none;
+        :after {
+          content: attr(data-text);
+          content: attr(data-text) / "";
+          height: 0;
+          visibility: hidden;
+          overflow: hidden;
+          user-select: none;
+          pointer-events: none;
+          font-weight: 700;
+        }
+      }
+      :hover {
         font-weight: 700;
       }
     }
-    :hover span {
-      font-weight: 700;
+
+    > div {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .dropdown {
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      top: 70px;
+      left: 167px;
+      justify-content: space-evenly;
+      align-items: flex-start;
+      max-width: 224px;
+      width: 100%;
+      height: 96px;
+      background: #ffffff;
+      border: 1px solid #000000;
+      box-shadow: 0px 2.85227px 2.85227px rgba(0, 0, 0, 0.04);
+      border-radius: 4px;
+      padding: 8px;
+      z-index: 15;
+
+      li {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 100%;
+        width: 98%;
+        cursor: pointer;
+        border-radius: 4px;
+        padding-left: 8px;
+
+        > div {
+          > div {
+            display: flex;
+            gap: 24px;
+          }
+          display: flex;
+          gap: 16px;
+          align-items: center;
+        }
+
+        > img {
+          visibility: hidden;
+          padding-right: 16px;
+        }
+
+        :hover {
+          background-color: #f3f3f3;
+          > img {
+            visibility: visible;
+            text-align: end;
+          }
+        }
+
+        span {
+          color: black !important;
+        }
+      }
     }
   }
 
@@ -201,26 +271,63 @@ const DeblockAddress = styled.div`
 `;
 
 const Footer = () => {
-  const { t } = useTranslation("footer");
-
+  const { t, i18n } = useTranslation("footer");
   const router = useRouter();
+
+  const [openDropdown, setOpenDropdown] = useState(false);
+  // const [selectedCountry, setSelectedCountry] = useState();
 
   const onToggleLanguageClick = (newLocale: string) => {
     const { pathname, asPath, query } = router;
     router.push({ pathname, query }, router.asPath, { locale: newLocale });
   };
 
+  const CountrySelected = () => {
+    if (i18n.language.includes("fr")) {
+      return (
+        <div onClick={() => setOpenDropdown(!openDropdown)}>
+          <Image src={FlagFr} alt="French flag" />
+          <span>France</span>
+          <Image src={Triangle} alt="Triangle down" />
+        </div>
+      );
+    } else if (i18n.language.includes("en")) {
+      return (
+        <div onClick={() => setOpenDropdown(!openDropdown)}>
+          <Image src={FlagEn} alt="French flag" />
+          <span>{t("United Kingdom")}</span>
+          <Image src={Triangle} alt="Triangle down" />
+        </div>
+      );
+    }
+  };
+
   return (
     <FooterContainer>
       <FooterHeader>
         <Image src={LogoFooter} alt="Logo deblock" />
-        <div onClick={() => onToggleLanguageClick("en")}>
-          <Image src={FlagEn} alt="Uk flag" />
-          <span data-text={t("United Kingdom")}>{t("United Kingdom")}</span>
-        </div>
-        <div onClick={() => onToggleLanguageClick("fr-FR")}>
-          <Image src={FlagFr} alt="French flag" />
-          <span data-text="Français">France</span>
+        <div className="country-selected">
+          {CountrySelected()}
+          {openDropdown && (
+            <ul className="dropdown">
+              <li onClick={() => onToggleLanguageClick("en")}>
+                <div>
+                  <Image src={FlagEn} alt="Uk flag" />
+                  <span data-text={t("United Kingdom")}>
+                    {t("United Kingdom")}
+                  </span>
+                </div>
+                <Image src={Arrow} alt="Arrow right" />
+              </li>
+              <li onClick={() => onToggleLanguageClick("fr-FR")}>
+                <div>
+                  <Image src={FlagFr} alt="French flag" />
+                  <span data-text="Français">France</span>
+                </div>
+                <Image src={Arrow} alt="Arrow right" />
+              </li>
+            </ul>
+          )}
         </div>
       </FooterHeader>
       <LinksContainer>
@@ -238,12 +345,12 @@ const Footer = () => {
               </Link>
             </li>
             <li>
-              <Link href="/about-us" data-text="About">
+              <Link href="/about-us" data-text={t("About")}>
                 {t("About")}
               </Link>
             </li>
             <li>
-              <Link href="/press" data-text="Press">
+              <Link href="/press" data-text={t("Press")}>
                 {t("Press")}
               </Link>
             </li>
@@ -252,13 +359,13 @@ const Footer = () => {
                 href="https://apply.workable.com/deblock"
                 target="_blank"
                 rel="noreferrer"
-                data-text="Career"
+                data-text={t("Career")}
               >
                 {t("Career")}
               </a>
             </li>
             <li>
-              <Link href="/support" data-text="Career">
+              <Link href="/support" data-text={t("Contact")}>
                 {t("Contact")}
               </Link>
             </li>
@@ -268,17 +375,17 @@ const Footer = () => {
           <h4>{t("Product")}</h4>
           <ul>
             <li>
-              <Link href="/product" data-text="Features">
+              <Link href="/product" data-text={t("Features")}>
                 {t("Features")}
               </Link>
             </li>
             <li>
-              <Link href="/ncw" data-text="Non-custodial wallet">
+              <Link href="/ncw" data-text={t("Non-custodial wallet")}>
                 {t("Non-custodial wallet")}
               </Link>
             </li>
             <li>
-              <Link href="/pricing" data-text="Pricing plan">
+              <Link href="/pricing" data-text={t("Pricing plan")}>
                 {t("Pricing plan")}
               </Link>
             </li>
@@ -304,7 +411,7 @@ const Footer = () => {
           <h4>{t("Help")}</h4>
           <ul>
             <li>
-              <Link href="/support" data-text="Contact">
+              <Link href="/support" data-text={t("Contact-2")}>
                 {t("Contact-2")}
               </Link>
             </li>
@@ -339,17 +446,17 @@ const Footer = () => {
           <h4>{t("Legal & Compliance")}</h4>
           <ul>
             <li>
-              <Link href="/terms-and-policies" data-text="Website terms">
+              <Link href="/terms-and-policies" data-text={t("Website terms")}>
                 {t("Website terms")}
               </Link>
             </li>
             <li>
-              <Link href="/legal" data-text="Legal Agreements">
+              <Link href="/legal" data-text={t("Legal Agreements")}>
                 {t("Legal Agreements")}
               </Link>
             </li>
             <li>
-              <Link href="/privacy" data-text="Privacy">
+              <Link href="/privacy" data-text={t("Privacy")}>
                 {t("Privacy")}
               </Link>
             </li>

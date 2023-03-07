@@ -1,16 +1,25 @@
 import "../styles/globals.css";
 
 import type { AppProps } from "next/app";
-// import "../i18n/i18n";
-import { appWithTranslation } from "next-i18next";
+import { appWithTranslation, useTranslation } from "next-i18next";
 import Header from "../src/components/Header";
 import Footer from "../src/components/Footer";
 import Head from "next/head";
-import { GlobalContext, GlobalContextProvider } from "../context/globalContext";
-import { Suspense, useCallback, useContext, useState } from "react";
+import { GlobalContextProvider } from "../context/globalContext";
+import { Suspense, useCallback, useState } from "react";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { GetStaticProps } from "next";
+
+// export const getStaticProps: GetStaticProps = async ({ locale }) => {
+//   return {
+//     props: {
+//       ...(await serverSideTranslations(locale!, ["footer"])),
+//     },
+//   };
+// };
 
 function App({ Component, pageProps }: AppProps) {
-  // const { openModal, setOpenModal } = useContext(GlobalContext);
+  // const { t } = useTranslation("footer");
 
   const [whitelistEmail, setWhitelistEmail] = useState("");
   const [openModal, setOpenModal] = useState(false);
