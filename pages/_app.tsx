@@ -42,18 +42,18 @@ function App({ Component, pageProps }: AppProps) {
       </Head>
 
       <GlobalContextProvider>
-        <Suspense fallback="loading">
-          <Header displayModal={displayModal} />
-          <Component
-            {...pageProps}
-            displayModal={displayModal}
-            whitelistEmail={whitelistEmail}
-            setWhitelistEmail={setWhitelistEmail}
-            openModal={openModal}
-            setOpenModal={setOpenModal}
-          />
-          <Footer />
-        </Suspense>
+        {/* <Suspense fallback="loading"> */}
+        <Header displayModal={displayModal} />
+        <Component
+          {...pageProps}
+          displayModal={displayModal}
+          whitelistEmail={whitelistEmail}
+          setWhitelistEmail={setWhitelistEmail}
+          openModal={openModal}
+          setOpenModal={setOpenModal}
+        />
+        <Footer />
+        {/* </Suspense> */}
       </GlobalContextProvider>
     </>
   );
