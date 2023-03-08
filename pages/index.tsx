@@ -1209,7 +1209,7 @@ const Home = ({
   }, [openModal, setOpenModal]);
 
   const lottieRef = useRef<any>(null);
-  const doublPhoneRef = useRef<any>(null);
+  const doublePhoneRef = useRef<any>(null);
   const { ref: myRef, inView: renderSafeAccount } = useInView();
 
   useEffect(() => {
@@ -1220,10 +1220,24 @@ const Home = ({
     }
   }, [renderSafeAccount]);
 
+  // doublePhoneRef.current && doublePhoneRef.current.stop();
+
+  const Example = () => {
+    const options = {
+      animationData: frAssets ? DoublePhoneFr : DoublePhoneEn,
+      loop: false,
+      autoplay: false,
+      lottieRef: doublePhoneRef,
+    };
+    const { View } = useLottie(options);
+    return View;
+  };
+
   useEffect(() => {
     setTimeout(() => {
-      doublPhoneRef?.current?.play();
-    }, 5000);
+      console.log("Timeout");
+      doublePhoneRef.current.play();
+    }, 2000);
   }, []);
 
   return (
@@ -1237,16 +1251,17 @@ const Home = ({
           />
         )}
         <div className="double-phone-container">
-          <Lottie
-            lottieRef={doublPhoneRef}
+          {/* <Lottie
+            lottieRef={doublePhoneRef}
             animationData={frAssets ? DoublePhoneFr : DoublePhoneEn}
             loop={false}
             autoPlay={false}
-          />
+          /> */}
+          <Example />
           <FirstContainer>
             <div className="image-container">
               <Lottie
-                lottieRef={doublPhoneRef}
+                lottieRef={doublePhoneRef}
                 animationData={frAssets ? DoublePhoneFr : DoublePhoneEn}
                 loop={false}
                 autoPlay={false}

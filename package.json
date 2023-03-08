@@ -33,6 +33,7 @@
     "react-intersection-observer": "^9.4.3",
     "react-notion-x": "^6.16.0",
     "react-scroll-motion": "^0.3.2",
+    "react-spring": "^9.7.1",
     "simplex-noise": "^4.0.1",
     "styled-components": "^5.3.6",
     "typescript": "4.9.4",

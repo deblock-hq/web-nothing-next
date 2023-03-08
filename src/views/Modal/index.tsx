@@ -12,10 +12,12 @@ import Popup from "../../components/Popup";
 import { useTranslation } from "next-i18next";
 import { Loader } from "../../components/Loader";
 
-import dynamic from "next/dynamic";
-const AnimatedNumbers = dynamic(() => import("react-animated-numbers"), {
-  ssr: false,
-});
+import AnimatedNumbers from "../../components/AnimatedNumbers";
+
+// import dynamic from "next/dynamic";
+// const AnimatedNumbers = dynamic(() => import("react-animated-numbers"), {
+//   ssr: false,
+// });
 
 interface Props {
   step: string;
@@ -133,6 +135,11 @@ const ModalContainer = styled.div`
             background-color: white;
             box-shadow: 3px 3px 0px 0px rgb(0 0 0);
             min-width: 46px;
+
+            > div {
+              font-size: 58px;
+              height: 84px;
+            }
           }
         }
       }
@@ -921,8 +928,10 @@ const Modal = ({
                     <div key={i}>{n}</div>
                   ))} */}
                 <AnimatedNumbers
-                  animateToNumber={currentPosition!}
-                  fontStyle={{ fontSize: 58, height: "84px" }}
+                  animateToNumber={currentPosition ? currentPosition : 0}
+                  // fontStyle={{ fontSize: 58, minHeight: "84px" }}
+                  includeComma={false}
+                  locale={""}
                   configs={[
                     { mass: 1, tension: 130, friction: 40 },
                     { mass: 2, tension: 140, friction: 40 },
