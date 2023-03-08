@@ -316,7 +316,7 @@ const Footer = () => {
 
   return (
     <FooterContainer>
-      {/* <FooterHeader>
+      <FooterHeader>
         <Image src={LogoFooter} alt="Logo deblock" />
         <div className="country-selected">
           {CountrySelected()}
@@ -341,8 +341,8 @@ const Footer = () => {
             </ul>
           )}
         </div>
-      </FooterHeader> */}
-      {/* <LinksContainer>
+      </FooterHeader>
+      <LinksContainer>
         <Company>
           <h4>{t("Company")}</h4>
           <ul>
@@ -463,8 +463,8 @@ const Footer = () => {
             </li>
           </ul>
         </LegalCompliance>
-      </LinksContainer> */}
-      {/* <div className="community">
+      </LinksContainer>
+      <div className="community">
         <span>{t("Join our community")}</span>
         <a href="">
           <Image src={Instagram} alt="Instagram logo" />
@@ -479,7 +479,7 @@ const Footer = () => {
         <a href="">
           <Image src={Linkedin} alt="Linkedin" />
         </a>
-      </div> */}
+      </div>
 
       <DeblockAddress>
         Deblock LTD, 8-14 Verulam St, London WC1X 8LZ United Kingdom
