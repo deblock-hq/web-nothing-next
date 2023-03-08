@@ -1222,23 +1222,23 @@ const Home = ({
 
   // doublePhoneRef.current && doublePhoneRef.current.stop();
 
-  const Example = () => {
-    const options = {
-      animationData: frAssets ? DoublePhoneFr : DoublePhoneEn,
-      loop: false,
-      autoplay: false,
-      lottieRef: doublePhoneRef,
-    };
-    const { View } = useLottie(options);
-    return View;
-  };
+  // const Example = () => {
+  //   const options = {
+  //     animationData: frAssets ? DoublePhoneFr : DoublePhoneEn,
+  //     loop: false,
+  //     autoplay: false,
+  //     lottieRef: doublePhoneRef,
+  //   };
+  //   const { View } = useLottie(options);
+  //   return View;
+  // };
 
-  useEffect(() => {
-    setTimeout(() => {
-      console.log("Timeout");
-      doublePhoneRef.current.play();
-    }, 2000);
-  }, []);
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     console.log("Timeout");
+  //     doublePhoneRef.current.play();
+  //   }, 2000);
+  // }, []);
 
   return (
     <div>
@@ -1251,20 +1251,20 @@ const Home = ({
           />
         )}
         <div className="double-phone-container">
-          {/* <Lottie
+          <Lottie
             lottieRef={doublePhoneRef}
             animationData={frAssets ? DoublePhoneFr : DoublePhoneEn}
             loop={false}
-            autoPlay={false}
-          /> */}
-          <Example />
+            autoPlay={true}
+          />
+          {/* <Example /> */}
           <FirstContainer>
             <div className="image-container">
               <Lottie
                 lottieRef={doublePhoneRef}
                 animationData={frAssets ? DoublePhoneFr : DoublePhoneEn}
                 loop={false}
-                autoPlay={false}
+                autoPlay={true}
               />
             </div>
             <div className="text-container">

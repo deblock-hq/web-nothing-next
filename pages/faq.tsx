@@ -5,6 +5,12 @@ import { devices } from "../src/utils/devices";
 import styled from "styled-components";
 import { v4 as uuidv4 } from "uuid";
 import Blob from "../src/views/Blob";
+import { useTranslation } from "react-i18next";
+import Mail from "../src/assets/support/mail.svg";
+import Lottie from "lottie-react";
+import SupportAnimation from "../src/assets/lottie/landing/SupportEn.json";
+import { GetStaticProps } from "next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 const Container = styled.div`
   background-color: #fbfaf9;
@@ -79,15 +85,104 @@ const NCWContainer = styled.div`
   }
 `;
 
+const SupportContainer = styled.div`
+  padding: 72px 24px;
+  z-index: 2;
+
+  * {
+    z-index: 4;
+  }
+
+  h1 {
+    font-size: 48px;
+    line-height: 57px;
+    text-align: center;
+    padding-bottom: 70px;
+  }
+
+  h2 {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 28px;
+    text-align: center;
+  }
+
+  p {
+    font-size: 16px;
+    line-height: 38px;
+    text-align: center;
+  }
+
+  > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+
+    > div {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 60px;
+      max-width: 408px;
+      max-height: 398px;
+      background: #ffffff;
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.04);
+      border-radius: 30px;
+      padding: 63px 0px;
+      width: 100%;
+
+      svg {
+        max-height: 121px;
+      }
+
+      @media ${devices.tabletMax} {
+        gap: 21px;
+      }
+    }
+  }
+
+  @media ${devices.tabletMax} {
+    > div {
+      flex-direction: column;
+      gap: 16px;
+    }
+    h1 {
+      font-size: 30px;
+      padding-bottom: 32px;
+    }
+    h2 {
+      font-size: 20px;
+    }
+    p {
+      font-size: 16px;
+    }
+  }
+`;
+
+export const getStaticProps: GetStaticProps = async ({ locale }) => {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale!, ["support"])),
+    },
+  };
+};
+
 interface BlockProps {
   [key: string]: {
+    title: string;
     [key: string]: any;
   };
 }
 
 const Faq = () => {
-  const [data, setData] = useState();
+  const { t, i18n } = useTranslation("support");
+
   const [block, setBlock] = useState<BlockProps[]>([]);
+
+  const detectLanguage =
+    i18n.language && i18n.language.includes("fr") ? "fr" : "en";
 
   useEffect(() => {
     axios
@@ -100,150 +195,72 @@ const Faq = () => {
         },
         params: {
           page: {
-            lang: "en",
+            lang: `${detectLanguage}`,
           },
         },
       })
       .then(async (res) => {
         console.log("faq res", res);
-        setBlock(res.data.result.results);
+        setBlock(res.data.result);
       })
       .catch((err) => {
-        console.log("t&faq err", err);
+        console.log("faq err", err);
       });
-  }, [data]);
+  }, [detectLanguage]);
 
-  if (block) {
-    const DisplayBlock = block.map((b, i) => {
-      if (b.heading_1) {
-        return (
-          <h1 key={uuidv4()}>
-            {b.heading_1.rich_text[0] && b.heading_1.rich_text[0].plain_text}
-          </h1>
-        );
-      }
-      if (b.heading_2) {
-        return (
-          <h2 key={uuidv4()}>
-            {b.heading_2.rich_text[0] && b.heading_2.rich_text[0].plain_text}
-          </h2>
-        );
-      }
-      if (b.paragraph && b.paragraph.rich_text.length === 0) {
-        return <br key={uuidv4()} />;
-      } else if (b.paragraph && b.paragraph.rich_text.length > 0) {
-        return (
-          <p key={uuidv4()}>
-            {b.paragraph.rich_text.map(
-              (r: {
-                plain_text: string;
-                annotations: { [key: string]: boolean | any };
-              }) => {
-                const styles = r.annotations;
-                const backgroundColor =
-                  styles.color !== "default" && styles.color.split("_")[0];
-
-                const ApplyStyle = {
-                  ...(styles!.bold
-                    ? {
-                        fontWeight: "bold",
-                      }
-                    : {}),
-                  ...(styles.italic
-                    ? {
-                        fontStyle: "italic",
-                      }
-                    : {}),
-                  ...(styles.strikethrough
-                    ? {
-                        textDecoration: "line-through",
-                      }
-                    : {}),
-                  ...(styles.underline
-                    ? {
-                        textDecoration: "underline",
-                      }
-                    : {}),
-                  ...(styles.color
-                    ? {
-                        backgroundColor:
-                          backgroundColor === "yellow"
-                            ? "rgb(254, 213, 77)"
-                            : backgroundColor === "orange"
-                            ? "rgb(249, 219, 175)"
-                            : backgroundColor === "blue"
-                            ? "rgb(199, 223, 252)"
-                            : backgroundColor === "green"
-                            ? "rgb(213, 252, 197)"
-                            : "",
-                      }
-                    : {}),
-                };
-
-                return (
-                  <span key={uuidv4()} style={ApplyStyle}>
-                    {r.plain_text}
-                  </span>
-                );
-              }
-            )}
+  return (
+    <Container>
+      <NCWContainer>
+        <div>
+          <h1>Frequently Asked Questions</h1>
+          <p>
+            New to Deblock and got questions? Hopefully we can answer them
+            below!
           </p>
-        );
-      }
-      if (b.image) {
-        return (
-          <div key={uuidv4()}>
-            {b.image.file && (
-              <Image
-                src={b.image.file.url}
-                alt=""
-                style={{ width: "728px", height: "auto", paddingLeft: "48px" }}
-                width={728}
-                height={0}
-              />
-            )}
-            {b.image.caption && b.image.caption[0] && (
-              <span>{b.image.caption[0].plain_text}</span>
-            )}
-          </div>
-        );
-      }
-      if (b.bulleted_list_item) {
-        return (
-          <ul key={uuidv4()}>
-            <li>{b.bulleted_list_item.rich_text[0].plain_text}</li>
-          </ul>
-        );
-      }
-      if (b.numbered_list_item) {
-        return (
-          <ol key={uuidv4()}>
-            <li>
-              {b.numbered_list_item.rich_text[0] &&
-                b.numbered_list_item.rich_text[0].plain_text}
-            </li>
-          </ol>
-        );
-      }
-    });
-    return (
-      <Container>
-        <NCWContainer>
+        </div>
+        {/* {DisplayBlock} */}
+        {/* {block &&
+          block.map((b, i) => {
+            return (
+              <div key={i}>
+                <h3>{b.title}</h3>
+                {
+                    b.map((p,i) => {
+                        return(
+                            <p>{p}</p>
+                        )
+                    })
+                }
+              </div>
+            );
+          })} */}
+
+        <SupportContainer>
+          <h1>{t("title")}</h1>
           <div>
-            <h1>Frequently Asked Questions</h1>
-            <p>
-              New to Deblock and got questions? Hopefully we can answer them
-              below!
-            </p>
+            <div>
+              <Image src={Mail} alt="mail" />
+              <div>
+                <h2>support@deblock.com</h2>
+                <p>{t("mail")}</p>
+              </div>
+            </div>
+            <div>
+              <Lottie animationData={SupportAnimation} />
+              <div>
+                <h2>{t("chat")}</h2>
+                <p>{t("chat-available")}</p>
+              </div>
+            </div>
           </div>
-          {DisplayBlock}
-        </NCWContainer>
-        {/* <Blob className="blob-left" color="#F2E1FF" />
+        </SupportContainer>
+      </NCWContainer>
+      {/* <Blob className="blob-left" color="#F2E1FF" />
         <Blob className="blob-top" color="#FDB281" />
         <Blob className="blob-right" color="#FDE3A3" /> */}
-      </Container>
-    );
-  }
+    </Container>
+  );
 };
+// };
 
 export default Faq;

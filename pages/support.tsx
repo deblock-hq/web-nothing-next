@@ -1,10 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 
-import Mail from "../src/assets/support/mail.svg";
 import Image from "next/image";
 import { devices } from "../src/utils/devices";
 import Blob from "../src/views/Blob";
+import Mail from "../src/assets/support/mail.svg";
 import Lottie from "lottie-react";
 import SupportAnimation from "../src/assets/lottie/landing/SupportEn.json";
 import ContactDeblock from "../src/components/ContactDeblock";
