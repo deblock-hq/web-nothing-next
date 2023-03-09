@@ -10,9 +10,6 @@ const nextConfig = {
   compiler: {
     styledComponents: true,
   },
-  experimental: {
-    forceSwcTransforms: false,
-  },
 
   images: {
     remotePatterns: [

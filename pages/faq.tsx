@@ -5,15 +5,34 @@ import { devices } from "../src/utils/devices";
 import styled from "styled-components";
 import { v4 as uuidv4 } from "uuid";
 import Blob from "../src/views/Blob";
-import { useTranslation } from "react-i18next";
+import { useTranslation } from "next-i18next";
 import Mail from "../src/assets/support/mail.svg";
+import Arrow from "../src/assets/down.svg";
 import Lottie from "lottie-react";
 import SupportAnimation from "../src/assets/lottie/landing/SupportEn.json";
+import Rocket from "../src/assets/lottie/nft/rocket.json";
+import Airdrop from "../src/assets/lottie/nft/airdrop.json";
 import { GetStaticProps } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 const Container = styled.div`
   background-color: #fbfaf9;
+  position: relative;
+  overflow: hidden;
+
+  .Blob {
+    position: absolute;
+  }
+  .blob-top {
+    max-width: 614px;
+    left: 280px;
+  }
+
+  .blob-right {
+    top: 0;
+    max-width: 514px;
+    right: -350px;
+  }
 `;
 
 const NCWContainer = styled.div`
@@ -36,43 +55,61 @@ const NCWContainer = styled.div`
     padding-bottom: 16px;
     max-width: 706px;
     padding: 44px 0 16px 0;
+    text-align: center;
   }
 
   h2 {
-    font-style: normal;
+    font-size: 40px;
+    line-height: 57px;
+
+    text-align: center;
+    letter-spacing: 0.16px;
+  }
+
+  h3 {
     font-weight: 700;
-    font-size: 34px;
-    line-height: 41px;
-    max-width: 724px;
-    padding: 44px 0 16px 0;
+    font-size: 18px;
+    line-height: 28px;
   }
 
   p {
-    font-size: 21px;
-    line-height: 41px;
-    letter-spacing: 0.084px;
-    padding-bottom: 16px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 30px;
+    color: #333333;
   }
 
-  svg {
+  .title-container {
+    padding-bottom: 130px;
+
+    p {
+      font-weight: 500;
+      font-size: 22px;
+      line-height: 28px;
+      text-align: center;
+    }
+  }
+  /* svg {
     max-width: 728px;
-  }
+  } */
 
-  .human-error {
-    padding-top: 40px;
-
-    h2 {
-      padding-bottom: 20px;
-    }
-  }
-
-  .human-error p,
-  .liste-container {
-    max-width: 724px;
-    padding-left: 68px;
+  .animation {
+    position: absolute;
+    max-width: 200px;
+    z-index: 5;
     @media ${devices.tabletMax} {
-      padding-left: 0;
+      display: none;
     }
+  }
+
+  .rocket {
+    top: 150px;
+    left: 70px;
+  }
+
+  .airdrop {
+    top: 630px;
+    right: 140px;
   }
 
   @media ${devices.tabletMax} {
@@ -85,32 +122,67 @@ const NCWContainer = styled.div`
   }
 `;
 
+const FaqContainer = styled.div`
+  max-width: 762px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  padding-bottom: 40px;
+
+  > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 36px 30px;
+    gap: 18px;
+    cursor: pointer;
+    background: #ffffff;
+    border: 1px solid #000000;
+    border-radius: 14px;
+
+    h4 {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    p {
+      line-height: 30px;
+      color: #707070;
+    }
+
+    img {
+      rotate: -90deg;
+    }
+  }
+
+  > div.active {
+    box-shadow: 2px 2px 0px 0px rgb(0 0 0);
+
+    img {
+      rotate: 0deg;
+    }
+  }
+`;
+
 const SupportContainer = styled.div`
   padding: 72px 24px;
   z-index: 2;
 
-  * {
-    z-index: 4;
-  }
-
-  h1 {
-    font-size: 48px;
-    line-height: 57px;
+  h3 {
+    font-weight: 600;
+    font-size: 20.3563px;
+    line-height: 20px;
     text-align: center;
-    padding-bottom: 70px;
   }
 
-  h2 {
-    font-weight: 700;
-    font-size: 16px;
+  > p {
+    font-weight: 500;
+    font-size: 22px;
     line-height: 28px;
     text-align: center;
-  }
-
-  p {
-    font-size: 16px;
-    line-height: 38px;
-    text-align: center;
+    padding-bottom: 50px;
   }
 
   > div {
@@ -169,17 +241,10 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
   };
 };
 
-interface BlockProps {
-  [key: string]: {
-    title: string;
-    [key: string]: any;
-  };
-}
-
 const Faq = () => {
   const { t, i18n } = useTranslation("support");
 
-  const [block, setBlock] = useState<BlockProps[]>([]);
+  const [block, setBlock] = useState<any[]>([]);
 
   const detectLanguage =
     i18n.language && i18n.language.includes("fr") ? "fr" : "en";
@@ -211,56 +276,91 @@ const Faq = () => {
   return (
     <Container>
       <NCWContainer>
-        <div>
-          <h1>Frequently Asked Questions</h1>
+        <div className="title-container">
+          <h1>{t("Frequently Asked Questions")}</h1>
           <p>
-            New to Deblock and got questions? Hopefully we can answer them
-            below!
+            {t(
+              "New to Deblock and got questions? Hopefully we can answer them below!"
+            )}
           </p>
         </div>
-        {/* {DisplayBlock} */}
-        {/* {block &&
-          block.map((b, i) => {
-            return (
-              <div key={i}>
-                <h3>{b.title}</h3>
-                {
-                    b.map((p,i) => {
-                        return(
-                            <p>{p}</p>
-                        )
-                    })
-                }
-              </div>
-            );
-          })} */}
+
+        <Lottie
+          className="animation rocket"
+          animationData={Rocket}
+          autoPlay={false}
+          loop={true}
+        />
+        <Lottie
+          className="animation airdrop"
+          animationData={Airdrop}
+          autoPlay={false}
+          loop={true}
+        />
+
+        <FaqContainer>
+          {block &&
+            block.map((b, i) => {
+              return (
+                <ToggleItem key={i} question={b.title} answer={b} id={i} />
+              );
+            })}
+        </FaqContainer>
 
         <SupportContainer>
-          <h1>{t("title")}</h1>
+          <h2>{t("Still need help?")}</h2>
+          <p>{t("You can email us or chat with us:")}</p>
           <div>
             <div>
               <Image src={Mail} alt="mail" />
               <div>
-                <h2>support@deblock.com</h2>
+                <h3>support@deblock.com</h3>
                 <p>{t("mail")}</p>
               </div>
             </div>
             <div>
               <Lottie animationData={SupportAnimation} />
               <div>
-                <h2>{t("chat")}</h2>
+                <h3>{t("chat")}</h3>
                 <p>{t("chat-available")}</p>
               </div>
             </div>
           </div>
         </SupportContainer>
       </NCWContainer>
-      {/* <Blob className="blob-left" color="#F2E1FF" />
-        <Blob className="blob-top" color="#FDB281" />
-        <Blob className="blob-right" color="#FDE3A3" /> */}
+      <Blob className="blob-left" color="#F2E1FF" />
+      <Blob className="blob-top" color="#FDB281" />
+      <Blob className="blob-right" color="#FDE3A3" />
     </Container>
   );
 };
 // };
 
 export default Faq;
+
+const ToggleItem = ({
+  question,
+  answer,
+  id,
+}: {
+  question: string;
+  answer: any;
+  id: number;
+}) => {
+  const [toggleThisElement, setToggleThisElement] = useState(false);
+  return (
+    <div key={id} className={toggleThisElement ? "active" : ""}>
+      <h4 onClick={() => setToggleThisElement((prev) => !prev)}>
+        {question}
+        <Image src={Arrow} alt="Toggle" />
+      </h4>
+      {toggleThisElement && (
+        <>
+          {answer.paragraphs.map((p: string, i: number) => (
+            <p key={i}>{p}</p>
+          ))}
+        </>
+      )}
+    </div>
+  );
+};
