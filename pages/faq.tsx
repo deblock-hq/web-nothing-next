@@ -44,6 +44,7 @@ const NCWContainer = styled.div`
   font-size: 21px;
   line-height: 41px;
   padding: 72px 24px 24px 24px;
+  position: relative;
 
   * {
     z-index: 2;
@@ -56,6 +57,7 @@ const NCWContainer = styled.div`
     max-width: 706px;
     padding: 44px 0 16px 0;
     text-align: center;
+    margin: auto;
   }
 
   h2 {
@@ -103,13 +105,13 @@ const NCWContainer = styled.div`
   }
 
   .rocket {
-    top: 150px;
-    left: 70px;
+    top: 210px;
+    left: -180px;
   }
 
   .airdrop {
-    top: 630px;
-    right: 140px;
+    top: 580px;
+    right: -130px;
   }
 
   @media ${devices.tabletMax} {
@@ -185,7 +187,7 @@ const SupportContainer = styled.div`
   h3 {
     font-weight: 600;
     font-size: 20.3563px;
-    line-height: 20px;
+    line-height: 28px;
     text-align: center;
   }
 
@@ -217,8 +219,12 @@ const SupportContainer = styled.div`
       padding: 63px 0px;
       width: 100%;
 
+      p {
+        text-align: center;
+      }
+
       svg {
-        max-height: 121px;
+        max-height: 108px;
       }
 
       @media ${devices.tabletMax} {
