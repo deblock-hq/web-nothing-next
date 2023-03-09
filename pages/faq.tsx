@@ -130,6 +130,18 @@ const FaqContainer = styled.div`
   gap: 25px;
   padding-bottom: 40px;
 
+  i {
+    font-style: italic;
+  }
+
+  b {
+    font-weight: 600;
+  }
+
+  u {
+    text-decoration: underline;
+  }
+
   > div {
     display: flex;
     flex-direction: column;
@@ -348,6 +360,14 @@ const ToggleItem = ({
   id: number;
 }) => {
   const [toggleThisElement, setToggleThisElement] = useState(false);
+  function parseMarkdown(markdownText: string) {
+    const htmlText = markdownText
+      .replace(/\*\*(.*)\*\*/gim, "<b>$1</b>")
+      .replace(/\_(.*)\_/gim, "<u>$1</u>")
+      .replace(/\*(.*)\*/gim, "<i>$1</i>");
+    return htmlText.trim();
+  }
+
   return (
     <div key={id} className={toggleThisElement ? "active" : ""}>
       <h4 onClick={() => setToggleThisElement((prev) => !prev)}>
@@ -357,7 +377,10 @@ const ToggleItem = ({
       {toggleThisElement && (
         <>
           {answer.paragraphs.map((p: string, i: number) => (
-            <p key={i}>{p}</p>
+            <p
+              key={i}
+              dangerouslySetInnerHTML={{ __html: parseMarkdown(p) }}
+            ></p>
           ))}
         </>
       )}
