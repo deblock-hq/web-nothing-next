@@ -7,11 +7,11 @@
 <rect x="55.8125" y="0.992188" width="165.859" height="247.461" rx="12.4906" transform="rotate(12.54 55.8125 0.992188)" fill="#FFA4D4"/>
 </mask>
 <g mask="url(#mask0_7896_75877)">
-<rect x="50.8438" y="10" width="165.859" height="247.461" rx="12" transform="rotate(12.54 50.8438 10)" fill="url(#pattern0)"/>
-<path d="M134.314 49.9087C134.896 47.28 137.499 45.6211 140.128 46.2033L144.237 47.1134L141.25 60.5972L132.382 58.6329L134.314 49.9087Z" fill="white" fill-opacity="0.8" stroke="#BBBBBB" stroke-width="0.25"/>
-<path d="M163.359 56.3429C163.941 53.7143 162.282 51.1113 159.654 50.5291L155.545 49.619L152.558 63.1028L161.427 65.0671L163.359 56.3429Z" fill="white" fill-opacity="0.8" stroke="#BBBBBB" stroke-width="0.25"/>
-<path d="M130.203 68.4578C129.621 71.0865 131.28 73.6895 133.909 74.2717L138.017 75.1818L141.004 61.698L132.136 59.7337L130.203 68.4578Z" fill="white" fill-opacity="0.8" stroke="#BBBBBB" stroke-width="0.25"/>
-<path d="M159.248 74.8921C158.666 77.5207 156.063 79.1797 153.434 78.5975L149.326 77.6874L152.312 64.2036L161.181 66.1679L159.248 74.8921Z" fill="white" fill-opacity="0.8" stroke="#BBBBBB" stroke-width="0.25"/>
+<rect x="51.2233" y="10.5966" width="164.859" height="246.461" rx="11.5" transform="rotate(12.54 51.2233 10.5966)" fill="url(#pattern0)" stroke="#FFA4D4"/>
+<path d="M140.128 46.2033L144.237 47.1134L141.25 60.5972L132.382 58.6329L134.314 49.9087C134.896 47.28 137.499 45.6211 140.128 46.2033Z" fill="white" fill-opacity="0.8" stroke="#BBBBBB" stroke-width="0.25"/>
+<path d="M159.654 50.5291L155.545 49.619L152.558 63.1028L161.427 65.0671L163.359 56.3429C163.941 53.7143 162.282 51.1113 159.654 50.5291Z" fill="white" fill-opacity="0.8" stroke="#BBBBBB" stroke-width="0.25"/>
+<path d="M133.909 74.2717L138.017 75.1818L141.004 61.698L132.136 59.7337L130.203 68.4578C129.621 71.0865 131.28 73.6895 133.909 74.2717Z" fill="white" fill-opacity="0.8" stroke="#BBBBBB" stroke-width="0.25"/>
+<path d="M153.434 78.5975L149.326 77.6874L152.312 64.2036L161.181 66.1679L159.248 74.8921C158.666 77.5207 156.063 79.1797 153.434 78.5975Z" fill="white" fill-opacity="0.8" stroke="#BBBBBB" stroke-width="0.25"/>
 <rect x="145.142" y="47.3131" width="9.75" height="28.75" transform="rotate(12.4889 145.142 47.3131)" fill="white" fill-opacity="0.8" stroke="#BBBBBB" stroke-width="0.25"/>
 </g>
 <path fill-rule="evenodd" clip-rule="evenodd" d="M162.517 257.513L162.27 257.458L164.809 247.207L207.239 56.4493L209.102 46.9102L209.074 47.0334L162.297 257.335L162.27 257.458L162.27 257.459L162.516 257.513L162.517 257.513Z" fill="black"/>
