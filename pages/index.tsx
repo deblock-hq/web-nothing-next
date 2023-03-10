@@ -26,22 +26,14 @@ import { devices } from "../src/utils/devices";
 
 import Blob from "../src/views/Blob";
 import Image from "next/image";
-import Lottie, {
-  LottieRefCurrentProps,
-  useLottie,
-  useLottieInteractivity,
-} from "lottie-react";
+import Lottie from "lottie-react";
 import Link from "next/link";
 import { GetStaticProps } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Modal from "../src/views/Modal";
-import { ScrollAnimation } from "../src/utils/ScrollAnimation";
 import { Trans, useTranslation } from "next-i18next";
 import { useInView } from "react-intersection-observer";
 
-interface Props {
-  animate: boolean;
-}
 
 const LandingContainer = styled.div`
   display: flex;
@@ -181,16 +173,16 @@ const FirstContainer = styled.div`
     max-width: 1152px;
     justify-content: center;
     background-color: white;
-    animation: backgroundFadeIn 0.5s;
+    /* animation: backgroundFadeIn 0.5s; */
 
-    @keyframes backgroundFadeIn {
+    /* @keyframes backgroundFadeIn {
       0% {
         background-color: #fbfaf9;
       }
       100% {
         background-color: #faf5ef;
       }
-    }
+    } */
 
     .blob-left,
     .blob-top,
@@ -584,7 +576,7 @@ const NftContainer = styled.div`
   gap: 32px;
 
   @media ${devices.tablet} {
-    background-color: #FCF5ED;
+    background-color: #fcf5ed;
     border-radius: 30px;
     height: 192px;
     max-width: 1152px;
@@ -601,7 +593,7 @@ const NftContainer = styled.div`
   }
 
   .image-container {
-    background-color: #FCF5ED;
+    background-color: #fcf5ed;
     border-radius: 30px;
     height: 192px;
     text-align: center;
@@ -1093,18 +1085,14 @@ const Tooltip = styled.span`
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
   return {
     props: {
-      ...(await serverSideTranslations(locale!, ["landing"])),
+      ...(await serverSideTranslations(locale!, [
+        "landing",
+        "footer",
+        "modal",
+      ])),
     },
   };
 };
-
-// export async function getStaticPaths() {
-//   return {
-//     paths: [
-//       { params: { ... } } // See the "paths" section below
-//     ],
-//   };
-// }
 
 interface LandingProps {
   displayModal: () => void;
@@ -1219,26 +1207,6 @@ const Home = ({
       lottieRef.current.stop();
     }
   }, [renderSafeAccount]);
-
-  // doublePhoneRef.current && doublePhoneRef.current.stop();
-
-  // const Example = () => {
-  //   const options = {
-  //     animationData: frAssets ? DoublePhoneFr : DoublePhoneEn,
-  //     loop: false,
-  //     autoplay: false,
-  //     lottieRef: doublePhoneRef,
-  //   };
-  //   const { View } = useLottie(options);
-  //   return View;
-  // };
-
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     console.log("Timeout");
-  //     doublePhoneRef.current.play();
-  //   }, 2000);
-  // }, []);
 
   return (
     <div>
