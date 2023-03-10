@@ -16,6 +16,7 @@ import Headline from "../src/assets/backed/headline.svg";
 import Hoxton from "../src/assets/backed/hoxton.svg";
 import Kraken from "../src/assets/backed/kraken.svg";
 import Nft from "../src/assets/backed/nft.svg";
+import Nft2 from "../src/assets/backed/nft2.svg";
 import Salary from "../src/assets/backed/salary.svg";
 import Car from "../src/assets/backed/car.svg";
 import Rent from "../src/assets/backed/rent.svg";
@@ -33,7 +34,6 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Modal from "../src/views/Modal";
 import { Trans, useTranslation } from "next-i18next";
 import { useInView } from "react-intersection-observer";
-
 
 const LandingContainer = styled.div`
   display: flex;
@@ -1325,8 +1325,9 @@ const Home = ({
         </BestAccount>
         <NftContainer>
           <div className="image-container">
-            <div id="panel">
+            <div id="panel" style={{ display: "flex" }}>
               <Image id="panel-container" src={Nft} alt="Nft card" />
+              <Image id="panel-container" src={Nft2} alt="Nft card" />
             </div>
           </div>
           <div className="text-container">
