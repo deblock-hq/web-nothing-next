@@ -1325,9 +1325,9 @@ const Home = ({
         </BestAccount>
         <NftContainer>
           <div className="image-container">
-            <div id="panel" style={{ display: "flex" }}>
-              <Image id="panel-container" src={Nft} alt="Nft card" />
+            <div id="panel">
               <Image id="panel-container" src={Nft2} alt="Nft card" />
+              {/* <Image id="panel-container" src={Nft2} alt="Nft card" /> */}
             </div>
           </div>
           <div className="text-container">
