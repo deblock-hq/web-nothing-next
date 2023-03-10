@@ -315,6 +315,8 @@ const Footer = () => {
     }
   };
 
+  console.log("i18n", i18n.language, i18n.languages);
+
   return (
     <FooterContainer>
       <FooterHeader>
@@ -448,7 +450,7 @@ const Footer = () => {
               </a>
             </li>
             <li>
-              <Link href="" data-text="FAQ">
+              <Link href="/faq" data-text="FAQ">
                 FAQ
               </Link>
             </li>

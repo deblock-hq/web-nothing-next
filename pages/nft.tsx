@@ -23,6 +23,8 @@ import Lottie from "lottie-react";
 import Utility from "../src/assets/lottie/nft/utility.json";
 import { devices } from "../src/utils/devices";
 import VideoPlayer from "../src/components/VideoPlayer";
+import { GetStaticProps } from "next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 const Container = styled.div``;
 const NftContainer = styled.div`
@@ -368,6 +370,15 @@ const CommunityContact = styled.div`
     }
   }
 `;
+
+export const getStaticProps: GetStaticProps = async ({ locale }) => {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale!, ["nft"])),
+      nft: "yes",
+    },
+  };
+};
 
 const Nft = () => {
   const faqList = [
