@@ -6,8 +6,9 @@ import { devices } from "../src/utils/devices";
 import Blob from "../src/views/Blob";
 import Mail from "../src/assets/support/mail.svg";
 import Lottie from "lottie-react";
-import SupportAnimation from "../src/assets/lottie/landing/SupportEn.json";
-import ContactDeblock from "../src/components/ContactDeblock";
+import SupportEn from "../src/assets/lottie/landing/SupportEn.json";
+import SupportFr from "../src/assets/lottie/landing/SupportFr.json";
+
 import { GetStaticProps } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
@@ -21,8 +22,8 @@ const Container = styled.div`
   }
 
   .blob-left {
-    max-width: 800px;
-    top: 0;
+    max-width: 640px;
+    top: 120px;
   }
 
   .blob-right {
@@ -122,7 +123,8 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
 };
 
 const Support = () => {
-  const { t } = useTranslation("support");
+  const { t, i18n } = useTranslation("support");
+  const frAssets = i18n.language.includes("fr");
 
   return (
     <Container>
@@ -137,7 +139,7 @@ const Support = () => {
             </div>
           </div>
           <div>
-            <Lottie animationData={SupportAnimation} />
+            <Lottie animationData={frAssets ? SupportFr : SupportEn} />
             <div>
               <h2>{t("chat")}</h2>
               <p>{t("chat-available")}</p>

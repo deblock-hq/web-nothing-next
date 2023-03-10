@@ -9,7 +9,8 @@ import { useTranslation } from "next-i18next";
 import Mail from "../src/assets/support/mail.svg";
 import Arrow from "../src/assets/down.svg";
 import Lottie from "lottie-react";
-import SupportAnimation from "../src/assets/lottie/landing/SupportEn.json";
+import SupportEn from "../src/assets/lottie/landing/SupportEn.json";
+import SupportFr from "../src/assets/lottie/landing/SupportFr.json";
 import Rocket from "../src/assets/lottie/nft/rocket.json";
 import Airdrop from "../src/assets/lottie/nft/airdrop.json";
 import { GetStaticProps } from "next";
@@ -22,7 +23,12 @@ const Container = styled.div`
 
   .Blob {
     position: absolute;
+
+    @media ${devices.tabletMax} {
+      display: none;
+    }
   }
+
   .blob-top {
     max-width: 614px;
     left: 280px;
@@ -261,6 +267,7 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
 
 const Faq = () => {
   const { t, i18n } = useTranslation("support");
+  const frAssets = i18n.language.includes("fr");
 
   const [block, setBlock] = useState<any[]>([]);
 
@@ -306,14 +313,12 @@ const Faq = () => {
         <Lottie
           className="animation rocket"
           animationData={Rocket}
-          autoPlay={false}
-          loop={true}
+          loop={false}
         />
         <Lottie
           className="animation airdrop"
           animationData={Airdrop}
-          autoPlay={false}
-          loop={true}
+          loop={false}
         />
 
         <FaqContainer>
@@ -337,7 +342,7 @@ const Faq = () => {
               </div>
             </div>
             <div>
-              <Lottie animationData={SupportAnimation} />
+              <Lottie animationData={frAssets ? SupportFr : SupportEn} />
               <div>
                 <h3>{t("chat")}</h3>
                 <p>{t("chat-available")}</p>

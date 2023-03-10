@@ -99,8 +99,8 @@ const TermsPolicies = () => {
         },
         params: {
           filter: {
-            locale: "en",
-            country: "GB",
+            locale: "fr",
+            country: "FR",
             type: "terms",
             page_size: 10,
           },

@@ -8,7 +8,12 @@ import Sun from "../src/assets/nft/sun.svg";
 import Vip from "../src/assets/nft/vip.svg";
 import Hand from "../src/assets/nft/hand.svg";
 import RoadmapImage from "../src/assets/nft/roadmap.svg";
-import Placeholder from "../src/assets/nft/placeholder.svg";
+import Mario from "../src/assets/nft/mario.svg";
+import Pierone from "../src/assets/nft/pierone.svg";
+import Jean from "../src/assets/nft/jean.svg";
+import Adri from "../src/assets/nft/adri.svg";
+import Aaron from "../src/assets/nft/aaron.svg";
+import TwitterCard from "../src/assets/nft/twitter-card.svg";
 import Linkedin from "../src/assets/nft/linkedin.svg";
 import Arrow from "../src/assets/down.svg";
 import Discord from "../src/assets/nft/discord.svg";
@@ -229,10 +234,36 @@ const Team = styled.div`
     padding-bottom: 62px;
   }
 
+  .card-pierone {
+    max-width: 100% !important;
+    > div {
+      > div {
+        justify-content: flex-start !important;
+        gap: 16px;
+      }
+    }
+  }
+
+  .founders {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 16px;
+    row-gap: 60px;
+
+    .card {
+      width: 48.5%;
+    }
+  }
+
+  .card-socials a {
+    padding-right: 8px;
+  }
+
   > div {
     display: flex;
     flex-direction: column;
-    gap: 130px;
+    gap: 60px;
+    max-width: 562px;
 
     .card {
       display: flex;
@@ -285,6 +316,11 @@ const Faq = styled.div`
   flex-direction: column;
   gap: 25px;
   padding-bottom: 180px;
+
+  h2 {
+    text-align: center;
+    padding-bottom: 64px;
+  }
 
   > div {
     display: flex;
@@ -376,9 +412,7 @@ const Nft = () => {
             <p>The first NFT collection of Deblock</p>
           </div>
           {/* <Image src={Bubbles} alt="Bubbles drawing" /> */}
-          <VideoPlayer
-            src="https://cdn1.deblock.com/videos/bubbles.mp4"
-          />
+          <VideoPlayer src="https://cdn1.deblock.com/videos/bubbles.mp4" />
         </HeroContainer>
         <Countdown>
           <h3>Mint available in</h3>
@@ -452,14 +486,19 @@ const Nft = () => {
         <Team>
           <h2>Team</h2>
           <div>
-            <div className="card">
-              <Image src={Placeholder} alt="" />
+            <div className="card card-pierone">
+              <Image src={Pierone} alt="" />
               <div>
                 <div>
                   Pierre Ducos aka. Pierone
-                  <a href="">
-                    <Image src={Linkedin} alt="Linkedin logo" />
-                  </a>
+                  <div className="card-socials">
+                    <a href="">
+                      <Image src={TwitterCard} alt="Twitter logo" />
+                    </a>
+                    <a href="">
+                      <Image src={Linkedin} alt="Linkedin logo" />
+                    </a>
+                  </div>
                 </div>
                 <span>The Artist</span>
                 <p>
@@ -470,43 +509,103 @@ const Nft = () => {
                 </p>
               </div>
             </div>
-            <div className="card">
-              <Image src={Placeholder} alt="" />
-              <div>
+
+            <div className="founders">
+              <div className="card">
+                <Image src={Jean} alt="" />
                 <div>
-                  Jean Meyer
-                  <a href="">
-                    <Image src={Linkedin} alt="Linkedin logo" />
-                  </a>
+                  <div>
+                    Jean Meyer
+                    <div className="card-socials">
+                      <a href="">
+                        <Image src={TwitterCard} alt="Twitter logo" />
+                      </a>
+                      <a href="">
+                        <Image src={Linkedin} alt="Linkedin logo" />
+                      </a>
+                    </div>
+                  </div>
+                  <span>The Product</span>
+                  <p>
+                    Former Head of Crypto @Revolut Created multiple tech
+                    products with 10m+ cumulated active users Entrepreneur with
+                    3x exits. Over $25mm raised.
+                  </p>
                 </div>
-                <span>The Product</span>
-                <p>
-                  Former Head of Crypto @Revolut Created multiple tech products
-                  with 10m+ cumulated active users Entrepreneur with 3x exits.
-                  Over $25mm raised.
-                </p>
               </div>
-            </div>
-            <div className="card">
-              <Image src={Placeholder} alt="" />
-              <div>
+
+              <div className="card">
+                <Image src={Mario} alt="" />
                 <div>
-                  Mario Eguiluz
-                  <a href="">
-                    <Image src={Linkedin} alt="Linkedin logo" />
-                  </a>
+                  <div>
+                    Mario Eguiluz
+                    <div className="card-socials">
+                      <a href="">
+                        <Image src={TwitterCard} alt="Twitter logo" />
+                      </a>
+                      <a href="">
+                        <Image src={Linkedin} alt="Linkedin logo" />
+                      </a>
+                    </div>
+                  </div>
+                  <span>The Tech</span>
+                  <p>
+                    Former Head of Engineering @ Ledger. Contributor in multiple
+                    solidity projects. Former entrepreneur incl. the first
+                    acquisition by Revolut ever.
+                  </p>
                 </div>
-                <span>The Tech</span>
-                <p>
-                  Former Head of Engineering @ Ledger. Contributor in multiple
-                  solidity projects. Former entrepreneur incl. the first
-                  acquisition by Revolut ever.
-                </p>
+              </div>
+
+              <div className="card">
+                <Image src={Adri} alt="" />
+                <div>
+                  <div>
+                    Adriana Restrepo
+                    <div className="card-socials">
+                      <a href="">
+                        <Image src={TwitterCard} alt="Twitter logo" />
+                      </a>
+                      <a href="">
+                        <Image src={Linkedin} alt="Linkedin logo" />
+                      </a>
+                    </div>
+                  </div>
+                  <span>The Regulation</span>
+                  <p>
+                    Former COO @ Revolut Bank In charge of multiple banking
+                    branches + merging the full banking license with the EMI
+                    License for Revolut Former Barclays
+                  </p>
+                </div>
+              </div>
+
+              <div className="card">
+                <Image src={Aaron} alt="" />
+                <div>
+                  <div>
+                    Aaron Beck
+                    <div className="card-socials">
+                      <a href="">
+                        <Image src={TwitterCard} alt="Twitter logo" />
+                      </a>
+                      <a href="">
+                        <Image src={Linkedin} alt="Linkedin logo" />
+                      </a>
+                    </div>
+                  </div>
+                  <span>The Banker</span>
+                  <p>
+                    20 years exp. @ Barclays, Bank of America Meryll Lynch,
+                    Revolut... Former Head of Core Payment @ Revolut
+                  </p>
+                </div>
               </div>
             </div>
           </div>
         </Team>
         <Faq>
+          <h2>FAQ</h2>
           {faqList.map((f, i) => {
             return (
               <ToggleItem

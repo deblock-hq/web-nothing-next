@@ -12,9 +12,9 @@ const SupportContainer = styled.div`
     z-index: 4;
   }
 
-  h2 {
-    font-weight: 700;
-    font-size: 16px !important;
+  h3 {
+    font-weight: 600;
+    font-size: 28px;
     line-height: 28px;
     text-align: center;
   }
@@ -42,7 +42,7 @@ const SupportContainer = styled.div`
       background: #ffffff;
       box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.04);
       border-radius: 30px;
-      padding: 63px 0px;
+      padding: 56px 0px;
       width: 100%;
 
       svg {
@@ -60,11 +60,7 @@ const SupportContainer = styled.div`
       flex-direction: column;
       gap: 16px;
     }
-    h1 {
-      font-size: 30px;
-      padding-bottom: 32px;
-    }
-    h2 {
+    h3 {
       font-size: 20px;
     }
     p {
@@ -80,7 +76,7 @@ const ContactDeblock = () => {
         <div>
           <Image src={Mail} alt="mail" />
           <div>
-            <h2>support@deblock.com</h2>
+            <h3>support@deblock.com</h3>
             <p>Available 24/7 Response time ~12h</p>
           </div>
         </div>

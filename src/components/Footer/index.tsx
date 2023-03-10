@@ -92,6 +92,7 @@ const FooterHeader = styled.div`
   align-items: center;
   gap: 24px;
   color: white;
+  width: 100%;
 
   .country-selected {
     position: relatvie;
@@ -322,7 +323,12 @@ const Footer = () => {
           {CountrySelected()}
           {openDropdown && (
             <ul className="dropdown" ref={dropdownRef}>
-              <li onClick={() => onToggleLanguageClick("en")}>
+              <li
+                onClick={() => {
+                  onToggleLanguageClick("en");
+                  setOpenDropdown(false);
+                }}
+              >
                 <div>
                   <Image src={FlagEn} alt="Uk flag" />
                   <span data-text={t("United Kingdom")}>
@@ -331,7 +337,12 @@ const Footer = () => {
                 </div>
                 <Image src={Arrow} alt="Arrow right" />
               </li>
-              <li onClick={() => onToggleLanguageClick("fr-FR")}>
+              <li
+                onClick={() => {
+                  onToggleLanguageClick("fr-FR");
+                  setOpenDropdown(false);
+                }}
+              >
                 <div>
                   <Image src={FlagFr} alt="French flag" />
                   <span data-text="Français">France</span>

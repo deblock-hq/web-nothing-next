@@ -584,7 +584,7 @@ const NftContainer = styled.div`
   gap: 32px;
 
   @media ${devices.tablet} {
-    background-color: rgba(229, 212, 174, 0.2);
+    background-color: #FCF5ED;
     border-radius: 30px;
     height: 192px;
     max-width: 1152px;
@@ -601,7 +601,7 @@ const NftContainer = styled.div`
   }
 
   .image-container {
-    background-color: rgba(229, 212, 174, 0.2);
+    background-color: #FCF5ED;
     border-radius: 30px;
     height: 192px;
     text-align: center;
@@ -1363,7 +1363,7 @@ const Home = ({
           </div>
           <div className="text-container">
             <h2>{t("brand-your-card")}</h2>
-            <Blob className="blob-nft" color="#F7DFC5" />
+            <Blob className="blob-nft" color="#CBEBF6" />
           </div>
         </NftContainer>
         <Deposit>
