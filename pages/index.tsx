@@ -15,7 +15,6 @@ import Vc from "../src/assets/backed/20vc.svg";
 import Headline from "../src/assets/backed/headline.svg";
 import Hoxton from "../src/assets/backed/hoxton.svg";
 import Kraken from "../src/assets/backed/kraken.svg";
-import Nft from "../src/assets/backed/nft.svg";
 import Nft2 from "../src/assets/backed/nft2.svg";
 import Salary from "../src/assets/backed/salary.svg";
 import Car from "../src/assets/backed/car.svg";
@@ -348,8 +347,8 @@ const FirstContainer = styled.div`
       }
 
       :focus {
-        outline: 1.5px solid black;
-        box-shadow: 3px 3px 0px 0px rgb(0 0 0);
+        outline: 1.5px solid transparent;
+        box-shadow: 2px 2px 0px 0px rgb(0 0 0);
         background-color: white;
       }
 
@@ -1208,6 +1207,8 @@ const Home = ({
     }
   }, [renderSafeAccount]);
 
+  console.log({ openTooltip });
+
   return (
     <div>
       <LandingContainer>
@@ -1226,7 +1227,7 @@ const Home = ({
             autoPlay={true}
           />
           {/* <Example /> */}
-          <FirstContainer>
+          <FirstContainer id="#modal">
             <div className="image-container">
               <Lottie
                 lottieRef={doublePhoneRef}

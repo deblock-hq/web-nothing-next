@@ -778,8 +778,7 @@ const Modal = ({
       return (
         <div className="email-verification">
           <div>
-            {t("Just")} <strong>{t("verify your email")}</strong>{" "}
-            {t("to cut the queue")}
+            {t("Just")} <strong>{t("verify your email")}</strong>
           </div>
           <div>{t("Waiting for email verification...")}</div>
         </div>

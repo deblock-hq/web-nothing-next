@@ -374,8 +374,12 @@ const Header = ({ displayModal }: { displayModal: () => void }) => {
         <Link href="/support" data-text="Support">
           Support
         </Link>
-        {checkLocalStorage && (
-          <button onClick={() => displayModal()}>Request access</button>
+        {checkLocalStorage ? (
+          <button onClick={() => displayModal()}>See my position</button>
+        ) : (
+          <Link href="/">
+            <button>Request access</button>
+          </Link>
         )}
       </div>
     </HeaderContainer>
