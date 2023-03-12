@@ -1108,8 +1108,6 @@ const Home = ({
   openModal,
   setOpenModal,
 }: LandingProps) => {
-  // const router = useRouter();
-  // const { email, setEmail } = useContext(GlobalContext);
   const { t, i18n } = useTranslation("landing");
 
   const frAssets = i18n.language.includes("fr");
@@ -1206,8 +1204,6 @@ const Home = ({
       lottieRef.current.stop();
     }
   }, [renderSafeAccount]);
-
-  console.log({ openTooltip });
 
   return (
     <div>
