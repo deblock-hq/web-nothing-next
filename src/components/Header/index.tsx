@@ -9,14 +9,9 @@ import Burgermenu from "../../assets/burger-menu.svg";
 import Cross from "../../assets/cross.svg";
 
 import Logo from "../../../public/typo-logo.svg";
-// import Logo from "../../../public/TestLogo2.svg";
-// import Logo from "../../../public/HeaderLogo.svg";
 import { GlobalContext } from "../../../context/globalContext";
-import Lottie, {
-  LottiePlayer,
-  useLottie,
-  useLottieInteractivity,
-} from "lottie-react";
+import Lottie from "lottie-react";
+import { useTranslation } from "react-i18next";
 
 interface Props {
   scrollY: number;
@@ -280,7 +275,7 @@ const HeaderContainer = styled.header<Props>`
 // }
 
 const Header = ({ displayModal }: { displayModal: () => void }) => {
-  const { setDisplayRequestButton } = useContext(GlobalContext);
+  const { t } = useTranslation("footer");
 
   const [scrollY, setScrollY] = useState<number>(0);
   const [openMenu, setOpenMenu] = useState(false);
@@ -357,20 +352,26 @@ const Header = ({ displayModal }: { displayModal: () => void }) => {
           ref={dropdownRef}
           className="desktop-tablet-display hide-on-desktop"
         >
-          <Link href="/blog">Blog</Link>
-          <Link href="/about-us">About</Link>
+          <Link href="/blog" data-text={t("Blog")}>
+            {t("Blog")}
+          </Link>
+          <Link href="/about-us" data-text={t("About")}>
+            {t("About")}
+          </Link>
           <Link href="/faq">FAQ</Link>
           <Link href="/support">Support</Link>
         </div>
       )}
       <div className="hide-on-mobile">
-        <Link href="/blog" data-text="Blog">
-          Blog
+        <Link href="/blog" data-text={t("Blog")}>
+          {t("Blog")}
         </Link>
-        <Link href="/about-us" data-text="About">
-          About
+        <Link href="/about-us" data-text={t("About")}>
+          {t("About")}
         </Link>
-        <Link href="/faq">FAQ</Link>
+        <Link href="/faq" data-text="FAQ">
+          FAQ
+        </Link>
         <Link href="/support" data-text="Support">
           Support
         </Link>

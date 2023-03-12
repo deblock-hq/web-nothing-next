@@ -16,8 +16,6 @@ import Triangle from "../../assets/triangle.svg";
 
 import { useTranslation } from "next-i18next";
 import { useRouter } from "next/router";
-import { GetStaticProps } from "next";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 const FooterContainer = styled.footer`
   display: grid;
@@ -314,8 +312,6 @@ const Footer = () => {
       );
     }
   };
-
-  console.log("i18n", i18n.language, i18n.languages);
 
   return (
     <FooterContainer>

@@ -2,7 +2,9 @@
   "The first": "Accès prioritaire aux",
   "will get priority access": "premiers",
   "Your place": "Votre position",
-  "in a queue of": "dans la file d’attente",
+  "in a queue of": "sur",
+  "in the waitlist": "dans la file d'attente",
+
   "Cut the queue by": "Avancez de",
   "spots": "places",
   "Just": "Juste",

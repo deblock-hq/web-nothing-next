@@ -939,7 +939,7 @@ const Modal = ({
                 />
               </div>
               <div>
-                {t("in a queue of")} {queueSize}
+                {t("in a queue of")} {queueSize} {t("in the waitlist")}
               </div>
             </div>
             <VerificationSteps step={actualStep} trigger={triggerSendNumber}>
