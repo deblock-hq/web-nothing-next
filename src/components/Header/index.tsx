@@ -9,7 +9,9 @@ import Burgermenu from "../../assets/burger-menu.svg";
 import Cross from "../../assets/cross.svg";
 
 import Logo from "../../../public/typo-logo.svg";
-import { GlobalContext } from "../../../context/globalContext";
+import Twitter from "../../assets/twitter-header.svg";
+import Discord from "../../assets/discord-header.svg";
+
 import Lottie from "lottie-react";
 import { useTranslation } from "react-i18next";
 
@@ -352,29 +354,49 @@ const Header = ({ displayModal }: { displayModal: () => void }) => {
           ref={dropdownRef}
           className="desktop-tablet-display hide-on-desktop"
         >
-          <Link href="/blog" data-text={t("Blog")}>
-            {t("Blog")}
-          </Link>
+          <Link href="/faq">FAQ</Link>
           <Link href="/about-us" data-text={t("About")}>
             {t("About")}
           </Link>
-          <Link href="/faq">FAQ</Link>
-          <Link href="/support">Support</Link>
+          <Link href="/blog" data-text={t("Blog")}>
+            {t("Blog")}
+          </Link>
+          {/* <Link href="/support">Support</Link> */}
+          <a
+            target="_blank"
+            rel="noreferrer"
+            href="https://twitter.com/DeblockApp"
+          >
+            <Image src={Twitter} alt="Twitter logo" />
+          </a>
+          <a href="">
+            <Image src={Discord} alt="Discord logo" />
+          </a>
         </div>
       )}
       <div className="hide-on-mobile">
-        <Link href="/blog" data-text={t("Blog")}>
-          {t("Blog")}
+        <Link href="/faq" data-text="FAQ">
+          FAQ
         </Link>
         <Link href="/about-us" data-text={t("About")}>
           {t("About")}
         </Link>
-        <Link href="/faq" data-text="FAQ">
-          FAQ
+        <Link href="/blog" data-text={t("Blog")}>
+          {t("Blog")}
         </Link>
-        <Link href="/support" data-text="Support">
+        {/* <Link href="/support" data-text="Support">
           Support
-        </Link>
+        </Link> */}
+        <a
+          target="_blank"
+          rel="noreferrer"
+          href="https://twitter.com/DeblockApp"
+        >
+          <Image src={Twitter} alt="Twitter logo" />
+        </a>
+        <a href="">
+          <Image src={Discord} alt="Discord logo" />
+        </a>
         {checkLocalStorage ? (
           <button onClick={() => displayModal()}>See my position</button>
         ) : (
