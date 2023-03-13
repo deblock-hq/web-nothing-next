@@ -515,7 +515,7 @@ const Product = () => {
               <Lottie
                 animationData={UniqueCardImage}
                 loop={false}
-                autoPlay={false}
+                autoPlay={true}
                 lottieRef={firstRef}
               />
             </div>
