@@ -74,14 +74,14 @@ const LandingContainer = styled.div`
       width: 100%;
       max-width: 1340px;
       position: relative;
-      animation: FadeIn 1s;
+      animation: FadeIn 0.8s;
 
       @keyframes FadeIn {
         0% {
           opacity: 0;
         }
         30% {
-          opacity: 1;
+          opacity: 0;
         }
         100% {
           opacity: 1;
