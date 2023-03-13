@@ -53,6 +53,7 @@ const FooterContainer = styled.footer`
     gap: 12px;
     color: white;
     grid-area: 1 / 4 / 2 / 6;
+    z-index: 5;
 
     span {
       padding-right: 16px;
@@ -475,7 +476,11 @@ const Footer = () => {
       </LinksContainer>
       <div className="community">
         <span>{t("Join our community")}</span>
-        <a href="">
+        <a
+          target="_blank"
+          rel="noreferrer"
+          href="https://discord.gg/EF5vqruSWJ"
+        >
           <Image src={Discord} alt="Discord logo" />
         </a>
         <a
@@ -485,7 +490,11 @@ const Footer = () => {
         >
           <Image src={Twitter} alt="Twitter logo" />
         </a>
-        <a href="">
+        <a
+          target="_blank"
+          rel="noreferrer"
+          href="https://www.linkedin.com/company/93306449/"
+        >
           <Image src={Linkedin} alt="Linkedin" />
         </a>
       </div>

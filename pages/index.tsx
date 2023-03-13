@@ -745,7 +745,7 @@ const Deposit = styled.div`
       z-index: 2;
       padding: 0;
 
-      div:first-child {
+      div:not(:last-child) {
         width: 80%;
       }
     }
@@ -1331,10 +1331,30 @@ const Home = ({
         <BackedByContainer>
           <h3>{t("backed-by-the-best")}</h3>
           <div className="image-container">
-            <Image src={Vc} alt="20vc logo" />
-            <Image className="kraken-logo" src={Kraken} alt="Kraken logo" />
-            <Image src={Hoxton} alt="Hoxton logo" />
-            <Image src={Headline} alt="Headline logo" />
+            <a
+              href="https://www.thetwentyminutevc.com/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <Image src={Vc} alt="20vc logo" />
+            </a>
+            <a
+              href="https://www.krakenventures.com/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <Image className="kraken-logo" src={Kraken} alt="Kraken logo" />
+            </a>
+            <a
+              href="https://www.hoxtonventures.com/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <Image src={Hoxton} alt="Hoxton logo" />
+            </a>
+            <a href="https://headline.com/" target="_blank" rel="noreferrer">
+              <Image src={Headline} alt="Headline logo" />
+            </a>
           </div>
         </BackedByContainer>
         <BestAccount>
@@ -1467,6 +1487,7 @@ const Home = ({
                   {t("Even if Deblock goes down")}{" "}
                 </span>
                 {t("wallet protected-1")}
+                <br />
                 <br />
                 <br />
                 {t("wallet protected-2")}

@@ -17,8 +17,8 @@
 
   "brand-your-card": "Brand your card with your own NFT",
 
-  "deposit-your-crypto": "Deposit all your crypto",
-  "deposit-your-crypto-text": "Unlimited crypto deposit and withdrawals. Unlimited exchange to FIAT.",
+  "deposit-your-crypto": "Where you can  deposit all your crypto",
+  "deposit-your-crypto-text": "Unlimited crypto deposit and withdrawals. Unlimited exchange to sterling.",
 
   "cash-or-crypto": "In <1>Cash</1> or in Crypto<br/>It's up to you!",
   "cash-or-crypto-text-1": "We'll handle the exchange of Crypto and GBP",
@@ -34,12 +34,12 @@
   "your-keys-your-assets-text-1": "This is self-custody.",
   "Even if Deblock goes down": "Even if Deblock goes down,",
   "wallet protected-1": "100% of your wallet is protected.",
-  "wallet protected-2": "Your wealth is safe and nobody can freeze it or take it away.",
+  "wallet protected-2": "Nobody can freeze your assets or withdrawals.",
 
   "commission-free": "Buy commission-free",
   "commission-free-text": "Unlimited and in perpetuity",
   "live-support": "24/7 Live support",
-  "live-support-text": "Talk to a real human (not a machine).",
+  "live-support-text": "Talk to a real human",
   "with our native plan.": "with our native plan",
-  "We are here for you.": "We are here for you"
+  "We are here for you.": "(not a machine)."
 }

@@ -462,11 +462,9 @@ const Product = () => {
   const frAssets = i18n.language.includes("fr");
 
   const firstRef = useRef<any>(null);
-  const secondRef = useRef<any>(null);
   const thirdRef = useRef<any>(null);
 
   const { ref: debitCardRef, inView: renderDebitCard } = useInView();
-  const { ref: securityRef, inView: renderMaxSecurity } = useInView();
   const { ref: custodyRef, inView: renderSelfCustody } = useInView();
 
   useEffect(() => {
@@ -476,14 +474,6 @@ const Product = () => {
       firstRef.current.stop();
     }
   }, [renderDebitCard]);
-
-  useEffect(() => {
-    if (renderMaxSecurity && secondRef.current) {
-      secondRef.current.play();
-    } else {
-      secondRef.current.stop();
-    }
-  }, [renderMaxSecurity]);
 
   useEffect(() => {
     if (renderSelfCustody && thirdRef.current) {
@@ -513,8 +503,7 @@ const Product = () => {
               <li>{t("your-iban")}</li>
               <li>{t("different-currencies")}</li>
               <li>{t("free-exchange")}</li>
-              <li>{t("instant-transfer")}</li>
-              {frAssets && <li>{t("open-banking")}</li>}
+              <li>{t("open-banking")}</li>
             </ul>
           </div>
           <Blob className="blob-left" color="#D4DAE5" />
@@ -540,12 +529,11 @@ const Product = () => {
             </div>
           </UniqueCard>
           <MaximumSecurity>
-            <div className="image-container" ref={securityRef}>
+            <div className="image-container">
               <Lottie
                 animationData={frAssets ? MaxSecurityFr : MaxSecurityEn}
-                loop={false}
-                autoPlay={false}
-                lottieRef={secondRef}
+                loop={true}
+                autoPlay={true}
               />
             </div>
             <div className="texte-container">
@@ -605,9 +593,8 @@ const Product = () => {
                 </li>
                 <li>
                   <span className="bold-text">{t("fundes-safe-1")}</span>
-                  <br />
-                  {t("fundes-safe-2")}
                 </li>
+                <li>{t("fundes-safe-2")}</li>
               </ul>
             </div>
           </SelfCustody>
