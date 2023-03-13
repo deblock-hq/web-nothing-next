@@ -571,7 +571,7 @@ const Modal = ({
   const [phoneNumberError, setPhoneNumberError] = useState(false);
   const [phoneVerifyCode, setPhoneVerifyCode] = useState("");
   const [triggerPhoneError, setTriggerPhoneError] = useState(false);
-  const [phoneError, setError] = useState("");
+  const [phoneError, setPhoneError] = useState("");
   const phoneVerifyRef = useRef(null);
 
   const [openDropdown, setOpenDropdown] = useState(false);
@@ -729,11 +729,12 @@ const Modal = ({
 
         if (res.data.status === "fail") {
           console.log(res.data.status === "fail");
-          setError(res.data.error);
+          setPhoneError(res.data.error);
           setPhoneNumberError(true);
         } else {
           setTriggerStatus(true);
           setPhoneNumberError(false);
+          setTriggerSendNumber(true);
         }
       })
       .catch((err) => {
@@ -767,7 +768,7 @@ const Modal = ({
 
           if (res.data.status === "fail") {
             setTriggerPhoneError(true);
-            setError(res.data.error);
+            setPhoneError(res.data.error);
           } else {
             setTriggerPhoneError(false);
           }
@@ -789,8 +790,8 @@ const Modal = ({
           },
         })
         .then(async (res) => {
-          // setActualStep(res.data.result.user.step);
-          setActualStep("phone");
+          setActualStep(res.data.result.user.step);
+          // setActualStep("phone");
           console.log("status res", res, actualStep);
           setReferral(res.data.result.user.referrals.url);
           setQueueSize(res.data.result.user.size);
@@ -807,6 +808,8 @@ const Modal = ({
         });
   }, [triggerStatus]);
 
+  console.log("phoneNumberError", phoneNumberError);
+
   const StepsVerification = () => {
     if (actualStep === "verify_email") {
       return (
@@ -819,10 +822,10 @@ const Modal = ({
       );
     } else if (actualStep === "phone") {
       if (
+        !phoneNumberError &&
         !!phoneNumber &&
         phoneCode &&
-        triggerSendNumber &&
-        !phoneNumberError
+        triggerSendNumber
       ) {
         return (
           <div className="phone-code">
@@ -918,7 +921,6 @@ const Modal = ({
               type="submit"
               onClick={() => {
                 sendPhoneNumber();
-                setTriggerSendNumber(true);
               }}
             >
               {t("Send Code")}
