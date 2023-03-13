@@ -322,7 +322,7 @@ const ValuesContainer = styled.div`
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
   return {
     props: {
-      ...(await serverSideTranslations(locale!, ["aboutus"])),
+      ...(await serverSideTranslations(locale!, ["aboutus", "footer"])),
     },
   };
 };
@@ -343,7 +343,6 @@ const AboutUs = () => {
               <br />
               <p>
                 {t("we-are-deblock-1")}
-                <br />
                 <br />
                 <strong>{t("we-are-deblock-2-1")}</strong>{" "}
                 {t("we-are-deblock-2-2")}

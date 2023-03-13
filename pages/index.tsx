@@ -74,7 +74,7 @@ const LandingContainer = styled.div`
       width: 100%;
       max-width: 1340px;
       position: relative;
-      animation: FadeIn 0.1s;
+      animation: FadeIn 1s;
 
       @keyframes FadeIn {
         0% {
@@ -1114,8 +1114,6 @@ const Home = ({
 
   const tooltipRef = useRef<HTMLInputElement>(null);
 
-  // const [renderSafeAccount, setRenderSafeAccount] = useState(false);
-
   const [openTooltip, setOpenTooltip] = useState(false);
 
   const closeTooltip = (e: { target: any }) => {
@@ -1220,16 +1218,16 @@ const Home = ({
             lottieRef={doublePhoneRef}
             animationData={frAssets ? DoublePhoneFr : DoublePhoneEn}
             loop={false}
-            autoPlay={true}
+            autoPlay={false}
           />
           {/* <Example /> */}
-          <FirstContainer id="#modal">
+          <FirstContainer>
             <div className="image-container">
               <Lottie
                 lottieRef={doublePhoneRef}
                 animationData={frAssets ? DoublePhoneFr : DoublePhoneEn}
                 loop={false}
-                autoPlay={true}
+                autoPlay={false}
               />
             </div>
             <div className="text-container">
@@ -1341,7 +1339,7 @@ const Home = ({
             <div>{t("deposit-your-crypto-text")}</div>
             <div>
               <LearnMoreButton>
-                <Link href="/ncw">
+                <Link href="/product/#deposit-yout-crypto-assets" scroll={true}>
                   {t("learn-more")} <Image src={Arrow} alt="Arrow right" />{" "}
                 </Link>
               </LearnMoreButton>

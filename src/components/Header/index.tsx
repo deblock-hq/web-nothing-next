@@ -330,7 +330,6 @@ const Header = ({ displayModal }: { displayModal: () => void }) => {
   return (
     <HeaderContainer scrollY={scrollY}>
       <Link href="/">
-        {/* <Image className="logo" src={Logo} alt="Deblock logo" /> */}
         <div
           onMouseEnter={() => setAnimationDirection(-1)}
           onMouseLeave={() => setAnimationDirection(1)}
@@ -361,17 +360,7 @@ const Header = ({ displayModal }: { displayModal: () => void }) => {
           <Link href="/blog" data-text={t("Blog")}>
             {t("Blog")}
           </Link>
-          {/* <Link href="/support">Support</Link> */}
-          <a
-            target="_blank"
-            rel="noreferrer"
-            href="https://twitter.com/DeblockApp"
-          >
-            <Image src={Twitter} alt="Twitter logo" />
-          </a>
-          <a href="">
-            <Image src={Discord} alt="Discord logo" />
-          </a>
+          <Link href="/support">Support</Link>
         </div>
       )}
       <div className="hide-on-mobile">
@@ -384,19 +373,9 @@ const Header = ({ displayModal }: { displayModal: () => void }) => {
         <Link href="/blog" data-text={t("Blog")}>
           {t("Blog")}
         </Link>
-        {/* <Link href="/support" data-text="Support">
+        <Link href="/support" data-text="Support">
           Support
-        </Link> */}
-        <a
-          target="_blank"
-          rel="noreferrer"
-          href="https://twitter.com/DeblockApp"
-        >
-          <Image src={Twitter} alt="Twitter logo" />
-        </a>
-        <a href="">
-          <Image src={Discord} alt="Discord logo" />
-        </a>
+        </Link>
         {checkLocalStorage ? (
           <button onClick={() => displayModal()}>See my position</button>
         ) : (

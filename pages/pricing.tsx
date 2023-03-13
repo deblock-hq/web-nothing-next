@@ -521,7 +521,7 @@ const PriceContainer = styled.div`
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
   return {
     props: {
-      ...(await serverSideTranslations(locale!, ["pricing"])),
+      ...(await serverSideTranslations(locale!, ["pricing", "footer"])),
     },
   };
 };

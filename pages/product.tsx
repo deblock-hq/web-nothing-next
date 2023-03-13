@@ -448,7 +448,7 @@ const LicensedAndRegulated = styled.div`
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
   return {
     props: {
-      ...(await serverSideTranslations(locale!, ["product"])),
+      ...(await serverSideTranslations(locale!, ["product", "footer"])),
     },
   };
 };
@@ -530,7 +530,7 @@ const Product = () => {
               />
             </div>
             <div className="texte-container">
-              <h2>
+              <h2 id="deposit-yout-crypto-assets">
                 {t("deposit-crypto-assets-1")} <br />
                 {t("deposit-crypto-assets-2")}
               </h2>

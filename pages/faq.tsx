@@ -260,7 +260,7 @@ const SupportContainer = styled.div`
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
   return {
     props: {
-      ...(await serverSideTranslations(locale!, ["support"])),
+      ...(await serverSideTranslations(locale!, ["support", "footer"])),
     },
   };
 };

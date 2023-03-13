@@ -374,8 +374,8 @@ const CommunityContact = styled.div`
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
   return {
     props: {
-      ...(await serverSideTranslations(locale!, ["nft"])),
-      nft: "yes",
+      ...(await serverSideTranslations(locale!, ["nft", "footer"])),
+      nftPage: true,
     },
   };
 };

@@ -370,7 +370,7 @@ const BoldText = styled.span`
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
   return {
     props: {
-      ...(await serverSideTranslations(locale!, ["ncw"])),
+      ...(await serverSideTranslations(locale!, ["ncw", "footer"])),
     },
   };
 };
@@ -561,7 +561,9 @@ const NonCustodialWallet = () => {
                 your encrypted shard🔒{" "}
               </TextHighlight>{" "}
               and{" "}
-              <TextHighlight color="#F9DBAF">Deblock encrypted shard🔒{" "}</TextHighlight>
+              <TextHighlight color="#F9DBAF">
+                Deblock encrypted shard🔒{" "}
+              </TextHighlight>
               will be released from cold storage.
             </Trans>
           </p>
