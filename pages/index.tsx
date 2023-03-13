@@ -1109,11 +1109,11 @@ const Home = ({
   setOpenModal,
 }: LandingProps) => {
   const { t, i18n } = useTranslation("landing");
-
   const frAssets = i18n.language.includes("fr");
 
-  const tooltipRef = useRef<HTMLInputElement>(null);
+  const [triggerMailError, setTriggerMailError] = useState(false);
 
+  const tooltipRef = useRef<HTMLInputElement>(null);
   const [openTooltip, setOpenTooltip] = useState(false);
 
   const closeTooltip = (e: { target: any }) => {
@@ -1179,6 +1179,17 @@ const Home = ({
   }, []);
 
   const [checkLocalStorage, setCheckLocalStorage] = useState<string | null>();
+
+  const emailRegExp = /[a-z0-9]+@[a-z]+.[a-z]{2,3}/;
+  const emailSubmit = () => {
+    const emailError = emailRegExp.test(whitelistEmail)
+      ? setTriggerMailError(false)
+      : true;
+
+    if (!emailError) {
+      displayModal();
+    }
+  };
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -1277,11 +1288,15 @@ const Home = ({
                     onChange={(e) => setWhitelistEmail(e.target.value)}
                   />
                 ) : null}
-                <button type="submit" onClick={displayModal}>
-                  {!checkLocalStorage
-                    ? t("button-request")
-                    : t("button-position")}
-                </button>
+                {!checkLocalStorage ? (
+                  <button type="submit" onClick={() => emailSubmit()}>
+                    {t("button-request")}
+                  </button>
+                ) : (
+                  <button type="submit" onClick={displayModal}>
+                    {t("button-position")}
+                  </button>
+                )}
               </form>
             </div>
             <Blob className="blob-left" color="#F2E1FF" />
@@ -1339,7 +1354,7 @@ const Home = ({
             <div>{t("deposit-your-crypto-text")}</div>
             <div>
               <LearnMoreButton>
-                <Link href="/product/#deposit-yout-crypto-assets" scroll={true}>
+                <Link href="/product/#test-ancre" scroll={true}>
                   {t("learn-more")} <Image src={Arrow} alt="Arrow right" />{" "}
                 </Link>
               </LearnMoreButton>

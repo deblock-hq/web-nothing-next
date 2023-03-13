@@ -313,7 +313,7 @@ const Faq = () => {
         <Lottie
           className="animation rocket"
           animationData={Rocket}
-          loop={false}
+          loop={true}
         />
         <Lottie
           className="animation airdrop"

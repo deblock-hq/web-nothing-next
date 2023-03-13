@@ -517,6 +517,9 @@ const Product = () => {
           <Blob className="blob-left" color="#CADAF7" />
           <Blob className="blob-right" color="#D4E8DA" />
         </DoubleContainer>
+
+        <span id="test-ancre" />
+        
         <DoubleContainer
           backgroundColor="#F5F5F4"
           height="722px"
@@ -530,7 +533,7 @@ const Product = () => {
               />
             </div>
             <div className="texte-container">
-              <h2 id="deposit-yout-crypto-assets">
+              <h2>
                 {t("deposit-crypto-assets-1")} <br />
                 {t("deposit-crypto-assets-2")}
               </h2>

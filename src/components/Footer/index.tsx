@@ -7,7 +7,7 @@ import Blob from "../../views/Blob";
 
 import Linkedin from "../../assets/LinkedIn.svg";
 import Twitter from "../../assets/Twitter.svg";
-import Instagram from "../../assets/Instagram.svg";
+import Discord from "../../assets/discord.svg";
 import LogoFooter from "../../assets/logo-footer.svg";
 import FlagFr from "../../assets/fr-flag.svg";
 import FlagEn from "../../assets/en-flag.svg";
@@ -476,7 +476,7 @@ const Footer = () => {
       <div className="community">
         <span>{t("Join our community")}</span>
         <a href="">
-          <Image src={Instagram} alt="Instagram logo" />
+          <Image src={Discord} alt="Discord logo" />
         </a>
         <a
           target="_blank"
