@@ -1,12 +1,15 @@
 import Lottie, { useLottie, useLottieInteractivity } from "lottie-react";
 import Image from "next/image";
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import styled from "styled-components";
 
-import BetterBank from "../src/assets/lottie/product/BetterBank.json";
-import CryptoWallet from "../src/assets/lottie/product/CryptoWallet.json";
+import BetterBankEn from "../src/assets/lottie/product/BetterBankEn.json";
+import BetterBankFr from "../src/assets/lottie/product/BetterBankFr.json";
+import CryptoWalletEn from "../src/assets/lottie/product/CryptoWalletEn.json";
+import CryptoWalletFr from "../src/assets/lottie/product/CryptoWalletFr.json";
 import Licensed from "../src/assets/lottie/product/Licensed.json";
-import MaxSecurity from "../src/assets/lottie/product/MaxSecurity.json";
+import MaxSecurityEn from "../src/assets/lottie/product/MaxSecurityEn.json";
+import MaxSecurityFr from "../src/assets/lottie/product/MaxSecurityFr.json";
 import UniqueCardImage from "../src/assets/lottie/product/DebitCard.json";
 import SafeAnimation from "../src/assets/lottie/product/SelfCustody.json";
 
@@ -16,6 +19,7 @@ import { ScrollAnimation } from "../src/utils/ScrollAnimation";
 import { Trans, useTranslation } from "next-i18next";
 import { GetStaticProps } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { useInView } from "react-intersection-observer";
 
 interface Props {
   backgroundColor: string;
@@ -455,6 +459,40 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
 
 const Product = () => {
   const { t, i18n } = useTranslation("product");
+  const frAssets = i18n.language.includes("fr");
+
+  const firstRef = useRef<any>(null);
+  const secondRef = useRef<any>(null);
+  const thirdRef = useRef<any>(null);
+
+  const { ref: debitCardRef, inView: renderDebitCard } = useInView();
+  const { ref: securityRef, inView: renderMaxSecurity } = useInView();
+  const { ref: custodyRef, inView: renderSelfCustody } = useInView();
+
+  useEffect(() => {
+    if (renderDebitCard && firstRef.current) {
+      firstRef.current.play();
+    } else {
+      firstRef.current.stop();
+    }
+  }, [renderDebitCard]);
+
+  useEffect(() => {
+    if (renderMaxSecurity && secondRef.current) {
+      secondRef.current.play();
+    } else {
+      secondRef.current.stop();
+    }
+  }, [renderMaxSecurity]);
+
+  useEffect(() => {
+    if (renderSelfCustody && thirdRef.current) {
+      thirdRef.current.play();
+    } else {
+      thirdRef.current.stop();
+    }
+  }, [renderSelfCustody]);
+
   return (
     <div>
       <ProductContainer>
@@ -464,7 +502,10 @@ const Product = () => {
         </div>
         <FirstContainer>
           <div className="image-container">
-            <Lottie animationData={BetterBank} alt="Iban and card image" />
+            <Lottie
+              animationData={frAssets ? BetterBankFr : BetterBankEn}
+              alt="Iban and card image"
+            />
           </div>
           <div className="texte-container">
             <h2>{t("better-than-your-bank")}</h2>
@@ -473,7 +514,7 @@ const Product = () => {
               <li>{t("different-currencies")}</li>
               <li>{t("free-exchange")}</li>
               <li>{t("instant-transfer")}</li>
-              {!i18n.languages.includes("fr") && <li>{t("open-banking")}</li>}
+              {frAssets && <li>{t("open-banking")}</li>}
             </ul>
           </div>
           <Blob className="blob-left" color="#D4DAE5" />
@@ -481,11 +522,12 @@ const Product = () => {
         </FirstContainer>
         <DoubleContainer backgroundColor="#f2f2f9" height="692px">
           <UniqueCard>
-            <div className="image-container">
-              <ScrollAnimation
-                lottieFile={UniqueCardImage}
-                maxFrame={36}
-                altText="Uniques cards image"
+            <div className="image-container" ref={debitCardRef}>
+              <Lottie
+                animationData={UniqueCardImage}
+                loop={false}
+                autoPlay={false}
+                lottieRef={firstRef}
               />
             </div>
             <div className="texte-container">
@@ -498,12 +540,12 @@ const Product = () => {
             </div>
           </UniqueCard>
           <MaximumSecurity>
-            <div className="image-container">
-              <ScrollAnimation
-                lottieFile={MaxSecurity}
+            <div className="image-container" ref={securityRef}>
+              <Lottie
+                animationData={frAssets ? MaxSecurityFr : MaxSecurityEn}
                 loop={false}
-                maxFrame={36}
-                altText="Uniques cards image"
+                autoPlay={false}
+                lottieRef={secondRef}
               />
             </div>
             <div className="texte-container">
@@ -528,7 +570,7 @@ const Product = () => {
           <CryptoAssets>
             <div className="image-container">
               <Lottie
-                animationData={CryptoWallet}
+                animationData={frAssets ? CryptoWalletFr : CryptoWalletEn}
                 alt="Deposit your crypto-assets"
               />
             </div>
@@ -545,12 +587,13 @@ const Product = () => {
             </div>
           </CryptoAssets>
           <SelfCustody>
-            <div className="image-container">
+            <div className="image-container" ref={custodyRef}>
               {/* <Lottie animationData={SafeAnimation} loop={false} /> */}
-              <ScrollAnimation
-                lottieFile={SafeAnimation}
-                maxFrame={68}
-                altText="Money dropping out of a suitecase"
+              <Lottie
+                animationData={SafeAnimation}
+                loop={false}
+                autoPlay={false}
+                lottieRef={thirdRef}
               />
             </div>
             <div className="texte-container">
