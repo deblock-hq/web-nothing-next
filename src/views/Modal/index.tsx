@@ -21,7 +21,9 @@ import AnimatedNumbers from "../../components/AnimatedNumbers";
 
 interface Props {
   step: string;
+  verifiedRef: boolean;
   trigger: boolean;
+  copied: boolean;
 }
 
 const Container = styled.div`
@@ -505,6 +507,10 @@ const VerificationSteps = styled.div<Props>`
         ? "50%"
         : props.step === "invite_friend"
         ? "66.5%"
+        : props.copied === true
+        ? "76.5%"
+        : props.verifiedRef === true
+        ? "100%"
         : ""};
 
     transition: width 0.4s linear;
@@ -553,6 +559,7 @@ const Modal = ({
   const [triggerSendNumber, setTriggerSendNumber] = useState(false);
 
   const [actualStep, setActualStep] = useState("");
+  const [verifiedRef, setVerifiedRef] = useState(false);
 
   const [isCopied, setIsCopied] = useState(false);
   const [referral, setReferral] = useState("");
@@ -766,6 +773,7 @@ const Modal = ({
           setPriorityAccess(res.data.result.user.priority_access);
           setPreviousPosition(res.data.result.user.previous_position);
           setTriggerStatus(false);
+          res.data.result.user.referrals.verified >= 1 && setVerifiedRef(true);
         })
         .catch((err) => {
           console.log("status err", err);
@@ -942,7 +950,12 @@ const Modal = ({
                 {t("in a queue of")} {queueSize} {t("in the waitlist")}
               </div>
             </div>
-            <VerificationSteps step={actualStep} trigger={triggerSendNumber}>
+            <VerificationSteps
+              step={actualStep}
+              verifiedRef={verifiedRef}
+              trigger={triggerSendNumber}
+              copied={isCopied}
+            >
               <div className="progress" />
               <div />
               <div />
