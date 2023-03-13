@@ -42,6 +42,23 @@ const Container = styled.div`
   @media ${devices.tabletMax} {
     padding: 86px 0px 0 0px;
   }
+
+  .display-error {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    top: 20px;
+    color: white;
+    font-weight: 600;
+    font-size: 14px;
+    height: 40px;
+    line-height: 17px;
+    background: #f44653;
+    border: 1px solid #000000;
+    border-radius: 4px;
+    box-shadow: 3px 3px 0px 0px rgb(0 0 0);
+    padding: 0 40px;
+  }
 `;
 
 const ModalContainer = styled.div`
@@ -494,7 +511,6 @@ const VerificationSteps = styled.div<Props>`
     border-top-right-radius: 0px;
     border-bottom-right-radius: 0px;
     background: #2cd5c4;
-    /* width: 0; */
     height: 12px;
     z-index: 1;
 
@@ -507,9 +523,9 @@ const VerificationSteps = styled.div<Props>`
         ? "50%"
         : props.step === "invite_friend"
         ? "66.5%"
-        : props.copied === true
+        : props.step === "invite_friend" && props.copied === true
         ? "76.5%"
-        : props.verifiedRef === true
+        : props.step === "invite_friend" && props.verifiedRef === true
         ? "100%"
         : ""};
 
@@ -552,7 +568,10 @@ const Modal = ({
 
   const [phoneCode, setPhoneCode] = useState("+44");
   const [phoneNumber, setPhoneNumber] = useState<number>();
+  const [phoneNumberError, setPhoneNumberError] = useState(false);
   const [phoneVerifyCode, setPhoneVerifyCode] = useState("");
+  const [triggerPhoneError, setTriggerPhoneError] = useState(false);
+  const [phoneError, setError] = useState("");
   const phoneVerifyRef = useRef(null);
 
   const [openDropdown, setOpenDropdown] = useState(false);
@@ -602,9 +621,9 @@ const Modal = ({
 
   const displayPopup = () => {
     if (actualStep === "phone" && !triggerSendNumber) {
-      setTimeout(() => {
-        setTriggerPopup(false);
-      }, 5000);
+      // setTimeout(() => {
+      //   setTriggerPopup(false);
+      // }, 5000);
       return (
         <Popup
           color="#2CD5C4"
@@ -707,7 +726,15 @@ const Modal = ({
       .then(async (res) => {
         // setActualStep(res.data.result.user.step);
         console.log("SendPhone", res, actualStep);
-        setTriggerStatus(true);
+
+        if (res.data.status === "fail") {
+          console.log(res.data.status === "fail");
+          setError(res.data.error);
+          setPhoneNumberError(true);
+        } else {
+          setTriggerStatus(true);
+          setPhoneNumberError(false);
+        }
       })
       .catch((err) => {
         console.log("SendPhoneErr", err);
@@ -716,13 +743,6 @@ const Modal = ({
 
   /** Verify phone code */
   useEffect(() => {
-    console.log(
-      "phoneVerifyCode.length",
-      phoneVerifyCode.length,
-      "phoneVerifyCode",
-      phoneVerifyCode
-    );
-
     if (phoneVerifyCode.length === 4) {
       axios
         .post(
@@ -745,7 +765,12 @@ const Modal = ({
           console.log("VerifyPhone res", res);
           setTriggerStatus(true);
 
-          // setActualStep("invite_friend");
+          if (res.data.status === "fail") {
+            setTriggerPhoneError(true);
+            setError(res.data.error);
+          } else {
+            setTriggerPhoneError(false);
+          }
         })
         .catch((err) => {
           console.log("VerifyPhone err", err);
@@ -756,6 +781,7 @@ const Modal = ({
   /** Get status */
   useEffect(() => {
     triggerStatus &&
+      !triggerPhoneError &&
       axios
         .get(`${baseUrl}/waitlist/status`, {
           headers: {
@@ -763,8 +789,8 @@ const Modal = ({
           },
         })
         .then(async (res) => {
-          setActualStep(res.data.result.user.step);
-          // setActualStep("phone");
+          // setActualStep(res.data.result.user.step);
+          setActualStep("phone");
           console.log("status res", res, actualStep);
           setReferral(res.data.result.user.referrals.url);
           setQueueSize(res.data.result.user.size);
@@ -792,7 +818,12 @@ const Modal = ({
         </div>
       );
     } else if (actualStep === "phone") {
-      if (!!phoneNumber && phoneCode && triggerSendNumber) {
+      if (
+        !!phoneNumber &&
+        phoneCode &&
+        triggerSendNumber &&
+        !phoneNumberError
+      ) {
         return (
           <div className="phone-code">
             <div>
@@ -809,7 +840,12 @@ const Modal = ({
                 maxLength={4}
                 onChange={handleChangePhoneCode}
               />
-              <div onClick={() => setTriggerSendNumber(false)}>
+              <div
+                onClick={() => {
+                  setTriggerSendNumber(false);
+                  setTriggerPhoneError(false);
+                }}
+              >
                 {t("change your phone")} <Image src={Rotate} alt="Rotate" />
               </div>
             </div>
@@ -915,6 +951,9 @@ const Modal = ({
   return (
     <Container>
       {triggerPopup && displayPopup()}
+      {(phoneNumberError || triggerPhoneError) && (
+        <div className="display-error">{phoneError}</div>
+      )}
       <ModalContainer ref={modalRef}>
         <Loader loading={loading}>
           <div>
@@ -953,7 +992,7 @@ const Modal = ({
             <VerificationSteps
               step={actualStep}
               verifiedRef={verifiedRef}
-              trigger={triggerSendNumber}
+              trigger={phoneNumberError ? false : triggerSendNumber}
               copied={isCopied}
             >
               <div className="progress" />

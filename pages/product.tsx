@@ -518,8 +518,8 @@ const Product = () => {
           <Blob className="blob-right" color="#D4E8DA" />
         </DoubleContainer>
 
-        <span id="test-ancre" />
-        
+        <span id="crypto-assets" />
+
         <DoubleContainer
           backgroundColor="#F5F5F4"
           height="722px"

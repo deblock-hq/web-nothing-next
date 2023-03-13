@@ -1307,7 +1307,7 @@ const Home = ({
                     {triggerMailError && (
                       <span>
                         <Image src={Warning} alt="warning icon" />
-                        wrong email detected
+                        {t("wrong-mail")}
                       </span>
                     )}
                   </div>
@@ -1378,7 +1378,7 @@ const Home = ({
             <div>{t("deposit-your-crypto-text")}</div>
             <div>
               <LearnMoreButton>
-                <Link href="/product/#test-ancre" scroll={true}>
+                <Link href="/product/#crypto-assets" scroll={true}>
                   {t("learn-more")} <Image src={Arrow} alt="Arrow right" />{" "}
                 </Link>
               </LearnMoreButton>
