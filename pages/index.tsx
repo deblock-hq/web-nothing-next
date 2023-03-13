@@ -22,6 +22,7 @@ import Rent from "../src/assets/backed/rent.svg";
 import Coffee from "../src/assets/backed/coffee.svg";
 import Commission from "../src/assets/backed/commission.svg";
 import Arrow from "../src/assets/arrow.svg";
+import Warning from "../src/assets/backed/warning.svg";
 import { devices } from "../src/utils/devices";
 
 import Blob from "../src/views/Blob";
@@ -33,6 +34,7 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Modal from "../src/views/Modal";
 import { Trans, useTranslation } from "next-i18next";
 import { useInView } from "react-intersection-observer";
+import validator from "validator";
 
 const LandingContainer = styled.div`
   display: flex;
@@ -323,6 +325,22 @@ const FirstContainer = styled.div`
     align-self: center;
     gap: 16px;
     padding-top: 16px;
+
+    > div {
+      position: relative;
+
+      > span {
+        position: absolute;
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        color: red;
+        font-size: 11px;
+        bottom: -25px;
+        width: 100%;
+        left: 8px;
+      }
+    }
 
     @media ${devices.tablet} {
       flex-direction: row;
@@ -1180,14 +1198,12 @@ const Home = ({
 
   const [checkLocalStorage, setCheckLocalStorage] = useState<string | null>();
 
-  const emailRegExp = /[a-z0-9]+@[a-z]+.[a-z]{2,3}/;
   const emailSubmit = () => {
-    const emailError = emailRegExp.test(whitelistEmail)
-      ? setTriggerMailError(false)
-      : true;
-
-    if (!emailError) {
+    if (validator.isEmail(whitelistEmail)) {
+      setTriggerMailError(false);
       displayModal();
+    } else {
+      setTriggerMailError(true);
     }
   };
 
@@ -1281,15 +1297,23 @@ const Home = ({
               <p>{t("hero-description")}</p>
               <form onSubmit={(e) => e.preventDefault()}>
                 {!checkLocalStorage ? (
-                  <input
-                    type="email"
-                    placeholder={t("whitelist-placeholder") || ""}
-                    value={whitelistEmail}
-                    onChange={(e) => setWhitelistEmail(e.target.value)}
-                  />
+                  <div>
+                    <input
+                      type="email"
+                      placeholder={t("whitelist-placeholder") || ""}
+                      value={whitelistEmail}
+                      onChange={(e) => setWhitelistEmail(e.target.value)}
+                    />
+                    {triggerMailError && (
+                      <span>
+                        <Image src={Warning} alt="warning icon" />
+                        wrong email detected
+                      </span>
+                    )}
+                  </div>
                 ) : null}
                 {!checkLocalStorage ? (
-                  <button type="submit" onClick={() => emailSubmit()}>
+                  <button type="submit" onClick={emailSubmit}>
                     {t("button-request")}
                   </button>
                 ) : (

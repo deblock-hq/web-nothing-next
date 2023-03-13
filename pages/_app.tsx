@@ -30,7 +30,7 @@ function App({ Component, pageProps }: AppProps) {
     }
   }, [openModal]);
 
-  console.log("page props", { pageProps });
+  // console.log("page props", { pageProps });
 
   return (
     <>
