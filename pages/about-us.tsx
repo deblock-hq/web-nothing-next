@@ -188,6 +188,10 @@ const DeblockContainer = styled.div`
         max-width: 444px;
       }
     }
+
+    .french-container > p {
+      max-width: 516px;
+    }
   }
 
   .tiles {
@@ -328,7 +332,7 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
 };
 
 const AboutUs = () => {
-  const { t } = useTranslation("aboutus");
+  const { t, i18n } = useTranslation("aboutus");
 
   return (
     <Container>
@@ -337,22 +341,37 @@ const AboutUs = () => {
         <DeblockContainer>
           <div className="hero">
             <Image src={HeroPicture} alt="Groupe photo" />
-            <div>
-              <h3>{t("We believe your money is yours...")}</h3>
-              <br />
-              <br />
-              <p>
-                {t("we-are-deblock-1")}
-                <br />
-                <strong>{t("we-are-deblock-2-1")}</strong>{" "}
-                {t("we-are-deblock-2-2")}
+            {i18n.language && !i18n.language.includes("fr") ? (
+              <div>
+                <h3>{t("We believe your money is yours...")}</h3>
                 <br />
                 <br />
-                {t("we-are-deblock-3-1")}{" "}
-                <strong>{t("we-are-deblock-3-2")}</strong>{" "}
-                {t("we-are-deblock-3-3")}
-              </p>
-            </div>
+                <p>
+                  {t("we-are-deblock-1")}
+                  <br />
+                  <strong>{t("we-are-deblock-2-1")}</strong>{" "}
+                  {t("we-are-deblock-2-2")}
+                  <br />
+                  <br />
+                  {t("we-are-deblock-3-1")}{" "}
+                  <strong>{t("we-are-deblock-3-2")}</strong>{" "}
+                  {t("we-are-deblock-3-3")}
+                </p>
+              </div>
+            ) : (
+              <div className="french-container">
+                <p>
+                  {t("we-are-deblock-1")}
+                  <br />
+                  <br />
+                  <strong>{t("we-are-deblock-2-1")}</strong>{" "}
+                  {t("we-are-deblock-2-2")}
+                  <br />
+                  <br />
+                  {t("we-are-deblock-3-1")}
+                </p>
+              </div>
+            )}
           </div>
           <div className="tiles">
             <div>
